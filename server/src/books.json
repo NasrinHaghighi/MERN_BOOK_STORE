@@ -1,0 +1,312 @@
+[{
+
+        "name": "Still Life",
+        "author": "Sarah Winman",
+        "price": 12.00,
+        "descriptin": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.",
+        "publisher": "Seven Seas Entertainment, LLC",
+        "rating": 4,
+        "ebook": true,
+        "format": "hardback",
+        "category": "art",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/0082/9780008283391.jpg"
+
+    },
+    {
+
+        "name": "The Illustrated Story of Art : The Great Art Movements and the Paintings that Inspired them",
+        "author": "DK",
+        "price": 32.00,
+        "descriptin": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.",
+        "publisher": "Seven Seas Entertainment, LLC",
+        "rating": 4.5,
+        "ebook": false,
+        "format": "paperback",
+        "category": "art",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4093/9781409316084.jpg"
+
+    },
+
+    {
+
+        "name": "Adobe Photoshop CC Book for Digital Photographers, The (2017 release)",
+        "author": "Scott Kelby",
+        "price": 43.00,
+        "descriptin": "Scott Kelby, Editor and Publisher of Photoshop User magazine-and the best-selling photography techniques author in the world today-once again takes this book to a whole new level as he uncovers more of the latest, most important, and most useful Adobe Photoshop techniques for photographers.",
+        "publisher": "Pearson Education (US)",
+        "rating": 4.1,
+        "ebook": false,
+        "format": "paperback",
+        "category": "art",
+        "language": "Portuguese",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1345/9780134545110.jpg"
+
+    },
+
+    {
+
+        "name": "Best of The Digital Photography Book Series, The : The step-by-step secrets for how to make your photos look like the pros'!",
+        "author": "Scott Kelby",
+        "price": 36.00,
+        "descriptin": "We're talking about the award-winning, worldwide smash hit, written by Scott Kelby, that's been translated into dozens of different languages, because it's the one book that really shows you how to take professional-quality shots using the same tricks today's top digital pros use.",
+        "rating": 4.2,
+        "ebook": false,
+        "format": "Audio Book",
+        "category": "art",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1343/9780134385129.jpg"
+
+    },
+    {
+
+        "name": "O QUE SOBRA",
+        "author": "Principe Harry",
+        "price": 36.00,
+        "descriptin": "Esta foi uma das imagens mais tocantes do século XX: dois jovens, dois príncipes, caminhando atrás do caixão da mãe, enquanto o mundo acompanhava os eventos com tristeza — e horror. Conforme Diana, a Princesa de Gales, era sepultada, bilhões de pesso as se perguntavam como se sentiam, e o que pensavam, os príncipes — e como a vida deles iria se desenrolar a partir daquele momento.Para Harry, esta é enfim a sua história.Com uma honestidade total e incontornável, O que sobra é um marco editorial, c heio de inspiração, revelações, introspecção e sabedoria, conquistada com muito esforço, no que diz respeito ao eterno poder do amor sobre a perda.",
+        "rating": 4.5,
+        "ebook": false,
+        "format": "paperback",
+        "category": "biography",
+        "language": "Portuguese",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9788/5390/9788539007479.jpg"
+
+    },
+
+    {
+
+        "name": "In Love : A Memoir of Love and Loss",
+        "author": "Amy Bloom",
+        "price": 10.00,
+        "descriptin": "A poignant love letter to Bloom's husband and a passionate outpouring of grief, In Love reaffirms the power and value of human relationships./In January 2020, Amy Bloom travelled with her husband Brian to Switzerland, where he was helped by Dignitas to end his life while Amy sat with him and held his hand. Brian was terminally ill and for the last year of his life Amy had struggled to find a way to support his wish to take control of his death, to not submerge 'into the darkness of an expiring existence'.",
+        "rating": 3.5,
+        "ebook": true,
+        "format": "paperback",
+        "category": "biography",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7837/9781783788019.jpg"
+
+    },
+
+
+    {
+
+        "name": "White Houses : A Novel",
+        "author": "Amy Bloom",
+        "price": 17.00,
+        "descriptin": "Lorena Hickok meets Eleanor Roosevelt in 1932 while reporting on Franklin Roosevelt's first presidential campaign. Having grown up worse than poor in South Dakota and reinvented herself as the most prominent woman reporter in America, Hick, as she's known to her friends and admirers, is not quite instantly charmed by the idealistic, patrician Eleanor. But then, as her connection with the future first lady deepens into intimacy, what begins as a powerful passion matures into a lasting love, and a life that Hick never expected to have. She moves into the White House, where her status as 'first friend' is an open secret, as are FDR's own lovers. After she takes a job in the Roosevelt administration, promoting and protecting both Roosevelts, she comes to know Franklin not only as a great president but as a complicated rival and an irresistible friend, capable of changing lives even after his death. Through it all, even as Hick's bond with Eleanor is tested by forces both extraordinary and common, and as she grows as a woman and a writer, she never loses sight of the love of her life.",
+        "rating": 3.3,
+        "ebook": true,
+        "format": "hardback",
+        "category": "biography",
+        "publisher": "Random House USA Inc",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/8129/9780812985696.jpg"
+
+    },
+
+    {
+
+        "name": "I Don't Need Therapy : (and other lies I've told myself)",
+        "author": "Toni Lodge",
+        "price": 21,
+        "descriptin": "Most of us tell little white lies all the time. Whether it's 'I'm five minutes away' or 'It must have gone to my spam folder', most of these fibs are harmless. But what if you realised that you weren't just lying about the little things, but the big 'life' stuff too? When Toni Lodge sat down to write this memoir, she realised that the lies she was telling herself were hiding some pretty important home truths-about her work, her identity and her mental health. Her dogged pursuit of these truths sent her on a brazen exploration of everything from gastro, fame and Twilight to funerals, the Dalai Lama and Brazilian waxes.In this hilarious warm hug of a book, Toni exposes the lies she has told herself about who she is and what she is capable of, inviting us on a riotous romp that will make you laugh, cringe, cry and utterly rethink the truth behind the stories we tell ourselves.",
+        "rating": 4,
+        "ebook": true,
+        "format": "paperback",
+        "category": "biography",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7610/9781761067693.jpg"
+
+    },
+    {
+        "name": "Very Short Introductions for Curious Young Minds: The Secrets of the Universe",
+        "author": "Mike Goldsmith",
+        "price": 8.00,
+        "descriptin": "This is the second title in the important new series from Oxford which provides accessible introductions to the ideas, facts, and vocabulary behind an absorbing range of subjects. Meticulously researched and authoritative but written in simple language by experts in their fields, curious young readers will quickly get to grips with the basic principles and terminology of each subject.The Secrets of the Universe explains, in clear and interesting way, the theories of the beginning of the Universe, what it is, how it works, the lives of stars, and possible futures. The engaging design highlights the Heroes of the subject from early beginnings to modern day and explains tricky terminology in Speak like a Scientist features. Comic strips and illustrations, amazing photographs, and a timeline, glossary and, index, all make this handy-sized book the perfect way to learn.If you love this title,why not collect them all? The Secrets of the Universe is part of a collectible set which will build into a diverse range of subjects.",
+        "publisher": "Oxford University Press",
+        "rating": 4.2,
+        "ebook": false,
+        "format": "paperback",
+        "category": "children",
+        "language": "spanish",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1927/9780192779212.jpg"
+    },
+
+    {
+        "name": "Read with Oxford: Stage 1: Non-fiction: Animals and Us",
+        "author": "Mike Goldsmith",
+        "price": 11.00,
+        "descriptin": "Find out more about the animals of the world, how they adapt to survive and how they use tools just like us! From dogs and lions to kingfishers and atlas moths, this collection is packed full of fascinating facts about both familiar and more unusual animals.The selection of texts has been based on children's favourite non-fiction topics, supporting national curriculum topics and providing phonics practice.",
+        "publisher": "Oxford University Press",
+        "rating": 5,
+        "ebook": false,
+        "format": "paperback",
+        "category": "children",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1927/9780192773821.jpg"
+    },
+    {
+
+        "name": "Who Ate all the Bugs?",
+        "author": "Matty Long",
+        "price": 10,
+        "descriptin": "Snail is on a mission. Bugs are being eaten all around her and she's determined to hunt down the culprit. But is it a lost cause? After all, as Glowworm explains, 'You can't fight the food chain'. Acclaimed picture book creator, Matty Long, brings his hallmark talents of deadpan comedy, witty commentary, and hilarious illustrations to elucidate the real life realities of invertebrate existence! In this fascinating and slightly disgusting series, readers can feast on a diet of facts about the animals, plants and ecosystems found in the natural world.",
+        "rating": 3,
+        "ebook": false,
+        "format": "book",
+        "category": "children",
+        "language": "persian",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1927/9780192772633.jpg"
+    },
+    {
+
+        "name": "Read with Oxford: Stage 2: Non-fiction: Our Wonderful World",
+        "author": "Rob Alcraft",
+        "price": 13,
+        "descriptin": "Find out about exotic plants, explore beautiful beaches and see the world through an animal's eyes. Explore our wonderful world in this fascinating collection of seven Read with Oxford non-fiction texts, ideal for children who are developing early reading skills. This collection includes seven enjoyable non-fiction texts designed to tap into your child's interest and pleasure in the wonderful world around us. Packed full of incredible facts, with full-colour photos and artwork. The texts are phonics-based and have been specially written so that your child can read them for themselves. /Tips for parents and fun after-reading activities help you to get the most out of the texts. Featuring much-loved characters, great authors, engaging storylines and fun activities, Read with Oxford offers an exciting range of carefully levelled reading books to build your child's reading confidence.",
+        "rating": 5,
+        "ebook": false,
+        "format": "paperback",
+        "category": "children",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1927/9780192769688.jpg"
+    }, {
+
+        "name": "Sew It Yourself with DIY Daisy : 20 Pattern-Free Projects (and Infinite Variations) To Make Your Dream Wardrobe",
+        "author": "Daisy Braid",
+        "price": 35,
+        "descriptin": "It's time to start sewing with Sew It Yourself with DIY Daisy: 20 pattern-free projects (and infinite variations) to make your dream wardrobe. /When Daisy Braid started sewing, patterns were out of her budget so she just started DIYing! Sew It Yourself with DIY Daisy is a colourful, size-inclusive and inspiring book for sewers of all stages and abilities, beginners included. It includes guides on everything you need to get started (including equipment, materials and basic techniques) and step-by-step projects with clear instructions, photographs and illustrations that will take the scary out of sewing./Daisy's designs use simple shapes to create playful, classic and comfortable pieces that can be styled for all occasions, whether that's a picnic date or a WFH day. The book features 10 small accessory projects and 10 more advanced clothing projects, each with a fun variation (but with potential for endless customisation). There's no standard sizing - just your own body measurements - and no zips or buttons required! They also encourage intentional sewing practices, with projects that produce minimal waste and can even be made with leftover fabric scraps./So get out that sewing machine (or borrow one from you granny) - Sew It Yourself with DIY Daisy is all you need to get started on discovering (or rediscovering) sewing and creating something one-of-a-kind. Just remember: sewing is self-care, and you make the rules!",
+        "publisher": "Hardie Grant Books",
+        "rating": 4.2,
+        "ebook": true,
+        "format": "paperback",
+        "category": "craft",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7437/9781743798201.jpg"
+    },
+    {
+
+        "name": "DIY Furniture : A Step-by-Step Guide",
+        "author": "Christopher Stuart",
+        "price": 37,
+        "descriptin": "Featuring 30 designs by leading designer-makers from around the world DIY Furniture shows you how to use simple techniques to make stunning designer furniture from scratch./Along with designs for seating and storage, the book also features projects for making your own bed, wardrobe, lighting and garden furniture. Each project features hand-drawn diagrams with short, easy-to-follow instructions on how to build the piece./ All the projects can be easily assembled using common materials to be found at the local hardware store, allowing the reader to create unique designer pieces at a fraction of the normal cost. Brief biographies of all the featured designers are included at the end of the book.",
+        "publisher": "Orion Publishing Co",
+        "rating": 3.7,
+        "ebook": false,
+        "format": "hardback",
+        "category": "craft",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/8566/9781856697422.jpg"
+
+    },
+    {
+
+        "name": "Timeless Textured Baby Crochet : 20 heirloom crochet patterns for babies and toddlers",
+        "author": "Vita Apala",
+        "price": 21,
+        "descriptin": "In this value-packed collection of 20 crochet patterns, sutble colours, gorgeous yarns, rich textures, beautiful ruffles, and delicate motifs combine to create the most adorable wardrobe imaginable for babies and toddlers up to age 4./Beautifully photographed and with fully illustrated step-by-step instructions, the collection includes rompers, dresses, sweaters, cardigans, and hoodies, as well as an heirloom cot blanket, booties and bonnet, so that you can crochet a complete and truly chic baby wardrobe with ease. There are designs for little girls and boys, and a large number of the designs are completely gender neutral./Baby and toddler garments and accessories are fun to crochet because they are quick to make and very rewarding. They require less yarn too, making them an accessible and speedy project that will still be valued enormously - the ultimate handmade baby gift.",
+        "publisher": "David & Charles",
+        "rating": 3.7,
+        "ebook": false,
+        "format": "paperback",
+        "category": "craft",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4463/9781446309438.jpg"
+
+    },
+    {
+
+        "name": "Crocheted Wreaths for the Home : 12 Gorgeous Wreaths and 12 Matching Mini Projects for All Year Round",
+        "author": "Anna Nikipirowicz",
+        "price": 13,
+        "descriptin": "Wreaths are not just for Christmas - they can be used to decorate your home all year round! Anna Nikipirowicz shows you how to create sumptuous crocheted wreaths and other decorations that will grace your home and look beautiful, whatever the season./There is a wide variety to choose from, including spring, summer, autumn and winter wreaths plus a gorgeous succulents wreath and Easter, Halloween and Christmas wreaths. These lovely yarny creations are festooned with flowers, leaves and other decorations such as birds, owls, pumpkins, stars, bunnies and foxes. If you love the look but don't want to make an entire wreath, Anna also includes other smaller decorations such as garlands and terrariums./There are also three delightful tiny wreaths to make, featuring a hedgehog, a mouse and a robin. Each main project has a smaller accompanying project to make, and if you love crochet, you'll love Anna's imaginative designs.",
+        "publisher": "Search Press Ltd",
+        "rating": 4,
+        "ebook": false,
+        "format": "paperback",
+        "category": "craft",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/7822/9781782216940.jpg"
+
+    },
+    {
+
+        "name": "Knitted Wild Animal Friends : Over 40 knitting patterns for wild animal dolls, their clothes and accessories",
+        "author": "Louise Crowther",
+        "price": 17,
+        "descriptin": "Go wild with this brand new collection of adorable knitted wild animal toys and their clothes and accessories by best-selling author Louise Crowther./After the success of Knitted Animal Friends, Louise has created knitting patterns for 12 new, wild animals in their own wonderful wardrobes. This collection includes a zebra in dungarees, an elephant in a tutu, a lion in jeans, a tiger in a party dress, a chimpanzee in a rainbow cardigan, a sloth in pyjamas (of course!), a koala in a furry gilet, a bear in a fair isle sweater, a hippo in overalls, a panda in a duffle coat, a giraffe in a pinafore and a rhinoceros in a day dress - all with their own distinct personal style!./Whether you love Charlie the Chimpanzee's casual outfit of rainbow striped cardigan, shorts and sneakers, or Sophie the Tiger's more formal pink ruffle dress which is perfect for a birthday celebration, there is a something for everyone. Edward the Sloth likes to take it easy and relaxes in comfy pyjamas a fluffy robe and slippers when he's kicking back (which is always!), whereas Hugo the Zebra is always up for an adventure and enjoys wearing his red and white dungarees so he's ready for anything.",
+        "publisher": " DAVID & CHARLES",
+        "rating": 4,
+        "ebook": false,
+        "format": "paperback",
+        "category": "craft",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/4463/9781446309087.jpg"
+
+    },
+    {
+
+        "name": "The House That Made Us",
+        "author": "Alice Cavanagh",
+        "price": 11,
+        "descriptin": "One Day meets Up: The House That Made Us is a love story - and a life story - told through a series of photographs and inspired by a true story./When Mac and Marie marry and find a home of their own, Mac takes a snap of them outside their newbuild bungalow, the garden bare and the paint on the front door still wet. It becomes a tradition, this snap, and slowly the photographs build into an album of a fifty-year relationship./Every year they take a photo and though things change around them - the garden matures, the fashions change, they grow older - the one constant is their love. Every year, come rain, come shine, from the Seventies through the decades, every photo tells the story of their love. But life never travels the path you expect it to, though they know that a life with love is a life lived to the full./Now, in the present day, the photo album belongs to someone who doesn't know the people in its pages. As they watch the lives from the past unfold, will the truth of their love story be told...?./A heart-breaking story about life and love for readers who love Holly Miller, Jojo Moyes and Hazel Prior.",
+        "publisher": " Simon & Schuster Ltd",
+        "rating": 4.4,
+        "ebook": false,
+        "format": "hardback",
+        "category": "romance",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/3985/9781398510562.jpg"
+
+    },
+    {
+
+        "name": "Beautiful Disaster",
+        "author": " Jamie McGuire",
+        "price": 11,
+        "descriptin": "Abby Abernathy doesn't drink or swear and she works hard. Abby believes she has created enough distance between her and the darkness of her past, but when she arrives at college, her dreams of a new beginning are quickly challenged by the university's walking one-night stand./Bad Boy Travis Maddox, handsome, built, and covered in tattoos, is exactly what Abby needs - and wants - to avoid. He spends his nights winning money in a floating fight club, and his days as the notorious college Lothario. A disaster waiting to happen.../ Intrigued by Abby's resistance to his charms, Travis tricks her into his life with a simple bet. If he loses, he must remain celibate for a month. If Abby loses, she must live in Travis' apartment for the same amount of time. Or the start of something eutiful? Either way, Travis has no idea that he has met his match. Or that this is the start of an obsessive, intense relationship that will lead them both into unimaginable territory.",
+        "publisher": " Simon & Schuster Ltd",
+        "rating": 4.4,
+        "ebook": false,
+        "format": "hardback",
+        "category": "romance",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/3985/9781398524699.jpg"
+
+    },
+    {
+
+        "name": "High Stakes",
+        "author": "Danielle Steel",
+        "price": 9,
+        "descriptin": "A compelling and thought-provoking novel from the world's favourite storyteller. Set around a New York talent agency, a group of accomplished women discover the high price of success./Jane Addison is smart, young and ambitious. She's delighted to have landed a job with a prestigious talent agency, Fletcher and Benson. Hailey West, her boss, is dedicated to her authors, but her home life is chaotic and challenging as a single mother following her husband's tragic death. Francine Rivers, the stern and bitter head of department, is also raising children on her own after an acrimonious divorce, and she has had to overcome financial hardship by paying the very highest price.",
+        "publisher": " Simon & Schuster Ltd",
+        "rating": 4,
+        "ebook": true,
+        "format": "paperback",
+        "category": "romance",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5290/9781529022087.jpg"
+
+    },
+
+    {
+        "name": "Flying Angels",
+        "author": "Danielle Steel",
+        "price": 10,
+        "descriptin": "Flying Angels is a compelling and inspirational story of women of courage in the Second World War, by the world's number one bestselling author, Danielle Steel./ It is 1941 and the devastating loss of life following the Japanese attack on Pearl Harbor leaves best friends Audrey and Lizzie distraught and bereft as they lose someone they both love deeply. As they come to terms with their grief, their resolve to play a worthwhile role towards the war effort is strengthened. As trained nurses they volunteer for the army medivac corps and are sent to England, where they join a team who fly on dangerous missions to the Front to bring back wounded soldiers./ Audrey, Lizzie and their fellow medics and pilots will suffer the tragedies of war and experience loss and suffering. They will come to understand the importance of friendship, respect, bravery and being true to yourself. But, once the war is over, can they learn one of the hardest lessons of all: the ability to love again?",
+        "publisher": " Simon & Schuster Ltd",
+        "rating": 4,
+        "ebook": true,
+        "format": "hardback",
+        "category": "romance",
+        "language": "English",
+        "imageUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9781/5290/9781529021783.jpg"
+
+    }
+
+
+
+]
