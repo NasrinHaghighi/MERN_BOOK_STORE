@@ -1,0 +1,5 @@
+@import "../public/fonts/mulish/css/font-mulish.css";
+@import "../public/fonts/montserrat/css/font-montserrat.css";
+body {
+    font-family: Mulish;
+}
