@@ -82,7 +82,9 @@ li {
   color:#ffa500 !important;
   font-weight:900 ;
 }
-
+.MuiSlider-track .css-1gv0vcd-MuiSlider-track{
+  display: none !important ;
+}
 `
 
 export default MyGlobalStyle;
