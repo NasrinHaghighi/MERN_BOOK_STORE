@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-
+import Slider from '@mui/material/Slider';
 
 export const PriceSlider=styled.div`
 padding-top:30px ;
@@ -17,5 +17,8 @@ export const Text=styled.div`
 text-align:center ;
 font-size:20px ;
 font-weight:500 ;
+
+`
+export const StyledSlider = styled(Slider)`
 
 `

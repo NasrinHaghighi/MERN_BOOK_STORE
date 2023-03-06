@@ -10,7 +10,7 @@ interface ItemProps{
 function BookItem({item}:ItemProps) {
   return (
     <BookItemContainer>
-       <Link href={`${item._id}`}>
+       <Link href={`/books/${item._id}`}>
            <Images src={item.imageUrl} width={220} height={329}   alt="book"/>
            <Bottom>
            <MovingContent>

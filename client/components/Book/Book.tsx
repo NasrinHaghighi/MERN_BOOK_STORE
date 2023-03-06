@@ -6,7 +6,7 @@ import { Images } from '../../helpers/Image'
 import BookInfo from './BookInfo';
 import BookAllInfo from './BookAllInfo/BookAllInfo';
 import Link from 'next/link'
-
+import axios from "axios";
 
 export interface Item{
     id:string,
@@ -29,32 +29,40 @@ export interface Item{
 
 function Book() {
     const router = useRouter()
-    const t=router.query.bookid
-    const id = t?.slice(0, t.indexOf('+'))
-    var an = t?.slice(t.indexOf('+'));
-   //console.log(id)
-   
-  const ans=an?.slice(1)
-   const [loading , setLoading] =useState(false)
-      const [item, setItem] =useState<Item>()
-      const [showAlert, setShowAlert] =useState(false)
+   const bookid=router.query.bookid
 
-       useEffect(()=>{
-          setLoading(true)
-         fetchitem(id as string).then(function(result){
-       const data=result.items
-       //console.log(data)
-     const tt=data&& data.find((t:any)=>{
-        return t.volumeInfo.title = ans
-      })
-     setItem(tt)
-         })
-        setLoading(false)
-    },[])
+console.log(bookid)
+  //  useEffect(()=>{
+  //   axios
+  //   .get(`http://localhost:4000/api/v1/books/:${bookid}`)
+  //   .then(response =>console.log(response.data));
+  //  },[])
+
+  //   const id = t?.slice(0, t.indexOf('+'))
+  //   var an = t?.slice(t.indexOf('+'));
+  //  //console.log(id)
+   
+  // const ans=an?.slice(1)
+  //  const [loading , setLoading] =useState(false)
+  //     const [item, setItem] =useState<Item>()
+  //     const [showAlert, setShowAlert] =useState(false)
+
+  //      useEffect(()=>{
+  //         setLoading(true)
+  //        fetchitem(id as string).then(function(result){
+  //      const data=result.items
+  //      //console.log(data)
+  //    const tt=data&& data.find((t:any)=>{
+  //       return t.volumeInfo.title = ans
+  //     })
+  //    setItem(tt)
+  //        })
+  //       setLoading(false)
+  //   },[])
 
   return (
     <BoxConatiner>
-    <AlertBox className={showAlert ? 'show' : ''}>
+    {/* <AlertBox className={showAlert ? 'show' : ''}>
     
       <div>Book " <span>{item?.volumeInfo.title} </span>" added to yor card</div>
       <SeeCardBtn><Link href='/card'>View card</Link></SeeCardBtn>
@@ -75,7 +83,7 @@ function Book() {
 
      {item && !loading ? <BookInfo item={item} setShowAlert={setShowAlert}/> : ''}
     </Container>
-    <BookAllInfo item={item}/>
+    <BookAllInfo item={item}/> */}
     </BoxConatiner>
   )
 }

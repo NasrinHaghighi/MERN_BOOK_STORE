@@ -2,20 +2,29 @@ import React,{useState} from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
 
 import {Conatiner, TitleBtn} from '../CategoryFilter/styles'
-import {PriceSlider, Text} from './styles'
+import {PriceSlider, Text, StyledSlider} from './styles'
 import Slider from '@mui/material/Slider';
-
+import {selectedPrice} from '../../../../features/priceFilter'
 
 
 function valuetext(value: number) {
     return `${value}°C`;
   }
+
+
+
 function PriceFilter() {
+    const reduxPrice=useAppSelector(state=>state.price.price)
+    //console.log(reduxPrice)
     const [show, setShow] =useState(false)
-    const [value, setValue] = React.useState<number[]>([10,100]);
+    const [value, setValue] = React.useState<number[]>(reduxPrice);
+   const dispatch=useAppDispatch()
+
+//console.log(value)
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
+dispatch(selectedPrice(value))
     
   };
  
@@ -23,15 +32,16 @@ function PriceFilter() {
     <Conatiner>
        <TitleBtn onClick={()=>setShow(!show)} className={show ?'show' : ''}>Price</TitleBtn>
       <PriceSlider className={show ? 'active': 'unActive'}>
-      <Slider
-        
+      <StyledSlider
         getAriaLabel={() => 'Temperature range'}
         value={value}
         onChange={handleChange}
-        valueLabelDisplay="auto"
         getAriaValueText={valuetext}
+       
       />
 <Text>Price: ${value[0]} __ ${value[1]}</Text>
+
+
       </PriceSlider>
       
        

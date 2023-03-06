@@ -4,15 +4,27 @@ max-width: 100%;
  margin:0 auto ;
 `
 export const InnerConatiner=styled.div`
-max-width: 1520px;
- margin:0 auto ;
- padding:30px 50px ;
+  max-width: 1920px;
+    margin:0 auto ;
+    padding:0 50px ;
 
 
 `
 export const Title=styled.div`
-    font-size: 1.875rem;
-
+    font-weight:700 ;
+    position:relative ;
+    margin-bottom:30px ;
+    font-size: 2rem;
+    position:relative ;
+    &:after{
+    content: " ";
+    width: 30px;
+    height: 3px;
+    background-color:${props=>props.theme.orange} ;
+    position: absolute;
+    left: 0;
+    bottom:-10px ;
+ } 
 
 `
 export const Top=styled.div`

@@ -44,7 +44,7 @@ height:80vh ;
 export const InnerContainer = styled.div`
 max-width:1720px ;
 
-padding:300px 0 ;
+padding:100px 0 ;
 margin:0 auto ;
 display:flex ;
 justify-content:space-between ;
@@ -131,7 +131,18 @@ top:-128px ;
 export const Text = styled.div`
 text-align:center ;
 width:100% ;
+margin-top:100px ;
 h1{
-    font-size:54px;
+    font-size:64px;
+    margin-bottom:40px ;
+}
+h2{
+    font-size:84px;
+    margin-bottom:40px ;
+    color:${props=>props.theme.orange}
+}
+h3{
+   font-size:44px; 
+   margin-bottom:20px ;
 }
 `

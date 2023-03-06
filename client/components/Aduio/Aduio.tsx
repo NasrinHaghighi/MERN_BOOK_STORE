@@ -2,7 +2,7 @@ import React,{useRef, useState, useEffect} from 'react'
 import {Container, InnerContainer, Text,Anim, Tablet, Phone, Headphone, AduioDiv, Blue} from './styles'
 import {Images} from '../../helpers/Image'
 import { useInViewport } from 'react-in-viewport';
-
+import { SeeMore } from '../Discount/styles';
 
 const  Aduio =() => {
 
@@ -39,7 +39,8 @@ useEffect(() => {
             <Text>
               <h1>Aduio Books</h1>
               <h2>Listening Made Easy</h2>
-              <h3>audiobooks & podcast episodes available for instant listening!</h3>
+              <h3>audiobooks & podcast episodes </h3><h3>available for instant listening!</h3>
+              <SeeMore>See More</SeeMore>
             </Text>
 
            <Anim ref={myRef}>

@@ -41,7 +41,7 @@ useEffect(() => {
   setLoading(true)
  //console.log(categorySelected)
    axios
-       .get(`http://localhost:4000/api/v1/books?category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?category=${categorySelected}&numericFilters=price<40`)
        .then(response => setData(response.data.books));
        setLoading(false)
 }, [categorySelected])

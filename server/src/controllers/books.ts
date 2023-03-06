@@ -52,7 +52,6 @@ export const getAllBooks =async (req: any, res: any) =>{
         const sortList = sort.split(',').join(' ')
         result = result.sort(sortList)
     }
-  
     if(fields){
         const feildList = fields.split(',').join(' ')
         result = result.select(feildList)
