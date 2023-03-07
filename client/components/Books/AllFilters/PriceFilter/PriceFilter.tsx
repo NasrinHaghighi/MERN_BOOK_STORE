@@ -37,6 +37,8 @@ dispatch(selectedPrice(value))
         value={value}
         onChange={handleChange}
         getAriaValueText={valuetext}
+        min={5}
+  max={50}
        
       />
 <Text>Price: ${value[0]} __ ${value[1]}</Text>

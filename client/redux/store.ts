@@ -6,6 +6,7 @@ import PageSlice from '../features/PageSlice';
 import priceFilter from '../features/priceFilter'
 import Rate from '../features/rateSlice'
 import scrollTo from '../features/scrollTo';
+import searchSlice from '../features/searchSlice';
 
 export const store = configureStore({
       reducer: {
@@ -14,9 +15,9 @@ export const store = configureStore({
         books:BookSlice,
         price:priceFilter,
         tag:scrollTo,
-        rate:Rate
-      
-   },
+        rate:Rate,
+        search:searchSlice
+     },
    middleware: (getDefaultMiddleware) =>
    getDefaultMiddleware({
        serializableCheck: {

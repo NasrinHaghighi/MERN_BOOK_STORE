@@ -5,7 +5,7 @@ interface Props{
  }
 
 const initialState:Props={
-    price:[20,100]
+    price:[5,50]
 }
 
 export const PriceFilter= createSlice({

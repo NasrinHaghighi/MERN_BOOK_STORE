@@ -11,29 +11,26 @@ import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { useRouter } from "next/router";
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { useAppDispatch } from '../../redux/hooks'
 
-import { selectedcategory } from '../../features/CategorySlice'
 import Basket from '../Basket/Basket';
 import ShopDropdown from './ShopDropdown/ShopDropdown';
-
+import {searchTerm} from '../../features/searchSlice'
+import { useMemo } from 'react';
+import { debounce } from 'lodash';
 function Header() {
-  const category = useAppSelector(state=>state.category?.category)
-  const dispatch=useAppDispatch()
+  
+      const dispatch=useAppDispatch()
       const [show, setShow] = useState(false);
-      const [route, setRoute] = useState()
-      const router = useRouter()
-     const searchHandel=(e:any)=>{
-      e.preventDefault()
-      dispatch(selectedcategory(e.target.value))
-     setTimeout(() => {
-      router.push("/books")
 
-     }, 1000);
-   
      
-     
+      const searchHandel= (e:any)=>{
+      //e.preventDefault()
+      
+      dispatch(searchTerm(e.target.value))    
      }
+
+
   return (
       <Wapper>
     <HeaderWrapper>
@@ -58,18 +55,19 @@ function Header() {
         </Wrapper>
         <Wrapper2>
             {/* *****************SEARCH***** */}
+
+
+
+
         <Lens >
-        <DropdownS
-      onMouseOver={() => setShow(true)}
-      onMouseLeave={() => setShow(false)}
-    >
-      <DropDownToggle className="main-style" id="dropdown-basic">
-       <BsSearch />
-      </DropDownToggle>
+        <DropdownS      onMouseOver={() => setShow(true)}    onMouseLeave={() => setShow(false)} >
+        <DropDownToggle className="main-style" id="dropdown-basic">
+         <BsSearch />
+        </DropDownToggle>
 
       <DropDownMenu show={show}>
         <Dropdown.Item >
-            <Input onChange={searchHandel} value={category}></Input>
+            <Input onChange={searchHandel} ></Input>
         </Dropdown.Item>
        
       </DropDownMenu>
