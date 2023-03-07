@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Container=styled.div`
 width: 100%;
 background-color:${props=>props.theme.grayBG} ;
-position:absolute ;
-bottom:0 ;
+/* position:absolute ;
+bottom:0 ; */
 padding:70px 0 0 0 ;
-z-index:10 ;
+/* z-index:10 ; */
 
 `
 export const FooterBox=styled.div`

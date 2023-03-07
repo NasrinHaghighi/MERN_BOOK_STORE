@@ -46,16 +46,103 @@ max-width: 1920px;
  margin:0 auto ;
  padding:150px 50px ;
  display: grid;
-grid-template-columns: 2fr 3fr;
+grid-template-columns: 1fr 3fr;
 grid-template-rows: 1fr;
 grid-column-gap: 0px;
 grid-row-gap: 0px;
 `
 
 
-export const ImageDiv=styled.div`
-text-align:center ;
+export const Page=styled.div<{
+  bg?: string;
+}>`
+display: block;
+position: absolute;
+left: 0;
+top: 0;
+width: 400px;
+height:500px;
+background: ${props => `url(${props.bg}) no-repeat `};
+background-position: center;
+  background-size: cover;
+padding: 0;
+margin: 0;
+ background-color: #fff; // Old browsers */
+transform-origin: 0 50% 0;
+transform-style: preserve-3d;
+transition: all .5s cubic-bezier(0.25,1,.25,1);
+&.page1{
+ 
+  display: none;
+transform: rotateY(20deg) translateZ(-1px);
+}
+&.page2{
+  display: none;
+transform: rotateY(30deg) translateZ(-2px);
+}
+&.page3{
+  display: none;
+transform: rotateY(40deg) translateZ(-3px);
+}
+&.cover{
+  z-index: 2 !important;
+display: block;
+width: 400px;
+height:500px;
+
+transform: rotateY(0deg) translateZ(0px);}
 `
+
+
+export const ImageDiv=styled.div`
+display: block;
+float: left;
+width: 400px;
+height:500px;
+margin: 0;
+padding: 0;
+ background: #333; 
+transform: translate3d(0,0,0);
+transition:all 0.3 ease ;
+&:hover{
+  ${Page} {
+      &.page1 {
+       display:block ;
+       border:1px solid ${props=>props.theme.grayBorder} ;
+        transform: rotateY(-25deg);
+      }
+    
+      &.page2 {
+        display: block;
+        border:1px solid ${props=>props.theme.grayBorder} ;
+        transform: rotateY(-20deg);
+      }
+      &.page3 {
+        display: block;
+        border:1px solid ${props=>props.theme.grayBorder} ;
+        transform: rotateY(-15deg);
+      }
+      &.cover {
+        transform: rotateY(-30deg);
+      }
+    }
+}
+&>ul{
+  display: block;
+position: relative;
+width: 400px;
+height:450px;
+margin: 0px;
+padding: 0;
+list-style: none;
+perspective-origin: 0 50% 0;
+perspective: 800px;
+-webkit-transform: translate3d(0,0,0);
+}
+
+`
+///////////////////////////////////////////////////////////
+
 export const ConatinerInfo=styled.div`
 text-align:left ;
 padding-bottom: 150px;

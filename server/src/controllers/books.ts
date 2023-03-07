@@ -65,4 +65,20 @@ export const getAllBooks =async (req: any, res: any) =>{
 
 
 
+export const getSingleBook =async (req: any, res: any) =>{
+    try{
+        const {id:bookId}=req.params
+        const book =await Books.findOne({_id:bookId})
+       
+        if(!book){
+            return res.status(404).json({msg:`no task by id:${bookId}`})
+        }
+        res.status(200).json({book})
+    }catch(error){
+        res.status(500).json({msg : error})
+    }
+}
+
+
+
 

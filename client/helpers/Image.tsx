@@ -7,6 +7,7 @@ interface Props {
   width: number;
   height: number;
   onClick?: () => void;
+  borderRaduis?:number
   // layout: string | null;
 }
 
@@ -17,6 +18,7 @@ export const Images: React.FC<Props> = ({
   width,
   height,
   onClick,
+
   // layout,
 }) => {
   return (
@@ -24,6 +26,7 @@ export const Images: React.FC<Props> = ({
       width={width}
       height={height}
       className={className}
+      
       src={src}
       alt={alt}
       onClick={onClick}

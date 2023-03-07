@@ -54,6 +54,7 @@ useEffect(() => {
       
        setLoading(false)
 }, [categorySelected,rateSelected,min])
+//use debounce lodash to set delay to fech data
 
 const handleDebounceFn =  (s:any) => {
   axios.get(`http://localhost:4000/api/v1/books?name=${s}`)
