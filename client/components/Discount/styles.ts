@@ -91,7 +91,9 @@ height:50px ;
 font-size:18px ;
 border-radius:8px ;
 background-color:${props=>props.theme.orange} ;
-
+&.audio{
+    margin-top:100px
+}
 
 `
 

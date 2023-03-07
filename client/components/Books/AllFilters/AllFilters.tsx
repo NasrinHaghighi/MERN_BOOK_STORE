@@ -4,6 +4,7 @@ import {Conatiner, Title, CategoryList, CategoryItem} from './styles'
 
 import CategoryFilter from './CategoryFilter/CategoryFilter';
 import PriceFilter from './PriceFilter/PriceFilter';
+import RateFilter from './RateFilter/RateFilter';
 
 
 function AllFilters() {
@@ -14,6 +15,7 @@ function AllFilters() {
     <Conatiner>
       <CategoryFilter />
       <PriceFilter />
+      <RateFilter />
    </Conatiner>
     </>
   )

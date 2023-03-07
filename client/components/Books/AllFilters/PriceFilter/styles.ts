@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import Slider from '@mui/material/Slider';
 
 export const PriceSlider=styled.div`
-padding-top:30px ;
+padding:0px 30px;
 overflow:hidden ; 
 margin :10px ;
+
 transition:height 400ms ease ;
 &.active{
-    height:180px;
+    height:100px;
  }
 &.unActive{
     height: 0;

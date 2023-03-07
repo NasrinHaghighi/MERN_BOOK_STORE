@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container=styled.div`
 padding:0 10px ;
+margin:50px 0 200px 0;
 
 `
 export const Top=styled.div`

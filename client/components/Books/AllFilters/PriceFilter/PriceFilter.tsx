@@ -29,7 +29,7 @@ dispatch(selectedPrice(value))
   };
  
   return (
-    <Conatiner>
+    <Conatiner >
        <TitleBtn onClick={()=>setShow(!show)} className={show ?'show' : ''}>Price</TitleBtn>
       <PriceSlider className={show ? 'active': 'unActive'}>
       <StyledSlider

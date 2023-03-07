@@ -17,9 +17,15 @@ import axios from "axios";
 
 function Main() {
   const dispatch=useAppDispatch()
+  //get data form redux and fech data 
   const categorySelected =useAppSelector((state=>state.category.category))
-  //console.log(categorySelected)
-    const [loading, setLoading]=useState<boolean>(false)
+  const rateSelected = useAppSelector((state=>state.rate.rate))
+  const priceSelected = useAppSelector((state=>state.price.price))
+  console.log(priceSelected)
+  let min=priceSelected[0]
+  let max=priceSelected[1]
+
+const [loading, setLoading]=useState<boolean>(false)
     const [data, setData] =useState<bookType[]>([])
      const [filtedData , setFilteredData] =useState([])
 
@@ -36,15 +42,16 @@ useEffect(() => {
       .then(response => setData(response.data.books));
       setLoading(false)
 }, [])
-console.log(data)
+
 useEffect(() => {
   setLoading(true)
  //console.log(categorySelected)
    axios
-       .get(`http://localhost:4000/api/v1/books?category=${categorySelected}&numericFilters=price<40`)
+       .get(`http://localhost:4000/api/v1/books?numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
        .then(response => setData(response.data.books));
+      
        setLoading(false)
-}, [categorySelected])
+}, [categorySelected,rateSelected,min])
   
   return (
     <>

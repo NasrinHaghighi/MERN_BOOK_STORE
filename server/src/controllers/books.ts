@@ -17,9 +17,7 @@ export const getAllBooks =async (req: any, res: any) =>{
     if(language){
         queryObject.language= language
     }
-    if(publisher){
-        queryObject.publisher = publisher
-    }
+  
     if(publisher){
         queryObject.publisher = publisher
     }

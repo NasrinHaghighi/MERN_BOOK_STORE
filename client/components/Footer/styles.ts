@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 export const Container=styled.div`
-  max-width: 100%;
+width: 100%;
 background-color:${props=>props.theme.grayBG} ;
-
+position:absolute ;
+bottom:0 ;
 padding:70px 0 0 0 ;
+z-index:10 ;
 
 `
 export const FooterBox=styled.div`

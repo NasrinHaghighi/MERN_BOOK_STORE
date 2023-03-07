@@ -4,6 +4,7 @@ import  BookSlice  from '../features/bookSlice';
 import CategorySlice from '../features/CategorySlice';
 import PageSlice from '../features/PageSlice';
 import priceFilter from '../features/priceFilter'
+import Rate from '../features/rateSlice'
 import scrollTo from '../features/scrollTo';
 
 export const store = configureStore({
@@ -12,7 +13,8 @@ export const store = configureStore({
         page:PageSlice,
         books:BookSlice,
         price:priceFilter,
-        tag:scrollTo
+        tag:scrollTo,
+        rate:Rate
       
    },
    middleware: (getDefaultMiddleware) =>

@@ -36,11 +36,11 @@ useEffect(() => {
   return (
     <Container>
         <InnerContainer>
-            <Text>
+            <Text className={enter ? 'enter' :'exit'}>
               <h1>Aduio Books</h1>
               <h2>Listening Made Easy</h2>
               <h3>audiobooks & podcast episodes </h3><h3>available for instant listening!</h3>
-              <SeeMore>See More</SeeMore>
+              <SeeMore className='audio'>See More</SeeMore>
             </Text>
 
            <Anim ref={myRef}>
