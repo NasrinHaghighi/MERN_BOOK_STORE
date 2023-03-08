@@ -5,16 +5,10 @@ import { FaTrashAlt } from "react-icons/fa";
 import { Images } from '../../../helpers/Image';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {addNewAmount, deletItem} from '../../../features/bookSlice'
+import { bookType } from '../../../types/bookType';
 
-interface CardItem{
-  id:string,
-  image:string,
-  authors:string[],
- amount:number,
- price:number
-}
 interface Item{
-  item:CardItem,
+  item:bookType,
   index:number
 }
 
@@ -23,37 +17,36 @@ function CardItem({item, index}:Item) {
 const [newAmount, setNewAmount] =useState<number>(item.amount)
 
 const dispatch=useAppDispatch()
-const tit=item.id.slice(item.id.indexOf('+'))
-const name=tit.slice(1)
+
 
 //cahnge the maonut in redux by on chang event//
-const newAmountHandel=(e:any)=>{
+ const newAmountHandel=(e:any)=>{
   
-  setNewAmount(e.target.value)
+   setNewAmount(e.target.value)
  dispatch(addNewAmount({...item, amount:e.target.value}))
  
-}
-const handledelet=()=>{
-  dispatch(deletItem(item))
-}
-//console.log(newAmount)
+ }
+ const handledelet=()=>{
+   dispatch(deletItem(item))
+ }
+
   return (
     <CardItemContainer className={index % 2 == 1 ? 'even' : ''}>
-        <Trash onClick={handledelet}><FaTrashAlt /></Trash>
+        <Trash onClick={()=>handledelet()}><FaTrashAlt /></Trash>
         <BookPhoto>
         <Images
         width={60}
         height={82}
-        src={item.image}
+        src={item.imageUrl}
         alt="book"
        />
         </BookPhoto>
-        <Name>{name}</Name>
-        <Price>{item.price},00 e</Price>
+        <Name>{item.name}</Name>
+        <Price>{item.price},00 €</Price>
         
-        <Amount type="number" min="1" max='10' value={newAmount} onChange={newAmountHandel}/>
+        <Amount type="number" min="1" max='10'  value={newAmount} onChange={(e)=>newAmountHandel(e)}/>
         
-        <TotalPrice>{item.amount*item.price},00 e</TotalPrice>
+         <TotalPrice>{item.amount*item.price},00 e</TotalPrice> 
     </CardItemContainer>
   )
 }

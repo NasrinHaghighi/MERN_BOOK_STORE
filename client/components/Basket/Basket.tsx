@@ -28,7 +28,7 @@ function Basket() {
       </DropDownToggle>
 
       <DropDownMenu show={show}>
-      {books.map((item)=>{
+      {/* {books.map((item)=>{
         const {id, image, amount,price} =item
         const tit=id.slice(id.indexOf('+')).slice(1)
         //console.log(tit)
@@ -40,7 +40,7 @@ function Basket() {
         </Right>
          </ItemContainer>
          
-      })}
+      })} */}
         
         <Bottom>
           

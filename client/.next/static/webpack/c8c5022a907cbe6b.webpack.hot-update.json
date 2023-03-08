@@ -1,0 +1,1 @@
+{"c":["webpack"],"r":["pages/books/[bookid]"],"m":["./components/Book/Book.tsx","./components/Book/styles.ts","./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=C%3A%5CUsers%5CAli%5CDocuments%5CMERN-bookstore%5Cclient%5Cpages%5Cbooks%5C%5Bbookid%5D.tsx&page=%2Fbooks%2F%5Bbookid%5D!","./pages/books/[bookid].tsx"]}

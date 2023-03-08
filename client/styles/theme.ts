@@ -2,6 +2,7 @@ export const themes = {
     mainBG: "#f5f5f5",
     grayBG:'#e6e6e6',
     mainTextColor:'#abb8c3',
+    lightGray:"#f0f0f0",
     blue:'#1565C0',
     blue2:'#15a3f9',
     textStrong:'#2B2B2B',
@@ -17,7 +18,8 @@ export const themes = {
    red:'#DB1037',
    graytext:'#616161',
    bachgroundColor:'#2B2B2B',
-   lightRed:'#f75454'
+   lightRed:'#f75454',
+   priceColor:"#ff0072",
 
    
       

@@ -15,11 +15,10 @@ align-items:center ;
     background-color:${props=>props.theme.grayBG} ; 
 }
 `
-
 export const Trash=styled.div`
 text-align:center ;
 color:${props=>props.theme.orange} ;
-
+cursor: pointer;
 `
 
 export const BookPhoto=styled.div`
@@ -32,6 +31,7 @@ color:${props=>props.theme. graytext} ;
 `
 export const Price=styled.div`
 color:${props=>props.theme. graytext} ;
+font-weight:700 ;
 `
 export const Amount=styled.input`
 width:100px ;
@@ -55,4 +55,5 @@ appearance: none;
 
 export const TotalPrice=styled.div`
 color:${props=>props.theme. graytext} ;
+font-weight:700 ;
 `
