@@ -8,10 +8,19 @@ margin:50px 0 200px 0;
 export const Top=styled.div`
 display:flex ;
 justify-content:space-between ;
+align-items:center ;
 height:80px ;
 width:100% ;
-padding:10px 10px ;
+padding:10px 60px ;
+ 
+
 `
+export const Layout=styled.div`
+display:flex ;
+justify-content:space-between ;
+align-items:center ;
+`
+
 export const Grid=styled.div`
 
 

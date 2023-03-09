@@ -66,10 +66,12 @@ export const Auth=styled.h4`
     color: ${props=>props.theme.graytext};
 
 `
-export const Price=styled.h4`
+export const Price=styled.div`
  font-size:22px;
+ font-weight:700 ;
+display:flex ;
+justify-content:space-between ;
     margin:10px 0 ;
     color: ${props=>props.theme.textStrong};
-
 `
 

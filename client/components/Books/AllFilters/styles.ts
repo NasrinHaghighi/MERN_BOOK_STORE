@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const Conatiner=styled.div`
-
+height:fit-content ;
+border-radius:8px ;
+border:1px solid rgba(0, 0, 0, 0.1) ;
+margin-top:50px ;
 `
 export const Title=styled.h2`
 

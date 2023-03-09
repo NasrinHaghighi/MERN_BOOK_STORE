@@ -146,6 +146,71 @@ export const Books=[
 
 ]
 
+export const bestseller=[
+   {
+    id:1,
+    title:'Jesus: The God Who Knows Your Name',
+    author:'Max Lucado',
+    price:16.00,
+    descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
+    image:'/books/40.jpg',
+    icon:'woman',
+    face:'/face/3.jpg',
+    rating:5
+
+  },
+
+    {
+     id:2,
+     title:'When We Believed in Mermaids: A Novel',
+     author:'Barbara O Neal',
+     price:18.00,
+     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
+     image:'/books/41.jpg',
+     icon:'woman',
+     face:'/face/3.jpg',
+     rating:5
+ 
+   },
+
+  {
+    id:2,
+    title:'Open Book: A Memoir',
+    author:'Jessica Simpson',
+    price:10,
+    descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
+    image:'/books/42.jpg',
+    icon:'woman',
+    face:'/face/3.jpg',
+    rating:5
+
+  },
+  {
+    id:3,
+    title:'Dead End Girl: A Gripping Serial Killer Thriller',
+    author:'L T Vargus',
+    price:12,
+    descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
+    image:'/books/43.jpg',
+    icon:'woman',
+    face:'/face/3.jpg',
+    rating:5
+
+  },
+  {
+    id:4,
+    title:'Dark Matter: A Mind-Blowing Twisted Thriller',
+    author:'Blake Crouch',
+    price:13,
+    descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
+    image:'/books/44.jpg',
+    icon:'woman',
+    face:'/face/3.jpg',
+    rating:5
+
+  },
+]
+
 
     
      

@@ -3,17 +3,17 @@ import { fetchData } from '../../../utiles';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { selectedcategory } from '../../../features/CategorySlice'
 import BookItem from '../../BookItem/BookItem';
-import {BooksConatiner, LoadMore, Top,Container, Grid, BooksConatiner2} from './styles'
-import { Item } from '../../Features/Features';
+import {BooksConatiner, LoadMore, Top,Container, Grid, BooksConatiner2, Layout} from './styles'
+
 import { bookType } from '../../../types/bookType';
-import ToTop from '../../ToTop/ToTop';
+import ToTop from '../../Landing/ToTop/ToTop';
 import { TfiLayoutGrid3Alt } from "react-icons/tfi";
 import { TfiLayoutListThumbAlt } from "react-icons/tfi";
 import BookItem2 from '../../BookItem2/BookItem2';
 import Invalid from '../../Invalid/Invalid';
-//import FilterPrice from '../FilterPrice/FilterPrice';
+import SortBox from '../SortBox/SortBox';
 import axios from "axios";
-
+import LimitNumber from '../LimitNumber/LimitNumber';
 import { debounce } from 'lodash';
 
 function Main() {
@@ -23,9 +23,28 @@ function Main() {
   const rateSelected = useAppSelector((state=>state.rate.rate))
   const priceSelected = useAppSelector((state=>state.price.price))
   const searchTerm = useAppSelector((state=>state.search.searchTerm))
- 
+  const sortby = useAppSelector((state=>state.sort.sort))
+  const limitNumber = useAppSelector((state=>state.limitNumber.limitNumber))
+
   let min=priceSelected[0]
   let max=priceSelected[1]
+
+//change the value that come from redux to user in url'//
+  const checkSort=(sortby:string)=>{
+  if(sortby ==='z-a'){
+    return '-name'
+  }
+  if(sortby ==='a-z'){
+    return 'name'
+  }
+  if(sortby ==='High price first'){
+    return '-price'
+  }
+  if(sortby ==='Low price first'){
+    return 'price'
+  }
+  }
+
 
 const [loading, setLoading]=useState<boolean>(false)
     const [data, setData] =useState<bookType[]>([])
@@ -48,12 +67,14 @@ useEffect(() => {
 useEffect(() => {
   setLoading(true)
  //console.log(categorySelected)
+ const m=checkSort(sortby)
+ console.log(limitNumber)
    axios
-       .get(`http://localhost:4000/api/v1/books?numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
-}, [categorySelected,rateSelected,min])
+}, [categorySelected,rateSelected,min,sortby,limitNumber])
 //use debounce lodash to set delay to fech data
 
 const handleDebounceFn =  (s:any) => {
@@ -67,16 +88,21 @@ useEffect(() => {
  debounceFn(searchTerm)
        setLoading(false)
 }, [searchTerm])
-  
+
+ 
   return (
     <>
     <Container>
     
     <Top> 
+      <SortBox />
+      <Layout>
+      <LimitNumber />
      <Grid>
-          <span className={grid ? '' : 'active'} onClick={()=>setGrid(!grid)}><TfiLayoutListThumbAlt/></span>
+           <span className={grid ? '' : 'active'} onClick={()=>setGrid(!grid)}><TfiLayoutListThumbAlt/></span>
           <span className={grid ? 'active' : ''} onClick={()=>setGrid(!grid)}><TfiLayoutGrid3Alt /></span>
      </Grid>
+     </Layout>
     </Top>
   {invalidSearchTerm ? <Invalid /> :
     <div>

@@ -2,7 +2,7 @@ import React,{useRef, useState, useEffect} from 'react'
 import {Container, InnerContainer, Text,Anim, Tablet, Phone, Headphone, AduioDiv, Blue} from './styles'
 import {Images} from '../../helpers/Image'
 import { useInViewport } from 'react-in-viewport';
-import { SeeMore } from '../Discount/styles';
+import { SeeMore } from '../Landing/Discount/styles';
 
 const  Aduio =() => {
 

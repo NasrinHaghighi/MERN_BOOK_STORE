@@ -86,6 +86,15 @@ li {
 .MuiSlider-track .css-1gv0vcd-MuiSlider-track{
   display: none !important ;
 }
+
+/**border color of sort and show */
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color: #ffa500 !important;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #ffa500 !important;
+}
+
 `
 
 export default MyGlobalStyle;

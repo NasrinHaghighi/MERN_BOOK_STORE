@@ -4,7 +4,7 @@ export const Conatiner=styled.div`
 font-size:24px ;
 font-weight:600 ;
 padding:20px ;
-border:1px solid ${props=>props.theme.grayBorder} ;
+border-bottom:1px solid ${props=>props.theme.grayBorder} ;
 `
  ;
  export const TitleBtn=styled.div`
@@ -34,7 +34,7 @@ right:0;
  overflow-y:scroll ; 
  transition:height 400ms ease ;
     width: 100%;
-    height: 200px;
+    height: fit-content;
     overflow-y: auto;
     position: relative;
     &::-webkit-scrollbar {

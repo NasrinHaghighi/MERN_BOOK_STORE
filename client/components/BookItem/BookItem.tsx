@@ -3,7 +3,7 @@ import {BookItemContainer,Tit,Bottom, MovingContent, Auth, Price, Add} from './s
 import { bookType } from '../../types/bookType'
 import {Images} from '../../helpers/Image'
 import Link from 'next/link'
-
+import Star from '../Book/Star/Star'
 interface ItemProps{
     item:bookType
 }
@@ -15,8 +15,10 @@ function BookItem({item}:ItemProps) {
            <Bottom>
            <MovingContent>
           <Tit>{item.name.length<30 ? item.name : item.name.substring(0,30)}</Tit>
-         <Auth>{item.author}</Auth>  
-       <Price>${item.price}</Price>
+         <Auth>{item.author}</Auth> 
+
+
+       <Price>${item.price} <Star star={item.rating}/></Price>
      
        
        </MovingContent>

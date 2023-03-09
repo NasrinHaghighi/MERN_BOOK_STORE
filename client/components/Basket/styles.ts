@@ -50,18 +50,20 @@ export const DropDownItem = styled(Dropdown.Item)`
 export const ItemContainer=styled.div`
 
 padding:10px 0;
-display: grid;
-grid-template-columns: 2fr 1fr;
+display:grid ;
+grid-template-columns:1fr 3fr ;
 align-items:center ;
 `
-export const Title=styled.p`
+export const Title=styled.div`
 font-size:18px ;
 font-weight:700 ;
+&>span{
+  color:${props=>props.theme.mainTextColor}
+}
+
 `
 export const Right=styled.div`
-display:flex ;
-justify-content:right;
-align-items:center ;
+
 
 `
 export const Trash=styled.div`
@@ -80,6 +82,7 @@ border-radius:8px;
 `
 
 export const Card=styled.button`
+cursor:pointer ;
 width:300px ;
 padding:10px 15px ;
 border:none ;

@@ -28,23 +28,23 @@ function Basket() {
       </DropDownToggle>
 
       <DropDownMenu show={show}>
-      {/* {books.map((item)=>{
-        const {id, image, amount,price} =item
-        const tit=id.slice(id.indexOf('+')).slice(1)
+       {books.map((item)=>{
+        
+      
         //console.log(tit)
         return <ItemContainer>
-        <Title> {tit}</Title>
+      
         <Right>
-        <Images src={image} width={50} height={60}   alt="book"/>
-        <Trash><FaTrashAlt /></Trash>
-        </Right>
+        <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
+         </Right>
+          <Title> {item.name} <span>({item.amount})</span></Title>
          </ItemContainer>
          
-      })} */}
+      })} 
         
         <Bottom>
           
-<Card><Link href='/card'>Show Card</Link></Card>
+      <Card><Link href='/card'>Show Card</Link></Card>
         </Bottom>
       </DropDownMenu>
     </Dropdown>

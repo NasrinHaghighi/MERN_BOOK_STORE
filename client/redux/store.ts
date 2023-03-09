@@ -7,7 +7,8 @@ import priceFilter from '../features/priceFilter'
 import Rate from '../features/rateSlice'
 import scrollTo from '../features/scrollTo';
 import searchSlice from '../features/searchSlice';
-
+import sortSlice from '../features/sortSlice';
+import limitNumberSlice from '../features/limitNumberSlice';
 export const store = configureStore({
       reducer: {
         category:CategorySlice,
@@ -16,7 +17,9 @@ export const store = configureStore({
         price:priceFilter,
         tag:scrollTo,
         rate:Rate,
-        search:searchSlice
+        sort:sortSlice,
+        search:searchSlice,
+        limitNumber:limitNumberSlice,
      },
    middleware: (getDefaultMiddleware) =>
    getDefaultMiddleware({

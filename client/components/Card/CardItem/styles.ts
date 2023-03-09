@@ -43,7 +43,7 @@ outline:none ;
 border:3px solid ${props=>props.theme.grayBorder};
 font-size:20px ;
 font-weight:600 ;
-z-index:10 ;
+
 color:${props=>props.theme.graytext} !important;
 appearance: none;
     display: inline-block;

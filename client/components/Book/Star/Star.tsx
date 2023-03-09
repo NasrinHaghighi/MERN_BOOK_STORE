@@ -1,7 +1,7 @@
 import React from 'react'
 import {BsStarFill,BsStarHalf, BsStar} from 'react-icons/bs'
 
-
+import {Box} from './styles'
 
 
 function Star ({star}:any) {
@@ -23,7 +23,7 @@ function Star ({star}:any) {
     )
         })
        return(
-       <span>{tempStars}  ({star})</span>
+       <Box>{tempStars} <span>({star})</span></Box>
        )
         }
 export default Star

@@ -45,6 +45,10 @@ export const Description=styled.p`
  font-size:18px;
    margin-bottom:15px ;
    transition: all 0.5s linear;
+`
+export const Add=styled.button`
+border:none ;
+background-color:transparent ;
 
 `
 

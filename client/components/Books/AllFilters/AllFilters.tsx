@@ -1,10 +1,11 @@
 import React,{useEffect, useState} from 'react'
 import { fetchData } from '../../../utiles';
-import {Conatiner, Title, CategoryList, CategoryItem} from './styles'
+import {Conatiner, }from './styles'
 
 import CategoryFilter from './CategoryFilter/CategoryFilter';
 import PriceFilter from './PriceFilter/PriceFilter';
 import RateFilter from './RateFilter/RateFilter';
+import BestSeller from './BestSeller/BestSeller';
 
 
 function AllFilters() {
@@ -16,6 +17,7 @@ function AllFilters() {
       <CategoryFilter />
       <PriceFilter />
       <RateFilter />
+      <BestSeller />
    </Conatiner>
     </>
   )

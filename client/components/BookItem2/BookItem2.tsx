@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
-import {BookItem2Container, InfoContainer, ShowMoreBtn, Description} from './styles'
+import {BookItem2Container, InfoContainer, ShowMoreBtn, Description, Add} from './styles'
 import {Tit, Auth, Price} from '../BookItem/styles'
 import { bookType } from '../../types/bookType'
 import Link from 'next/link'
 import {Images} from '../../helpers/Image'
-
+import Star from '../Book/Star/Star'
 
 interface ItemProps{
     item:bookType
@@ -18,7 +18,7 @@ function BookItem2({item}:ItemProps) {
      
     }
   return (
-    <Link href={`${item._id}`}>
+    <Link href={`/books/${item._id}`}>
 
     <BookItem2Container>
          <Images src={item.imageUrl} width={220} height={329}    alt="book"/>
@@ -31,7 +31,11 @@ function BookItem2({item}:ItemProps) {
       
       <ShowMoreBtn className="btn" onClick={handelShowMore}>{showMore ? 'Show less' : 'Show more'}</ShowMoreBtn>
       </Description>
-      <Price>${item.price}</Price>
+      <Price>
+        <span>{item.price} €</span>
+        <Star star={item.rating}/>
+      <Add>Add to card</Add>
+      </Price>
        </InfoContainer>
        
     </BookItem2Container>
