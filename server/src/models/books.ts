@@ -54,6 +54,10 @@ const BooksSchema =new mongoose.Schema({
        default:false
         
       //enum:['Seven Seas Entertainment, LLC', ' Dark Horse Comics,U.S.', 'Viz Media, Subs. of Shogakukan Inc']
+    },
+    createdAt:{
+        type:Date,
+        default:Date.now()
     }
   
 })

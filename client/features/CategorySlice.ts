@@ -16,9 +16,14 @@ export const CategorySlice= createSlice({
           state.category =action.payload
           //console.log(action.payload)
         },
+        resetcategory:(state)=>{
+            state.category =' '
+            //console.log(action.payload)
+          },
+   
  
     }
 })
 
-export const {selectedcategory} =CategorySlice.actions
+export const {selectedcategory, resetcategory} =CategorySlice.actions
 export default CategorySlice.reducer

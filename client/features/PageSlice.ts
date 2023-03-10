@@ -12,11 +12,14 @@ export const CategorySlice= createSlice({
     initialState,
     reducers:{
         selectedPage:(state, action:PayloadAction<number>)=>{
-         
+         state.page=action.payload
+        },
+        resetPage:(state)=>{
+            state.page==1
         },
  
     }
 })
 
-export const {selectedPage} =CategorySlice.actions
+export const {selectedPage, resetPage} =CategorySlice.actions
 export default CategorySlice.reducer

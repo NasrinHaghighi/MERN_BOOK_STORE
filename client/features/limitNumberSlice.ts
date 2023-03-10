@@ -4,7 +4,7 @@ interface Props{
     limitNumber:number | undefined
  }
 const initialState:Props ={
-    limitNumber:10
+    limitNumber:20
 }
 
 export const limitNumberSlice= createSlice({

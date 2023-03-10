@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
 import { selectedcategory } from '../../../../features/CategorySlice'
@@ -21,9 +21,13 @@ const category=[
 
 ]
 function CategoryFilter() {
+const categ= useAppSelector(state=>state.category.category)
+
     const[title, setTitle]=useState(' ')
     const [show, setShow] =useState(false)
-
+useEffect(() => {
+  setTitle(categ)
+}, [categ])
 
 const handelSelectcategory=(value:string)=>{
         setTitle(value)
@@ -38,7 +42,8 @@ const dispatch=useAppDispatch()
       
        <List className={show ? 'active': 'unActive'}>
        {category.map((ca)=>{
-        return <ListItem className={title === ca.value ? 'activeItem' : ''} onClick={()=>handelSelectcategory(ca.value)}key={ca.tit}>{ca.tit}</ListItem>
+        
+        return <ListItem className={title === ca.value ? 'activeItem' : ' '} onClick={()=>handelSelectcategory(ca.value)}key={ca.tit}>{ca.tit}</ListItem>
      })}
        </List>
        

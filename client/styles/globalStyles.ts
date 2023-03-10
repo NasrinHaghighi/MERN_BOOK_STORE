@@ -95,6 +95,11 @@ li {
     border-color: #ffa500 !important;
 }
 
+/***pagination */
+.css-kvsszq-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background-color: rgba(255, 165, 0, 0.5);
+}
+
 `
 
 export default MyGlobalStyle;

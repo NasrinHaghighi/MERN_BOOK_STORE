@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hooks'
 
 import {Conatiner, TitleBtn} from '../CategoryFilter/styles'
@@ -20,11 +20,13 @@ function PriceFilter() {
     const [value, setValue] = React.useState<number[]>(reduxPrice);
    const dispatch=useAppDispatch()
 
-//console.log(value)
+useEffect(() => {
+  setValue(reduxPrice)
+}, [reduxPrice])
 
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as number[]);
-dispatch(selectedPrice(value))
+   dispatch(selectedPrice(value))
     
   };
  
@@ -38,7 +40,7 @@ dispatch(selectedPrice(value))
         onChange={handleChange}
         getAriaValueText={valuetext}
         min={5}
-  max={50}
+      max={50}
        
       />
 <Text>Price: ${value[0]} __ ${value[1]}</Text>

@@ -15,9 +15,12 @@ export const PriceFilter= createSlice({
         selectedPrice:(state, action:PayloadAction<any>)=>{
          state.price=action.payload
         },
+        resetPrice:(state)=>{
+            state.price=[5,50]
+           },
  
     }
 })
 
-export const {selectedPrice} =PriceFilter.actions
+export const {selectedPrice, resetPrice} =PriceFilter.actions
 export default PriceFilter.reducer

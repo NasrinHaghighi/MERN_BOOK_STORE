@@ -15,6 +15,8 @@ import SortBox from '../SortBox/SortBox';
 import axios from "axios";
 import LimitNumber from '../LimitNumber/LimitNumber';
 import { debounce } from 'lodash';
+import PaginationCo from '../Pagination/PaginationCo';
+import ResetFilters from '../ResetFilters/ResetFilters';
 
 function Main() {
   const dispatch=useAppDispatch()
@@ -25,7 +27,7 @@ function Main() {
   const searchTerm = useAppSelector((state=>state.search.searchTerm))
   const sortby = useAppSelector((state=>state.sort.sort))
   const limitNumber = useAppSelector((state=>state.limitNumber.limitNumber))
-
+  const pageNum = useAppSelector((state=>state.page.page))
   let min=priceSelected[0]
   let max=priceSelected[1]
 
@@ -55,7 +57,7 @@ const [loading, setLoading]=useState<boolean>(false)
     
     const [invalidSearchTerm, setInvalidSearchTerm] =useState(false)
 
-
+//first load of page///get all books// reset all filters//
 useEffect(() => {
   setLoading(true)
    axios
@@ -66,17 +68,16 @@ useEffect(() => {
 
 useEffect(() => {
   setLoading(true)
- //console.log(categorySelected)
- const m=checkSort(sortby)
- console.log(limitNumber)
+const m=checkSort(sortby)
+
    axios
-       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
-}, [categorySelected,rateSelected,min,sortby,limitNumber])
+}, [categorySelected,rateSelected,min,sortby,limitNumber, pageNum])
 //use debounce lodash to set delay to fech data
-
+console.log(data)
 const handleDebounceFn =  (s:any) => {
   axios.get(`http://localhost:4000/api/v1/books?name=${s}`)
   .then(response => setData(response.data.books));
@@ -104,16 +105,17 @@ useEffect(() => {
      </Grid>
      </Layout>
     </Top>
-  {invalidSearchTerm ? <Invalid /> :
-    <div>
+   <div>
+    {!loading && data && data.length<1 && <ResetFilters /> }  
+    {loading && !data  && <p>loading </p> }  
      { grid ? 
     <BooksConatiner>
-      {!loading && data ?data.map((item)=>{
+      {!loading && data && data.length>0
+      ? data.map((item)=>{
         return <BookItem key={item._id}item={item}/>
-      }): <p>Loading</p>}
-   
+      })   
+      :''}
 
-       <ToTop />
     {/* <LoadMore >More</LoadMore> */}
     </BooksConatiner> :
 
@@ -122,12 +124,14 @@ useEffect(() => {
       {!loading && data ?data.map((item)=>{
         return <BookItem2 key={item._id}item={item}/>
       }): <p>Loading</p>}
-    <ToTop />
    
- <LoadMore >More</LoadMore>
+   
+ {/* <LoadMore >More</LoadMore> */}
 </BooksConatiner2> }
-</div> }
+</div> 
+ 
 
+          <PaginationCo />
     </Container>
    
       </>
