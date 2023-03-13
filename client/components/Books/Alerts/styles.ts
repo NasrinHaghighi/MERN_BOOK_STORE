@@ -36,7 +36,8 @@ opacity:0 ;
 &>h3{
 
     margin-bottom:30px ;
-    color:${props=>props.theme. orange} ;
+   &.add{color:green} 
+    &.favo{color:red }
 }
 &>h6{
     font-size:22px ;

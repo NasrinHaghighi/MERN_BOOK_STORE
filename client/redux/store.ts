@@ -9,7 +9,7 @@ import scrollTo from '../features/scrollTo';
 import searchSlice from '../features/searchSlice';
 import sortSlice from '../features/sortSlice';
 import limitNumberSlice from '../features/limitNumberSlice';
-
+import FavoraiteListSlice from '../features/favoraiteListSlice'
 export const store = configureStore({
       reducer: {
         category:CategorySlice,
@@ -21,6 +21,7 @@ export const store = configureStore({
         sort:sortSlice,
         search:searchSlice,
         limitNumber:limitNumberSlice,
+        favoriteList:FavoraiteListSlice
     
      },
    middleware: (getDefaultMiddleware) =>

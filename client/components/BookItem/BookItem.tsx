@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Star from '../Book/Star/Star'
 import { addBook} from '../../features/bookSlice'
 import { useAppDispatch } from '../../redux/hooks'
-
+import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 
 interface ItemProps{
     item:bookType
@@ -24,7 +24,7 @@ function BookItem({item}:ItemProps) {
   }
   const addToFavoraite=(e:any)=>{
     e.stopPropagation()
-    console.log('add to fffff')
+   dispatch(addToFavoraiteList(item))
   }
   return (
     <BookItemContainer>
@@ -45,8 +45,8 @@ function BookItem({item}:ItemProps) {
       
        </Link>
        <Btn>
-       <Add onClick={(e)=>addToCardHandel(e)}>ADD TO CARD</Add>
-       <Favoraite onClick={(e)=>addToFavoraite(e)}>ggg</Favoraite>
+       <Add onClick={(e)=>addToCardHandel(e)}>Add to card</Add>
+       <Favoraite onClick={(e)=>addToFavoraite(e)}>Wishlist</Favoraite>
        </Btn>
     </BookItemContainer>
   )

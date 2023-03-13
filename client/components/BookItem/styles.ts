@@ -32,10 +32,11 @@ export const Add=styled.div`
     background-color: #DB1037;
     background-image: linear-gradient(90deg, #DB1037, #CD40E6);;
     transition: .3s ease;
+    border-radius:12px ;
   }
 &:hover {
     &::before {
-        width: 50%; 
+        width: 40%; 
     }
 }
 `
@@ -43,6 +44,7 @@ export const Add=styled.div`
 export const Favoraite=styled.div`
 padding-bottom:10px ;
 &::before {
+    border-radius:12px ;
     content: "";
     position: absolute;
     width: 0;
@@ -55,13 +57,12 @@ padding-bottom:10px ;
   }
 &:hover {
     &::before {
-        width: 20%; 
+        
+        width: 25%; 
     }
 }
 `
 /*************add */
-
-
 export const BookItemContainer=styled.div`
 
 height:500px;
