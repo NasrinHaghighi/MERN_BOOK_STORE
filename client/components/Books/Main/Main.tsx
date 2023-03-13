@@ -17,6 +17,7 @@ import LimitNumber from '../LimitNumber/LimitNumber';
 import { debounce } from 'lodash';
 import PaginationCo from '../Pagination/PaginationCo';
 import ResetFilters from '../ResetFilters/ResetFilters';
+import AddCardAlert from '../Alerts/AddCardAlert';
 
 function Main() {
   const dispatch=useAppDispatch()
@@ -94,7 +95,7 @@ useEffect(() => {
   return (
     <>
     <Container>
-    
+    <AddCardAlert/>
     <Top> 
       <SortBox />
       <Layout>

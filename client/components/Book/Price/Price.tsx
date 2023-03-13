@@ -28,7 +28,7 @@ const dispatch=useAppDispatch()
             <Text> <AiOutlineCheckCircle /> Available. Expected delivery in 11-16 business days.</Text>
         </Middel>
         <Bottom>
-            <AddToCard onClick={()=>addTocardhandel(bookItem)}><Link href='/card'>Add to card</Link></AddToCard>
+            <AddToCard onClick={()=>addTocardhandel(bookItem)}><Link href='/card'><span>Add to card</span></Link></AddToCard>
             <AddFavoraite>Add to wishlist</AddFavoraite>
 
         </Bottom>

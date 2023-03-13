@@ -15,9 +15,12 @@ export const sortFilter= createSlice({
         sortby:(state, action:PayloadAction<any>)=>{
           state.sort=action.payload
         },
+        resetSortby:(state)=>{
+          state.sort=''
+        },
  
     }
 })
 
-export const {sortby} =sortFilter.actions
+export const {sortby, resetSortby} =sortFilter.actions
 export default sortFilter.reducer

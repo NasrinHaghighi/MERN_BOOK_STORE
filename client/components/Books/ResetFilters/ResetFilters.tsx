@@ -4,12 +4,16 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {resetcategory} from '../../../features/CategorySlice'
 import {resetPage} from '../../../features/PageSlice'
 import {resetPrice} from '../../../features/priceFilter'
+import {resetRate} from '../../../features/rateSlice'
+import {resetSortby} from '../../../features/sortSlice'
 function ResetFilters() {
     const dispatch=useAppDispatch()
     const resetHandel=()=>{
      dispatch(resetcategory())
      dispatch(resetPage())
      dispatch(resetPrice())
+     dispatch(resetRate())
+     dispatch(resetSortby())
     }
   return (
     <Box>

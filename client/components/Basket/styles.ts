@@ -4,8 +4,7 @@ import { Dropdown } from "react-bootstrap";
 export const BasketContainer = styled.div`
 color: ${props=>props.theme.linkColor};
 font-size:18px ;
-
-border-left:1px solid ${props=>props.theme.grayBorder}  ;
+ border-left:1px solid ${props=>props.theme.grayBorder}  ; 
 display:flex ;
   justify-content:center ;
   align-items:center ;
@@ -16,8 +15,12 @@ background-color:${props=>props.theme.red} ;
 border-radius: 10px;
     padding: 2px 5px;
     color:#fff ;
-    font-size: 11px;
+    font-size:11px;
     margin-right:15px ;
+`
+export const ShopIcon = styled.div`
+color:${props=>props.theme.orange} !important;
+
 `
 export const DropDownToggle = styled(Dropdown.Toggle)`
   background-color: transparent !important;
@@ -25,8 +28,9 @@ export const DropDownToggle = styled(Dropdown.Toggle)`
   position: relative;
   overflow: hidden;
   width:100%;
+  z-index:5 ;
   font-size:18px ;
-  color:${props=>props.theme.orange} !important;
+  
   display:flex ;
   &::after{
 display:none ;
@@ -36,6 +40,7 @@ display:none ;
 export const DropDownMenu = styled(Dropdown.Menu)<{
   show: boolean;
 }>`
+
   transform: translate(0px, 30px) !important;  
  width:500px ;
   box-shadow: ${props=>props.theme.alertBoxshdow};

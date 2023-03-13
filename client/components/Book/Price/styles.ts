@@ -53,4 +53,8 @@ border-radius:12px ;
 margin:5px 0 ;
 border:none ;
 background-color:${props=>props.theme.orange} ;
+&:hover{
+    
+}
+
 `

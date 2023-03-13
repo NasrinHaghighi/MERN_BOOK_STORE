@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { FaShoppingCart } from "react-icons/fa";
-import {BasketContainer, ShopItems,DropDownToggle,DropDownMenu, DropDownItem, ItemContainer,Title, Trash, Right, Bottom,  Card} from './styles'
+import {BasketContainer, ShopIcon,ShopItems,DropDownToggle,DropDownMenu, DropDownItem, ItemContainer,Title, Trash, Right, Bottom,  Card} from './styles'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
 import { Dropdown } from "react-bootstrap";
@@ -24,7 +24,8 @@ function Basket() {
       onMouseLeave={() => setShow(false)}
    >
       <DropDownToggle variant="success" id="dropdown-basic">
-      <ShopItems>{books.length}</ShopItems><FaShoppingCart /> 
+      <ShopItems>{books.length}</ShopItems>
+      <ShopIcon><FaShoppingCart /></ShopIcon>
       </DropDownToggle>
 
       <DropDownMenu show={show}>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -29,8 +29,14 @@ const names = [
 
 
 function SortBox() {
-    const [sort, setSort] = React.useState<string>('');
+  const reduxSortBy =useAppSelector((state)=>state.sort.sort)
+    const [sort, setSort] = React.useState<string>(reduxSortBy);
 const dispatch=useAppDispatch()
+
+
+useEffect(() => {
+  setSort(reduxSortBy)
+  }, [reduxSortBy])
   const handleChange = (event: SelectChangeEvent<typeof sort>) => {
   setSort(event.target.value)
    dispatch(sortby(event.target.value))

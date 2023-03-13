@@ -15,7 +15,7 @@ export const CategorySlice= createSlice({
          state.page=action.payload
         },
         resetPage:(state)=>{
-            state.page==1
+            state.page = 1
         },
  
     }

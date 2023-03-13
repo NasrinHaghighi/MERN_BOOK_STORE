@@ -16,9 +16,14 @@ export const RateFilter= createSlice({
            
          state.rate=action.payload
         },
+        resetRate:(state)=>{
+           
+            state.rate=2
+           },
+    
  
     }
 })
 
-export const {selectedRate} =RateFilter.actions
+export const {selectedRate, resetRate} =RateFilter.actions
 export default RateFilter.reducer

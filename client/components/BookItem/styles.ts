@@ -1,26 +1,67 @@
 import styled from "styled-components";
 
-
-
-
-
 export const MovingContent=styled.div`
  width:100% ;
 position: absolute;
 z-index:2 ;
 transition: all 0.2s linear;
 
+
 `
-export const Add=styled.div`
+export const Btn=styled.div`
+ color: ${props=>props.theme.textStrong};
  font-size:20px;
  position: fixed;
 opacity:0 ;
  width:80% ;
  z-index:-1 ;
- bottom:0 ;
+ font-weight:600 ;
+ bottom:5px ;
  transition: all 0.2s linear;
-
+ display:flex ;
+ justify-content:space-between ;
 `
+export const Add=styled.div`
+&::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    background-color: #DB1037;
+    background-image: linear-gradient(90deg, #DB1037, #CD40E6);;
+    transition: .3s ease;
+  }
+&:hover {
+    &::before {
+        width: 50%; 
+    }
+}
+`
+
+export const Favoraite=styled.div`
+padding-bottom:10px ;
+&::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 5px;
+    right: 0;
+    bottom: 0;
+    background-color: #DB1037;
+    background-image: linear-gradient(90deg, #DB1037, #CD40E6);;
+    transition: .3s ease;
+  }
+&:hover {
+    &::before {
+        width: 20%; 
+    }
+}
+`
+/*************add */
+
+
 export const BookItemContainer=styled.div`
 
 height:500px;
@@ -40,7 +81,7 @@ text-align:center ;
         transform:translateY(-50px) ;
         background-color:#ffff ;
     }
-    ${Add}{
+    ${Btn}{
        opacity:1 ;
     }
 }
