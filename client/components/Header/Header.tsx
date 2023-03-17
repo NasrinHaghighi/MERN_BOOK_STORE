@@ -48,8 +48,8 @@ function Header() {
         <NavItem>
               <FaNewspaper/><span>About us</span> 
         </NavItem>
-        <NavItem className='loginBtn'>
-              <FaUser/><span>Signin {' '}/ {' '}Login</span> 
+        <NavItem className='loginBtn'><Link href='/signin'>
+              <FaUser/><span>Signin {' '}/ {' '}Login</span> </Link>
         </NavItem>
         </Nav>
         </Wrapper>

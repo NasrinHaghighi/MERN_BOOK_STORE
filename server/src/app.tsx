@@ -1,4 +1,5 @@
 import express,{Application, Request, Response} from 'express'
+const bodyParser=require('body-parser')
 const dotenv = require("dotenv");
 dotenv.config();
 require('./db/connect')
@@ -9,6 +10,7 @@ var cors = require('cors');
 app.use(cors());
 const connectDB =require('./db/connect')
 const booksRouter=require('./routes/books')
+const authRouter =require('./routes/auth')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 
@@ -17,13 +19,13 @@ const errorMiddleware = require('./middleware/error-handler');
 // })
 
 app.use('/api/v1/books', booksRouter)
-
+app.use('/api/v1/auth', authRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 
 app.use(express.static('./public'))
 app.use('/images', express.static('images'));
-app.use(express.json())
+app.use(bodyParser.json())
 
 const port = process.env.PORT || 4000;
 const start = async () => {
