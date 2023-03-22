@@ -35,7 +35,7 @@ function Card() {
         <Value>{totalPrice}€</Value></Top>
         <Bottom>
             <BackToShop ><Link href='/books'>Back to shop</Link></BackToShop>
-            <Checkout>Checkout</Checkout>
+            <Checkout><Link href='/signin'>Checkout</Link></Checkout>
 
         </Bottom>
     </Total>

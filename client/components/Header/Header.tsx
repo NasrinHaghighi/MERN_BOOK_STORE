@@ -31,6 +31,7 @@ function Header() {
      }
 
 
+
   return (
       <Wapper>
     <HeaderWrapper>
@@ -55,10 +56,6 @@ function Header() {
         </Wrapper>
         <Wrapper2>
             {/* *****************SEARCH***** */}
-
-
-
-
         <Lens >
         <DropdownS      onMouseOver={() => setShow(true)}    onMouseLeave={() => setShow(false)} >
         <DropDownToggle className="main-style" id="dropdown-basic">
@@ -74,8 +71,8 @@ function Header() {
     </DropdownS>
         </Lens>
            {/* *****************SEARCH***** */}
-        <Basket />
-            
+      <Basket /> 
+          
         </Wrapper2>
 
     </HeaderWrapper>

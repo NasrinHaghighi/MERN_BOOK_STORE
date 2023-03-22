@@ -29,6 +29,7 @@ export const Wrapper = styled.nav`
 export const Wrapper2 = styled.nav`
   display:flex ;
   align-items:center ;
+  align-items:baseline ;
   
 `
 export const Logo = styled.div`

@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import { FaShoppingCart } from "react-icons/fa";
-import {BasketContainer, ShopIcon,ShopItems,DropDownToggle,DropDownMenu, DropDownItem, ItemContainer,Title, Trash, Right, Bottom,  Card} from './styles'
+import {BasketbBox,BasketContainer, ShopIcon,ShopItems,DropDownToggle,DropDownMenu, DropDownItem, ItemContainer,Title, Trash, Right, Bottom,  Card} from './styles'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
 import { Dropdown } from "react-bootstrap";
@@ -8,24 +8,29 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Images } from "../../helpers/Image";
 import { FaTrashAlt } from "react-icons/fa";
 import Link from 'next/link';
+import WelcomMsg from './WelcomMsg/WelcomMsg';
 
 function Basket() {
     const dispatch=useAppDispatch()
       const [show, setShow] = useState(false);
   const books=useAppSelector(state=>state.books.books)
   //
-  
+
+
   return (
-   
+    <>
+    <BasketbBox>
+
     <BasketContainer>
-         
+    
    <Dropdown
     onMouseOver={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
    >
       <DropDownToggle variant="success" id="dropdown-basic">
-      <ShopItems>{books.length}</ShopItems>
+      
       <ShopIcon><FaShoppingCart /></ShopIcon>
+      <ShopItems>{books.length}</ShopItems>
       </DropDownToggle>
 
       <DropDownMenu show={show}>
@@ -50,6 +55,9 @@ function Basket() {
       </DropDownMenu>
     </Dropdown>
   </BasketContainer>
+  
+  </BasketbBox>
+  </>
   )
 }
 

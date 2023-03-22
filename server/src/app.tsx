@@ -1,13 +1,14 @@
 import express,{Application, Request, Response} from 'express'
+require("dotenv").config();
 const bodyParser=require('body-parser')
-const dotenv = require("dotenv");
-dotenv.config();
+
 require('./db/connect')
 //async error
 require('express-async-errors')
 const app:Application =express()
 var cors = require('cors');
 app.use(cors());
+const authenticateUser =require ('./middleware/authentication')
 const connectDB =require('./db/connect')
 const booksRouter=require('./routes/books')
 const authRouter =require('./routes/auth')

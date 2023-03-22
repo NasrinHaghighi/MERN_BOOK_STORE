@@ -29,7 +29,7 @@ UserSchema.pre('save',async function(next) {
 next()
 })
 UserSchema.methods.createJWT= function (){
-return  jwt.sign({ userId:this._id,name:this.name  }, 'shhhhh', {expiresIn:'30d'});
+return  jwt.sign({ userId:this._id,name:this.name  }, 'sssss', {expiresIn:'30d'});
 }
 
 UserSchema.methods.comperPassword =async function(candidatePassword:any){

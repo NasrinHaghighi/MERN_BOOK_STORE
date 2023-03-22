@@ -1,13 +1,22 @@
 import styled from "styled-components";
 import { Dropdown } from "react-bootstrap";
 
+
+export const BasketbBox = styled.div`
+border-left:1px solid ${props=>props.theme.grayBorder}  ;
+display:flex ;
+  justify-content:space-between ;
+  align-items:baseline ;
+  padding-left:20px ;
+
+
+`
+
 export const BasketContainer = styled.div`
 color: ${props=>props.theme.linkColor};
 font-size:18px ;
- border-left:1px solid ${props=>props.theme.grayBorder}  ; 
-display:flex ;
-  justify-content:center ;
-  align-items:center ;
+ /* border-left:1px solid ${props=>props.theme.grayBorder}  ;  */
+
 `
 
 export const ShopItems = styled.div`

@@ -9,6 +9,9 @@ export const register =async (req: any,res: any)=>{
    const token= user.createJWT()
     res.json({user:{name:user.name}, token})
 }
+
+
+
 export const login =async (req: any,res: any)=>{
  const {email, password} =req.body
  if(!email || !password){
@@ -28,3 +31,4 @@ export const login =async (req: any,res: any)=>{
 }
 
 
+// {user:{name:user.name},
