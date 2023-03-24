@@ -3,30 +3,35 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
-//const user=localStorage.getItem('name')
+
+
+
+
 
 
 function WelcomMsg() {
-const [userName, setUserName] =useState<string | null>('')
-  
 
+    return (
+    <>
+  {/* <label>
+        Name:
+        <input type="text" value={userName} onChange={handleNameChange} />
+      </label> */}
+      <p>Hello </p>
+    </>
 
-    const logouthandel=()=>{
-        localStorage.clear();
-    }
-
-
-  return (
-    <Dropdown>
-    <Dropdown.Toggle variant="success" id="dropdown-basic">
-   
-  </Dropdown.Toggle>
-   <Dropdown.Menu>
-  
-   <Dropdown.Item onClick={logouthandel}>Logout</Dropdown.Item>
- </Dropdown.Menu>
- </Dropdown>
   )
 }
 
 export default WelcomMsg
+
+
+{/* <Dropdown>
+<Dropdown.Toggle variant="success" id="dropdown-basic">
+
+</Dropdown.Toggle>
+<Dropdown.Menu>
+
+<Dropdown.Item onClick={logouthandel}>Logout</Dropdown.Item>
+</Dropdown.Menu>
+</Dropdown> */}
