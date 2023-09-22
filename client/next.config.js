@@ -5,10 +5,9 @@
 const nextConfig = {
   reactStrictMode: true,
 }
-
 module.exports = {
-  reactStrictMode: true, 
+  reactStrictMode: true,
   images: {
-    domains: ['d1w7fb2mkkr3kw.cloudfront.net'],
+    domains: ['www.w3schools.com'], // Add the hostname here
   },
-}
+};

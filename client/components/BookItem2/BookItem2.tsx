@@ -6,6 +6,12 @@ import Link from 'next/link'
 import {Images} from '../../helpers/Image'
 import Star from '../Book/Star/Star'
 
+
+
+
+
+
+
 interface ItemProps{
     item:bookType
 }

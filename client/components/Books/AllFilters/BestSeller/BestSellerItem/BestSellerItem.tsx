@@ -22,7 +22,7 @@ interface ItemProps{
 function BestSellerItem({item}:ItemProps) {
   return (
     <Box>
-        <Images src={item.image} width={80} height={80} alt="book"/>
+        <Images src={item.image} key={item.id} width={80} height={80} alt="book"/>
         <p>{item.title}</p>
     </Box>
   )
