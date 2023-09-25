@@ -2,12 +2,14 @@
 import React,{useState} from 'react'
 import Description from '../Description/Description'
 import {Conatiner, Tabs, Tab, Content, InnerContent} from './styles'
-import {Item} from '../Book'
+
 import Specific from '../Specific/Specific'
 import Authores from './Authores/Authores'
+import { bookType } from '../../../types/bookType'
+
 
 interface ItemProps{
-  item?:Item
+  item?:bookType
 }
 
 const tabs=[

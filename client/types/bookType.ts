@@ -7,5 +7,6 @@ price:number,
 descriptin:string,
 format:string,
 rating:number
-amount:number
+amount:number, 
+
 }
