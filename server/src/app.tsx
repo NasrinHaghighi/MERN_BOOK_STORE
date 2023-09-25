@@ -16,7 +16,7 @@ const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 
  app.get('/',  (req:Request, res:Response)=>{
- res.send('helo0000000000000000000o')
+ res.json('helo0000000000000000000o')
  })
 
 app.use('/api/v1/books', booksRouter)
