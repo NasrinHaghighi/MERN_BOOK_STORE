@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 import Description from '../Description/Description'
 import {Conatiner, Tabs, Tab, Content, InnerContent} from './styles'
 
-import Specific from '../Specific/Specific'
+
 import Authores from './Authores/Authores'
 import { bookType } from '../../../types/bookType'
 
@@ -28,8 +28,7 @@ function BookAllInfo({item}:ItemProps) {
       switch (r) {
         case 'description':
          return <Description item={item}/>  
-         case 'specific':
-         return <Specific item={item}/>  
+      
          case 'authors':
          return <Authores item={item}/>     
         default:
