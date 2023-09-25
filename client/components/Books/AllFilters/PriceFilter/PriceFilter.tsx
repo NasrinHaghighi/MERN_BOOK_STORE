@@ -31,25 +31,26 @@ useEffect(() => {
   };
  
   return (
-    <Conatiner >
-       <TitleBtn onClick={()=>setShow(!show)} className={show ?'show' : ''}>Price</TitleBtn>
-      <PriceSlider className={show ? 'active': 'unActive'}>
-      <StyledSlider
-        getAriaLabel={() => 'Temperature range'}
-        value={value}
-        onChange={handleChange}
-        getAriaValueText={valuetext}
-        min={5}
-      max={50}
+    <div>react rang</div>
+//     <Conatiner >
+//        <TitleBtn onClick={()=>setShow(!show)} className={show ?'show' : ''}>Price</TitleBtn>
+//       <PriceSlider className={show ? 'active': 'unActive'}>
+//       <StyledSlider
+//         getAriaLabel={() => 'Temperature range'}
+//         value={value}
+//         onChange={handleChange}
+//         getAriaValueText={valuetext}
+//         min={5}
+//       max={50}
        
-      />
-<Text>Price: ${value[0]} __ ${value[1]}</Text>
+//       />
+// <Text>Price: ${value[0]} __ ${value[1]}</Text>
 
 
-      </PriceSlider>
+//       </PriceSlider>
       
        
-    </Conatiner>
+//     </Conatiner>
   )
 }
 
