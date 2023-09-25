@@ -13,11 +13,12 @@ import MovingBanner from "../components/Landing/MovingBanner/MovingBanner";
 
 import handleViewport from 'react-in-viewport';
 
+import { inject } from '@vercel/analytics';
 
 
 
 const Home: NextPage = () => {
-
+  inject();
   return (
     <>
      <Slider />
