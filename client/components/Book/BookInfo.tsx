@@ -9,7 +9,7 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 //     item:Item
 //     setShowAlert:any
 // }
-function BookInfo({item, setShowAlert}) {
+function BookInfo() {
   // const dispatch=useAppDispatch()
   // const [amount, setAmount] =useState<number>(1)
 
