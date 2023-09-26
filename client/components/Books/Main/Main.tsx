@@ -62,7 +62,7 @@ const [loading, setLoading]=useState<boolean>(false)
 useEffect(() => {
   setLoading(true)
    axios
-   .get("mern-book-store-94u8-9y8tk2m1q-nasrinhaghighi.vercel.app")
+   .get("https://mern-book-store-api.vercel.app/api/v1/books")
       //.get("http://localhost:4000/api/v1/books")
       .then(response => setData(response.data.books));
       setLoading(false)
@@ -73,7 +73,7 @@ useEffect(() => {
 const m=checkSort(sortby)
 
    axios
-       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
+       .get(`https://mern-book-store-api.vercel.app/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
@@ -81,7 +81,7 @@ const m=checkSort(sortby)
 //use debounce lodash to set delay to fech data
 console.log(data)
 const handleDebounceFn =  (s:any) => {
-  axios.get(`http://localhost:4000/api/v1/books?name=${s}`)
+  axios.get(`https://mern-book-store-api.vercel.app/api/v1/books?name=${s}`)
   .then(response => setData(response.data.books));
 };
 const debounceFn = useCallback(debounce(handleDebounceFn, 2000), []);
