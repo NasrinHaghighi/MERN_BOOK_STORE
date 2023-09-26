@@ -67,6 +67,7 @@ useEffect(() => {
       .then(response => setData(response.data.books));
       setLoading(false)
 }, [])
+console.log(data)
 
 useEffect(() => {
   setLoading(true)
