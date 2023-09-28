@@ -19,8 +19,10 @@ font-size:18px ;
 
 `
 
-export const ShopItems = styled.div`
-background-color:${props=>props.theme.red} ;
+export const ShopItems = styled.div<{
+  wish: boolean;
+}>`
+background-color:${props=>props.wish ? 'red' : 'green'} ;
 border-radius: 10px;
     padding: 2px 5px;
     color:#fff ;
@@ -48,10 +50,11 @@ display:none ;
 
 export const DropDownMenu = styled(Dropdown.Menu)<{
   show: boolean;
+  res:boolean
 }>`
-
-  transform: translate(0px, 30px) !important;  
- width:500px ;
+transform: ${props => (props.res ? 'translate(-160px, 30px)' : 'translate(0px, 30px)')} !important;
+  //transform: translate(0px, 30px) !important;  
+ width:400px ;
   box-shadow: ${props=>props.theme.alertBoxshdow};
  display:${props=>props.show ? 'block' : 'none'};
  padding:30px;
@@ -104,4 +107,9 @@ background-color:${props=>props.theme.orange} ;
 border-radius:8px;
 color:#fff !important;
 box-shadow:${props=>props.theme.alertBoxshdow} ;
+`
+
+export const EmptyCard=styled.div`
+text-align: center;
+
 `

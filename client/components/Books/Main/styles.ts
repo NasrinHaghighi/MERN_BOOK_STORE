@@ -43,16 +43,23 @@ grid-template-columns: repeat(3, 1fr);
 grid-template-rows: 1fr;
 grid-column-gap:20px;
 grid-row-gap: 20px;
+max-width:350px;
 @media (max-width:1650px) {
+    grid-template-columns: repeat(3, 1fr);
+
+
+}
+@media (max-width:1200px) {
     grid-template-columns: repeat(2, 1fr);
 
 
 }
-@media (max-width:1350px) {
+@media (max-width:900px) {
     grid-template-columns: repeat(1, 1fr);
 
 
 }
+
 
 `
 export const LoadMore=styled.button`

@@ -7,11 +7,13 @@ require('./db/connect')
 require('express-async-errors')
 const app:Application =express()
 var cors = require('cors');
-app.use(cors({
-  origin:["https://mern-book-store-client-five.vercel.app"], 
-  methods:["POST", "GET"],
-  credential:true
-}));
+ app.use(cors(
+  //{
+//   origin:["https://mern-book-store-client-five.vercel.app"], 
+//   methods:["POST", "GET"],
+//   credential:true
+// }
+));
 const authenticateUser =require ('./middleware/authentication')
 const connectDB =require('./db/connect')
 const booksRouter=require('./routes/books')

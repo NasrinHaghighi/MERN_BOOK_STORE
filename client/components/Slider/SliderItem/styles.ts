@@ -18,23 +18,26 @@ from { opacity: 0; right:-40%}
 
 export const SliderItemontainer=styled.div`
 width:100% ;
-height:600px ;
-padding:100px 50px ;
-display:grid ;
+height:700px ;
 
+display:grid ;
 grid-template-columns:repeat(2, 1fr) ;
 position:relative ;
+@media (max-width: 900px) {
+
+  }
+
 
 `
 
 export const Left=styled.div`
-
+background-color:red,
 
 
 `
 export const Title=styled.h1`
 position:absolute ;
-font-size:55px ;
+font-size:50px ;
 font-weight:700 ;
 opacity:0 ;
 top:50%;
@@ -47,6 +50,10 @@ left:10% ;
 &.active{
     animation: ${FadInText} 1s  0.5s forwards;
 }
+@media (max-width:900px) {
+    font-size:40px ;
+    
+  }
 `
 export const SeeMore=styled.button`
 border:none;
@@ -55,7 +62,7 @@ position:absolute ;
 width:150px ;
 height:50px ;
 opacity:0 ;
-bottom:18%;
+bottom:15%;
 left:0% ;
 border-radius:8px ;
 background-color:${props=>props.theme.orange} ;
@@ -64,6 +71,8 @@ background-color:${props=>props.theme.orange} ;
 }
 `
 export const Right=styled.div`
+width: auto;
+height: 400PX;
 
 opacity:0;
 position:absolute ;
@@ -73,6 +82,9 @@ right:-40%;
 &.active{
     animation: ${FadInImage} 1s  0.5s forwards;
 }
+@media (max-width: 1200px) {
 
+display: none;
+  } 
 
 `

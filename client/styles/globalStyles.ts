@@ -102,7 +102,9 @@ li {
 .css-neac5d-MuiButtonBase-root-MuiButton-root {
   background-color: rgba(255, 165, 0, 0.8) !important;
 }
-
+.slick-next{
+  display: none !important;
+}
 `
 
 export default MyGlobalStyle;

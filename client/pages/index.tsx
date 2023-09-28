@@ -24,11 +24,11 @@ const Home: NextPage = () => {
      <Slider />
     <CategorySectio />
     
-    <Features id='feat'/> 
-    <Discount id='discont'/>
+     <Features id='feat'/> 
+    {/* <Discount id='discont'/> */}
     <MovingBanner />
     <Aduio />
-    <ReactVerticalTimelineComponentTests />
+    <ReactVerticalTimelineComponentTests /> 
 
     </>
   );

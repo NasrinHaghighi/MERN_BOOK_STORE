@@ -8,6 +8,7 @@ background-color:#fff ;
 position:sticky ;
 top:0 ;
 z-index:6 ;
+
 `
 export const HeaderWrapper = styled.nav`
     position: relative;
@@ -19,7 +20,24 @@ export const HeaderWrapper = styled.nav`
     display:flex ;
     align-items:center ;
     justify-content:space-between ;
-   
+    @media (max-width:1200px) {
+  display: none;
+  }
+`
+export const HeaderRes = styled.nav`
+display: none;
+    @media (max-width:1200px) {
+  display: block;
+  margin:0 auto ;
+ padding:0 50px ;
+    height:100px ;
+    display:flex ;
+    align-items:center ;
+    justify-content:space-between ;
+  }
+`
+export const MenuIcon=styled.div`
+
 `
 
 export const Wrapper = styled.nav`

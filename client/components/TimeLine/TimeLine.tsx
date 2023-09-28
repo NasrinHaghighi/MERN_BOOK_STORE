@@ -41,12 +41,11 @@ export default class ReactVerticalTimelineComponentTests extends React.Component
                     onTimelineElementClick={this.elementClick}
                    >
                        
-                       
                      
                         <Div>
                         <h3 className="vertical-timeline-element-title">{item.title}</h3>
                         <SubTitle >{item.author}</SubTitle>
-                        <Images src={item.image} width={250} height={300}   alt="book"/>
+                        <Images src={item.image} width={200} height={300}   alt="book"/>
                         </Div>
                         <Photo className={index%2 ==0 ? 'odd' : 'even'}>
                         <Images src={item.face} width={100} height={100}   alt="book"/>

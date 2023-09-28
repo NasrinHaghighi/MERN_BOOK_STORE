@@ -1,34 +1,32 @@
 import React ,{useState}from 'react'
-import {Wapper,HeaderWrapper, Logo, Nav, NavItem, Wrapper,Wrapper2, Lens, DropdownS,DropDownToggle, DropDownMenu, Input} from './styles'
+import {Wapper,HeaderWrapper, Logo, Nav, NavItem, Wrapper,Wrapper2, Lens, DropdownS,DropDownToggle, DropDownMenu, Input, HeaderRes,MenuIcon} from './styles'
 import { Images } from "../../helpers/Image";
 import Link from "next/link";
 import { RxHome } from "react-icons/rx";
 import { FaNewspaper } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
-import { BsSearch } from "react-icons/bs";
 
-import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import { useRouter } from "next/router";
 import { useAppDispatch } from '../../redux/hooks'
-
 import Basket from '../Basket/Basket';
 import ShopDropdown from './ShopDropdown/ShopDropdown';
 import {searchTerm} from '../../features/searchSlice'
-import { useMemo } from 'react';
-import { debounce } from 'lodash';
+import { Fade as Hamburger } from 'hamburger-react'
+
+
+
+import Modal from 'react-bootstrap/Modal';
+import NavbarModal from './NavbarModal/NavbarModal';
+import SearchInput from './SearchInput/SearchInput';
 function Header() {
   
-      const dispatch=useAppDispatch()
-      const [show, setShow] = useState(false);
-
-     
-      const searchHandel= (e:any)=>{
-      //e.preventDefault()
       
-      dispatch(searchTerm(e.target.value))    
-     }
+      
+      const [isOpen, setOpen] = useState(false)
+      const [modalshow, setModalShow] = useState(false);
+ 
+     const handleClose = () => setModalShow(false);
+     const handleShow = () => setModalShow(true);
 
 
 
@@ -56,26 +54,22 @@ function Header() {
         </Wrapper>
         <Wrapper2>
             {/* *****************SEARCH***** */}
-        <Lens >
-        <DropdownS      onMouseOver={() => setShow(true)}    onMouseLeave={() => setShow(false)} >
-        <DropDownToggle className="main-style" id="dropdown-basic">
-         <BsSearch />
-        </DropDownToggle>
-
-      <DropDownMenu show={show}>
-        <Dropdown.Item >
-            <Input onChange={searchHandel} ></Input>
-        </Dropdown.Item>
-       
-      </DropDownMenu>
-    </DropdownS>
-        </Lens>
-           {/* *****************SEARCH***** */}
-      <Basket /> 
-          
+            <SearchInput />
+            {/* *****************SEARCH***** */}
+      <Basket res={false}/> 
+       <Basket wish={true} res={false}/>   
         </Wrapper2>
 
     </HeaderWrapper>
+    <HeaderRes>
+    <Logo>logo</Logo>
+    <MenuIcon  onClick={handleShow}>
+      <Hamburger color="#ffa500" toggled={isOpen} toggle={setOpen} />
+      </MenuIcon>
+      <Modal show={modalshow} onHide={handleClose}>
+        <NavbarModal />
+      </Modal>
+    </HeaderRes>
     </Wapper>
   )
 }

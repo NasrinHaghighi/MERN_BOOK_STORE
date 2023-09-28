@@ -7,13 +7,16 @@ margin:0 auto ;
 background-color:${props=>props.theme.grayBG} ;
 width:100%;
 padding:50px ;
+@media (max-width: 700px) {
+display: none;
+}
 `
 
 
 export const Flex=styled.div`
   max-width: 1920px;
     margin:0 auto ;
-    padding:0 50px ;
+    padding:0 0px ;
 
 &>h2{
     font-weight:700 ;
@@ -34,7 +37,11 @@ export const ListConatiner=styled.div`
 
 
 `
+export const SwiperS=styled(Swiper)`
+  @media (max-width: 1200px) {
 
+  }
+`
 export const SwiperSlideStyled=styled(SwiperSlide)`
 padding: 80px 50px;
 display:flex ;

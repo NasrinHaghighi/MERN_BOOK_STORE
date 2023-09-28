@@ -18,8 +18,12 @@ import { debounce } from 'lodash';
 import PaginationCo from '../Pagination/PaginationCo';
 import ResetFilters from '../ResetFilters/ResetFilters';
 import AddCardAlert from '../Alerts/AddCardAlert';
+import {useRouter} from 'next/router';
+
+
 
 function Main() {
+  let location = useRouter();
   const dispatch=useAppDispatch()
   //get data form redux and fech data 
   const categorySelected =useAppSelector((state=>state.category.category))
@@ -31,6 +35,12 @@ function Main() {
   const pageNum = useAppSelector((state=>state.page.page))
   let min=priceSelected[0]
   let max=priceSelected[1]
+
+
+//console.log(location)
+
+
+
 
 //change the value that come from redux to user in url'//
   const checkSort=(sortby:string)=>{
@@ -62,35 +72,53 @@ const [loading, setLoading]=useState<boolean>(false)
 useEffect(() => {
   setLoading(true)
    axios
-   .get("https://mern-book-store-api.vercel.app/api/v1/books")
-      //.get("http://localhost:4000/api/v1/books")
+   //.get("https://mern-book-store-api.vercel.app/api/v1/books")
+      .get("http://localhost:4000/api/v1/books")
       .then(response => setData(response.data.books));
       setLoading(false)
 }, [])
-console.log(data)
+
 
 useEffect(() => {
   setLoading(true)
 const m=checkSort(sortby)
 
    axios
-       .get(`https://mern-book-store-api.vercel.app/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
 }, [categorySelected,rateSelected,min,sortby,limitNumber, pageNum])
 //use debounce lodash to set delay to fech data
-console.log(data)
-const handleDebounceFn =  (s:any) => {
-  axios.get(`https://mern-book-store-api.vercel.app/api/v1/books?name=${s}`)
-  .then(response => setData(response.data.books));
-};
-const debounceFn = useCallback(debounce(handleDebounceFn, 2000), []);
+
+// const handleDebounceFn =  (s:any) => {
+//   setLoading(true);
+//   axios.get(`http://localhost:4000/api/v1/books?name=${s}`)
+//   .then(response => setData(response.data.books));
+//   setLoading(false);
+// };
+// const debounceFn = useCallback(debounce(handleDebounceFn, 2000), []);
+
+
+
+
 useEffect(() => {
-  setLoading(true)
- //console.log(categorySelected)
- debounceFn(searchTerm)
-       setLoading(false)
+  axios.get(`http://localhost:4000/api/v1/books`)
+  .then(response => {
+    const searchTermRegex = new RegExp(searchTerm, 'i');
+    // Filter the books based on the searchTerm when the data is available
+    const nameFilter = response.data.books.filter((item: bookType) => {
+      return item.name.match(searchTermRegex);;
+    });
+    setData(nameFilter);
+    // Log the filtered result here
+   
+  })
+  .catch(error => {
+    
+    console.error(error);
+  });
+    
 }, [searchTerm])
 
  
@@ -146,6 +174,10 @@ export default Main
 
 
 
+
+function then(arg0: void) {
+  throw new Error('Function not implemented.');
+}
 // const observer=useRef<IntersectionObserver>()
    
 // const lastBookelementRef = useCallback((node: any)=>{

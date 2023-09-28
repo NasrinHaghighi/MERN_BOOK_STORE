@@ -20,7 +20,9 @@ function CategorySectio() {
        <InnerConatiner>
         <Top>
             <Title>Featured Categories</Title>
-            <ViewAll><Link href='/books'>All Categories<MdDoubleArrow /></Link></ViewAll></Top>
+            <ViewAll><Link href='/books'>All Categories<MdDoubleArrow /></Link></ViewAll>
+      
+      </Top>
 
             <Content>
 {arr.map((item) =>{
