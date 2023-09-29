@@ -22,7 +22,7 @@ function PaginationCo() {
 console.log(`redux:${reduxPage}page${page}`)
   return (
     <Box>
-          <Pagination count={5} variant="outlined" shape="rounded" size="large" page={page} onChange={handleChange}/>
+          <Pagination count={4} variant="outlined" shape="rounded" size="large" page={page} onChange={handleChange}/>
     </Box>
   )
 }

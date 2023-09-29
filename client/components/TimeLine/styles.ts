@@ -64,7 +64,9 @@ left:0 ;
 `
 export const SS=styled(VerticalTimelineElement)`
 
-
+@media (max-width: 700px) {
+    font-size: 10px;
+  }
 
 `
 

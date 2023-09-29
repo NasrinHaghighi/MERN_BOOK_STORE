@@ -78,7 +78,10 @@ from { opacity:1;transform:scale(1)}
 export const Container = styled.div`
 height:150vh ;
 padding:50px 0 ;
-margin-bottom:500px;
+margin-bottom:200px;
+@media (max-width: 1200px) {
+    margin-bottom:500px;
+  }
 @media (max-width: 700px) {
     margin-bottom:700px;
   }

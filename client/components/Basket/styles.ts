@@ -54,7 +54,7 @@ export const DropDownMenu = styled(Dropdown.Menu)<{
 }>`
 transform: ${props => (props.res ? 'translate(-160px, 30px)' : 'translate(0px, 30px)')} !important;
   //transform: translate(0px, 30px) !important;  
- width:400px ;
+ width:380px ;
   box-shadow: ${props=>props.theme.alertBoxshdow};
  display:${props=>props.show ? 'block' : 'none'};
  padding:30px;

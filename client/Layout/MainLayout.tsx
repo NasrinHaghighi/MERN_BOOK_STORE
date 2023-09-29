@@ -28,7 +28,7 @@ const router = useRouter()
            </main>
       {/* <LandingFooter /> */}
      
-     <Footer /> 
+     {/* <Footer />  */}
     </>
   );
 };

@@ -9,7 +9,7 @@ function index() {
     <BooksConatiner>
         <InnerConatiner>
            
-           <Category />
+            <Category /> 
            <Main />
         </InnerConatiner>
     </BooksConatiner>

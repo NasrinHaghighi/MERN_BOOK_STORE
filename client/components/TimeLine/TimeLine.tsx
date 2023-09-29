@@ -8,11 +8,11 @@ import { Images } from "../../helpers/Image";
 import Link from "next/link";
 
 let wonamIcon ={
-    background:'#ffa500'
+    background:'#e5b356'
 
 }
 let manIcon ={
-    background:'#15a3f9'
+    background:'#4c9dcf'
 
 }
 const date={
@@ -30,14 +30,14 @@ export default class ReactVerticalTimelineComponentTests extends React.Component
                     <TitleDiv> <h1>New Released</h1></TitleDiv>
                    
             <VerticalTimeline>
-                {Books.slice(0,5).map((item, index)=>{
-                    let woman=item.icon === 'woman'
+                {Books.slice(0,4).map((item, index)=>{
+                    let woman=item.id%2 ===0
                     return <SS
                     key={item.id}
-                    date={item.author}
+                    date={item.author }
                     dateClassName='date'
                     iconStyle={woman ? wonamIcon : manIcon}
-                    icon={woman ? <CgGirl/> : <CgBoy/>}
+                    icon={item.year}
                     onTimelineElementClick={this.elementClick}
                    >
                        

@@ -7,7 +7,9 @@ export const Books=[
     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
     image:'/books/20.jpg',
   icon:'woman',
-  face:'/face/1.jpg'
+  face:'/face/1.jpg',
+  year:'Sep 2023',
+ 
 
   },
   {
@@ -18,8 +20,9 @@ export const Books=[
     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
     image:'/books/19.jpg',
     icon:'man',
-    face:'/face/2.jpg'
-
+    face:'/face/2.jpg',
+    year:'Jun 2023'
+   
   },
   {
     id:3,
@@ -29,8 +32,9 @@ export const Books=[
     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
     image:'/books/25.jpg',
     icon:'woman',
-    face:'/face/3.jpg'
-
+    face:'/face/3.jpg',
+    year:'Apr 2023'
+   
   },
   {
     id:4,
@@ -40,7 +44,8 @@ export const Books=[
     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
     image:'/books/25.jpg',
     icon:'man',
-    face:'/face/4.jpg'
+    face:'/face/4.jpg',
+    year:'Fev 2023'
 
   },
   {
@@ -51,7 +56,8 @@ export const Books=[
     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
     image:'/books/21.jpg',
     icon:'woman',
-    face:'/face/5.jpg'
+    face:'/face/5.jpg',
+    year:'Jan 2023'
 
   },
   {
@@ -62,8 +68,9 @@ export const Books=[
     descriptin:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud xercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat.',
     image:'/books/22.jpg',
     icon:'woman',
-    face:'/face/6.jpg'
-
+    face:'/face/6.jpg',
+    year:2022,
+    month:'Nov 2023'
   },
   {
     id:7,
@@ -74,7 +81,7 @@ export const Books=[
     image:'/books/23.jpg',
     icon:'woman',
     face:'/face/6.jpg'
-
+   
   },
   {
     id:8,

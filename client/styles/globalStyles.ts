@@ -69,11 +69,23 @@ li {
 
 
 .vertical-timeline::before {
- background:#f4e6 ;
+ background:#6c757d;
 }
+.vertical-timeline-element-icon {
+  display: flex !important;
+  justify-content: center !important;
+  text-align: center !important;
+    padding: 5px 0;
+    color: black;
+    line-height:20px !important;
+}
+/*background color for timeline card*/
 .vertical-timeline--animate .vertical-timeline-element-content.bounce-in{
-  background:#f6e0f466
+  background:#f4e1be
 
+}
+.vertical-timeline-element-content-arrow{
+  border-right: 7px solid #f4e1be;
 }
 .swiper-button-prev{
   color:#ffa500 !important;

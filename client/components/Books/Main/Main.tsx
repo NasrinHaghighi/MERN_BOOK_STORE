@@ -3,7 +3,7 @@ import { fetchData } from '../../../utiles';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { selectedcategory } from '../../../features/CategorySlice'
 import BookItem from '../../BookItem/BookItem';
-import {BooksConatiner, LoadMore, Top,Container, Grid, BooksConatiner2, Layout} from './styles'
+import {BooksConatiner, LoadMore, Top,Container, Grid, BooksConatiner2, Layout ,ResDiv} from './styles'
 
 import { bookType } from '../../../types/bookType';
 import ToTop from '../../Landing/ToTop/ToTop';
@@ -65,9 +65,26 @@ const [loading, setLoading]=useState<boolean>(false)
 
     const [page, setPage] =useState<number>(1)
     const [grid, setGrid] =useState(true)
-    
-    const [invalidSearchTerm, setInvalidSearchTerm] =useState(false)
+    /**in this part we check if the width is less than 1200 setgrid to true to show just main layout */
+    const [screenWidth, setScreenWidth] = useState(0);
 
+    useEffect(() => {
+     
+      const updateScreenWidth = () => {
+        setScreenWidth(window.innerWidth);
+        if(screenWidth<1200){
+          setGrid(true)
+        }
+      };
+        updateScreenWidth();
+        window.addEventListener('resize', updateScreenWidth);
+  
+      return () => {
+        window.removeEventListener('resize', updateScreenWidth);
+      };
+    }, []);
+  
+console.log(screenWidth)
 //first load of page///get all books// reset all filters//
 useEffect(() => {
   setLoading(true)
@@ -127,14 +144,18 @@ useEffect(() => {
     <Container>
     <AddCardAlert/>
     <Top> 
-      <SortBox />
+      <SortBox /> 
+      <ResDiv>
+      <LimitNumber /> 
+      </ResDiv>
+    
       <Layout>
-      <LimitNumber />
+     
      <Grid>
            <span className={grid ? '' : 'active'} onClick={()=>setGrid(!grid)}><TfiLayoutListThumbAlt/></span>
           <span className={grid ? 'active' : ''} onClick={()=>setGrid(!grid)}><TfiLayoutGrid3Alt /></span>
      </Grid>
-     </Layout>
+     </Layout> 
     </Top>
    <div>
     {!loading && data && data.length<1 && <ResetFilters /> }  
@@ -147,7 +168,7 @@ useEffect(() => {
       })   
       :''}
 
-    {/* <LoadMore >More</LoadMore> */}
+    
     </BooksConatiner> :
 
 
@@ -157,12 +178,12 @@ useEffect(() => {
       }): <p>Loading</p>}
    
    
- {/* <LoadMore >More</LoadMore> */}
+ 
 </BooksConatiner2> }
-</div> 
+</div>  
  
 
-          <PaginationCo />
+           <PaginationCo /> 
     </Container>
    
       </>

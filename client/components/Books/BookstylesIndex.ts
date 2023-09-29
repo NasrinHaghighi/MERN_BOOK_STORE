@@ -18,6 +18,9 @@ grid-template-columns: 1fr 3fr;
 grid-template-rows: 1fr;
 grid-column-gap: 0px;
 grid-row-gap: 0px;
-
+@media (max-width: 1200px) {
+    grid-template-columns: 1fr ;
+  }
+ 
 
 `

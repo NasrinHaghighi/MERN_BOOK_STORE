@@ -8,7 +8,8 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Checkbox from '@mui/material/Checkbox';
 import {sortby} from '../../../features/sortSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-
+import {FormControlS} from './styles'
+import { Container } from './styles';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -44,8 +45,8 @@ useEffect(() => {
   };
 
   return (
-    <div>
-      <FormControl sx={{ m: 1, width: 300 }}>
+    <Container>
+      <FormControlS sx={{ m: 1, width: 280 }}>
         <InputLabel id="demo-multiple-checkbox-label">Sort </InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
@@ -63,8 +64,8 @@ useEffect(() => {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
-    </div>
+      </FormControlS>
+    </Container>
   );
 }
 

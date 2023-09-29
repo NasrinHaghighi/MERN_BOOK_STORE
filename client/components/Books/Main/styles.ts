@@ -2,7 +2,12 @@ import styled from "styled-components";
 
 export const Container=styled.div`
 padding:0 10px ;
-margin:50px 0 200px 0;
+margin:50px 0 50px 0;
+
+@media (max-width:700px) {
+   margin: 0 auto;
+
+}
 
 `
 export const Top=styled.div`
@@ -19,6 +24,9 @@ export const Layout=styled.div`
 display:flex ;
 justify-content:space-between ;
 align-items:center ;
+@media (max-width: 700px) {
+   display: none;
+  }
 `
 
 export const Grid=styled.div`
@@ -50,13 +58,17 @@ max-width:350px;
 
 }
 @media (max-width:1200px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
 
 }
 @media (max-width:900px) {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
 
+
+}
+@media (max-width:700px) {
+    grid-template-columns: repeat(1, 1fr);
 
 }
 
@@ -95,4 +107,8 @@ export const BooksConatiner2=styled.div`
 
 
 `
-
+export const ResDiv=styled.div`
+@media (max-width: 700px) {
+   display: none;
+  }
+`
