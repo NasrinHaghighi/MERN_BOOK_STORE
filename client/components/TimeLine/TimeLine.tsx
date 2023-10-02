@@ -18,14 +18,20 @@ let manIcon ={
 const date={
     color:'red'
 }
-export default class ReactVerticalTimelineComponentTests extends React.Component {
-   
+
+interface Props {
+    id: string; // Define the id prop with its type
+  }
+export default class ReactVerticalTimelineComponentTests extends React.Component<Props>  {
+    constructor(props: Props) {
+        super(props);
+             }
   elementClick(){
    //console.log('p')
    }
     render() {
         return (
-            <Container>
+            <Container id={this.props.id}>
                 <InnerConatiner>
                     <TitleDiv> <h1>New Released</h1></TitleDiv>
                    

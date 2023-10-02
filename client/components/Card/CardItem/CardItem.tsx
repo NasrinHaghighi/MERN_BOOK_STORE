@@ -31,6 +31,7 @@ const dispatch=useAppDispatch()
  }
 
   return (
+    <>
     <CardItemContainer className={index % 2 == 1 ? 'even' : ''}>
         <Trash onClick={()=>handledelet()}><FaTrashAlt /></Trash>
         <BookPhoto>
@@ -48,6 +49,9 @@ const dispatch=useAppDispatch()
         
          <TotalPrice>{item.amount*item.price},00 e</TotalPrice> 
     </CardItemContainer>
+  
+   
+    </>
   )
 }
 

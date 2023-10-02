@@ -4,7 +4,6 @@ import Description from '../Description/Description'
 import {Conatiner, Tabs, Tab, Content, InnerContent} from './styles'
 
 
-import Authores from './Authores/Authores'
 import { bookType } from '../../../types/bookType'
 
 
@@ -30,7 +29,7 @@ function BookAllInfo({item}:ItemProps) {
          return <Description item={item}/>  
       
          case 'authors':
-         return <Authores item={item}/>     
+         return <p>xxxxxxxx</p>   
         default:
           
           break;
@@ -42,7 +41,7 @@ function BookAllInfo({item}:ItemProps) {
            {tabs.map((item, i)=>{
             return <Tab key={i} 
             onClick={()=>handelActive(item.value)} 
-            className={ activeTab === item.value ? 'active': ''}>{item.tit}</Tab>
+            className={ activeTab === item.value ? 'active': ''}>HHHHHH</Tab>
            })}
         </Tabs>
         <Content>

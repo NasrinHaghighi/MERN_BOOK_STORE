@@ -10,6 +10,11 @@ import PageWithLayoutType from "../types/layout";
 
 import { Provider } from "react-redux";
 import { store } from '../redux/store';
+import {PersistGate} from 'redux-persist/es/integration/react'
+import {persistStore} from 'redux-persist'
+
+
+
 
 type AppLayoutProps = AppProps & {
   Component: PageWithLayoutType;
@@ -19,7 +24,7 @@ type AppLayoutProps = AppProps & {
 function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || MainLayout;
   // const Layout = Component.layout || ((children) => <>{children}</>);
-
+let persistor =persistStore(store)
   return (
     <>
       
@@ -31,9 +36,13 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
           <meta name="description" content="Porta Persa" />
           {/* <link rel="icon" href="/images/common/small-logo.svg" /> */}
         </Head>
+      
         <Layout>
+       
           <Component {...pageProps} />
+         
         </Layout>
+        
       </ThemeProvider>
       </Provider> 
     </>

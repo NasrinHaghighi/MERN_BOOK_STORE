@@ -65,7 +65,7 @@ useEffect(()=>{
 
     {favoraiteAlertState && 
      <Box className={favoraiteAlertState ? 'active' : ''}>
-        <h3 className='favo'>"{modifFavoraiteMessageState[0]}" </h3>
+        <h4 className='favo'>"{modifFavoraiteMessageState[0]}" </h4>
         <h6>{modifFavoraiteMessageState[1]}</h6>
     </Box> }
 

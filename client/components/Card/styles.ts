@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const Container=styled.div`
-
+display: block;
 box-shadow: ${props=>props.theme.alertBoxshdow};
+@media (max-width:1100px) {
+   display: none;
+  }
 `
 
 export const Titles=styled.div`
@@ -24,12 +27,15 @@ align-items:center ;
 
 `
 export const Total=styled.div`
-width:40% ;
+max-width: 450px;
 margin:30px auto ;
 text-align:center ;
 padding:50px ;
 background-color:#fff ;
 box-shadow: ${props=>props.theme.alertBoxshdow};
+@media (max-width: 600px) {
+    padding:30px ;
+  }
 `
 export const  Top=styled.div`
 display:flex ;
@@ -41,9 +47,15 @@ margin-bottom:30px ;
 export const  Tit=styled.h1`
 color:${props=>props.theme.textStrong} ;
 margin-right:20px;
+@media (max-width: 600px) {
+   font-size: 18px;
+  }
 `
 export const  Value=styled.h1`
 color:${props=>props.theme.priceColor} ;
+@media (max-width: 600px) {
+   font-size: 18px;
+  }
 `
 export const  Bottom=styled.div`
 display:flex ;
@@ -66,3 +78,14 @@ border-radius:12px ;
 margin:5px 0 ;
 border:none ;
 background-color:${props=>props.theme.orange} ;`
+
+
+export const Container2=styled.div`
+
+display: none;
+
+ @media (max-width:1100px) {
+  display: block;
+ 
+  } 
+`

@@ -27,16 +27,9 @@ function Book() {
 
   return (
     <BoxConatiner>
-   
-    {/* <AlertBox className={showAlert ? 'show' : ''}>
-    
-      <div>Book " <span>{item?.volumeInfo.title} </span>" added to yor card</div>
-      <SeeCardBtn><Link href='/card'>View card</Link></SeeCardBtn>
-     </AlertBox>  */}
-     {bookItem &&
+  {bookItem &&
     <Container>
-    
-       <ImageDiv>
+  <ImageDiv>
        <ul>
          <Page className='page1'></Page>
          <Page className='page2'></Page>
@@ -56,8 +49,7 @@ function Book() {
      <Price bookItem={bookItem}/>
     
     </Container>}
-    
-    {/* <BookAllInfo item={item}/>  */}
+    <BookAllInfo />   
     </BoxConatiner>
   )
 }

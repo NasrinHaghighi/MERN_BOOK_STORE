@@ -52,7 +52,7 @@ function Features({id}:any) {
     };
   }, []);
 
-  console.log(screenWidth)
+  //console.log(screenWidth)
   const [data, setdata] =useState<any>([])
   function sliceIntoChunks(arr:any, chunkSize:number) {
     const res = [];

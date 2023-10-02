@@ -14,14 +14,14 @@ function SliderItem({item, index,active}:any) {
     <SliderItemontainer >
 
         <Left >
-        <Title className={active===index ? 'active' :''}>Featured Books of the 
-        <div> February</div>
+        <Title className={active===index ? 'active' :''}>{item.title}
+        <div> {item.subtit}</div>
         </Title>
         <SeeMore className={active===index ? 'active' :''}>See More</SeeMore>
 
         </Left>
         <Right className={active===index ? 'active' :''}>
-        <Images src='/images/bg (1).png' width={700} height={400}   alt="book"/>
+        <Images src={item.img} width={700} height={400}   alt="book"/>
         </Right> 
     </SliderItemontainer>
   )

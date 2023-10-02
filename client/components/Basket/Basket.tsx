@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import { FaShoppingCart } from "react-icons/fa";
 import {BasketbBox,BasketContainer, ShopIcon,ShopItems,DropDownToggle,DropDownMenu, DropDownItem, ItemContainer,Title, Trash, Right, Bottom,  Card, EmptyCard} from './styles'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
@@ -6,9 +6,9 @@ import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Images } from "../../helpers/Image";
-import { FaTrashAlt } from "react-icons/fa";
+import {MdFavorite} from 'react-icons/md'
 import Link from 'next/link';
-import WelcomMsg from './WelcomMsg/WelcomMsg';
+
 
 function Basket({wish,res}:any) {
 
@@ -17,8 +17,12 @@ function Basket({wish,res}:any) {
     const [show, setShow] = useState(false);
     const books=useAppSelector(state=>state.books.books)
     const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
+   useEffect(() => {
+  
+   }, [])
+   
 
-//console.log(wishBooks)
+//console.log(BooksLocalstorage)
   return (
     <>
     <BasketbBox>
@@ -31,7 +35,7 @@ function Basket({wish,res}:any) {
    >
       <DropDownToggle variant="success" id="dropdown-basic">
       
-      <ShopIcon><FaShoppingCart /></ShopIcon>
+      <ShopIcon>{wish ? <MdFavorite/> : <FaShoppingCart />}</ShopIcon>
       <ShopItems wish={wish}>{wish ? wishBooks.length :books.length}</ShopItems>
       </DropDownToggle>
 
@@ -43,7 +47,7 @@ function Basket({wish,res}:any) {
         <Right>
         <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
          </Right>
-          <Title> {item.name} <span>({item.amount})</span></Title>
+          <Title> {item.name.length>30 ? item.name.substring(0, 30): item.name}</Title>
          </ItemContainer>
          
       })): (books.map((item)=>{
@@ -51,26 +55,15 @@ function Basket({wish,res}:any) {
        <Right>
        <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
         </Right>
-         <Title> {item.name} <span>({item.amount})</span></Title>
+         <Title> {item.name.length>30 ? item.name.substring(0, 30): item.name} {wish ? '': <span>({item.amount})</span>}</Title>
         </ItemContainer>
         
      }))}  
-{/* 
-        {!wish &&books.length<1 ? <EmptyCard></EmptyCard> :
-        books.map((item)=>{
-         return <ItemContainer>
-      
-        <Right>
-        <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
-         </Right>
-          <Title> {item.name} <span>({item.amount})</span></Title>
-         </ItemContainer>
-         
-      })}  */}
+
         
         <Bottom>
           
-      <Card><Link href='/card'>{wish ? 'Show wish list' : 'Show Card'}</Link></Card>
+      <Card><Link href={wish ? '/wish' :'/card'}>{wish ? 'Show wish list' : 'Show Card'}</Link></Card>
         </Bottom>
       </DropDownMenu>
     </Dropdown>

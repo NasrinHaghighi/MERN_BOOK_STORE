@@ -16,13 +16,20 @@ max-width: 1520px;
 `;
 
 export const Container=styled.div`
-padding:50px 30px ;
+padding:50px 50px ;
  display: grid;
 grid-template-columns: 1fr 2fr 1fr;
 grid-template-rows: 1fr;
 grid-column-gap: 0px;
 grid-row-gap: 0px;
-
+@media (max-width: 1400px) {
+  grid-template-columns: 1fr;
+ margin:0 auto;
+ justify-items: center;
+  }
+  @media (max-width: 500px) {
+    padding:10px !important ;
+  }
 `
 
 //***middel column********** */
@@ -57,8 +64,8 @@ display: block;
 position: absolute;
 left: 0;
 top: 0;
-width: 400px;
-height:500px;
+width: 300px;
+height:400px;
 background: ${props => `url(${props.bg}) no-repeat `};
 background-position: center;
   background-size: cover;
@@ -84,17 +91,17 @@ transform: rotateY(40deg) translateZ(-3px);
 &.cover{
   z-index: 2 !important;
 display: block;
-width: 400px;
-height:500px;
+width: 300px;
+height:400px;
 
 transform: rotateY(0deg) translateZ(0px);}
 `
 export const ImageDiv=styled.div`
 display: block;
 float: left;
-width: 400px;
-height:500px;
-margin: 0;
+width: 300px;
+height:400px;
+margin: 0 0 50px 0;
 padding: 0;
  background: #333; 
 transform: translate3d(0,0,0);
@@ -125,8 +132,8 @@ transition:all 0.3 ease ;
 &>ul{
   display: block;
 position: relative;
-width: 400px;
-height:450px;
+width: 300px;
+height:400px;
 margin: 0px;
 padding: 0;
 list-style: none;

@@ -20,8 +20,9 @@ function BookItem({item}:ItemProps) {
     
     e.stopPropagation()
     dispatch(addBook(item))
-
+    
   }
+
   const addToFavoraite=(e:any)=>{
     e.stopPropagation()
    dispatch(addToFavoraiteList(item))

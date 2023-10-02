@@ -21,8 +21,8 @@ padding:30px 10px ;
 top:14% ;
 z-index:10 ;
 border-radius:8px ;
-width:400px ;
-height:200px ;
+width:360px ;
+height:150px ;
 
 background-color:${props=>props.theme. grayBG} ;
 box-shadow:${props=>props.theme.alertBoxshdow} ;

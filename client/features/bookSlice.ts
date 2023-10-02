@@ -17,15 +17,18 @@ interface Book{
 
 }
 interface Books{
-    books:Book[],
+    books:Book[] ,
     alert:boolean,
     message:string
 }
-const initialState:Books={
-    books:[],
+
+
+const initialState:Books= {
+   books: [],
    alert:false,
    message:' '
 }
+
 
 export const BookSlice= createSlice({
     name:'Books',
@@ -58,29 +61,35 @@ export const BookSlice= createSlice({
             state.books.push({...action.payload, amount:1})
         }
         //console.log(action.payload.amount)
-
+localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))
         },
          addNewAmount:(state, action:PayloadAction<any>)=>{
             state.books.forEach(function(item, i) { if (item._id == action.payload._id) state.books[i] =action.payload; });
+            localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))
+         
  },
               deletItem:(state, action:PayloadAction<any>)=>{
                const tempCard= state.books.filter((item)=>{
                 return item._id !== action.payload._id
                })
                state.books=tempCard
-     
+               localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))         
                    },
+                
+
                    backtofalseAlert:(state)=>{
                    state.alert=false
           
                         },
-  
+
     },
-  
+
+   
 })
 
 export const {addBook, addNewAmount, deletItem, backtofalseAlert} =BookSlice.actions
 export default BookSlice.reducer
 
 
-// .length>25 ?b.name.substring(25): b.name
+
+

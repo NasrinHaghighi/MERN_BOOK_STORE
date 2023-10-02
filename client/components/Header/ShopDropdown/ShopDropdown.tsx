@@ -34,11 +34,11 @@ const dispatch=useAppDispatch()
 
 
                 <DropdownItem href="/" 
-                onClick={()=>handelScroll('disconts')}
-                ><Link href='/#discont'>Disconts</Link></DropdownItem>
+                onClick={()=>handelScroll('audio')}
+                ><Link href='/#audio'>Aduio</Link></DropdownItem>
 
                 <DropdownItem href="/"
-                onClick={()=>handelScroll('authors')}><Link href='/'>Authors</Link></DropdownItem>
+                onClick={()=>handelScroll('timeline')}><Link href='/#timeline'>TimeLine</Link></DropdownItem>
             </First>
            
             <Second>

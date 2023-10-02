@@ -32,7 +32,7 @@ function SliderCo() {
   return (
     <Container>
  <Slider {...settings}>
-          {arr.map((item, index)=>{
+          {sliderArr.map((item, index)=>{
             return <SliderItem item={item} index={index} active={active}/>
           })}
         </Slider>
@@ -41,3 +41,9 @@ function SliderCo() {
 }
 
 export default SliderCo
+
+
+const sliderArr=[
+  {id:1 , title:'Featured Books of the ' , subtit:'February', img:'/images/bg (1).png'},
+  {id:1 , title:'Educational Book ' , subtit:'For Kids', img:'/images/bg (2).png'}
+]

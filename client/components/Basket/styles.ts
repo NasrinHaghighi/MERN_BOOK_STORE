@@ -52,9 +52,9 @@ export const DropDownMenu = styled(Dropdown.Menu)<{
   show: boolean;
   res:boolean
 }>`
-transform: ${props => (props.res ? 'translate(-160px, 30px)' : 'translate(0px, 30px)')} !important;
+transform: ${props => (props.res ? 'translate(-160px, 30px)' : 'translate(-0px, 30px)')} !important;
   //transform: translate(0px, 30px) !important;  
- width:380px ;
+ width:350px ;
   box-shadow: ${props=>props.theme.alertBoxshdow};
  display:${props=>props.show ? 'block' : 'none'};
  padding:30px;
@@ -73,7 +73,8 @@ align-items:center ;
 `
 export const Title=styled.div`
 font-size:18px ;
-font-weight:700 ;
+font-weight:600 ;
+margin-left: 10px;
 &>span{
   color:${props=>props.theme.mainTextColor}
 }

@@ -14,6 +14,9 @@ align-items:center ;
 &.even{
     background-color:${props=>props.theme.grayBG} ; 
 }
+@media (max-width: 1100px) {
+  display: none;
+  }
 `
 export const Trash=styled.div`
 text-align:center ;
@@ -35,7 +38,7 @@ font-weight:700 ;
 `
 export const Amount=styled.input`
 width:100px ;
-height:50px ;
+height:40px ;
 border-radius:50px ;
 background-color: transparent;
 padding:0 10px ;
@@ -57,3 +60,78 @@ export const TotalPrice=styled.div`
 color:${props=>props.theme. graytext} ;
 font-weight:700 ;
 `
+/***************Res */
+
+
+export const ConteinerRes=styled.div`
+display: grid;
+padding: 10px;
+border-radius: 10px;
+margin-bottom: 10px;
+grid-template-columns: 1fr 3fr;
+
+border: 2px solid ${props=>props.theme.grayBG};
+&.even{
+    background-color:${props=>props.theme.grayBG} ; 
+}
+
+@media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+
+export const BookPhotoRes=styled.div`
+display: flex;
+justify-content: center;
+align-self: center;
+@media (max-width: 600px) {
+    margin-bottom:20px;
+  }
+`
+
+
+export const Info=styled.div`
+
+display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: repeat(4, 1fr);
+grid-row-gap:0px !important;
+@media (max-width: 600px) {
+    margin-bottom:20px;
+  }
+`
+export const NameRes=styled.span`
+color:${props=>props.theme. graytext} ;
+font-weight: 700;
+font-size: 20px;
+display: flex;
+ 
+justify-content: space-between;
+
+
+`
+export const PriceRes=styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+
+`
+export const PriceSapn=styled.span`
+font-weight: 700;
+`
+export const AmountDiv=styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+`
+export const TotalPriceRes=styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+`
+
+

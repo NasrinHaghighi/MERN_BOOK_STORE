@@ -4,7 +4,7 @@ import {Images} from '../../helpers/Image'
 import { useInViewport } from 'react-in-viewport';
 import { SeeMore } from '../Landing/Discount/styles';
 
-const  Aduio =() => {
+const  Aduio =({id}:any) => {
 
 
   const myRef = useRef() as React.MutableRefObject<HTMLInputElement>;
@@ -34,7 +34,7 @@ useEffect(() => {
  }, [leaveCount])
  console.log(enter)
   return (
-    <Container>
+    <Container id={id}>
         <InnerContainer>
             <Text className={enter ? 'enter' :'exit'}>
               <h1>Aduio Books</h1>

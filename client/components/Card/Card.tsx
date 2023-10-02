@@ -1,6 +1,7 @@
 import React from 'react'
 import CardItem from './CardItem/CardItem'
-import {Container,Titles, Total, Top, Tit, Value,Bottom, BackToShop, Checkout} from './styles'
+import CardItemRes from './CardItem/CardItemRes'
+import {Container,Titles, Total, Top, Tit, Value,Bottom, BackToShop, Checkout, Container2} from './styles'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import EmptyCard from './Emptycard/EmptyCard'
 import Link from 'next/link'
@@ -14,7 +15,7 @@ function Card() {
   console.log(totalPrice)
   return (
     <>
-    <Container>
+     <Container>
       <Titles>
       <span></span> 
        <span></span> 
@@ -26,9 +27,17 @@ function Card() {
       {books.length>0 ? books.map((item, index)=>{
         return <CardItem item={item} index={index}/>
       }): <EmptyCard />}
-      <div></div>
+      
 
     </Container>
+    <Container2>
+    {books.length>0 ? books.map((item, index)=>{
+        return <CardItemRes item={item} index={index}/>
+      }): <EmptyCard />}
+    </Container2>
+   
+   
+  
     <Total>
     <Top>
         <Tit>Total price :</Tit>

@@ -27,8 +27,8 @@ const Home: NextPage = () => {
      <Features id='feat'/> 
     {/* <Discount id='discont'/> */}
     <MovingBanner />
-    <Aduio />
-    <ReactVerticalTimelineComponentTests /> 
+    <Aduio id='audio'/>
+    <ReactVerticalTimelineComponentTests  id='timeline'/> 
 
     </>
   );
