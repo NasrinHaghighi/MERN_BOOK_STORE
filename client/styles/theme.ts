@@ -7,7 +7,7 @@ export const themes = {
     blue2:'#15a3f9',
     textStrong:'#2B2B2B',
     linkColor:'#f47721',
-    orange:'#ffa500',
+    orange:'#ff9800',
     lightorange:'#ffbd2c',
     lightPink:'#fff0da',
     requierText:'#c02b0a',
@@ -20,7 +20,7 @@ export const themes = {
    bachgroundColor:'#2B2B2B',
    lightRed:'#f75454',
    priceColor:"#ff0072",
-
+   green:"#2e7d32",
    
       
   };

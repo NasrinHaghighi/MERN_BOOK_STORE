@@ -19,7 +19,7 @@ function PaginationCo() {
     setPage(value);
     dispatch(selectedPage(value))
   };
-console.log(`redux:${reduxPage}page${page}`)
+//console.log(`redux:${reduxPage}page${page}`)
   return (
     <Box>
           <Pagination count={4} variant="outlined" shape="rounded" size="large" page={page} onChange={handleChange}/>

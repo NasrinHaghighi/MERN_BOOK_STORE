@@ -7,3 +7,6 @@ justify-content:flex-start ;
 padding:50px ;
 
 `
+export const Title=styled.div`
+
+`

@@ -12,7 +12,7 @@ import searchSlice from '../features/searchSlice';
 import sortSlice from '../features/sortSlice';
 import limitNumberSlice from '../features/limitNumberSlice';
 import FavoraiteListSlice from '../features/favoraiteListSlice'
-
+import UserSlice from '../features/userSlice'
 import storage from 'redux-persist/lib/storage'
 
 import {
@@ -41,7 +41,8 @@ const reducer =combineReducers({
   sort:sortSlice,
   search:searchSlice,
   limitNumber:limitNumberSlice,
-  favoriteList:FavoraiteListSlice
+  favoriteList:FavoraiteListSlice,
+  user:UserSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer)

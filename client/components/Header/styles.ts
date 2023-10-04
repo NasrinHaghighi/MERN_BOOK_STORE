@@ -104,6 +104,12 @@ position:relative ;
     color: ${props=>props.theme.orange};
     border-radius: 5px;
 }
+&.logout{
+  border: 3px solid ${props=>props.theme.green};
+    color: ${props=>props.theme.orange};
+    border-radius: 5px;
+}
+
 `
 
 export const Lens = styled.div`

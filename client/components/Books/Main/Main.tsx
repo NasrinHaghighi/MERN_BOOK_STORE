@@ -84,7 +84,7 @@ const [loading, setLoading]=useState<boolean>(false)
       };
     }, []);
   
-console.log(screenWidth)
+//console.log(screenWidth)
 //first load of page///get all books// reset all filters//
 useEffect(() => {
   setLoading(true)

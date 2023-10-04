@@ -7,21 +7,24 @@ import { FaNewspaper } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useAppDispatch } from '../../redux/hooks'
+
 import Basket from '../Basket/Basket';
 import ShopDropdown from './ShopDropdown/ShopDropdown';
 import {searchTerm} from '../../features/searchSlice'
 import { Fade as Hamburger } from 'hamburger-react'
-
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
 
 import Modal from 'react-bootstrap/Modal';
 import NavbarModal from './NavbarModal/NavbarModal';
 import SearchInput from './SearchInput/SearchInput';
+import UserIsloged from '../Ahuth/UserIsLoged/UserIsloged';
+
+
+
 function Header() {
-  
-      
-      
+      const user=useAppSelector(((state: { user: any; })=> state.user))
+   
       const [isOpen, setOpen] = useState(false)
       const [modalshow, setModalShow] = useState(false);
  
@@ -47,9 +50,20 @@ function Header() {
         <NavItem>
               <FaNewspaper/><span>About us</span> 
         </NavItem>
-        <NavItem className='loginBtn'><Link href='/signin'>
-              <FaUser/><span>Signin {' '}/ {' '}Login</span> </Link>
+        {/* conditional render for login /logout  */}
+{user.token ?
+   <NavItem className='logout'>
+   <UserIsloged />
+           
+     </NavItem>
+
+
+: 
+        <NavItem className='loginBtn'>
+ <Link href='/login'><FaUser/><span>Signin {' '}/ {' '}Login</span> </Link> 
+              
         </NavItem>
+     }
         </Nav>
         </Wrapper>
         <Wrapper2>

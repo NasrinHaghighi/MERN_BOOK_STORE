@@ -15,13 +15,16 @@ interface LayoutProps {
 const MainLayout: React.FC<LayoutProps> = (props) => {
 const router = useRouter()
 
+const pathname=router.pathname
+
+
 
  
   return (
     <>
 
 
-        <Header />
+       <Header />
 
       <main className="sections-wrapper-landing">
         {props.children}

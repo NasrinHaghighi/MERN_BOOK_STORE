@@ -1,52 +1,131 @@
 import React,{useState,useEffect} from 'react'
-import {Box, Form} from './styles'
-import Typography from '@mui/material/Typography';
-import { TextField,Button  } from '@mui/material';
-import axios from "axios";
+import {Box, FormF, Label,Title,Already,LinkS, Message, FieldF ,Button} from './styles'
 
-interface User{
-  email:string,
+import axios from "axios";
+import { Formik } from 'formik';
+import { useRouter } from 'next/navigation'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
+
+import * as Yup from 'yup';
+import { userLogin } from '../../../features/userSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
+
+interface Values{
+  email:string, 
   password:string
 }
 
-function Signin() {
-const [user, setUser]= useState({
-  email:'',
-  password:''
-})
-const handelData=(e:any)=>{
-  const { name, value } = e.target;
- setUser({
-  ...user, 
-  [name]: value,
- })
-}
+const SignupSchema = Yup.object().shape({
+ 
+  password: Yup.string()
+  .required('Password is invalid'),
 
-const handleSignin= async (e:any)=>{
+
+  email: Yup.string().required('Email is invalid'),
+});
+
+function Signin() {
+  const dispatch=useAppDispatch()
+  const router = useRouter()
+
+
+
+  const handleSignin= async (values:Values)=>{
 
   try{
-    let res = await axios.post("http://localhost:4000/api/v1/auth/login", user)
+    let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
+console.log(res)
 const signinUser=res.data.user.name
-const token=res.data.token
+ const token=res.data.token
+
 localStorage.setItem('token', token)
-localStorage.setItem('name', signinUser)
+ localStorage.setItem('name', signinUser)
+  dispatch(userLogin({signinUser, token}))
+
+  if(token){
+    toast('Login Succced',{
+      draggable:true,
+      position:toast.POSITION.TOP_RIGHT
+    })
+    setTimeout(() => {
+      router.push('/books')
+    }, 5000);
+    
+  }
  }
  catch(error){
-   return null //that's what you did in your code.
+   if(error){
+    toast('please provide correct info',{
+      draggable:true,
+      position:toast.POSITION.TOP_RIGHT
+    })
+   }
  }
 
 }
 
   return (
+    <>
+   <ToastContainer draggable={false} autoClose={5000}/> 
     <Box>
-   <Typography mt={2} variant="h5">you have an acount? please signin :</Typography>
-   <Form >
-    <TextField  variant="outlined" label="Email" name='email' sx={{ mb: 3}} onChange={(e)=>handelData(e)}/>
-    <TextField variant="outlined" label="Password" name='password' sx={{ mb:7}} onChange={(e)=>handelData(e)}/>
-    <Button  onClick={handleSignin}   variant="contained" sx={{width:200, height:50 ,color:'#000', backgroundColor:'green'}} >Signin</Button>
-   </Form>
-    </Box>
+   <Label>
+     <Title>Login </Title>
+    
+     <Already>Do not have acount?<LinkS href={'/register'}>Register</LinkS> </Already>
+     </Label>
+     <Formik
+      initialValues={{
+        email: '',
+        password:''
+      }}
+      validationSchema={SignupSchema}
+      onSubmit={async (values) => {
+        //console.log(values)
+        await new Promise((r) => setTimeout(r, 500));
+        
+        handleSignin(values)
+        
+      }}
+    >
+        {({ errors, touched }) => (
+      <FormF>
+       <FieldF
+          id="email"
+          name="email"
+          placeholder="Email"
+          type="email"
+          />
+             {errors.email && touched.email ? (
+             <Message>{errors.email}</Message>
+           ) : null}
+        <FieldF id="password" name="password" placeholder="Password" type='password' />
+        {errors.password && touched.password ? (
+             <Message>{errors.password}</Message>
+           ) : null}
+        <Button type="submit">Login</Button>
+      </FormF>
+       )}
+    </Formik>
+    </Box> 
+  
+    </>
   )
 }
 
 export default Signin
+
+
+{/* <Form >
+<TextField required variant="outlined" label="Email" name='email' sx={{ mb: 3}} onChange={(e)=>handelData(e)}/>
+<TextField required variant="outlined" label="Password" name='password' sx={{ mb:7}} onChange={(e)=>handelData(e)}/>
+<Button  onClick={handleSignin}   variant="contained" sx={{width:200, height:50 ,color:'#000', backgroundColor:orange[500], margin:'auto' ,
+'&:hover': {
+backgroundColor: orange[400],
+},
+
+}} >Signin</Button>
+</Form> */}
