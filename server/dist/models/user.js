@@ -12,10 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
+const mongoose_2 = __importDefault(require("mongoose"));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const UserSchema = new mongoose_1.default.Schema({
+const UserSchema = new mongoose_2.default.Schema({
     name: {
         type: String,
         required: [true, 'Please provide an name'],
@@ -33,6 +33,10 @@ const UserSchema = new mongoose_1.default.Schema({
         required: [true, 'Please provide an pass'],
         minlength: 6
     },
+    role: {
+        type: String,
+        default: 'user'
+    }
 });
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -42,7 +46,7 @@ UserSchema.pre('save', function (next) {
     });
 });
 UserSchema.methods.createJWT = function () {
-    return jwt.sign({ userId: this._id, name: this.name }, 'sssss', { expiresIn: '30d' });
+    return jwt.sign({ userId: this._id, name: this.name, role: this.role }, 'sssss', { expiresIn: '30d' });
 };
 UserSchema.methods.comperPassword = function (candidatePassword) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -50,4 +54,4 @@ UserSchema.methods.comperPassword = function (candidatePassword) {
         return isMatch;
     });
 };
-module.exports = mongoose_1.default.model('User', UserSchema);
+module.exports = mongoose_2.default.model('User', UserSchema);

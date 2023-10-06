@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
-const BooksSchema = new mongoose_1.default.Schema({
+const mongoose_2 = __importDefault(require("mongoose"));
+const BooksSchema = new mongoose_2.default.Schema({
     name: {
         type: String,
         required: [true, 'product name must be provided']
@@ -57,6 +57,10 @@ const BooksSchema = new mongoose_1.default.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    role: {
+        type: String,
+        default: 'read'
     }
 });
-module.exports = mongoose_1.default.model('Books', BooksSchema);
+module.exports = mongoose_2.default.model('Books', BooksSchema);

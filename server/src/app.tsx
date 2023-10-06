@@ -1,3 +1,5 @@
+
+
 import express,{Application, Request, Response} from 'express'
 require("dotenv").config();
 const bodyParser=require('body-parser')
@@ -18,6 +20,7 @@ const authenticateUser =require ('./middleware/authentication')
 const connectDB =require('./db/connect')
 const booksRouter=require('./routes/books')
 const authRouter =require('./routes/auth')
+const usersRouter =require('./routes/users')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 
@@ -27,6 +30,7 @@ const errorMiddleware = require('./middleware/error-handler');
 
 app.use('/api/v1/books', booksRouter)
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/users', usersRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 

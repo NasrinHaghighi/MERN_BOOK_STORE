@@ -15,8 +15,13 @@ const User = require('../models/user');
 //const {BadRequestError} = require('../errors')
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield User.create(Object.assign({}, req.body));
+    // console.log(user)
     const token = user.createJWT();
-    res.json({ user: { name: user.name }, token });
+    res.json({ user: {
+            role: user.role,
+            name: user.name
+        },
+        token });
 });
 exports.register = register;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -25,6 +30,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json('eamil and pass provided');
     }
     const user = yield User.findOne({ email });
+    console.log(user);
     if (!user) {
         res.json('no user register before...');
     }
@@ -34,7 +40,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json('no password register before...');
     }
     const token = user.createJWT();
-    res.json({ user: { name: user.name }, token });
+    res.json({ user: {
+            role: user.role,
+            name: user.name
+        },
+        token });
 });
 exports.login = login;
 // {user:{name:user.name},

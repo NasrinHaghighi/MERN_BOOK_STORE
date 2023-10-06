@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSingleBook = exports.getAllBooks = void 0;
 const Books = require('../models/books');
 const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { ebook, publisher, name, sort, fields, numericFilters, category, language, format } = req.query;
+    const { ebook, publisher, name, sort, fields, numericFilters, category, language, format, role } = req.query;
     const queryObject = {};
     if (ebook) {
         queryObject.ebook = ebook === 'true' ? true : false;
@@ -31,6 +31,9 @@ const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     if (format) {
         queryObject.format = format;
+    }
+    if (role) {
+        queryObject.role = role;
     }
     if (numericFilters) {
         const operatorMap = {
@@ -75,7 +78,7 @@ const getSingleBook = (req, res) => __awaiter(void 0, void 0, void 0, function* 
         const { id: bookId } = req.params;
         const book = yield Books.findOne({ _id: bookId });
         if (!book) {
-            return res.status(404).json({ msg: `no task by id:${bookId}` });
+            return res.status(404).json({ msg: `no book by id:${bookId}` });
         }
         res.status(200).json({ book });
     }

@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
 import * as Yup from 'yup';
 import { userLogin } from '../../../features/userSlice';
+
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -20,31 +22,26 @@ interface Values{
 }
 
 const SignupSchema = Yup.object().shape({
- 
-  password: Yup.string()
+   password: Yup.string()
   .required('Password is invalid'),
-
-
   email: Yup.string().required('Email is invalid'),
 });
-
 function Signin() {
   const dispatch=useAppDispatch()
   const router = useRouter()
-
-
-
   const handleSignin= async (values:Values)=>{
 
   try{
     let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
-console.log(res)
+    console.log(res)
 const signinUser=res.data.user.name
  const token=res.data.token
-
+ const userRole=res.data.user.role
+// console.log(role)
 localStorage.setItem('token', token)
  localStorage.setItem('name', signinUser)
-  dispatch(userLogin({signinUser, token}))
+ localStorage.setItem('role', userRole)
+  dispatch(userLogin({signinUser, token, userRole}))
 
   if(token){
     toast('Login Succced',{

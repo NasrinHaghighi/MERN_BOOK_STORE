@@ -1,5 +1,19 @@
-import styled from "styled-components";
+import styled ,{keyframes} from "styled-components";
 import { Dropdown } from "react-bootstrap";
+
+/*anim for dashbord link*/
+const FadIn= keyframes`
+from { display:none; opacity:0; top:50}
+    to {display:block; opacity:1; top:0px}; 
+    
+`;
+const Fadout= keyframes`
+from { opacity: 1; right:50px}
+    to { opacity:0; right:0px}; 
+    
+`;
+
+/*anim for dashbord link*/
 
 export const Wapper=styled.div`
 width:100% ;
@@ -10,6 +24,8 @@ top:0 ;
 z-index:6 ;
 
 `
+
+
 export const HeaderWrapper = styled.nav`
     position: relative;
     z-index: 99;
@@ -109,9 +125,43 @@ position:relative ;
     color: ${props=>props.theme.orange};
     border-radius: 5px;
 }
+ 
 
 `
 
+/*************dashboard link*** */
+export const NavItemDash=styled.div`
+padding:10px 13px ;
+font-size:18px ;
+display:flex ;
+justify-content:center ;
+align-items:center ;
+position:relative ;
+color: ${props=>props.theme.orange};
+
+& > span {
+   margin-left:10px ;
+  }
+&::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 5px;
+    right: 0;
+    bottom: 0;
+    background-color: #DB1037;
+    background-image: linear-gradient(90deg, #DB1037, #CD40E6);;
+    transition: .3s ease;
+  }
+&:hover {
+    &::before {
+        width: 100%; 
+    }
+    &.loginAdmin{
+    display: block;
+  }
+}
+`
 export const Lens = styled.div`
 
 font-size:18px ;

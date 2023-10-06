@@ -21,6 +21,11 @@ const UserSchema =new mongoose.Schema({
         required:[true, 'Please provide an pass'],
         minlength:6
     },
+    role: {
+        type: String,
+        default: 'user' 
+    }
+   
 })
 UserSchema.pre('save',async function(next) {
 
@@ -29,7 +34,7 @@ UserSchema.pre('save',async function(next) {
 next()
 })
 UserSchema.methods.createJWT= function (){
-return  jwt.sign({ userId:this._id,name:this.name  }, 'sssss', {expiresIn:'30d'});
+return  jwt.sign({ userId:this._id,name:this.name ,role:this.role }, 'sssss', {expiresIn:'30d'});
 }
 
 UserSchema.methods.comperPassword =async function(candidatePassword:any){

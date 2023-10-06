@@ -15,14 +15,10 @@ function Basket({wish,res}:any) {
 
     const dispatch=useAppDispatch()
     const [show, setShow] = useState(false);
-    const books=useAppSelector(state=>state.books.books)
+     const books=useAppSelector(state=>state.books.books)
     const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
-   useEffect(() => {
-  
-   }, [])
-   
 
-//console.log(BooksLocalstorage)
+
   return (
     <>
     <BasketbBox>

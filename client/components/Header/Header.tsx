@@ -1,10 +1,11 @@
 import React ,{useState}from 'react'
-import {Wapper,HeaderWrapper, Logo, Nav, NavItem, Wrapper,Wrapper2, Lens, DropdownS,DropDownToggle, DropDownMenu, Input, HeaderRes,MenuIcon} from './styles'
+import {Wapper,HeaderWrapper, Logo, Nav, NavItem, Wrapper,Wrapper2,  HeaderRes,MenuIcon, NavItemDash} from './styles'
 import { Images } from "../../helpers/Image";
 import Link from "next/link";
 import { RxHome } from "react-icons/rx";
 import { FaNewspaper } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import {MdOutlineSpaceDashboard} from  'react-icons/md'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -24,7 +25,7 @@ import UserIsloged from '../Ahuth/UserIsLoged/UserIsloged';
 
 function Header() {
       const user=useAppSelector(((state: { user: any; })=> state.user))
-   
+   console.log(user)
       const [isOpen, setOpen] = useState(false)
       const [modalshow, setModalShow] = useState(false);
  
@@ -35,6 +36,7 @@ function Header() {
 
   return (
       <Wapper>
+  
     <HeaderWrapper>
         <Wrapper>
         <Logo>logo</Logo>
@@ -50,6 +52,11 @@ function Header() {
         <NavItem>
               <FaNewspaper/><span>About us</span> 
         </NavItem>
+        {/* conditional render for dashboard ...  */}
+        {user.token && user.userRole === 'admin' &&
+         <NavItemDash >
+        <Link href='/dashboard'><MdOutlineSpaceDashboard /><span>Dashboard</span></Link> 
+        </NavItemDash> }
         {/* conditional render for login /logout  */}
 {user.token ?
    <NavItem className='logout'>
@@ -64,6 +71,7 @@ function Header() {
               
         </NavItem>
      }
+     
         </Nav>
         </Wrapper>
         <Wrapper2>

@@ -31,6 +31,7 @@ const authenticateUser = require('./middleware/authentication');
 const connectDB = require('./db/connect');
 const booksRouter = require('./routes/books');
 const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/users');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 app.get('/', (req, res) => {
@@ -38,6 +39,7 @@ app.get('/', (req, res) => {
 });
 app.use('/api/v1/books', booksRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users', usersRouter);
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 app.use(express_1.default.static('./public'));

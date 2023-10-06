@@ -13,7 +13,8 @@ import 'react-toastify/dist/ReactToastify.css';
 interface Values{
   name:string,
   email:string, 
-  password:string
+  password:string, 
+  role:string
 }
 
 const SignupSchema = Yup.object().shape({
@@ -28,16 +29,21 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 function Signup() {
-  const notify = () => toast("Wow so easy!");
+ 
   const router = useRouter()
   const handleRegister= async (values:Values)=>{
-
+console.log(values)
    try{
      await axios.post("http://localhost:4000/api/v1/auth/register", values)
      router.push('/login')
  }
  catch(error){
-   return null 
+   if(error){
+    toast('This email is aleady exists',{
+      draggable:true,
+      position:toast.POSITION.TOP_RIGHT
+    })
+   }
  }
 
    
@@ -46,7 +52,10 @@ function Signup() {
 
 
    return (
+    <>
+    <ToastContainer draggable={false} autoClose={5000}/> 
     <Box>
+    
    <Label>
      <Title>Register </Title>
      <Already>Aleady have account?<LinkS href={'/login'}>SignIn</LinkS> </Already>
@@ -55,13 +64,14 @@ function Signup() {
       initialValues={{
         name: '',
         email: '',
-        password:''
+        password:'', 
+        role:'khar'
       }}
       validationSchema={SignupSchema}
       onSubmit={async (values) => {
    
         await new Promise((r) => setTimeout(r, 500));
-        notify()
+      
         handleRegister(values)
        
       }}
@@ -93,6 +103,7 @@ function Signup() {
        )}
     </Formik>
      </Box>
+     </>
   )
 }
 

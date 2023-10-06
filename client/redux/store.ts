@@ -28,15 +28,17 @@ import {
 const persistConfig = {
   key: 'root',
   storage,
+ 
   
 }
+
 
 const reducer =combineReducers({
   category:CategorySlice,
   page:PageSlice,
   books:BookSlice,
   price:priceFilter,
-  tag:scrollTo,
+  tag:scrollTo, 
   rate:Rate,
   sort:sortSlice,
   search:searchSlice,
@@ -45,7 +47,8 @@ const reducer =combineReducers({
   user:UserSlice
 })
 
-const persistedReducer = persistReducer(persistConfig, reducer)
+const persistedReducer = persistReducer(persistConfig, reducer);
+
 export const store = configureStore({
       reducer: persistedReducer,
    middleware: (getDefaultMiddleware) =>

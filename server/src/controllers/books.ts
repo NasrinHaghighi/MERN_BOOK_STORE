@@ -6,7 +6,7 @@ const Books =require('../models/books')
 
 export const getAllBooks =async (req: any, res: any) =>{
 
-    const {ebook, publisher, name, sort, fields, numericFilters, category, language,format} =req.query
+    const {ebook, publisher, name, sort, fields, numericFilters, category, language,format, role} =req.query
     const queryObject :any={}
     if(ebook){
         queryObject.ebook= ebook === 'true' ? true :false
@@ -26,6 +26,9 @@ export const getAllBooks =async (req: any, res: any) =>{
     }
     if(format){
         queryObject.format = format;
+    }
+    if(role){
+        queryObject.role = role;
     }
     if(numericFilters){
         const operatorMap: any = {
@@ -71,7 +74,7 @@ export const getSingleBook =async (req: any, res: any) =>{
         const book =await Books.findOne({_id:bookId})
        
         if(!book){
-            return res.status(404).json({msg:`no task by id:${bookId}`})
+            return res.status(404).json({msg:`no book by id:${bookId}`})
         }
         res.status(200).json({book})
     }catch(error){

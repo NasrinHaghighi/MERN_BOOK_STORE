@@ -2,10 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface Props{
     signinUser:string,
-    token:string
+    token:string,userRole:string
  }
 const initialState:Props ={
-    signinUser:'', token:''
+    signinUser:'', token:'', userRole:''
 }
 
 export const UserSlice= createSlice({
@@ -15,9 +15,11 @@ export const UserSlice= createSlice({
         userLogin:(state, action:PayloadAction<Props>)=>{
         state.signinUser=action.payload.signinUser
         state.token=action.payload.token
+        state.userRole=action.payload.userRole
         },
        userLogout:(state)=>{
         state.signinUser = '';
+        state.token = '';
         state.token = '';
             },
         

@@ -4,20 +4,23 @@ const User = require('../models/user')
 
 
 export const register =async (req: any,res: any)=>{
-   
-    const user= await User.create({...req.body})
+   const user= await User.create({...req.body})
+  // console.log(user)
    const token= user.createJWT()
-    res.json({user:{name:user.name}, token})
+       res.json({user:{
+      role:user.role,
+      name:user.name
+   }, 
+      token})
 }
-
-
-
 export const login =async (req: any,res: any)=>{
  const {email, password} =req.body
- if(!email || !password){
+
+ if(!email || !password ){
     res.json('eamil and pass provided')
  }
  const user =await User.findOne({email})
+ console.log(user)
  if(!user){
     res.json('no user register before...')
  }
@@ -27,7 +30,11 @@ export const login =async (req: any,res: any)=>{
     res.json('no password register before...')
  }
  const token= user.createJWT()
- res.json({user:{name:user.name}, token})
+ res.json({user:{
+role:user.role,
+name:user.name
+}, 
+token})
 }
 
 
