@@ -6,7 +6,7 @@ const User = require('../models/user')
 export const register =async (req: any,res: any)=>{
    const user= await User.create({...req.body})
   // console.log(user)
-   const token= user.createJWT()
+   const token= user.createJWT({ role: user.role })
        res.json({user:{
       role:user.role,
       name:user.name
@@ -29,7 +29,7 @@ export const login =async (req: any,res: any)=>{
  if( !isPasswordCorrect){
     res.json('no password register before...')
  }
- const token= user.createJWT()
+ const token= user.createJWT({ role: user.role })
  res.json({user:{
 role:user.role,
 name:user.name

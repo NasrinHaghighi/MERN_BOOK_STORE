@@ -9,18 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllusers = void 0;
-const Users = require('../models/users');
-const getAllusers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const users = yield Users.find();
-        console.log(users);
-        // Return the list of users as JSON
-        res.json({ users });
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+exports.dashboard = void 0;
+//const Users =require('../models/users')
+const dashboard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    res.json({
+        pedro: 100,
+        ali: 50
+    });
 });
-exports.getAllusers = getAllusers;
+exports.dashboard = dashboard;

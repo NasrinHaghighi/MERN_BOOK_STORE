@@ -7,6 +7,7 @@ const bodyParser=require('body-parser')
 require('./db/connect')
 //async error
 require('express-async-errors')
+
 const app:Application =express()
 var cors = require('cors');
  app.use(cors(
@@ -21,9 +22,10 @@ const connectDB =require('./db/connect')
 const booksRouter=require('./routes/books')
 const authRouter =require('./routes/auth')
 const usersRouter =require('./routes/users')
+const dashboardRouter =require('./routes/dashboard')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
-
+const {authPageMiddelwear} =require('./middleware/authPage')
  app.get('/',  (req:Request, res:Response)=>{
  res.json('helo0000000000000000000o')
  })
@@ -31,6 +33,7 @@ const errorMiddleware = require('./middleware/error-handler');
 app.use('/api/v1/books', booksRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', usersRouter)
+app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 

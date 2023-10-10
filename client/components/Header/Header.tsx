@@ -1,10 +1,10 @@
 import React ,{useState}from 'react'
-import {Wapper,HeaderWrapper, Logo, Nav, NavItem, Wrapper,Wrapper2,  HeaderRes,MenuIcon, NavItemDash} from './styles'
+import {Wapper,HeaderWrapper, Logo, Nav, NavItem, Wrapper,Wrapper2,  HeaderRes,MenuIcon, NavItemDash, LoginBtn} from './styles'
 import { Images } from "../../helpers/Image";
 import Link from "next/link";
 import { RxHome } from "react-icons/rx";
 import { FaNewspaper } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
+
 import {MdOutlineSpaceDashboard} from  'react-icons/md'
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -13,26 +13,26 @@ import Basket from '../Basket/Basket';
 import ShopDropdown from './ShopDropdown/ShopDropdown';
 import {searchTerm} from '../../features/searchSlice'
 import { Fade as Hamburger } from 'hamburger-react'
-import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+//import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+
 
 
 import Modal from 'react-bootstrap/Modal';
 import NavbarModal from './NavbarModal/NavbarModal';
 import SearchInput from './SearchInput/SearchInput';
-import UserIsloged from '../Ahuth/UserIsLoged/UserIsloged';
+
+import LoginDropdown from './LoginDropdown/LoginDropdown';
 
 
 
 function Header() {
-      const user=useAppSelector(((state: { user: any; })=> state.user))
-   console.log(user)
+  //     const user=useAppSelector(((state: { user: any; })=> state.user))
+   //console.log(user.token)
       const [isOpen, setOpen] = useState(false)
       const [modalshow, setModalShow] = useState(false);
  
      const handleClose = () => setModalShow(false);
      const handleShow = () => setModalShow(true);
-
-
 
   return (
       <Wapper>
@@ -52,25 +52,7 @@ function Header() {
         <NavItem>
               <FaNewspaper/><span>About us</span> 
         </NavItem>
-        {/* conditional render for dashboard ...  */}
-        {user.token && user.userRole === 'admin' &&
-         <NavItemDash >
-        <Link href='/dashboard'><MdOutlineSpaceDashboard /><span>Dashboard</span></Link> 
-        </NavItemDash> }
-        {/* conditional render for login /logout  */}
-{user.token ?
-   <NavItem className='logout'>
-   <UserIsloged />
-           
-     </NavItem>
 
-
-: 
-        <NavItem className='loginBtn'>
- <Link href='/login'><FaUser/><span>Signin {' '}/ {' '}Login</span> </Link> 
-              
-        </NavItem>
-     }
      
         </Nav>
         </Wrapper>
@@ -79,7 +61,8 @@ function Header() {
             <SearchInput />
             {/* *****************SEARCH***** */}
       <Basket res={false}/> 
-       <Basket wish={true} res={false}/>   
+       <Basket wish={true} res={false}/> 
+         <LoginBtn><LoginDropdown /></LoginBtn>
         </Wrapper2>
 
     </HeaderWrapper>

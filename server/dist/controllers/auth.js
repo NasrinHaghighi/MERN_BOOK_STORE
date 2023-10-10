@@ -16,7 +16,7 @@ const User = require('../models/user');
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield User.create(Object.assign({}, req.body));
     // console.log(user)
-    const token = user.createJWT();
+    const token = user.createJWT({ role: user.role });
     res.json({ user: {
             role: user.role,
             name: user.name
@@ -39,7 +39,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!isPasswordCorrect) {
         res.json('no password register before...');
     }
-    const token = user.createJWT();
+    const token = user.createJWT({ role: user.role });
     res.json({ user: {
             role: user.role,
             name: user.name

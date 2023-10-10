@@ -202,3 +202,8 @@ padding:10px ;
 
 
 `;
+export const LoginBtn=styled.div`
+color:${props=>props.theme.orange} !important;
+border-left:1px solid ${props=>props.theme.grayBorder}  ;
+padding-left:20px ;
+`
