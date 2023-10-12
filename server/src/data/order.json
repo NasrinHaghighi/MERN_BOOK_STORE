@@ -1,0 +1,41 @@
+[{
+
+    "name": "Still Life",
+    "price": 12.00,
+    "imageUrl": "https://www.w3schools.com/tags/img_girl.jpg",
+     "status":"Processing"
+
+},
+{
+
+    "name": "The Illustrated Story of Art : The Great Art Movements and the Paintings that Inspired them",
+    "author": "DK",
+    "price": 32.00,
+    "imageUrl": "https://www.w3schools.com/tags/img_girl.jpg"
+    ,
+ 
+    "status":"Shipped"
+    
+
+},
+{
+
+    "name": "Adobe Photoshop CC Book for Digital Photographers, The (2017 release)",
+    "author": "Scott Kelby",
+    "price": 42.00,
+    "imageUrl": "https://www.w3schools.com/tags/img_girl.jpg",
+   
+    "status":"Completed"
+},
+{
+
+    "name": "Best of The Digital Photography Book Series, The : The step-by-step secrets for how to make your photos look like the pros'!",
+    "author": "Scott Kelby",
+    "price": 36.00,
+   
+    "status":"Completed",
+    "imageUrl": "https://www.w3schools.com/tags/img_girl.jpg"
+
+}
+
+]

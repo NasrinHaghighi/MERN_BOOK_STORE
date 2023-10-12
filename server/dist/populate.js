@@ -11,7 +11,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 require('dotenv').config();
 const connectDB = require('./db/connect');
 const Books = require('./models/books');
-const jsonBooks = require('./books.json');
+const jsonBooks = require('./data/books.json');
+//const Orders=require('./models/orders')
+//const jsonOrders=require('./data/order.json')
 const connectionString = 'mongodb+srv://nasrin60:Wk1mCxwi0jjvFfsc@expressnode.phhwydj.mongodb.net/book-api?retryWrites=true&w=majority';
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -19,6 +21,8 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
         yield connectDB(connectionString);
         yield Books.deleteMany();
         yield Books.create(jsonBooks);
+        // await Orders.deleteMany()
+        // /await Orders.create(jsonOrders)
         process.exit(0);
         console.log('suuucse....');
     }

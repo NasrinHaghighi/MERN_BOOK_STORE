@@ -9,18 +9,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllusers = void 0;
-const Users = require('../models/users');
-const getAllusers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getSingleOrder = exports.getAllOrders = void 0;
+const Orders = require('../models/orders');
+const getAllOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const users = yield Users.find();
+        const orders = yield Orders.find();
         //console.log(users)
         // Return the list of users as JSON
-        res.json({ users });
+        res.json({ orders });
     }
     catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-exports.getAllusers = getAllusers;
+exports.getAllOrders = getAllOrders;
+const getSingleOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id: orderId } = req.params;
+        const book = yield Books.findOne({ _id: orderId });
+        if (!book) {
+            return res.status(404).json({ msg: `no book by id:${orderId}` });
+        }
+        res.status(200).json({ book });
+    }
+    catch (error) {
+        res.status(500).json({ msg: error });
+    }
+});
+exports.getSingleOrder = getSingleOrder;
