@@ -20,7 +20,8 @@ export const themes = {
    bachgroundColor:'#2B2B2B',
    lightRed:'#f75454',
    priceColor:"#ff0072",
-   green:"#2e7d32",
-   
-      
+   green:"#05b171",
+   hoverOrange:'#ff6e4026',
+   white:'#ffff'
+  
   };
