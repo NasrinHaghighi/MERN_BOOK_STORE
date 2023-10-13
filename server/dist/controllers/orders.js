@@ -27,11 +27,11 @@ exports.getAllOrders = getAllOrders;
 const getSingleOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id: orderId } = req.params;
-        const book = yield Books.findOne({ _id: orderId });
-        if (!book) {
-            return res.status(404).json({ msg: `no book by id:${orderId}` });
+        const order = yield Orders.findOne({ _id: orderId });
+        if (!order) {
+            return res.status(404).json({ msg: `no order by id:${orderId}` });
         }
-        res.status(200).json({ book });
+        res.status(200).json({ order });
     }
     catch (error) {
         res.status(500).json({ msg: error });

@@ -2,6 +2,7 @@
 
     "name": "Still Life",
     "price": 12.00,
+    "author": "Sarah Winman",
     "imageUrl": "https://www.w3schools.com/tags/img_girl.jpg",
      "status":"Processing"
 
@@ -13,7 +14,6 @@
     "price": 32.00,
     "imageUrl": "https://www.w3schools.com/tags/img_girl.jpg"
     ,
- 
     "status":"Shipped"
     
 

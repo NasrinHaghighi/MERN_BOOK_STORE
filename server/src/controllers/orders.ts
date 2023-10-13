@@ -19,12 +19,12 @@ export const getAllOrders =async (req: any, res: any) =>{
 export const getSingleOrder =async (req: any, res: any) =>{
     try{
         const {id:orderId}=req.params
-        const book =await Books.findOne({_id:orderId})
+        const order =await Orders.findOne({_id:orderId})
        
-        if(!book){
-            return res.status(404).json({msg:`no book by id:${orderId}`})
+        if(!order){
+            return res.status(404).json({msg:`no order by id:${orderId}`})
         }
-        res.status(200).json({book})
+        res.status(200).json({order})
     }catch(error){
         res.status(500).json({msg : error})
     }
