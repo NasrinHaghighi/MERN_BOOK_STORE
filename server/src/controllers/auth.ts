@@ -20,7 +20,7 @@ export const login =async (req: any,res: any)=>{
     res.json('eamil and pass provided')
  }
  const user =await User.findOne({email})
- console.log(user)
+ //console.log(user)
  if(!user){
     res.json('no user register before...')
  }

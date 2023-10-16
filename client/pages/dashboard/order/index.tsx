@@ -112,7 +112,9 @@ export default OrderIndex
 
 export async function getStaticProps(context: any) {
   const res = await fetch('http://localhost:4000/api/v1/orders');
-  //console.log(res.status)
+  if (!res.ok) {
+    throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
+  }
   const orders = await res.json();
 
   return {

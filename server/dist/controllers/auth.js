@@ -30,7 +30,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json('eamil and pass provided');
     }
     const user = yield User.findOne({ email });
-    console.log(user);
+    //console.log(user)
     if (!user) {
         res.json('no user register before...');
     }

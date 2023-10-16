@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSingleOrder = exports.getAllOrders = void 0;
+exports.updateOrder = exports.getSingleOrder = exports.getAllOrders = void 0;
 const Orders = require('../models/orders');
 const getAllOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -38,3 +38,21 @@ const getSingleOrder = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.getSingleOrder = getSingleOrder;
+/***udate order */
+const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id: orderId } = req.params;
+        const status = req.body;
+        console.log(status);
+        const order = yield Orders.findOneAndUpdate({ _id: orderId }, status, { new: true });
+        console.log(order);
+        if (!order) {
+            return res.status(404).json({ msg: `No order found with ID: ${orderId}` });
+        }
+        res.status(200).json({ order });
+    }
+    catch (error) {
+        res.status(500).json({ msg: error });
+    }
+});
+exports.updateOrder = updateOrder;

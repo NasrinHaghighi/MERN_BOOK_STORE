@@ -1,3 +1,4 @@
+import { Console } from "console";
 
 
 const Orders =require('../models/orders')
@@ -29,3 +30,23 @@ export const getSingleOrder =async (req: any, res: any) =>{
         res.status(500).json({msg : error})
     }
 }
+
+/***udate order */
+export const updateOrder = async (req: any, res: any) => {
+    try {
+      const { id: orderId } = req.params;
+      const status = req.body;
+    console.log(status)
+    
+     
+      const order = await Orders.findOneAndUpdate({ _id: orderId },  status, { new: true });
+   console.log(order)
+      if (!order) {
+        return res.status(404).json({ msg: `No order found with ID: ${orderId}` });
+      }
+  
+      res.status(200).json({ order });
+    } catch (error) {
+      res.status(500).json({ msg: error });
+    }
+  };

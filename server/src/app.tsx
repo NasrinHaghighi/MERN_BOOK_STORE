@@ -35,7 +35,7 @@ app.use('/api/v1/books', booksRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', usersRouter)
 app.use('/api/v1/orders', orderRouter)
-app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
+//app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 

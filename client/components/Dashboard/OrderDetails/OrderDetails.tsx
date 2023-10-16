@@ -1,22 +1,57 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 
 import {Title, Box,Num,  Tit, SubTit, Container, First, Second, Button, Status} from './styles'
 import { BsBorder } from 'react-icons/bs';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function OrderDetails({order}:any) {
+  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status.toLowerCase() )
 
-
-const updateOrder =(id:number, value:string)=>{
-console.log(id, value)
+const updateOrder = async(id:number, value:string)=>{
+  setActiveBtn(value)
+  { toast(`Status of order changed `,{
+      draggable:true,
+      position:toast.POSITION.TOP_RIGHT
+    })
+   }
+  try{
+   // const updateData = { status: value }
+    const res =await axios.patch(`http://localhost:4000/api/v1/orders/${id}`, {
+       status: value 
+    },
+    {
+      headers: {
+        "Content-Type": "application/json"
+      }}
+    )
+    console.log(res) 
+  
+}
+catch(error){
+  if(error){
+   toast('This email is aleady exists',{
+     draggable:true,
+     position:toast.POSITION.TOP_RIGHT
+   })
+  }
+}
 }
 
   
   return (
     <Box>
+        <ToastContainer draggable={false} autoClose={3000}/> 
+        <br/>
     <Title>Order No :  <Num>#{order.order._id}</Num></Title>
-    <Title>Status: <Status>{order.order.status}</Status> </Title>
+   
+    <hr/>
+    <br/>
+    <Status>Status:  </Status>
 
     {/* Status funct */}
     <Grid container spacing={2}>
@@ -24,8 +59,9 @@ console.log(id, value)
           return   <Grid item lg={3} md={6} xs={12}>  
            <Button
            onClick={()=>updateOrder(order.order._id, item.value)} 
-           className={item.value}>
+           className={`${item.value} ${activeBtn === item.value ? 'active' : ''}`}>
             {item.text}
+            
             </Button>  </Grid>
       })}
     

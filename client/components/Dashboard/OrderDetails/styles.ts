@@ -12,7 +12,7 @@ display: flex;
 flex-direction: column;
 `
 export const Title =styled.span`
-font-size: .875rem;
+font-size: 24px;
 margin-bottom: 20px;
 `
 export const Num =styled.span`
@@ -52,20 +52,30 @@ export const Button =styled.button`
 padding: 8px 15px;
 border-radius: 8px;
 border: none;
-color:${props=>props.theme.white};
+
+opacity:0.4;
+&.active{
+    opacity:1;
+}
 &.processing{
     background-color:${props=>props.theme.orange} ;
+ 
 }
 &.shipped{
     background-color:${props=>props.theme.blue2} ;
+ 
 }
 &.completed{
     background-color:${props=>props.theme.green} ;
+    
 }
 &.cancelled{
     background-color:${props=>props.theme.red} ;
+    
 }
 `
 export const Status =styled.span`
-
+font-size: 24px;
+font-weight: 600;
+margin-bottom: 15px;
 `

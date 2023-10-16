@@ -32,7 +32,7 @@ function Signup() {
  
   const router = useRouter()
   const handleRegister= async (values:Values)=>{
-console.log(values)
+//console.log(values)
    try{
      await axios.post("http://localhost:4000/api/v1/auth/register", values)
      router.push('/login')
