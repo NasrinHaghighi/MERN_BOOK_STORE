@@ -58,9 +58,13 @@ const BooksSchema = new mongoose_2.default.Schema({
         type: Date,
         default: Date.now()
     },
-    role: {
+    stock: {
         type: String,
-        default: 'read'
+        default: 'In In Stock'
+    },
+    discont: {
+        type: Number,
+        default: 0
     }
 });
 module.exports = mongoose_2.default.model('Books', BooksSchema);

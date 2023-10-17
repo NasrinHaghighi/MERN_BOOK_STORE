@@ -60,9 +60,13 @@ const BooksSchema =new mongoose.Schema({
         default:Date.now()
     }
     ,
-    role:{
+    stock:{
         type:String,
-        default:'read'
+        default:'In In Stock'
+    },
+    discont:{
+        type:Number,
+        default:0
     }
   
 })

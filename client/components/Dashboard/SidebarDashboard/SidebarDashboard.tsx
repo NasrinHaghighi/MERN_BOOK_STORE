@@ -18,7 +18,7 @@ const [activepatch, setActivePath] =useState(path)
 useEffect(() => {
   setActivePath(path)
 }, [path])
-console.log(activepatch)
+//console.log(activepatch)
   return (
     <SidbarBox>
         <RoleBox>

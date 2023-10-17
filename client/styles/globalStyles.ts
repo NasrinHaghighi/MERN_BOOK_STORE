@@ -62,7 +62,33 @@ label:focus,
 li {
   list-style: none;
 }
+input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top:-8px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
 
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top:-9px;
+        left: -1px;
+        position: relative;
+        background-color: #ffa500;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
 .css-187mznn-MuiSlider-root {
   color:#ffa500 !important;
 }
@@ -117,6 +143,8 @@ li {
 .slick-next{
   display: none !important;
 }
+
 `
+
 
 export default MyGlobalStyle;

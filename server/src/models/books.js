@@ -54,6 +54,14 @@ var BooksSchema = new mongoose_1["default"].Schema({
     createdAt: {
         type: Date,
         "default": Date.now()
+    },
+    stock: {
+        type: String,
+        "default": 'In In Stock'
+    },
+    discont: {
+        type: Number,
+        "default": 0
     }
 });
 module.exports = mongoose_1["default"].model('Books', BooksSchema);

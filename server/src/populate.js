@@ -38,14 +38,16 @@ var _this = this;
 require('dotenv').config();
 var connectDB = require('./db/connect');
 var Books = require('./models/books');
-var jsonBooks = require('./books.json');
+var jsonBooks = require('./data/books.json');
+var Orders = require('./models/orders');
+var jsonOrders = require('./data/order.json');
 var connectionString = 'mongodb+srv://nasrin60:Wk1mCxwi0jjvFfsc@expressnode.phhwydj.mongodb.net/book-api?retryWrites=true&w=majority';
 var start = function () { return __awaiter(_this, void 0, void 0, function () {
     var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                _a.trys.push([0, 4, , 5]);
+                _a.trys.push([0, 6, , 7]);
                 console.log('suuucse....');
                 return [4 /*yield*/, connectDB(connectionString)];
             case 1:
@@ -56,15 +58,21 @@ var start = function () { return __awaiter(_this, void 0, void 0, function () {
                 return [4 /*yield*/, Books.create(jsonBooks)];
             case 3:
                 _a.sent();
+                return [4 /*yield*/, Orders.deleteMany()];
+            case 4:
+                _a.sent();
+                return [4 /*yield*/, Orders.create(jsonOrders)];
+            case 5:
+                _a.sent();
                 process.exit(0);
                 console.log('suuucse....');
-                return [3 /*break*/, 5];
-            case 4:
+                return [3 /*break*/, 7];
+            case 6:
                 error_1 = _a.sent();
                 console.log(error_1);
                 process.exit(1);
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+                return [3 /*break*/, 7];
+            case 7: return [2 /*return*/];
         }
     });
 }); };

@@ -4,7 +4,7 @@ import EmptyLayout from '../../../Layout/EmptyLayout'
 
 import { DataGrid, GridColDef, GridRowId, GridValueGetterParams } from '@mui/x-data-grid';
 
-import Modal from '@mui/material/Modal';
+
 import Link from 'next/link';
 
 
@@ -29,7 +29,32 @@ const columns: GridColDef[] = [
     field: 'status',
     headerName: 'Status',
     type: 'string',
-    width: 200,
+    width:150,
+    renderCell: (params) => {
+      let cellStyle = {
+        fontWeight: 'bold',
+        color: 'black', // Default color
+      };
+  
+      switch (params.value) {
+        case 'Processing':
+          cellStyle.color = 'orange';
+          break;
+        case 'Shipped':
+          cellStyle.color = 'blue';
+          break;
+        case 'Completed':
+          cellStyle.color = 'green ';
+          break;
+        case 'Cancelled':
+          cellStyle.color = 'red';
+          break;
+        default:
+          cellStyle.color = 'black'; // Default color for other values
+      }
+  
+      return <strong style={cellStyle}>{params.value}</strong>;
+    },
   },
   {
     field: 'createdAt',
@@ -62,7 +87,9 @@ const columns: GridColDef[] = [
 
 
 
-function OrderIndex({orders, openModal }:any) {
+function OrderIndex({orders }:any) {
+//console.log(orders)
+  /*get id*/
   const modifiedOrders = orders.orders.map((order:any) => ({
     ...order,
     id: order._id,
@@ -70,23 +97,12 @@ function OrderIndex({orders, openModal }:any) {
 
 
   
-  const [open, setOpen] = React.useState(false);
- 
 
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
 
   return (
     <DashboardLayout>
 
-
-
-
-
-     
    <div style={{ height:600, width: '90%' }}>
    <DataGrid
         rows={modifiedOrders}
