@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSingleBook = exports.getAllBooks = void 0;
+exports.editBook = exports.getSingleBook = exports.getAllBooks = void 0;
 const Books = require('../models/books');
 const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { ebook, publisher, name, sort, fields, numericFilters, category, language, format, role } = req.query;
@@ -87,3 +87,29 @@ const getSingleBook = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.getSingleBook = getSingleBook;
+/***edit book */
+const editBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id: productId } = req.params;
+        const stock = req.body;
+        const discont = req.body;
+        console.log(stock, discont);
+        let updateData;
+        if (stock) {
+            updateData = stock;
+        }
+        if (discont) {
+            updateData = discont;
+        }
+        const book = yield Books.findOneAndUpdate({ _id: productId }, updateData, { new: true });
+        console.log(book);
+        if (!book) {
+            return res.status(404).json({ msg: `No order found with ID: ${productId}` });
+        }
+        res.status(200).json({ book });
+    }
+    catch (error) {
+        res.status(500).json({ msg: error });
+    }
+});
+exports.editBook = editBook;

@@ -2,7 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require('express');
 const router = express.Router();
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 const books_1 = require("../controllers/books");
 router.route('/').get(books_1.getAllBooks);
 router.route('/:id').get(books_1.getSingleBook);
+router.route('/:id').patch(jsonParser, books_1.editBook);
 module.exports = router;

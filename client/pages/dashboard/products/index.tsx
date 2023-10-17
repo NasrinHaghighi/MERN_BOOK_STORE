@@ -29,12 +29,12 @@ const columns: GridColDef[] = [
      ),
 
 },
-    { field: 'price', headerName: 'Price', width: 80 },
+    
     {
       field: 'stock',
       headerName: 'Stock',
       type: 'string',
-      width: 200,
+      width: 150,
       renderCell: (params) => {
         let cellStyle = {
           fontWeight: 'bold',
@@ -45,7 +45,7 @@ const columns: GridColDef[] = [
           case 'In Stock':
             cellStyle.color = 'green';
             break;
-          case 'Out Of stock':
+          case 'Out of Stock':
             cellStyle.color = 'red';
             break;
           default:
@@ -55,6 +55,7 @@ const columns: GridColDef[] = [
         return <strong style={cellStyle}>{params.value}</strong>;
       },
     },
+    { field: 'price', headerName: 'Initial Price', width: 100 },
     {
       field: 'discont',
       headerName: 'Discont',

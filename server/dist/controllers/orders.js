@@ -45,7 +45,7 @@ const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const status = req.body;
         console.log(status);
         const order = yield Orders.findOneAndUpdate({ _id: orderId }, status, { new: true });
-        console.log(order);
+        //console.log(order)
         if (!order) {
             return res.status(404).json({ msg: `No order found with ID: ${orderId}` });
         }

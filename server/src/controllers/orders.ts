@@ -40,7 +40,7 @@ export const updateOrder = async (req: any, res: any) => {
     
      
       const order = await Orders.findOneAndUpdate({ _id: orderId },  status, { new: true });
-   console.log(order)
+   //console.log(order)
       if (!order) {
         return res.status(404).json({ msg: `No order found with ID: ${orderId}` });
       }

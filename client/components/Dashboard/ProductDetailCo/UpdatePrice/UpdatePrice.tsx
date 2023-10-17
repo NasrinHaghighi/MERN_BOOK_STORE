@@ -4,20 +4,42 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Grid } from '@mui/material';
 
+import axios from 'axios';
 
-
-function UpdatePrice({discont, price}:any) {
+function UpdatePrice({discont, price, id}:any) {
    const[ checked, setChecked ]=useState(discont)
 
 const final=price-(price*checked)/100
-
-   const handleCheckboxChange = (lable: number) => {
+/******************change check box handeler */
+   const handleCheckboxChange = async(lable: number, id:number) => {
+   // console.log(lable, id)
    setChecked(lable)
    { toast(`Discont of product changed `,{
     draggable:true,
     position:toast.POSITION.TOP_RIGHT
   })
  }
+ try{
+
+   const res =await axios.patch(`http://localhost:4000/api/v1/books/${id}`, {
+     discont: lable 
+     },
+   {
+     headers: {
+       "Content-Type": "application/json"
+     }}
+   )
+   console.log(res) 
+ 
+}
+catch(error){
+ if(error){
+  toast('This email is aleady exists',{
+    draggable:true,
+    position:toast.POSITION.TOP_RIGHT
+  })
+ }
+}
   };
 
 
@@ -36,7 +58,7 @@ const final=price-(price*checked)/100
               type="radio"
               id={`myCheckbox-${index}`}
               checked={item.label ===  checked}
-              onChange={() => handleCheckboxChange(item.label)}
+              onChange={() => handleCheckboxChange(item.label,id)}
             />
                    </CheckBoxDiv>
                 )

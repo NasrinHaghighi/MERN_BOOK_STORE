@@ -81,6 +81,35 @@ export const getSingleBook =async (req: any, res: any) =>{
         res.status(500).json({msg : error})
     }
 }
+/***edit book */
+export const editBook = async (req: any, res: any) => {
+    try {
+      const { id: productId } = req.params;
+      const stock = req.body;
+      const discont=req.body
+console.log(stock, discont)
+      let updateData;
+ 
+if(stock ){
+    updateData = stock;
+}
+if(discont){
+    updateData = discont;
+    }
+
+    
+     
+      const book = await Books.findOneAndUpdate({ _id: productId }, updateData ,{ new: true });
+     console.log(book)
+      if (!book) {
+        return res.status(404).json({ msg: `No order found with ID: ${productId}` });
+      }
+  
+      res.status(200).json({ book });
+    } catch (error) {
+      res.status(500).json({ msg: error });
+    }
+  };
 
 
 

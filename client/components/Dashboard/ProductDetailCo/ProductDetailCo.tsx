@@ -13,7 +13,7 @@ interface Product{
 }
 
 function ProductDetailCo({product}:any) {
-    console.log(product.book)
+    //console.log(product.book)
   return (
     <Box>
  <Title>Product No :  <Num>#{product.book._id}</Num></Title>
@@ -47,9 +47,14 @@ function ProductDetailCo({product}:any) {
 <hr/>
 <br/>
 <Grid container spacing={2}>
-<Grid item lg={6} md={12}  sm={12}><UpdatePrice discont={product.book.discont} price={product.book.price}/></Grid>
+<Grid item lg={6} md={12}  sm={12}>
+  <UpdatePrice 
+  discont={product.book.discont} 
+  price={product.book.price} 
+  id={product.book._id}/>
+  </Grid>
 
-<Grid item lg={6} md={12}  sm={12}><UpdateStock stock={product.book.stock}/></Grid>
+<Grid item lg={6} md={12}  sm={12}><UpdateStock stock={product.book.stock} id={product.book._id}/></Grid>
 </Grid>
     </Box>
   )
