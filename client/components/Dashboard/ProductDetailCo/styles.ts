@@ -15,6 +15,15 @@ flex-direction: column;
 export const Title =styled.span`
 font-size: 24px;
 margin-bottom: 20px;
+
+`
+export const TitleBox =styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+@media (max-width: 1200px) {
+    flex-direction: column;
+  }
 `
 export const Num =styled.span`
 color: ${props=>props.theme.orange};
@@ -63,4 +72,23 @@ export const Span =styled.span`
 font-weight: 500;
 
 
+`
+
+/************REmove */
+export const Remove =styled.button`
+font-weight: 500;
+padding: 10px 15px;
+border: none;
+border-radius: 10px;
+background-color: ${props=>props.theme.red};
+color: ${props=>props.theme.white};
+&:hover  {
+  color: ${props=>props.theme.white};
+  }
+  &:active  {
+  color: ${props=>props.theme.white};
+  }
+  &:focus  {
+  color: ${props=>props.theme.white};
+  }
 `

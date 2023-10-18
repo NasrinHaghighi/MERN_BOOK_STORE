@@ -87,7 +87,7 @@ export const editBook = async (req: any, res: any) => {
       const { id: productId } = req.params;
       const stock = req.body;
       const discont=req.body
-console.log(stock, discont)
+//console.log(stock, discont)
       let updateData;
  
 if(stock ){
@@ -100,7 +100,7 @@ if(discont){
     
      
       const book = await Books.findOneAndUpdate({ _id: productId }, updateData ,{ new: true });
-     console.log(book)
+    // console.log(book)
       if (!book) {
         return res.status(404).json({ msg: `No order found with ID: ${productId}` });
       }
@@ -110,6 +110,22 @@ if(discont){
       res.status(500).json({ msg: error });
     }
   };
+/***delete book *********************/
+  export const deleteBook = async (req: any, res: any) => {
+    try {
+        const { id: bookId } = req.params;
+
+        const book = await Books.findOneAndDelete({ _id: bookId });
+
+        if (!book) {
+            return res.status(404).json({ msg: `No book found with ID: ${bookId}` });
+        }
+
+        res.status(200).json({ msg: "Book deleted successfully" });
+    } catch (error) {
+        res.status(500).json({ msg: error });
+    }
+};
 
 
 

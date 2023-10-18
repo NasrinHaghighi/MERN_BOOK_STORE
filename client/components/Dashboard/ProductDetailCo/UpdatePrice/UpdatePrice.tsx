@@ -21,7 +21,8 @@ const final=price-(price*checked)/100
  }
  try{
 
-   const res =await axios.patch(`http://localhost:4000/api/v1/books/${id}`, {
+   const res =await axios.patch(`http://localhost:4000/api/v1/books/${id}`,
+    {
      discont: lable 
      },
    {
@@ -33,12 +34,7 @@ const final=price-(price*checked)/100
  
 }
 catch(error){
- if(error){
-  toast('This email is aleady exists',{
-    draggable:true,
-    position:toast.POSITION.TOP_RIGHT
-  })
- }
+ console.log(error)
 }
   };
 

@@ -8,4 +8,5 @@ const books_1 = require("../controllers/books");
 router.route('/').get(books_1.getAllBooks);
 router.route('/:id').get(books_1.getSingleBook);
 router.route('/:id').patch(jsonParser, books_1.editBook);
+router.delete('/:id', books_1.deleteBook);
 module.exports = router;

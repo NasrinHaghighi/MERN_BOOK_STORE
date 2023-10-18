@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.editBook = exports.getSingleBook = exports.getAllBooks = void 0;
+exports.deleteBook = exports.editBook = exports.getSingleBook = exports.getAllBooks = void 0;
 const Books = require('../models/books');
 const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { ebook, publisher, name, sort, fields, numericFilters, category, language, format, role } = req.query;
@@ -93,7 +93,7 @@ const editBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { id: productId } = req.params;
         const stock = req.body;
         const discont = req.body;
-        console.log(stock, discont);
+        //console.log(stock, discont)
         let updateData;
         if (stock) {
             updateData = stock;
@@ -102,7 +102,7 @@ const editBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             updateData = discont;
         }
         const book = yield Books.findOneAndUpdate({ _id: productId }, updateData, { new: true });
-        console.log(book);
+        // console.log(book)
         if (!book) {
             return res.status(404).json({ msg: `No order found with ID: ${productId}` });
         }
@@ -113,3 +113,18 @@ const editBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.editBook = editBook;
+/***delete book *********************/
+const deleteBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id: bookId } = req.params;
+        const book = yield Books.findOneAndDelete({ _id: bookId });
+        if (!book) {
+            return res.status(404).json({ msg: `No book found with ID: ${bookId}` });
+        }
+        res.status(200).json({ msg: "Book deleted successfully" });
+    }
+    catch (error) {
+        res.status(500).json({ msg: error });
+    }
+});
+exports.deleteBook = deleteBook;
