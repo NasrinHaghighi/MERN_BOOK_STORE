@@ -18,13 +18,15 @@ const columns: GridColDef[] = [
     <img
       src={params.value} // Assuming `imageUrl` contains the image URL
       alt="Product Image"
-      style={{ width: '100px', height: 'auto' }}
+      style={{ width: '100px', height: '90px', borderRadius:'10px' }}
     />
   ),},
   { field: 'name', headerName: 'Name', width: 170 ,renderCell: (params) => (
     <strong>{params.value.substring(0,15)}</strong> 
   ),},
-  { field: 'price', headerName: 'Price', width: 80 },
+  { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
+    <strong >{params.value }</strong> 
+   ), },
   {
     field: 'status',
     headerName: 'Status',
@@ -103,7 +105,8 @@ function OrderIndex({orders }:any) {
   return (
     <DashboardLayout>
 
-   <div style={{ height:600, width: '90%' }}>
+   <div style={{ height:600, width: '90%', backgroundColor:'#fff', padding:40, borderRadius:10 }}>
+   
    <DataGrid
         rows={modifiedOrders}
         columns={columns}

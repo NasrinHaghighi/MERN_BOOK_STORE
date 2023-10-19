@@ -25,5 +25,9 @@ const OredrsSchema = new mongoose_2.default.Schema({
         type: String,
         required: [true, 'product name must be provided']
     },
+    username: {
+        type: String,
+        required: [true, 'product name must be provided']
+    }
 });
 module.exports = mongoose_2.default.model('Orders', OredrsSchema);

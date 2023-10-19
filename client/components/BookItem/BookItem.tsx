@@ -7,13 +7,18 @@ import Star from '../Book/Star/Star'
 import { addBook} from '../../features/bookSlice'
 import { useAppDispatch } from '../../redux/hooks'
 import {addToFavoraiteList} from '../../features/favoraiteListSlice'
+import PriceBydiscont from './PriceBydiscont/PriceBydiscont'
 
 interface ItemProps{
     item:bookType
 }
 function BookItem({item}:ItemProps) {
+console.log(item)
 
 
+const finalPrice =()=>{
+  item.price -(item.price *item.discont)/100
+}
  const dispatch=useAppDispatch()
 
  const addToCardHandel=(e:any)=>{
@@ -37,7 +42,13 @@ function BookItem({item}:ItemProps) {
          <Auth>{item.author}</Auth> 
 
 
-       <Price>${item.price} <Star star={item.rating}/></Price>
+       <Price>
+        {item.discont ?
+         <PriceBydiscont price={item.price} discont={item.discont}/> 
+         : 
+         `${item.price} $`}
+         <Star star={item.rating}/>
+         </Price>
      
        
        </MovingContent>

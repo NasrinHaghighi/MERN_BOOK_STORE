@@ -19,7 +19,7 @@ const columns: GridColDef[] = [
       <img
         src={params.value} 
         alt="Product Image"
-        style={{ width: '100px', height: 'auto' }}
+        style={{ width: '100px',  height: '90px', borderRadius:'10px'  }}
       />
     ),},
     { field: 'name', headerName: 'Name', width: 170 ,
@@ -55,20 +55,33 @@ const columns: GridColDef[] = [
         return <strong style={cellStyle}>{params.value}</strong>;
       },
     },
-    { field: 'price', headerName: 'Initial Price', width: 100 },
+    { field: 'price', headerName: 'Initial Price', width: 100,   renderCell: (params) => (
+      <strong >{params.value }</strong> 
+     ), },
     {
       field: 'discont',
       headerName: 'Discont',
       sortable: true,
-      width: 160,
+      width: 100,
        renderCell: (params) => (
-       <div>{params.value } %</div> 
+       <strong style={{color:'orange'}}>{params.value } %</strong> 
       ),
     
     },
-  
-    
     {
+      field: 'finalPrice',
+      headerName: 'Final Price',
+      width: 120,
+      renderCell: (params) => {
+       
+        const initialPrice = parseFloat(params.row.price || 0);
+        const discount = parseFloat(params.row.discont || 0);
+  
+        const finalPrice = initialPrice - (initialPrice * (discount / 100));
+  
+        return <strong style={{color:'blue'}}>{finalPrice.toFixed(2)}</strong>;       },
+    },
+     {
       field: ' ',
       headerName: 'Action',
       

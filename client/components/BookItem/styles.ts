@@ -109,7 +109,7 @@ export const Auth=styled.h4`
 
 `
 export const Price=styled.div`
- font-size:22px;
+ font-size:18px;
  font-weight:700 ;
 display:flex ;
 justify-content:space-between ;

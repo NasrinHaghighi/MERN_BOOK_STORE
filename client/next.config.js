@@ -8,6 +8,6 @@ const nextConfig = {
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['www.w3schools.com'], // Add the hostname here
+    domains: ['m.media-amazon.com','www.w3schools.com'], // Add the hostname here
   },
 };

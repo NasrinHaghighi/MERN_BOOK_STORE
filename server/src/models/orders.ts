@@ -26,6 +26,10 @@ const OredrsSchema =new mongoose.Schema({
         type:String,
         required:[true, 'product name must be provided']
     },
+    username:{
+        type:String,
+        required:[true, 'product name must be provided']
+    }
    
   
 })

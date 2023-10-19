@@ -21,6 +21,10 @@ var OredrsSchema = new mongoose_1["default"].Schema({
     status: {
         type: String,
         required: [true, 'product name must be provided']
+    },
+    username: {
+        type: String,
+        required: [true, 'product name must be provided']
     }
 });
 module.exports = mongoose_1["default"].model('Orders', OredrsSchema);

@@ -41,15 +41,15 @@ function ProductDetailCo({product}:any) {
 <br/>
 <Grid container spacing={2}>
 
-  <Grid item lg={6} md={12} sm={12}>
+  <Grid item lg={4} md={4} sm={12}>
 <PhotoDiv bg={product.book.imageUrl}>
    
 </PhotoDiv>
   </Grid>
 
-  <Grid item lg={6} md={12}  sm={12}>
+  <Grid item lg={8} md={8}  sm={12}>
 <ImageDiv>
-    <Name>{product.book.name}</Name>
+    <Name>{product.book.name.substring(0, 15)}</Name>
     <hr/>
 
     <Category>Category : <Span>{product.book.category}</Span></Category>

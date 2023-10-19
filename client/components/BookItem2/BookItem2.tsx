@@ -8,6 +8,7 @@ import Star from '../Book/Star/Star'
 import { addBook} from '../../features/bookSlice'
 import { useAppDispatch } from '../../redux/hooks'
 import {addToFavoraiteList} from '../../features/favoraiteListSlice'
+import PriceBydiscont from '../BookItem/PriceBydiscont/PriceBydiscont'
 
 
 
@@ -55,7 +56,10 @@ function BookItem2({item}:ItemProps) {
       
       <Price>
     
-        <span>{item.price} €</span>
+        <span> {item.discont ?
+         <PriceBydiscont price={item.price} discont={item.discont}/> 
+         : 
+         `${item.price} $`}</span>
         <Star star={item.rating}/>
         <Add onClick={(e)=>addToCardHandel(e)}>Add to card</Add>
        <Favoraite onClick={(e)=>addToFavoraite(e)}>Wishlist</Favoraite>

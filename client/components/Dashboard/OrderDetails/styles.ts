@@ -57,19 +57,19 @@ opacity:0.4;
 &.active{
     opacity:1;
 }
-&.processing{
+&.Processing{
     background-color:${props=>props.theme.orange} ;
  
 }
-&.shipped{
+&.Shipped{
     background-color:${props=>props.theme.blue2} ;
  
 }
-&.completed{
+&.Completed{
     background-color:${props=>props.theme.green} ;
     
 }
-&.cancelled{
+&.Cancelled{
     background-color:${props=>props.theme.red} ;
     
 }

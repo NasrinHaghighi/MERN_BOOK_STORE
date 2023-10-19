@@ -9,6 +9,9 @@ import {FaRegRectangleList, FaTruck} from 'react-icons/fa6'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
+
+
+
 function SidebarDashboard() {
 
   const router = useRouter()
@@ -18,13 +21,12 @@ const [activepatch, setActivePath] =useState(path)
 useEffect(() => {
   setActivePath(path)
 }, [path])
-//console.log(activepatch)
+console.log(activepatch)
   return (
     <SidbarBox>
         <RoleBox>
             <Photo >
-           
-            </Photo>
+           </Photo>
             <Info>
               <Name>Sara Admin</Name>
               <Role>Admin</Role>
@@ -32,10 +34,11 @@ useEffect(() => {
         </RoleBox>
         <Navbar>
           {navItem.map((item, index)=>{
+              
             return <NavItem 
             key={item.id} 
            className={activepatch === item.link ?'active' :''}
-            // onClick={()=>handelClick(index)}
+          
            >
               <Link href={item.link}>
                 <IconItem>{item.icon}</IconItem>

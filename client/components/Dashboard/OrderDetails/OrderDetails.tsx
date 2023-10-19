@@ -10,8 +10,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function OrderDetails({order}:any) {
-  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status.toLowerCase() )
-
+  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
+console.log(order)
 const updateOrder = async(id:number, value:string)=>{
   setActiveBtn(value)
   { toast(`Status of order changed `,{
@@ -59,7 +59,7 @@ catch(error){
           return   <Grid item lg={3} md={6} xs={12}>  
            <Button
            onClick={()=>updateOrder(order.order._id, item.value)} 
-           className={`${item.value} ${activeBtn === item.value ? 'active' : ''}`}>
+           className={`${item.value} ${activeBtn === item.text ? 'active' : ''}`}>
             {item.text}
             
             </Button>  </Grid>
@@ -76,7 +76,7 @@ catch(error){
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Name</Tit>
-      <SubTit>{order.order.name}</SubTit>
+      <SubTit>{order.order.username}</SubTit>
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Email</Tit>
@@ -117,8 +117,8 @@ export default OrderDetails
 
 
 const btnArr=[
-  {id:1, value:'processing' , text:'Processing'},
-  {id:2, value:'shipped' , text:'Shipped'},
-  {id:3, value:'completed' , text:'Completed'},
-  {id:4, value:'cancelled' , text:'Cancelled'},
+  {id:1, value:'Processing' , text:'Processing'},
+  {id:2, value:'Shipped' , text:'Shipped'},
+  {id:3, value:'Completed' , text:'Completed'},
+  {id:4, value:'Cancelled' , text:'Cancelled'},
 ]
