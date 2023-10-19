@@ -16,8 +16,8 @@ function PriceBydiscont({price, discont}:Props) {
     const final=price-(price*discont)/100
   return (
     <Box>
-        <div style={{display:'flex'}}><Discont>{discont}%</Discont></div>
-         <Final>{final}$</Final>
+        <div style={{display:'flex'}}><Discont>{discont}%</Discont> <Final>{final}$</Final></div>
+        
     </Box>
   )
 }

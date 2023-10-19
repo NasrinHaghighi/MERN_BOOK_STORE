@@ -6,6 +6,7 @@ import EmptyLayout from '../../Layout/EmptyLayout'
 import DashboardLayout from '../../components/Dashboard/DashboardLayout';
 import OverView from '../../components/Dashboard/OverView/OverView';
 import { useRouter } from 'next/router'; 
+import NotFound from '../../components/Notfound/NotFound';
 interface JwtPayload {
   role: string | null;
  
@@ -19,15 +20,13 @@ function DashboardIndex() {
   const decodedToken = jwt.decode(token) as JwtPayload | null;
   //console.log(decodedToken?.role)
 
-  // if (!decodedToken || decodedToken.role !== 'admin') {
-  //   router.push('/');
-  //   return null
-  // }
+  if (!decodedToken || decodedToken.role !== 'admin') {
+ 
+    return <NotFound />
+ }
 
 
-  useEffect(() => {
-    router.push('/');
-  }, [!decodedToken])
+ 
   
 
   return (

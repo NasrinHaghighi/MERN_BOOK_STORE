@@ -41,4 +41,5 @@ margin-left:10px;
 
 `
 
-export const Final=styled.div``
+export const Final=styled.div`
+margin-left:6px ;`
