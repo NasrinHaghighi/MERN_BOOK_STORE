@@ -8,17 +8,16 @@ import { addBook} from '../../features/bookSlice'
 import { useAppDispatch } from '../../redux/hooks'
 import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 import PriceBydiscont from './PriceBydiscont/PriceBydiscont'
-
+import Default from '../../public/books/20.jpg'
 interface ItemProps{
     item:bookType
 }
 function BookItem({item}:ItemProps) {
 console.log(item)
+const isExternalImage = item.imageUrl.startsWith('http');
 
 
-const finalPrice =()=>{
-  item.price -(item.price *item.discont)/100
-}
+
  const dispatch=useAppDispatch()
 
  const addToCardHandel=(e:any)=>{
@@ -35,7 +34,14 @@ const finalPrice =()=>{
   return (
     <BookItemContainer>
        <Link href={`/books/${item._id}`}>
-           <Images src={item.imageUrl} width={220} height={329}   alt="book"/>
+       {isExternalImage ? (
+        <Images src={item.imageUrl} width={220} height={329} alt="book" />
+      ) : (
+        <Images src={`${item.imageUrl}`} width={220} height={329} alt="book" />
+      )}
+
+    {/* {item.imageUrl ? 
+           <Images src={`dist/public/${item.imageUrl}`} width={220} height={329}   alt="book"/> : <Images src={Default} width={220} height={329}   alt="book"/>}  */}
            <Bottom>
            <MovingContent>
           <Tit>{item.name.length<22 ? item.name : item.name.substring(0,22)}</Tit>

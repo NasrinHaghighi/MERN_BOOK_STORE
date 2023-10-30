@@ -143,7 +143,15 @@ input[type='radio']:after {
 .slick-next{
   display: none !important;
 }
-
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #ffa500 !important;
+}
+.css-hfutr2-MuiSvgIcon-root-MuiSelect-icon {
+  color: #ffa500 !important;
+}
+.css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
+  color: #ffa500 !important;
+}
 `
 
 

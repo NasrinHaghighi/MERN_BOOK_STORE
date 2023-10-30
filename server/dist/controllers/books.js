@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteBook = exports.editBook = exports.getSingleBook = exports.getAllBooks = void 0;
+exports.createBook = exports.deleteBook = exports.editBook = exports.getSingleBook = exports.getAllBooks = void 0;
 const Books = require('../models/books');
 const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { ebook, publisher, name, sort, fields, numericFilters, category, language, format, role } = req.query;
@@ -128,3 +128,9 @@ const deleteBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.deleteBook = deleteBook;
+const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.body);
+    const newBook = yield Books.create(req.body.newbook);
+    res.status(201).json({ book: newBook });
+});
+exports.createBook = createBook;

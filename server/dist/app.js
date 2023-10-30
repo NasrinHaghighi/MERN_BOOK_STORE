@@ -15,9 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 require("dotenv").config();
 const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary').v2;
+cloudinary.config({
+    cloud_name: 'dionw7l06',
+    api_key: '454275819935523',
+    api_secret: 'JgLyP_FxKHrpvdcLGbs6IAC84t4',
+});
 require('./db/connect');
 //async error
 require('express-async-errors');
+const path = require('path');
 const app = (0, express_1.default)();
 var cors = require('cors');
 app.use(cors(
@@ -37,9 +45,11 @@ const orderRouter = require('./routes/orders');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 const { authPageMiddelwear } = require('./middleware/authPage');
+app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.json('helo0000000000000000000o');
 });
+app.use(fileUpload({ useTempFiles: true }));
 app.use('/api/v1/books', booksRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', usersRouter);
@@ -47,9 +57,9 @@ app.use('/api/v1/orders', orderRouter);
 //app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
-app.use(express_1.default.static('./public'));
-app.use('/images', express_1.default.static('images'));
-app.use(bodyParser.json());
+//app.use(express.static('dist/public'))
+app.use('/uploads', express_1.default.static(path.join(__dirname, 'dist/public/uploads')));
+//app.use('/images', express.static('images'));
 const port = process.env.PORT || 4000;
 const start = () => __awaiter(void 0, void 0, void 0, function* () {
     try {

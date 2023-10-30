@@ -60,4 +60,5 @@ const navItem =[
     {id:1, title:'Dashboard', value:'dashboard', icon:<BsBarChartFill />,link:'/dashboard'},
     {id:2, title:'Oders', value:'orders', icon:<FaRegRectangleList />, link:'/dashboard/order'},
     {id:3, title:'Products', value:'products', icon:<FaTruck />, link:'/dashboard/products'},
+    {id:4, title:'Add Product', value:'addProducts', icon:<FaTruck />, link:'/dashboard/addproduct'},
 ]

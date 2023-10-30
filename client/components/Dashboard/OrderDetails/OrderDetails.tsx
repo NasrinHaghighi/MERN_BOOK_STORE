@@ -11,7 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function OrderDetails({order}:any) {
   const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
-console.log(order)
+//console.log(order)
 const updateOrder = async(id:number, value:string)=>{
   setActiveBtn(value)
   { toast(`Status of order changed `,{

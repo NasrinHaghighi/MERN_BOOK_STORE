@@ -59,6 +59,7 @@
          "descriptin": "We're talking about the award-winning, worldwide smash hit, written by Scott Kelby, that's been translated into dozens of different languages, because it's the one book that really shows you how to take professional-quality shots using the same tricks today's top digital pros use.",
          "rating": 4.2,
          "ebook": false,
+         "publisher": "Pearson Education (US)",
          "format": "Audio Book",
          "category": "art",
          "language": "English",
@@ -72,6 +73,7 @@
 
          "name": "O QUE SOBRA",
          "author": "Principe Harry",
+         "publisher":"David and Charles",
          "price": 36.00,
          "descriptin": "Esta foi uma das imagens mais tocantes do século XX: dois jovens, dois príncipes, caminhando atrás do caixão da mãe, enquanto o mundo acompanhava os eventos com tristeza — e horror. Conforme Diana, a Princesa de Gales, era sepultada, bilhões de pesso as se perguntavam como se sentiam, e o que pensavam, os príncipes — e como a vida deles iria se desenrolar a partir daquele momento.Para Harry, esta é enfim a sua história.Com uma honestidade total e incontornável, O que sobra é um marco editorial, c heio de inspiração, revelações, introspecção e sabedoria, conquistada com muito esforço, no que diz respeito ao eterno poder do amor sobre a perda.",
          "rating": 4.5,
@@ -90,6 +92,7 @@
          "name": "In Love : A Memoir of Love and Loss",
          "author": "Amy Bloom",
          "price": 10.00,
+         "publisher":"David and Charles",
          "descriptin": "A poignant love letter to Bloom's husband and a passionate outpouring of grief, In Love reaffirms the power and value of human relationships./In January 2020, Amy Bloom travelled with her husband Brian to Switzerland, where he was helped by Dignitas to end his life while Amy sat with him and held his hand. Brian was terminally ill and for the last year of his life Amy had struggled to find a way to support his wish to take control of his death, to not submerge 'into the darkness of an expiring existence'.",
          "rating": 3.5,
          "ebook": true,
@@ -334,7 +337,6 @@
 
      }
     
-
 
 
 

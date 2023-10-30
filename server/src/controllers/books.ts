@@ -127,6 +127,12 @@ if(discont){
     }
 };
 
+export const createBook =async (req:any , res:any) =>{
+    console.log(req.body)
+    const newBook = await Books.create(req.body.newbook);
+    res.status(201).json({ book: newBook });
+}
+
 
 
 

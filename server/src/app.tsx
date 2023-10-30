@@ -3,12 +3,19 @@
 import express,{Application, Request, Response} from 'express'
 require("dotenv").config();
 const bodyParser=require('body-parser')
-
+const fileUpload =require('express-fileupload')
+const cloudinary =require('cloudinary').v2
+cloudinary.config({
+  cloud_name:'dionw7l06',
+  api_key:'454275819935523',
+  api_secret:'JgLyP_FxKHrpvdcLGbs6IAC84t4',
+})
 require('./db/connect')
 //async error
 require('express-async-errors')
-
+const path =require('path')
 const app:Application =express()
+
 var cors = require('cors');
  app.use(cors(
   //{
@@ -17,6 +24,8 @@ var cors = require('cors');
 //   credential:true
 // }
 ));
+
+
 const authenticateUser =require ('./middleware/authentication')
 const connectDB =require('./db/connect')
 const booksRouter=require('./routes/books')
@@ -27,10 +36,11 @@ const orderRouter =require('./routes/orders')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 const {authPageMiddelwear} =require('./middleware/authPage')
+app.use(bodyParser.json())
  app.get('/',  (req:Request, res:Response)=>{
  res.json('helo0000000000000000000o')
  })
-
+ app.use(fileUpload({useTempFiles:true}))
 app.use('/api/v1/books', booksRouter)
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/users', usersRouter)
@@ -39,9 +49,10 @@ app.use('/api/v1/orders', orderRouter)
 app.use(notFoundMiddleware)
 app.use(errorMiddleware)
 
-app.use(express.static('./public'))
-app.use('/images', express.static('images'));
-app.use(bodyParser.json())
+//app.use(express.static('dist/public'))
+app.use('/uploads', express.static(path.join(__dirname, 'dist/public/uploads')));
+//app.use('/images', express.static('images'));
+
 
 const port = process.env.PORT || 4000;
 const start = async () => {

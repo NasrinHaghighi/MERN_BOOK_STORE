@@ -34,7 +34,7 @@ const columns: GridColDef[] = [
       field: 'stock',
       headerName: 'Stock',
       type: 'string',
-      width: 150,
+      width: 100,
       renderCell: (params) => {
         let cellStyle = {
           fontWeight: 'bold',
@@ -71,7 +71,7 @@ const columns: GridColDef[] = [
     {
       field: 'finalPrice',
       headerName: 'Final Price',
-      width: 120,
+      width: 100,
       renderCell: (params) => {
        
         const initialPrice = parseFloat(params.row.price || 0);
@@ -105,7 +105,7 @@ function ProductsIndex({books}:any) {
 
   return (
     <DashboardLayout>
-       <div style={{ height:600, width: '90%' }}>
+       <div style={{ height:600, width: '90%', backgroundColor:'#fff', padding:40, borderRadius:10 }}>
       
  <DataGrid
         rows={books.books}
