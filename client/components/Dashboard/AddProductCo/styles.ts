@@ -9,6 +9,7 @@ padding:10px 30px 100px 30px ;
 border-radius: 10px;
 display: flex;
 flex-direction: column;
+margin-bottom: 100px;
 `
 export const Title =styled.span`
 font-size: 24px;
@@ -61,4 +62,26 @@ color: ${props=>props.theme.white};
 &:focus{
     color: ${props=>props.theme.white};  
 }
+`
+
+
+
+export const AddImgeBtn=styled.button`
+  padding: 10px 20px;
+width: 200px;
+height: 280px;
+border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-image: url('/images/placeholder.png');
+  background-size: cover; /* Adjust as needed */
+  background-repeat: no-repeat;
+  background-position: center center;
+
+`
+
+export const PreViewImage=styled.img`
+width: 180px;
+height: 280px;
+border-radius: 10px;
 `

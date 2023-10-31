@@ -19,6 +19,7 @@ interface ItemProps{
     item:bookType
 }
 function BookItem2({item}:ItemProps) {
+  console.log(item)
     const [showMore, setShowMore] = useState(false);
 
     const dispatch=useAppDispatch()
@@ -48,11 +49,11 @@ function BookItem2({item}:ItemProps) {
       <Tit>{item.name.length<30 ? item.name : item.name.substring(0,30)}</Tit>
          <Auth>{item.author}</Auth>  
        
-      <Description>
-     {item.descriptin.length <100 ?item.descriptin : showMore ?item.descriptin :item.descriptin.substring(0,200)}...
+       <Description>
+     {item.description?.length<200 ?item.description : showMore ?item.description :item.description.substring(0,200)}...
       
       <ShowMoreBtn className="btn" onClick={handelShowMore}>{showMore ? 'Show less' : 'Show more'}</ShowMoreBtn>
-      </Description>
+      </Description> 
       
       <Price>
     

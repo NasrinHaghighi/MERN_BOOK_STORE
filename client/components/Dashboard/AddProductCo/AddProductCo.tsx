@@ -1,7 +1,6 @@
-import React ,{useEffect} from 'react'
-import { Boxs, Title, Form,Submite, BtnDiv, } from './styles'
+import React ,{useEffect , useRef, useState} from 'react'
+import { Boxs, Title, Form,Submite, BtnDiv,AddImgeBtn ,PreViewImage} from './styles'
 import Grid from '@mui/material/Grid';
-import UploadImage from './UploadImage';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
@@ -9,8 +8,14 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function AddProductCo() {
+  const fileInputRef=useRef<HTMLInputElement | null>( null);
+  const [image, setImage] =useState<File | null>()
+  const [preview, setPreview] =useState<string | any>()
   const [imageValue, setImageValue] =React.useState('')
   const [bookState, setBookState] = React.useState({
     name: "",  author: "", price:"", discont:"", publisher:"", language:"",description:"", category:"", format:"", imageUrl: imageValue
@@ -27,6 +32,11 @@ const handelInput=(e: SelectChangeEvent<string> | React.ChangeEvent<HTMLInputEle
  
 }
 const handelSubmite= async()=>{
+  { toast(`A new book added `,{
+    draggable:true,
+    position:toast.POSITION.TOP_RIGHT
+  })
+ }
   try{
     // const updateData = { status: value }
      const res =await axios.post(`http://localhost:4000/api/v1/books`, {
@@ -39,14 +49,22 @@ const handelSubmite= async()=>{
      )
 
  }
+
  catch(error){
    
    }
  }
- console.log(bookState)
+ //console.log(bookState)
 const uploadImage= async(e:any)=>{
-
   const imageFile =e.target.files[0]
+  /*preview of image*/
+  
+if(imageFile){
+  setImage(imageFile)
+}else{
+  setImage(null)
+}
+ /*preview of image*/
 const formData =new FormData()
 formData.append('imageUrl', imageFile)
 
@@ -67,18 +85,40 @@ setBookState((prevState) => ({
 
 }
 }
+const handelPreview =(e:any)=>{
+e.preventDefault()
+if (fileInputRef.current) {
+  fileInputRef.current.click();
+}
+}
+useEffect(() => {
+if(image){
+const reader= new FileReader()
+reader.onload=()=>{
+setPreview(reader.result as string)
+}
+reader.readAsDataURL(image)
+}else{
+setPreview(null)
+}
+}, [image])
 
 
   return (
     <Boxs>
+         <ToastContainer draggable={false} autoClose={3000}/> 
+   
       <br />
       <Title>Add New Product</Title>
       <hr />
       <br />
         <Grid container spacing={6}>
-        <Grid item xs={12} md={12} lg={3} >
-         
-        <input type="file" accept=".jpg, .png" name='imageUrl' onChange={uploadImage} />
+        <Grid item xs={12} md={12} lg={3}  style={{textAlign:'center'}}>
+          {/* image cover */}
+        {preview ?  <PreViewImage src={preview} />:
+         <AddImgeBtn onClick={handelPreview}></AddImgeBtn>} 
+        <input type="file" accept=".jpg, .png" name='imageUrl' onChange={uploadImage} style={{display:"none"}} ref={fileInputRef}/>
+        {/* image cover */}
         </Grid>
         <Grid item xs={12} md={12} lg={9} >
           <Form>

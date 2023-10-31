@@ -61,7 +61,7 @@ export const getAllBooks =async (req: any, res: any) =>{
         result = result.select(feildList)
     }
     const page=Number(req.query.page) || 1
-    const limit=Number(req.query.limit) || 20
+    const limit=Number(req.query.limit) || 40
     const skip= (page-1) * limit
 
      result=result.skip(skip).limit(limit)
@@ -128,7 +128,7 @@ if(discont){
 };
 
 export const createBook =async (req:any , res:any) =>{
-    console.log(req.body)
+    //console.log(req.body)
     const newBook = await Books.create(req.body.newbook);
     res.status(201).json({ book: newBook });
 }

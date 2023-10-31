@@ -101,11 +101,11 @@ const columns: GridColDef[] = [
 
 function ProductsIndex({books}:any) {
      /*get id*/
-     //console.log(books.books)
+     console.log(books.books)
 
   return (
     <DashboardLayout>
-       <div style={{ height:600, width: '90%', backgroundColor:'#fff', padding:40, borderRadius:10 }}>
+       <div style={{ height:900, width: '90%', backgroundColor:'#fff', padding:40, borderRadius:10 }}>
       
  <DataGrid
         rows={books.books}
@@ -115,7 +115,7 @@ function ProductsIndex({books}:any) {
         getRowId={getRowId}
         initialState={{
           pagination: {
-            paginationModel: { page: 0, pageSize: 5 },
+            paginationModel: { page: 0, pageSize: 25 },
           },
         }}
         pageSizeOptions={[5, 10]}

@@ -5,7 +5,7 @@ imageUrl:string,
 name:string,
 author:string,
 price:number,
-descriptin:string,
+description:string,
 format:string,
 rating:number
 amount:number, 

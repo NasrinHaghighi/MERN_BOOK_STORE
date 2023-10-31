@@ -66,7 +66,7 @@ const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         result = result.select(feildList);
     }
     const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 20;
+    const limit = Number(req.query.limit) || 40;
     const skip = (page - 1) * limit;
     result = result.skip(skip).limit(limit);
     let books = yield result;
@@ -129,7 +129,7 @@ const deleteBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.deleteBook = deleteBook;
 const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body);
+    //console.log(req.body)
     const newBook = yield Books.create(req.body.newbook);
     res.status(201).json({ book: newBook });
 });

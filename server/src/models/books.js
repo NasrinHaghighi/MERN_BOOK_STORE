@@ -22,7 +22,7 @@ var BooksSchema = new mongoose_1["default"].Schema({
         type: String,
         required: [true, 'auther name must be provided']
     },
-    descriptin: {
+    description: {
         type: String,
         required: [true, 'auther name must be provided']
     },
@@ -40,11 +40,12 @@ var BooksSchema = new mongoose_1["default"].Schema({
     },
     imageUrl: {
         type: String,
-        required: [true, 'photo must be provided']
+        "default": ''
+        //required:[true, 'imageUrl must be provided']
     },
     language: {
         type: String,
-        required: [true, 'photo must be provided']
+        required: [true, 'language must be provided']
     },
     publisher: {
         type: String,
