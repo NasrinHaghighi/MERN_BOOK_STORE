@@ -7,6 +7,7 @@ export const Box =styled.section`
 border: 1px solid ${props=>props.theme.textgray};
 padding: 20px 15px;
 border-radius: 10px;
+
 `
 export const Title =styled.div`
 font-size: 20px;

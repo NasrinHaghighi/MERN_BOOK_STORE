@@ -25,14 +25,9 @@ function DashboardIndex() {
     return <NotFound />
  }
 
-
- 
-  
-
-  return (
+return (
     <>
-
-     <ProtectedRout allowedRoles={decodedToken?.role}> 
+    <ProtectedRout allowedRoles={decodedToken?.role}> 
     <DashboardLayout>
 
     <OverView />

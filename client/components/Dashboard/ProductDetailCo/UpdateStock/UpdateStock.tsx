@@ -51,7 +51,7 @@ function UpdateStock({stock, id}:any, ) {
     <br/>
     <Main>
             {arr.map((item, index) =>{
-                console.log(item.label)
+                //console.log(item.label)
                 return  (
                     <div key={index} style={{marginBottom:15}}> 
                         <label htmlFor={`myCheckbox-${index}`} style={{marginRight:10}}>{item.label}</label>

@@ -4,7 +4,7 @@ import DashboardLayout from '../../../components/Dashboard/DashboardLayout';
 import ProductDetailCo from '../../../components/Dashboard/ProductDetailCo/ProductDetailCo';
 
 import { bookType } from '../../../types/bookType'
-
+import {OrderBox} from '../../../components/Dashboard/OverView/styles'
 interface Product{
     product:bookType
 }
@@ -13,7 +13,9 @@ function ProductDetail({product}:Product) {
     console.log(product)
   return (
     <DashboardLayout>
+          <OrderBox>
            <ProductDetailCo product={product}/>
+           </OrderBox>
     </DashboardLayout>
   )
 }

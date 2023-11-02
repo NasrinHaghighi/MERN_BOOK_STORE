@@ -2,7 +2,7 @@ import React from 'react'
 import EmptyLayout from '../../../Layout/EmptyLayout';
 import DashboardLayout from '../../../components/Dashboard/DashboardLayout';
 import OrderDetails from '../../../components/Dashboard/OrderDetails/OrderDetails';
-
+import {OrderBox} from '../../../components/Dashboard/OverView/styles'
 
 
 
@@ -10,7 +10,9 @@ function OrederDetail({order}:any) {
   //console.log(order)
   return (
     <DashboardLayout>
+      <OrderBox>
        <OrderDetails order={order}/>
+       </OrderBox>
     </DashboardLayout>
   )
 }

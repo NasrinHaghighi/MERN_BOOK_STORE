@@ -10,6 +10,11 @@ border-radius: 10px;
 display: flex;
 flex-direction: column;
 margin-bottom: 100px;
+margin-top: 150px;
+@media (max-width:1400px) {
+ margin: 0 auto;
+ margin-top: 50px;
+}
 `
 export const Title =styled.span`
 font-size: 24px;

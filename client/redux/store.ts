@@ -14,6 +14,7 @@ import limitNumberSlice from '../features/limitNumberSlice';
 import FavoraiteListSlice from '../features/favoraiteListSlice'
 import UserSlice from '../features/userSlice'
 import storage from 'redux-persist/lib/storage'
+import dashboardSideSlice from '../features/dashboardSideSlice';
 
 import {
   persistReducer,
@@ -44,7 +45,8 @@ const reducer =combineReducers({
   search:searchSlice,
   limitNumber:limitNumberSlice,
   favoriteList:FavoraiteListSlice,
-  user:UserSlice
+  user:UserSlice, 
+  dashboardSideStatus:dashboardSideSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer);

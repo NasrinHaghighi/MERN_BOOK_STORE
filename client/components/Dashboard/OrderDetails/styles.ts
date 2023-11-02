@@ -10,6 +10,10 @@ padding:10px 30px  ;
 border-radius: 10px;
 display: flex;
 flex-direction: column;
+@media (max-width:1400px) {
+    width:80%;
+margin: 0 auto;
+  }
 `
 export const Title =styled.span`
 font-size: 24px;
@@ -17,6 +21,9 @@ margin-bottom: 20px;
 `
 export const Num =styled.span`
 color: ${props=>props.theme.orange};
+@media (max-width:600px) {
+font-size: 14px;
+  }
 `
 
 /************ */
@@ -45,6 +52,9 @@ margin: 15px 0;
 export const Second=styled.div`
 font-size: 20px;
 margin: 15px 0;
+@media (max-width:600px) {
+font-size: 14px;
+  }
 `
 
 /***********Button */

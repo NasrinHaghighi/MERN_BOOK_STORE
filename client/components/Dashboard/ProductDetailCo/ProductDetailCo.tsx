@@ -41,13 +41,13 @@ function ProductDetailCo({product}:any) {
 <br/>
 <Grid container spacing={2}>
 
-  <Grid item lg={4} md={4} sm={12}>
+  <Grid item lg={4} md={4} sm={12} sx={{margin:'auto'}}>
 <PhotoDiv bg={product.book.imageUrl}>
    
 </PhotoDiv>
   </Grid>
 
-  <Grid item lg={8} md={8}  sm={12}>
+  <Grid item lg={8} md={8}  sm={12} sx={{margin:'auto'}}>
 <ImageDiv>
     <Name>{product.book.name.substring(0, 15)}</Name>
     <hr/>
@@ -74,7 +74,9 @@ function ProductDetailCo({product}:any) {
   id={product.book._id}/>
   </Grid>
 
-<Grid item lg={6} md={12}  sm={12}><UpdateStock stock={product.book.stock} id={product.book._id}/></Grid>
+<Grid item lg={6} md={12} sm={12}>
+  <UpdateStock stock={product.book.stock} id={product.book._id}/>
+  </Grid>
 </Grid>
     </Box>
   )

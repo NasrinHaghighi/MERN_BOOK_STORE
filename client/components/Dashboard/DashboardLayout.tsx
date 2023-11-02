@@ -12,12 +12,13 @@ const  DashboardLayout: React.FC<LayoutProps> =(props) =>{
   return (
     <>
     <DashboardHeader />
+   
     <Box>
     <SidebarDashboard />
-    <main className="sections-wrapper-landing">
+   <main className="sections-wrapper-landing">
     {props.children}
     
-    </main>
+    </main> 
     </Box>
        </>
   )

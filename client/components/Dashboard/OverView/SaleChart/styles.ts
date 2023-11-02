@@ -20,11 +20,14 @@ height: 300px;
 `
 export const PieBox =styled.div`
 width: 300px; /* Set the width of the container */
-  height: 300px; 
-  @media (max-width: 1200px) {
-  
-   margin: 0 auto;
+height: 300px; 
+  @media (max-width: 1300px) {
+  margin: 0 auto;
    margin-top: 15px;
+   width: 250px;
+  }
+  @media (max-width: 500px) {
+width: 250px;
   }
 
 `

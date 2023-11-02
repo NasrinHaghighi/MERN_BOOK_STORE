@@ -10,6 +10,10 @@ padding:10px 30px  ;
 border-radius: 10px;
 display: flex;
 flex-direction: column;
+@media (max-width:1400px) {
+    width:80%;
+margin: 0 auto;
+  }
 
 `
 export const Title =styled.span`
@@ -31,7 +35,7 @@ color: ${props=>props.theme.orange};
 /************image div */
 
 export const ImageDiv =styled.div`
-border: 1px solid ${props=>props.theme.textgray};
+
 padding: 10px 15px;
 border-radius: 10px;
 text-align: center;
@@ -42,7 +46,6 @@ interface PhotoDivProps {
   }
 export const PhotoDiv =styled.div<PhotoDivProps>`
 
-border: 1px solid ${props=>props.theme.textgray};
 padding: 10px 15px;
 border-radius: 10px;
 text-align: center;
@@ -51,6 +54,13 @@ background-image: url(${props => props.bg});
   background-repeat: no-repeat;
   background-position: center; 
   height: 295px;
+  @media (max-width:900px) {
+ width: 150px;
+ height: 200px;
+margin: 0 auto;
+
+  }
+
 
 `
 
