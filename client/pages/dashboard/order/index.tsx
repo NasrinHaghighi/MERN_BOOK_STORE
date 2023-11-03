@@ -254,14 +254,14 @@ const columnsSmall: GridColDef[] = [
     <span>{params.value.substring(0,5)}</span> 
   ), },
 
-  { field: 'name', headerName: 'Name', width: 130 ,renderCell: (params) => (
+  { field: 'name', headerName: 'Name', width: 120 ,renderCell: (params) => (
     <strong>{params.value.substring(0,15)}</strong> 
   ),},
   {
     field: 'status',
     headerName: 'Status',
     type: 'string',
-    width:150,
+    width:120,
     renderCell: (params) => {
       let cellStyle = {
         fontWeight: 'bold',
@@ -295,7 +295,7 @@ const columnsSmall: GridColDef[] = [
     field: ' ',
     headerName: 'Action',
     sortable: true,
-    width: 50,
+    width: 30,
     renderCell: (params) => (
       <Link 
       style={{cursor:'pointer'}}

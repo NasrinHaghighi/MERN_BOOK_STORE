@@ -15,7 +15,7 @@ export const OrderBox =styled.div`
 padding: 30px 0;
 
 @media (max-width:1400px) {
-    width:80%;
+    width:95%;
     margin: 0 auto;
 
   }
@@ -27,10 +27,11 @@ export const Title =styled.h5`
 margin-bottom: 35px;
 `
 export const Tabel =styled.div`
+
   height:600;
-  width: 95%;
+  width: 100%;
  background-color: #fff;
- @media (max-width:900px) {
+ @media (max-width:1000px) {
  display: none;
 
   }
@@ -38,9 +39,10 @@ export const Tabel =styled.div`
 `
 export const TabelRes =styled.div`
   height:600;
+  width: 100%;
  background-color: #fff;
  display: none;
- @media (min-width: 600px) and (max-width: 900px){
+ @media (min-width: 700px) and (max-width: 1000px){
 
   display: block;
   }
@@ -48,9 +50,10 @@ export const TabelRes =styled.div`
 `
 export const TabelSmall =styled.div`
   height:600;
+  width: 100%;
  background-color: #fff;
  display: none;
- @media (max-width:600px) {
+ @media (max-width:700px) {
   display: block;
 
   }

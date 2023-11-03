@@ -10,7 +10,7 @@ border-radius: 10px;
 display: flex;
 flex-direction: column;
 margin-bottom: 100px;
-margin-top: 150px;
+margin-top: 30px;
 @media (max-width:1400px) {
  margin: 0 auto;
  margin-top: 50px;
@@ -83,10 +83,13 @@ border-radius: 10px;
   background-repeat: no-repeat;
   background-position: center center;
 
+
+
 `
 
 export const PreViewImage=styled.img`
 width: 180px;
 height: 280px;
 border-radius: 10px;
+
 `
