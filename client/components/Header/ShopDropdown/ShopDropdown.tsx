@@ -2,7 +2,7 @@ import React ,{useState}from 'react'
 import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from 'next/link';
-import {DropDownMenuShop,DropdownSS,  DropDownToggle, DropdownItem,Top, Bottom, Off, Shop, ImageDiv, First, Second, Third, Fourth} from './styles'
+import {DropDownMenuShop,DropdownSS,  DropDownToggle, DropdownItem,Top, Bottom, Off, Shop, ImageDiv, First, Second, Third, Fourth, CateGoryTit} from './styles'
 
 import {Images} from '../../../helpers/Image'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
@@ -29,29 +29,38 @@ const dispatch=useAppDispatch()
 
     <DropDownMenuShop show={show}>
         <Top>
-            <First>
-                <DropdownItem onClick={()=>handelScroll('featuers')}><Link href='/#feat'>Features</Link></DropdownItem>
+            <First> <ul>
+            <CateGoryTit>Section</CateGoryTit>
+              <hr/>
+                <DropdownItem onClick={()=>{handelScroll('featuers');setShow(false); }}><Link href='/#feat'>Features</Link></DropdownItem>
 
 
                 <DropdownItem href="/" 
-                onClick={()=>handelScroll('audio')}
+                onClick={()=>{handelScroll('audio');setShow(false) }}
                 ><Link href='/#audio'>Aduio</Link></DropdownItem>
 
                 <DropdownItem href="/"
-                onClick={()=>handelScroll('timeline')}><Link href='/#timeline'>TimeLine</Link></DropdownItem>
+                onClick={()=>{handelScroll('timeline');setShow(false)}}><Link href='/#timeline'>TimeLine</Link></DropdownItem>
+                  </ul>
             </First>
            
             <Second>
               <ul>
-                
+              <CateGoryTit>Category</CateGoryTit>
+              <hr/>
+              <DropdownItem  onClick={()=>setShow(false) }><Link href='/books'>Art</Link></DropdownItem>
+              <DropdownItem onClick={()=>setShow(false) }><Link href='/books'>Biography</Link></DropdownItem>
+              <DropdownItem onClick={()=>setShow(false) }><Link href='/books'>Children Books</Link></DropdownItem>
+              <DropdownItem onClick={()=>setShow(false) }><Link href='/books'> Craft & Hobbies</Link></DropdownItem>
+              <DropdownItem onClick={()=>setShow(false) }><Link href='/books'>Romance</Link></DropdownItem>
               </ul>
             </Second>
-            <Third>3</Third>
+            <Third></Third>
             <Fourth>
             <Images src='/books/23.jpg' width={200} height={250}   alt="book"/>
             </Fourth>
         </Top>
-        <Bottom>
+        {/* <Bottom>
             <ImageDiv>
         <Images src='/images/drop.png' width={600} height={200}   alt="book"/></ImageDiv>
         <Off>
@@ -60,7 +69,7 @@ const dispatch=useAppDispatch()
             <Shop>Shop Now</Shop>
         </Off>
 
-        </Bottom>
+        </Bottom> */}
    
 
       {/* <Dropdown.Item href="#">Another action</Dropdown.Item>

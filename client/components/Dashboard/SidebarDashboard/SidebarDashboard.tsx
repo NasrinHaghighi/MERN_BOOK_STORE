@@ -28,7 +28,7 @@ const dashboardStatus =useAppSelector(state=>state.dashboardSideStatus.dashboard
 const router = useRouter()
 const path=router.pathname
 const [activepatch, setActivePath] =useState(path)
-const [show, setShow] = useState(false);
+
 
 useEffect(() => {
   if (path.startsWith('/dashboard/order/')){

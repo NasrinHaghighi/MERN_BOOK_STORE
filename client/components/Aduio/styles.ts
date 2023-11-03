@@ -79,11 +79,14 @@ export const Container = styled.div`
 height:150vh ;
 padding:50px 0 ;
 margin-bottom:200px;
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     margin-bottom:500px;
   }
 @media (max-width: 700px) {
     margin-bottom:700px;
+  }
+  @media (max-width:500px) {
+    margin-bottom:200px;
   }
 `
 export const InnerContainer = styled.div`
@@ -91,8 +94,9 @@ max-width:1720px ;
 margin:0 auto ;
 display:flex ;
 justify-content:space-between ;
+
 align-items:center ;
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     flex-direction: column;
     
   }
@@ -100,9 +104,14 @@ align-items:center ;
 
 
 export const Anim = styled.div`
-background-color: red;
+
 width:100% ;
 position:relative ;
+@media (max-width: 1300px) {
+
+  margin-top: 80px;
+    
+  }
 @media (max-width: 700px) {
   margin-right: 130px;
   margin-top: 50px;
@@ -129,6 +138,7 @@ opacity:0 ;
 }
 
 @media (max-width:700px) {
+   
     &.enter{
     animation: ${FadInTabletRes} 1s forwards;
 }
@@ -136,7 +146,9 @@ opacity:0 ;
     animation: ${FadoutTabletRes} 1s forwards;
 }
   }
-
+  @media (max-width:500px) {
+    display: none;
+  }
 `
 export const Phone=styled.div`
 position:absolute ;
@@ -157,6 +169,10 @@ top: 118px;
 &.exit{
     animation: ${Fadout2Res} 2s forwards;
 }
+
+  }
+  @media (max-width:500px) {
+    display: none;
   }
 `
 

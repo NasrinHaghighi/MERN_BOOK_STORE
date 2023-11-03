@@ -15,7 +15,7 @@ import FavoraiteListSlice from '../features/favoraiteListSlice'
 import UserSlice from '../features/userSlice'
 import storage from 'redux-persist/lib/storage'
 import dashboardSideSlice from '../features/dashboardSideSlice';
-
+import homeModalStateSlice  from '../features/homeModalSlice'
 import {
   persistReducer,
   FLUSH,
@@ -46,7 +46,8 @@ const reducer =combineReducers({
   limitNumber:limitNumberSlice,
   favoriteList:FavoraiteListSlice,
   user:UserSlice, 
-  dashboardSideStatus:dashboardSideSlice
+  dashboardSideStatus:dashboardSideSlice,
+  homeModalState: homeModalStateSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer);

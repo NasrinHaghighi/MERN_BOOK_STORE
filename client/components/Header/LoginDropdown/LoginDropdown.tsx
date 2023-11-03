@@ -8,7 +8,8 @@ import { userLogout } from '../../../features/userSlice';
 
 import jwt from 'jsonwebtoken';
 
-function LoginDropdown() {
+
+function LoginDropdown({modal}:any) {
 
 
   const dispatch=useAppDispatch()
@@ -38,11 +39,11 @@ function LoginDropdown() {
       </DropDownToggle> 
 
 {!user.token ? 
-      <DropDownMenu show={show}>
-        <DropDownItem href="/login">Login</DropDownItem>
+      <DropDownMenu show={show} modal={modal}>
+        <DropDownItem href="/login" onClick={() => setShow(false)}>Login</DropDownItem>
       </DropDownMenu>
 :    
-<DropDownMenu show={show}>
+<DropDownMenu show={show} modal='modal'>
 <DropDownItem >Hi, <span>{user.signinUser}</span></DropDownItem>
 
 {/* dashboard link is just user by admin role */}
@@ -62,22 +63,4 @@ function LoginDropdown() {
 
 export default LoginDropdown
 
-        {/* conditional render for dashboard ...  */}
-        {/* {user.token && user.userRole === 'admin' &&
-         <NavItemDash >
-        <Link href='/dashboard'><MdOutlineSpaceDashboard /><span>Dashboard</span></Link> 
-        </NavItemDash> } */}
-        {/* conditional render for login /logout  */}
-{/* {user.token ?
-   <NavItem className='logout'>
-   <UserIsloged />
-           
-     </NavItem>
-
-
-: 
-        <NavItem className='loginBtn'>
- <Link href='/login'><FaUser/><span>Signin {' '}/ {' '}Login</span> </Link> 
-              
-        </NavItem>
-     } */}
+    

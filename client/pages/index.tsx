@@ -11,7 +11,7 @@ import Aduio from "../components/Aduio/Aduio";
 import Discount from '../components/Landing/Discount/Discount'
 import MovingBanner from "../components/Landing/MovingBanner/MovingBanner";
 
-import handleViewport from 'react-in-viewport';
+
 
 import { inject } from '@vercel/analytics';
 
@@ -22,12 +22,12 @@ const Home: NextPage = () => {
   return (
     <>
      <Slider />
-    <CategorySectio />
+    <CategorySectio /> 
     
      <Features id='feat'/> 
     {/* <Discount id='discont'/> */}
     <MovingBanner />
-    <Aduio id='audio'/>
+    <Aduio id='audio'/> 
     <ReactVerticalTimelineComponentTests  id='timeline'/> 
 
     </>

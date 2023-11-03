@@ -23,8 +23,9 @@ display:none ;
 
 export const DropDownMenu = styled(Dropdown.Menu)<{
     show: boolean;
+    modal:any
      }>`
-transform: translate(00px, 30px) !important; 
+transform: ${props => (props.modal ? 'translateX(-40px) translateY(30px)' : 'translateX(0px) translateY(30px)')} !important;
 display:${props=>props.show ? 'block' : 'none'};
 font-size: 18px;
 `
@@ -34,7 +35,7 @@ export const DropDownItem = styled(Dropdown.Item)<{
  text-align: center;
  color:${props=>props.color ? 'orange' :' '} ;
  & >span{
-    color:${props=>props.theme.green};
+    color:${(props)=>props.theme.green};
    font-style: italic;
    font-weight: 700;
  }

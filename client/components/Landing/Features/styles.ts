@@ -15,8 +15,8 @@ display: none;
 
 export const Flex=styled.div`
   max-width: 1920px;
-    margin:0 auto ;
-    padding:0 0px ;
+  margin:100px auto ;
+    padding:0 80px ;
 
 &>h2{
     font-weight:700 ;

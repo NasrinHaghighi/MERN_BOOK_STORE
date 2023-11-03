@@ -1,13 +1,19 @@
 import styled from 'styled-components'
+
+
+
+
 export const Conatiner=styled.div`
 max-width: 100%;
  margin:0 auto ;
 `
 export const InnerConatiner=styled.div`
   max-width: 1920px;
-    margin:50px auto ;
-    padding:0 50px ;
-
+    margin:100px auto ;
+    padding:0 80px ;
+    @media (max-width: 700px) {
+        padding:0 20px ;
+  }
 
 `
 export const Title=styled.div`
@@ -31,6 +37,7 @@ export const Top=styled.div`
     display:flex ;
     justify-content:space-between ;
     align-items:center ;
+    margin-bottom: 50PX;
     @media (max-width: 900px) {
     flex-direction: column;
   }
@@ -47,44 +54,55 @@ export const ViewAll=styled.div`
 `
 export const Content=styled.div`
 display: grid;
-grid-template-columns: repeat(5, 1fr);
+
+grid-template-columns: repeat(4, 1fr);
 grid-template-rows: 1fr;
 grid-column-gap: 50px;
-grid-row-gap: 0px;
-@media (max-width: 1400px) {
-    display: grid;
-grid-template-columns: repeat(4, 1fr);
-grid-template-rows: repeat(1, 1fr);
-grid-column-gap: 0px;
 grid-row-gap: 30px;
-justify-items: center;
-  align-items: center;
-  }  
-   @media (max-width: 1200px) {
-    display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(2, 1fr);
-grid-column-gap: 0px;
-grid-row-gap: 30px;
-justify-items: center;
-  align-items: center;
 
-  } 
-  @media (max-width: 1200px) {
-  .grid-item:nth-child(4),
-  .grid-item:nth-child(5) {
-    grid-column: span 2; /* Span 2 columns */
+  & > :nth-child(4) {
+    @media (max-width: 1400px) and (min-width: 1100px) {
+      grid-column: 2 / span 3;
+    }
   }
-}
-  
-  @media (max-width: 900px) {
-    display: grid;
+@media (max-width: 1400px) {
+  grid-template-columns: repeat(3, 1fr);
+grid-template-rows: 2fr;
+  }
+  @media (max-width: 1100px) {
     grid-template-columns: 1fr;
+grid-template-rows: repeat(4, 1fr);
+align-items: center;
+  justify-items: center;
+  & > :nth-child(1),
+  & > :nth-child(4) {
+    grid-column-gap: 20px;
+    grid-column: 1 / span 2; /* Span 2 columns (across two columns) */
   }
+  }
+  @media (max-width: 900px) {
+
+    grid-template-columns: 1fr;
+    & > :nth-child(1),
+  & > :nth-child(4) {
+    grid-column-gap: 20px;
+    grid-column: 1 / span 1; /* Span 2 columns (across two columns) */
+  }
+  }
+
+ 
+ 
+ 
+
+ 
+
+  
+ 
+
 
 `
 export const CategoryItem=styled.div`
-  width:250px ;
+  width:300px ;
   height:200px ;
   text-align:center ;
   border-radius:8px ;

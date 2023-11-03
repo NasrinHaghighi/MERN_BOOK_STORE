@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Container,InnerConatiner, TitleDiv,SubTitle, Div, Photo, SS} from './styles'
+import {Container,InnerConatiner, TitleDiv,SubTitle, Div, Photo, SS, BookCover} from './styles'
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import 'react-vertical-timeline-component/style.min.css';
 import { Books } from "../../constants/MOCK_DATA";
@@ -51,7 +51,8 @@ export default class ReactVerticalTimelineComponentTests extends React.Component
                         <Div>
                         <h3 className="vertical-timeline-element-title">{item.title}</h3>
                         <SubTitle >{item.author}</SubTitle>
-                        <Images src={item.image} width={200} height={300}   alt="book"/>
+                        <BookCover img={item.image}></BookCover>
+                        {/* <Images src={item.image} width={200} height={300}   alt="book"/> */}
                         </Div>
                         <Photo className={index%2 ==0 ? 'odd' : 'even'}>
                         <Images src={item.face} width={100} height={100}   alt="book"/>

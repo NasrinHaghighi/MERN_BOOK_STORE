@@ -1,33 +1,58 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import {Container, BasketBox} from './styles'
 import {NavItem} from '../styles'
 import Link from "next/link";
 import { RxHome } from "react-icons/rx";
 import { FaNewspaper } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
-
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import Basket from '../../Basket/Basket';
-function NavbarModal() {
-  return (
+import LoginDropdown from '../LoginDropdown/LoginDropdown';
+import Modal from 'react-bootstrap/Modal';
+import {closeModald} from '../../../features/homeModalSlice'
+
+
+
+
+function NavbarModal() { 
+      const dispatch=useAppDispatch()
+      const homeModalStatus =useAppSelector(state=>state.homeModalState.homeModalStatus)
+      const [show, setShow] = useState(homeModalStatus);
+     
+ const handelCloseModald=()=>{
+      setShow(false)
+      dispatch(closeModald()) 
+ }     
+      
+  
+
+return (
+      <Modal show={homeModalStatus} 
+      onHide={handelCloseModald}
+      //className={homeModalStatus ? 'show' : 'notShow'}
+      >
     <Container>
-       
-        <NavItem>
+       <NavItem onClick={handelCloseModald}>
               <RxHome /><Link href='/'><span>Home</span></Link> 
         </NavItem>
         <br/>
-        <NavItem>
+        <NavItem onClick={handelCloseModald}>
              <Link href='/books'>
             Shop
               </Link> 
         </NavItem>
         <br/>
-        <NavItem>
-              <FaNewspaper/><span>About us</span> 
+        <NavItem onClick={handelCloseModald}>
+        <Link href='/books'>
+        <FaNewspaper/><span>About us</span> 
+              </Link> 
+             
         </NavItem>
         <br/>
-        <NavItem className='loginBtn'><Link href='/signin'>
-              <FaUser/><span>Signin {' '}/ {' '}Login</span> </Link>
+        <NavItem > 
+            <LoginDropdown modal='modal'/>
         </NavItem>
+     
         <br/>
         <br/>
         <BasketBox wish={true}>
@@ -36,6 +61,7 @@ function NavbarModal() {
         <br/><Basket wish={true} res={true}/>
         </BasketBox>
     </Container>
+    </Modal>
   )
 }
 

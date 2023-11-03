@@ -10,9 +10,11 @@ max-width: 100%;
 
 export const InnerConatiner=styled.div`
 max-width: 1520px;
- margin:0 auto ;
- padding:30px 50px ;
- 
+margin:100px auto ;
+    padding:0 80px ;
+    @media (max-width: 700px) {
+        padding:0 20px ;
+  }
 
 `
 export const TitleDiv=styled.div`
@@ -58,14 +60,31 @@ right:0 ;
 &.odd{
 left:0 ;
 }
-
-
+}
+@media (max-width:900px) {
+display: none;
 }
 `
 export const SS=styled(VerticalTimelineElement)`
 
-@media (max-width: 700px) {
+@media (max-width: 1200px) {
     font-size: 10px;
+  }
+
+`
+export const BookCover=styled.div<{
+    img:string}
+>`
+margin:0 auto;
+width:300px;
+height:350px;
+background-image: url(${(props) => props.img});
+background-size: cover;
+background-position: center;
+border-radius:10px;
+@media (max-width: 700px) {
+    width:180px;
+height:200px;
   }
 
 `

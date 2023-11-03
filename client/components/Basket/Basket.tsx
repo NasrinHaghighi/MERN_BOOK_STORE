@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Images } from "../../helpers/Image";
 import {MdFavorite} from 'react-icons/md'
 import Link from 'next/link';
-
+import {closeModald} from '../../features/homeModalSlice'
 
 function Basket({wish,res}:any) {
 
@@ -18,7 +18,11 @@ function Basket({wish,res}:any) {
      const books=useAppSelector(state=>state.books.books)
     const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
 
-
+    const handelCloseModald=()=>{
+      setShow(false)
+      dispatch(closeModald()) 
+ }     
+     
   return (
     <>
     <BasketbBox>
@@ -59,7 +63,7 @@ function Basket({wish,res}:any) {
         
         <Bottom>
           
-      <Card><Link href={wish ? '/wish' :'/card'}>{wish ? 'Show wish list' : 'Show Card'}</Link></Card>
+      <Card onClick={handelCloseModald}><Link href={wish ? '/wish' :'/card'}>{wish ? 'Show wish list' : 'Show Card'}</Link></Card>
         </Bottom>
       </DropDownMenu>
     </Dropdown>

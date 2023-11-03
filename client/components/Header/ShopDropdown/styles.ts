@@ -81,6 +81,7 @@ padding: 20px ;
 export const DropdownItem = styled(Dropdown.Item)`
 font-size:18px ;
 font-weight:700 ;
+padding: 10px 5px;
 `
    export const First=styled.div`
 display:flex ;
@@ -90,7 +91,7 @@ justify-content:space-between ;
   
    `
     export const Second=styled.div`
-   
+ 
    
     `
      export const Third=styled.div`
@@ -104,4 +105,9 @@ justify-content:space-between ;
     transform:scale(1.1) ;
  }
      
+`
+
+export const CateGoryTit=styled.p`
+      
+      
       `

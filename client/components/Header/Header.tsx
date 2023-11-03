@@ -14,7 +14,7 @@ import ShopDropdown from './ShopDropdown/ShopDropdown';
 import {searchTerm} from '../../features/searchSlice'
 import { Fade as Hamburger } from 'hamburger-react'
 //import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-
+import logo  from '../../public/images/logo.jpg'
 
 
 import Modal from 'react-bootstrap/Modal';
@@ -22,24 +22,34 @@ import NavbarModal from './NavbarModal/NavbarModal';
 import SearchInput from './SearchInput/SearchInput';
 
 import LoginDropdown from './LoginDropdown/LoginDropdown';
-
-
-
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import {homeModalStatusRedux} from '../../features/homeModalSlice'
+import {closeModald} from '../../features/homeModalSlice'
 function Header() {
-  //     const user=useAppSelector(((state: { user: any; })=> state.user))
-   //console.log(user.token)
-      const [isOpen, setOpen] = useState(false)
-      const [modalshow, setModalShow] = useState(false);
+  const dispatch=useAppDispatch()
+  const homeModalStatus =useAppSelector(state=>state.homeModalState.homeModalStatus)
+
+ const [isOpen, setOpen] = useState(homeModalStatus)
+console.log(`isOpen +${isOpen} +homeModalStatus +${homeModalStatus}`)
+
+
+ const handelModal=()=>{
+ dispatch(homeModalStatusRedux())
+
+ }
+    //   const [modalshow, setModalShow] = useState(false);
  
-     const handleClose = () => setModalShow(false);
-     const handleShow = () => setModalShow(true);
+    //  const handleClose = () => setModalShow(false);
+    //  const handleShow = () => setModalShow(true);
 
   return (
       <Wapper>
   
     <HeaderWrapper>
         <Wrapper>
-        <Logo>logo</Logo>
+        <Logo>
+        <Images src={logo} width={150} height={100}   alt="book"/>  
+        </Logo>
         <Nav>
         <NavItem>
               <RxHome /><Link href='/'><span>Home</span></Link> 
@@ -67,13 +77,15 @@ function Header() {
 
     </HeaderWrapper>
     <HeaderRes>
-    <Logo>logo</Logo>
-    <MenuIcon  onClick={handleShow}>
-      <Hamburger color="#ffa500" toggled={isOpen} toggle={setOpen} />
-      </MenuIcon>
-      <Modal show={modalshow} onHide={handleClose}>
-        <NavbarModal />
-      </Modal>
+    <Logo>
+     <Images src={logo} width={150} height={100}   alt="book"/>  
+    </Logo>
+     <MenuIcon  onClick={handelModal}>
+      <Hamburger color="#ffa500" toggled={isOpen} />
+      </MenuIcon>  
+ 
+        <NavbarModal/>
+     
     </HeaderRes>
     </Wapper>
   )
