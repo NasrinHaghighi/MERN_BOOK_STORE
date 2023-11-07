@@ -8,8 +8,7 @@ function index() {
   return (
     <BooksConatiner>
         <InnerConatiner>
-           
-            <Category /> 
+           <Category /> 
            <Main />
         </InnerConatiner>
     </BooksConatiner>

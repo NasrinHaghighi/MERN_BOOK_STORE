@@ -103,7 +103,7 @@ grid-row-gap:0px !important;
 `
 export const NameRes=styled.span`
 color:${props=>props.theme. graytext} ;
-font-weight: 700;
+font-weight: 600;
 font-size: 20px;
 display: flex;
  

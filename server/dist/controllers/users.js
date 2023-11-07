@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllusers = void 0;
+exports.createUserCard = exports.getAllusers = void 0;
 const Users = require('../models/users');
 const getAllusers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -24,3 +24,7 @@ const getAllusers = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.getAllusers = getAllusers;
+const createUserCard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log('create card for user...');
+});
+exports.createUserCard = createUserCard;

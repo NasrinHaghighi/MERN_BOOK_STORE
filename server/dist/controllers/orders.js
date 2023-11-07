@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOrder = exports.getSingleOrder = exports.getAllOrders = void 0;
+exports.createOrder = exports.updateOrder = exports.getSingleOrder = exports.getAllOrders = void 0;
 const Orders = require('../models/orders');
+const Book = require('../models/books');
+const User = require('../models/user');
 const getAllOrders = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const orders = yield Orders.find();
-        //console.log(users)
-        // Return the list of users as JSON
         res.json({ orders });
     }
     catch (error) {
@@ -56,3 +56,26 @@ const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
 });
 exports.updateOrder = updateOrder;
+const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { userId, orderedBook, signinUser } = req.body;
+        console.log(userId, orderedBook, signinUser);
+        const user = yield User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        //Create the order
+        const order = {
+            userId,
+            orderedBook,
+            signinUser,
+            status: 'processing'
+        };
+        const newOrder = yield Orders.create(order);
+        res.status(201).json({ orders: newOrder });
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+exports.createOrder = createOrder;

@@ -1,43 +1,5 @@
-[{
+[
 
-    "name": "Still Life",
-    "username":"Sara Two",
-    "price": 12.00,
-    "author": "Sarah Winman",
-    "imageUrl": "https://m.media-amazon.com/images/I/91AfkgyV1kL._SY466_.jpg",
-     "status":"Processing"
 
-},
-{
-
-    "name": "The Illustrated Story of Art : The Great Art Movements and the Paintings that Inspired them",
-    "username":"Maria Two",
-    "author": "DK",
-    "price": 32.00,
-    "imageUrl": "https://m.media-amazon.com/images/I/61tuixetyrL._SX342_SY445_.jpg"
-    ,
-    "status":"Shipped"
-    
-
-},
-{
-  
-    "name": "Adobe Photoshop CC Book for Digital Photographers, The (2017 release)",
-    "author": "Scott Kelby",
-    "price": 42.00,
-    "username":"Joa Two",
-    "status":"Completed",
-    "imageUrl": "https://m.media-amazon.com/images/I/51vEnpVGn5L._SX342_SY445_.jpg"
-},
-{
-
-    "name": "Best of The Digital Photography Book Series, The : The step-by-step secrets for how to make your photos look like the pros'!",
-    "author": "Scott Kelby",
-    "price": 36.00,
-    "username":"Ali Two",
-    "status":"Completed",
-    "imageUrl": "https://m.media-amazon.com/images/I/71w5BNDYxLL._SY466_.jpg"
-
-}
 
 ]

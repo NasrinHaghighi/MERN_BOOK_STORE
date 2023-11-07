@@ -11,5 +11,4 @@ rating:number
 amount:number, 
 stock:string,
 discont:number
-
 }

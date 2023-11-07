@@ -11,14 +11,23 @@ import Link from 'next/link';
 
 
 
-function OrderIndex({orders }:any) {
-//console.log(orders)
-  /*get id*/
-  const modifiedOrders = orders.orders.map((order:any) => ({
-    ...order,
-    id: order._id,
-  }));
 
+
+function OrderIndex({orders }:any) {
+console.log(orders.orders)
+  /*get id*/
+
+  const formattedData = orders.orders.map((order:any) => ({
+    id: order._id, // Unique identifier for each row
+    userId: order.userId,
+    status: order.status,
+    signinUser: order.signinUser,
+    imageUrl:order.orderedBook.imageUrl,
+    price:order.orderedBook.price,
+   bookName:order.orderedBook.name,
+   createdAt:order.orderedBook.createdAt,
+    
+  }));
 
 
   return (
@@ -26,9 +35,9 @@ function OrderIndex({orders }:any) {
        <OrderBox>
 <Title>Orders</Title>
 {/* first table */}
-    <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
-    <DataGridS
-    rows={modifiedOrders}
+     <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
+     <DataGridS
+    rows={formattedData}
     columns={columns}
     rowHeight={130}
     margin-bottom={100}
@@ -40,13 +49,13 @@ function OrderIndex({orders }:any) {
     }}
     pageSizeOptions={[5, 10]}
     checkboxSelection
-  />
+  /> 
     
-    </Tabel>
+    </Tabel> 
 {/* second table */}
     <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
-    rows={modifiedOrders}
+    rows={formattedData}
     columns={columnsRes}
     rowHeight={130}
     margin-bottom={100}
@@ -61,11 +70,11 @@ function OrderIndex({orders }:any) {
   />
 
 
-    </TabelRes>
+    </TabelRes> 
 {/* third table */}
-    <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+     <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
-    rows={modifiedOrders}
+    rows={formattedData}
     columns={columnsSmall}
     rowHeight={130}
     margin-bottom={100}
@@ -78,17 +87,13 @@ function OrderIndex({orders }:any) {
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall>
+    </TabelSmall> 
     </OrderBox>  
     </DashboardLayout>
   )
 }
 OrderIndex.layout = EmptyLayout;
 export default OrderIndex
-
-
-
-
 
 
 export async function getStaticProps(context: any) {
@@ -110,23 +115,22 @@ export async function getStaticProps(context: any) {
 /* reduce clumn depend of screen size*/
 /*this for biger 900 */
 const columns: GridColDef[] = [
-  { field: '_id', headerName: 'ID', width: 70,renderCell: (params) => (
-    <span>{params.value.substring(0,5)}</span> 
-  ), },
-  { field: 'imageUrl', headerName: 'Image', width: 170 ,  sortable: false,   renderCell: (params) => (
+  { field: 'id', headerName: 'ID', width: 70, },
+  { field: 'signinUser', headerName: 'User', width: 90, },
+   { field: 'imageUrl', headerName: 'Image', width: 170 ,  sortable: false,   renderCell: (params) => (
     <img
       src={params.value} // Assuming `imageUrl` contains the image URL
-      alt="Product Image"
-      style={{ width: '100px', height: '90px', borderRadius:'10px' }}
+    alt="Product Image"
+       style={{ width: '100px', height: '90px', borderRadius:'10px' }}
     />
   ),},
-  { field: 'name', headerName: 'Name', width: 170 ,renderCell: (params) => (
+  { field: 'bookName', headerName: 'Name', width: 170 ,renderCell: (params) => (
     <strong>{params.value.substring(0,15)}</strong> 
-  ),},
-  { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
-    <strong >{params.value }</strong> 
+ ),},
+    { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
+     <strong >{params.value }</strong> 
    ), },
-  {
+{
     field: 'status',
     headerName: 'Status',
     type: 'string',
@@ -138,16 +142,16 @@ const columns: GridColDef[] = [
       };
   
       switch (params.value) {
-        case 'Processing':
+        case 'procssing':
           cellStyle.color = 'orange';
           break;
-        case 'Shipped':
+        case 'shipped':
           cellStyle.color = 'blue';
           break;
-        case 'Completed':
+        case 'completed':
           cellStyle.color = 'green ';
           break;
-        case 'Cancelled':
+        case 'cancelled':
           cellStyle.color = 'red';
           break;
         default:
@@ -183,9 +187,8 @@ const columns: GridColDef[] = [
 ];
 /*this for 900-600 */
 const columnsRes: GridColDef[] = [
-  { field: '_id', headerName: 'ID', width: 70,renderCell: (params) => (
-    <span>{params.value.substring(0,5)}</span> 
-  ), },
+  { field: '_id', headerName: 'ID', width: 70 },
+  { field: 'signinUser', headerName: 'User', width: 90, },
   { field: 'imageUrl', headerName: 'Image', width: 120 ,  sortable: false,   renderCell: (params) => (
     <img
       src={params.value} // Assuming `imageUrl` contains the image URL
@@ -193,9 +196,9 @@ const columnsRes: GridColDef[] = [
       style={{ width: '50px', height: '90px', borderRadius:'10px' }}
     />
   ),},
-  { field: 'name', headerName: 'Name', width: 170 ,renderCell: (params) => (
+  { field: 'bookName', headerName: 'Name', width: 170 ,renderCell: (params) => (
     <strong>{params.value.substring(0,15)}</strong> 
-  ),},
+ ),},
   // { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
   //   <strong >{params.value }</strong> 
   //  ), },
@@ -211,16 +214,16 @@ const columnsRes: GridColDef[] = [
       };
   
       switch (params.value) {
-        case 'Processing':
+        case 'procssing':
           cellStyle.color = 'orange';
           break;
-        case 'Shipped':
+        case 'shipped':
           cellStyle.color = 'blue';
           break;
-        case 'Completed':
+        case 'completed':
           cellStyle.color = 'green ';
           break;
-        case 'Cancelled':
+        case 'cancelled':
           cellStyle.color = 'red';
           break;
         default:
@@ -250,13 +253,9 @@ const columnsRes: GridColDef[] = [
 
 /*this for less than600 */
 const columnsSmall: GridColDef[] = [
-  { field: '_id', headerName: 'ID', width: 70,renderCell: (params) => (
-    <span>{params.value.substring(0,5)}</span> 
-  ), },
-
-  { field: 'name', headerName: 'Name', width: 120 ,renderCell: (params) => (
-    <strong>{params.value.substring(0,15)}</strong> 
-  ),},
+  
+  { field: 'id', headerName: 'ID', width: 100, },
+  { field: 'signinUser', headerName: 'User', width: 120, },
   {
     field: 'status',
     headerName: 'Status',
@@ -269,16 +268,16 @@ const columnsSmall: GridColDef[] = [
       };
   
       switch (params.value) {
-        case 'Processing':
+        case 'procssing':
           cellStyle.color = 'orange';
           break;
-        case 'Shipped':
+        case 'shipped':
           cellStyle.color = 'blue';
           break;
-        case 'Completed':
+        case 'completed':
           cellStyle.color = 'green ';
           break;
-        case 'Cancelled':
+        case 'cancelled':
           cellStyle.color = 'red';
           break;
         default:
@@ -305,3 +304,31 @@ const columnsSmall: GridColDef[] = [
     ),},
   
 ];
+
+
+
+
+
+
+
+
+
+  // const rows = modifiedOrders.flatMap((order:any) =>
+  // order.booksList.map((book:any, index:number) => ({
+  //   id: `${order._id}-${book._id}`, // Unique identifier for each row
+  //   orderId: order._id,
+  //   signinUser: order.signinUser,
+  //   status: order.status,
+  //   bookName: book.name,
+  //   amount: book.amount,
+  //   imageUrl:book.imageUrl,
+  //   price:book.price,
+  //   createdAt:book.createdAt,
+  // }))
+  // );
+
+
+  // const modifiedOrders = orders.orders.map((order:any) => ({
+  //   ...order,
+  //   oid: order._id,
+  // }));

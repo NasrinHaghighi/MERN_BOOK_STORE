@@ -22,6 +22,7 @@ function LoginDropdown({modal}:any) {
     dispatch(userLogout())
     localStorage.removeItem('name')
     localStorage.removeItem('token')
+    localStorage.removeItem('books')
    }
 
 

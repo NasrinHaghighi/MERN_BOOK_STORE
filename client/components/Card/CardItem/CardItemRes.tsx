@@ -14,7 +14,7 @@ interface Item{
   }
 
 
-function CardItemRes({item ,index}:Item) {
+function CardItemRes({item}:Item ,{index}:any) {
     const [newAmount, setNewAmount] =useState<number>(item.amount)
     const dispatch=useAppDispatch()
 
@@ -44,7 +44,7 @@ function CardItemRes({item ,index}:Item) {
        
         </BookPhotoRes>
        <Info>
-       <NameRes><div>{item.name}</div><Trash onClick={()=>handledelet()}><FaTrashAlt /></Trash></NameRes>
+       <NameRes><div>{item.name.length>30 ?item.name.substring(0,30): item.name}</div><Trash onClick={()=>handledelet()}><FaTrashAlt /></Trash></NameRes>
        <PriceRes><PriceSapn>Price</PriceSapn><span>{item.price},00 €</span></PriceRes>
        <AmountDiv><PriceSapn>Amount</PriceSapn>
        <Amount type="number" min="1" max='10'  value={newAmount} onChange={(e)=>newAmountHandel(e)}/></AmountDiv>

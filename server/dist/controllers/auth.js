@@ -42,7 +42,8 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const token = user.createJWT({ role: user.role });
     res.json({ user: {
             role: user.role,
-            name: user.name
+            name: user.name,
+            id: user._id
         },
         token });
 });

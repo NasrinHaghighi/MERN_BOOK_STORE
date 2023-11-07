@@ -15,3 +15,6 @@ export const getAllusers =async (req: any, res: any) =>{
     res.status(500).json({ error: 'Internal Server Error' });
   }
 }
+export const createUserCard =async (req: any, res: any) =>{
+ console.log('create card for user...')
+}

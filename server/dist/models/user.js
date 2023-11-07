@@ -36,7 +36,39 @@ const UserSchema = new mongoose_2.default.Schema({
     role: {
         type: String,
         default: 'user'
-    }
+    },
+    booksList: [
+        {
+            _id: {
+                type: String,
+                required: true,
+                // type: mongoose.Schema.Types.ObjectId,
+                // ref: 'Book', // Reference to the Book model if you have one
+                // required: true, 
+            },
+            amount: {
+                type: Number,
+                required: true,
+                default: 1, // You can adjust the default as needed
+            },
+            name: {
+                type: String,
+                required: [true, 'product name must be provided']
+            },
+            price: {
+                type: Number,
+                required: [true, 'product price name must be provided']
+            },
+            imageUrl: {
+                type: String,
+                required: [true, 'photo must be provided']
+            },
+            createdAt: {
+                type: Date,
+                default: Date.now()
+            }
+        },
+    ],
 });
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {

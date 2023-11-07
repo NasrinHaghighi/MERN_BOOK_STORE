@@ -32,7 +32,8 @@ export const login =async (req: any,res: any)=>{
  const token= user.createJWT({ role: user.role })
  res.json({user:{
 role:user.role,
-name:user.name
+name:user.name, 
+id:user._id
 }, 
 token})
 }

@@ -5,29 +5,47 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_2 = __importDefault(require("mongoose"));
 const OredrsSchema = new mongoose_2.default.Schema({
-    name: {
+    signinUser: {
         type: String,
-        required: [true, 'product name must be provided']
+        required: [true, 'user id is requaer...']
     },
-    price: {
-        type: Number,
-        required: [true, 'product price name must be provided']
-    },
-    imageUrl: {
+    userId: {
         type: String,
-        required: [true, 'photo must be provided']
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now()
+        required: [true, 'user id is requaer...']
     },
     status: {
         type: String,
-        required: [true, 'product name must be provided']
+        required: [true, 'status...']
     },
-    username: {
-        type: String,
-        required: [true, 'product name must be provided']
-    }
+    orderedBook: {
+        _id: {
+            type: String,
+            required: true,
+            // type: mongoose.Schema.Types.ObjectId,
+            // ref: 'Book', // Reference to the Book model if you have one
+            // required: true, 
+        },
+        amount: {
+            type: Number,
+            required: true,
+            default: 1, // You can adjust the default as needed
+        },
+        name: {
+            type: String,
+            required: [true, 'product name must be provided']
+        },
+        price: {
+            type: Number,
+            required: [true, 'product price name must be provided']
+        },
+        imageUrl: {
+            type: String,
+            required: [true, 'photo must be provided']
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now()
+        }
+    },
 });
 module.exports = mongoose_2.default.model('Orders', OredrsSchema);

@@ -18,5 +18,6 @@ var UsersSchema = new mongoose_1["default"].Schema({
         type: String,
         required: [true, 'product name must be provided']
     },
+    
 });
 module.exports = mongoose_1["default"].model('Users', UsersSchema);
