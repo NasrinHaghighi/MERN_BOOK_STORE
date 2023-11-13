@@ -5,25 +5,44 @@ import {Images} from '../../helpers/Image'
 import Link from 'next/link'
 import Star from '../Book/Star/Star'
 import { addBook} from '../../features/bookSlice'
-import { useAppDispatch } from '../../redux/hooks'
+import { useAppDispatch ,useAppSelector} from '../../redux/hooks'
 import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 import PriceBydiscont from './PriceBydiscont/PriceBydiscont'
-import Default from '../../public/books/20.jpg'
+
+import axios from 'axios'
+
+
 interface ItemProps{
     item:bookType
 }
+
+
+
+
+
 function BookItem({item}:ItemProps) {
-console.log(item)
+const userId=useAppSelector((state)=>state.user.userId)
+
 const isExternalImage = item.imageUrl.startsWith('http');
 
 
 
  const dispatch=useAppDispatch()
 
- const addToCardHandel=(e:any)=>{
+ const addToCardHandel=async(e:any)=>{
     
     e.stopPropagation()
-    dispatch(addBook(item))
+    //dispatch(addBook(item))
+    if(!userId){
+   console.log('please login')
+     }else{
+      try{
+       let res = await axios.post("http://localhost:4000/api/v1/auth/updateuser", {userId, item })
+      
+      
+       }catch(error){}
+     }
+    
     
   }
 

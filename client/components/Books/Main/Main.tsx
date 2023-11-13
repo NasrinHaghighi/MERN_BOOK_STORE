@@ -95,7 +95,7 @@ useEffect(() => {
       setLoading(false)
 }, [])
 
-console.log(data)
+
 useEffect(() => {
   setLoading(true)
 const m=checkSort(sortby)

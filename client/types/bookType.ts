@@ -1,3 +1,8 @@
+
+
+
+
+
 export interface bookType{
 book(book: any): unknown
 _id:string,
@@ -9,6 +14,6 @@ description:string,
 format:string,
 rating:number
 amount:number, 
-stock:string,
-discont:number
+stock?:string,
+discont?:number
 }

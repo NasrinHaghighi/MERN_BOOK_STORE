@@ -23,6 +23,8 @@ function LoginDropdown({modal}:any) {
     localStorage.removeItem('name')
     localStorage.removeItem('token')
     localStorage.removeItem('books')
+    localStorage.removeItem('id')
+    localStorage.removeItem('role')
    }
 
 

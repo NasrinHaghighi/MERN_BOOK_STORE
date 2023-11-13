@@ -65,7 +65,8 @@ function Signup() {
         name: '',
         email: '',
         password:'', 
-        role:'khar'
+        role:'user', 
+        booksList:[]
       }}
       validationSchema={SignupSchema}
       onSubmit={async (values) => {

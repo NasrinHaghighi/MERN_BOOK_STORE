@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
+
 interface Values{
   email:string, 
   password:string
@@ -26,23 +27,32 @@ const SignupSchema = Yup.object().shape({
   .required('Password is invalid'),
   email: Yup.string().required('Email is invalid'),
 });
+
+
+
 function Signin() {
+
+
   const dispatch=useAppDispatch()
   const router = useRouter()
+ const userbookList =useAppSelector((state)=>state.books.books)
+ //console.log(userbookList)
   const handleSignin= async (values:Values)=>{
-
+const fullValues={...values, userbookList}
   try{
     let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
-    console.log(res)
-const signinUser=res.data.user.name
- const token=res.data.token
- const userRole=res.data.user.role
-const userId=res.data.user.id
+    console.log('Response from server:', res);
+ const signinUser=res.data.user.name
+  const token=res.data.token
+  const userRole=res.data.user.role
+ const userId=res.data.user.id
 localStorage.setItem('token', token)
  localStorage.setItem('name', signinUser)
  localStorage.setItem('role', userRole)
  localStorage.setItem('id', userId)
-  dispatch(userLogin({signinUser, token, userRole, userId}))
+
+
+  dispatch(userLogin({signinUser, token, userRole, userId, userbookList}))
 
   if(token){
     toast('Login Succced',{
@@ -78,16 +88,11 @@ localStorage.setItem('token', token)
      <Formik
       initialValues={{
         email: '',
-        password:''
+        password:'',
+       
       }}
       validationSchema={SignupSchema}
-      onSubmit={async (values) => {
-        //console.log(values)
-        await new Promise((r) => setTimeout(r, 500));
-        
-        handleSignin(values)
-        
-      }}
+      onSubmit={(values) =>handleSignin(values)}
     >
         {({ errors, touched }) => (
       <FormF>

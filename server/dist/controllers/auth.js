@@ -9,15 +9,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.login = exports.register = void 0;
+exports.getOneUser = exports.updateUserByBook = exports.login = exports.register = void 0;
 const User = require('../models/user');
 //const {StatusCodes} =require('http-status-codes')
 //const {BadRequestError} = require('../errors')
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield User.create(Object.assign({}, req.body));
-    // console.log(user)
+    console.log(user);
     const token = user.createJWT({ role: user.role });
-    res.json({ user: {
+    return res.json({ user: {
             role: user.role,
             name: user.name
         },
@@ -29,23 +29,42 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!email || !password) {
         res.json('eamil and pass provided');
     }
-    const user = yield User.findOne({ email });
-    //console.log(user)
+    let user = yield User.findOne({ email: email });
     if (!user) {
         res.json('no user register before...');
     }
     //check password//
-    const isPasswordCorrect = yield user.comperPassword(password);
+    const isPasswordCorrect = yield user.comparePassword(password);
+    console.log(isPasswordCorrect);
     if (!isPasswordCorrect) {
-        res.json('no password register before...');
+        return res.status(401).json({ error: 'Invalid credentials......' });
     }
+    console.log(user);
     const token = user.createJWT({ role: user.role });
-    res.json({ user: {
-            role: user.role,
+    res.status(200).json({ token, user: {
             name: user.name,
-            id: user._id
-        },
-        token });
+            role: user.role,
+            id: user._id,
+            books: user.booksList
+        } });
 });
 exports.login = login;
-// {user:{name:user.name},
+const updateUserByBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { userId: id, item } = req.body;
+    let user = yield User.findOne({ _id: id });
+    // Check if the item is already in the booksList
+    if (!user.booksList.includes(item)) {
+        // If not, add it to the booksList
+        user.booksList.push(item);
+        // Save the updated user
+        user = yield user.save();
+    }
+    res.status(200).json({ user });
+});
+exports.updateUserByBook = updateUserByBook;
+const getOneUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    let user = yield User.findOne({ _id: id });
+    res.status(200).json({ user });
+});
+exports.getOneUser = getOneUser;

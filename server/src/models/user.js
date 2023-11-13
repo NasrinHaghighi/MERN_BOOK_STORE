@@ -59,8 +59,53 @@ var UserSchema = new mongoose_1["default"].Schema({
     },
     role: {
         type: String,
-        "default": 'user' // You can set a default role if needed
-    }
+        "default": 'user'
+    },
+    booksList: [
+        {
+            _id: {
+                required: true,
+                type: mongoose_1["default"].Schema.Types.ObjectId
+            },
+            amount: {
+                type: Number,
+                required: true,
+                "default": 1
+            },
+            name: {
+                type: String,
+                required: [true, 'product name must be provided']
+            },
+            price: {
+                type: Number,
+                required: [true, 'product price name must be provided']
+            },
+            imageUrl: {
+                type: String,
+                required: [true, 'photo must be provided']
+            },
+            createdAt: {
+                type: Date,
+                "default": Date.now()
+            },
+            ebook: {
+                type: Boolean,
+                required: [true, 'ebook must be provided']
+            },
+            rating: {
+                type: String,
+                required: [true, 'rating must be provided']
+            },
+            author: {
+                type: String,
+                required: [true, 'author must be provided']
+            },
+            description: {
+                type: String,
+                required: [true, 'author must be provided']
+            }
+        },
+    ]
 });
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function () {
@@ -83,7 +128,7 @@ UserSchema.pre('save', function (next) {
 UserSchema.methods.createJWT = function () {
     return jwt.sign({ userId: this._id, name: this.name, role: this.role }, 'sssss', { expiresIn: '30d' });
 };
-UserSchema.methods.comperPassword = function (candidatePassword) {
+UserSchema.methods.comparePassword = function (candidatePassword) {
     return __awaiter(this, void 0, void 0, function () {
         var isMatch;
         return __generator(this, function (_a) {

@@ -1,27 +1,58 @@
-import React,{useEffect, useState} from 'react'
-import { FaShoppingCart } from "react-icons/fa";
-import {BasketbBox,BasketContainer, ShopIcon,ShopItems,DropDownToggle,DropDownMenu, DropDownItem, ItemContainer,Title, Trash, Right, Bottom,  Card, EmptyCard} from './styles'
+import React,{ useEffect, useState} from 'react'
+
+import {BasketbBox,BasketContainer, ShopIcon,ShopItems,DropDownToggle,DropDownMenu, ItemContainer,Title, Trash, Right, Bottom,  Card} from './styles'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
 import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Images } from "../../helpers/Image";
 import {MdFavorite} from 'react-icons/md'
+import { FaShoppingCart } from "react-icons/fa";
 import Link from 'next/link';
 import {closeModald} from '../../features/homeModalSlice'
+import axios from 'axios';
 
-function Basket({wish,res}:any) {
+
+  function Basket({wish,res}:any) {
 
 
     const dispatch=useAppDispatch()
     const [show, setShow] = useState(false);
-     const books=useAppSelector(state=>state.books.books)
+    const [userData, setUserData] = useState<any>(null);
+    const userId =useAppSelector((state)=>state.user.userId)
+    /*local strorage*/
+    let books=useAppSelector(state=>state.books.books)
+ 
     const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
 
-    const handelCloseModald=()=>{
+ /*get one user....*/
+ const fetchUserData = async () => {
+try{
+let res =await fetch(`http://localhost:4000/api/v1/auth/${userId}`)
+if (res.ok) {
+  const userData = await res.json(); // Await the Promise
+      setUserData(userData.user)
+}else{
+  console.log('user');
+}
+}catch(err){
+  console.log(err)
+}
+};
+
+useEffect(() => {
+  fetchUserData()
+}, [userId])
+
+
+const handelCloseModald=()=>{
       setShow(false)
       dispatch(closeModald()) 
- }     
+ }   
+ 
+ 
+
+
      
   return (
     <>
@@ -36,7 +67,7 @@ function Basket({wish,res}:any) {
       <DropDownToggle variant="success" id="dropdown-basic">
       
       <ShopIcon>{wish ? <MdFavorite/> : <FaShoppingCart />}</ShopIcon>
-      <ShopItems wish={wish}>{wish ? wishBooks.length :books.length}</ShopItems>
+      <ShopItems wish={wish}>{(wish ? wishBooks.length  : books.length)}</ShopItems>
       </DropDownToggle>
 
       <DropDownMenu show={show} res={res}>

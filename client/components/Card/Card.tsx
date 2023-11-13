@@ -37,7 +37,7 @@ const createOrder= async()=>{
       );
   
       if (response.status === 200) {
-        console.log(response)
+       // console.log(response)
       } else {
         // Handle an error response from the server
       }

@@ -8,6 +8,6 @@ import {getAllusers, createUserCard} from '../controllers/users'
 
 
 router.route('/').get(getAllusers)
-router.route('/:id').patch(jsonParser,createUserCard)
+//router.route('/:id').patch(jsonParser,createUserCard)
 
 module.exports = router ;

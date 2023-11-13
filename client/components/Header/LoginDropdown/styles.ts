@@ -25,7 +25,7 @@ export const DropDownMenu = styled(Dropdown.Menu)<{
     show: boolean;
     modal:any
      }>`
-transform: ${props => (props.modal ? 'translateX(-40px) translateY(30px)' : 'translateX(0px) translateY(30px)')} !important;
+transform: ${props => (props.modal ? 'translateX(-30px) translateY(30px)' : 'translateX(30px) translateY(30px)')} !important;
 display:${props=>props.show ? 'block' : 'none'};
 font-size: 18px;
 `

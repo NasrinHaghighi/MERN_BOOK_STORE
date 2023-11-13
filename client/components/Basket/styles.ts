@@ -18,7 +18,10 @@ font-size:18px ;
  /* border-left:1px solid ${props=>props.theme.grayBorder}  ;  */
 
 `
+export const ShopIcon = styled.div`
+color:${props=>props.theme.orange} !important;
 
+`
 export const ShopItems = styled.div<{
   wish: boolean;
 }>`
@@ -29,10 +32,9 @@ border-radius: 10px;
     font-size:11px;
     margin-right:15px ;
 `
-export const ShopIcon = styled.div`
-color:${props=>props.theme.orange} !important;
 
-`
+
+
 export const DropDownToggle = styled(Dropdown.Toggle)`
   background-color: transparent !important;
  border:none !important ;

@@ -40,9 +40,8 @@ const UserSchema = new mongoose_2.default.Schema({
     booksList: [
         {
             _id: {
-                type: String,
                 required: true,
-                // type: mongoose.Schema.Types.ObjectId,
+                type: mongoose_2.default.Schema.Types.ObjectId,
                 // ref: 'Book', // Reference to the Book model if you have one
                 // required: true, 
             },
@@ -66,6 +65,22 @@ const UserSchema = new mongoose_2.default.Schema({
             createdAt: {
                 type: Date,
                 default: Date.now()
+            },
+            ebook: {
+                type: Boolean,
+                required: [true, 'ebook must be provided']
+            },
+            rating: {
+                type: String,
+                required: [true, 'rating must be provided']
+            },
+            author: {
+                type: String,
+                required: [true, 'author must be provided']
+            },
+            description: {
+                type: String,
+                required: [true, 'author must be provided']
             }
         },
     ],
@@ -80,7 +95,7 @@ UserSchema.pre('save', function (next) {
 UserSchema.methods.createJWT = function () {
     return jwt.sign({ userId: this._id, name: this.name, role: this.role }, 'sssss', { expiresIn: '30d' });
 };
-UserSchema.methods.comperPassword = function (candidatePassword) {
+UserSchema.methods.comparePassword = function (candidatePassword) {
     return __awaiter(this, void 0, void 0, function* () {
         const isMatch = yield bcrypt.compare(candidatePassword, this.password);
         return isMatch;
