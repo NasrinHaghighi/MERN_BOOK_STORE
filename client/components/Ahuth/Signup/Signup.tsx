@@ -14,7 +14,7 @@ interface Values{
   name:string,
   email:string, 
   password:string, 
-  role:string
+ 
 }
 
 const SignupSchema = Yup.object().shape({
@@ -65,8 +65,8 @@ function Signup() {
         name: '',
         email: '',
         password:'', 
-        role:'user', 
-        booksList:[]
+      
+      
       }}
       validationSchema={SignupSchema}
       onSubmit={async (values) => {

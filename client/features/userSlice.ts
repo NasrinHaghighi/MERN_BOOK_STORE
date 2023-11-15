@@ -17,33 +17,31 @@ interface Book{
 }
 interface Props{
     signinUser:string,
-    token:string,
+  
     userRole:string,
      userId:string,
-     userbookList:Book[] | null; 
+     
  }
 const initialState:Props ={
-    signinUser:'', token:'', userRole:'', userId:'', userbookList:[] 
+    signinUser:'',userRole:'', userId:'', 
 }
-
 export const UserSlice= createSlice({
     name:'User',
     initialState,
     reducers:{
         userLogin:(state, action:PayloadAction<Props>)=>{
         state.signinUser=action.payload.signinUser
-        state.token=action.payload.token
+        
         state.userRole=action.payload.userRole
         state.userId=action.payload.userId
-      
-        state.userbookList =action.payload.userbookList
+     
         },
        userLogout:(state)=>{
         state.signinUser = '';
-        state.token = '';
+       
         state.userRole = '';
         state.userId = '';
-        state.userbookList=[]
+     
             },
         
  

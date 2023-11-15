@@ -10,7 +10,8 @@ import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 import PriceBydiscont from './PriceBydiscont/PriceBydiscont'
 
 import axios from 'axios'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 interface ItemProps{
     item:bookType
@@ -34,11 +35,12 @@ const isExternalImage = item.imageUrl.startsWith('http');
     e.stopPropagation()
     //dispatch(addBook(item))
     if(!userId){
-   console.log('please login')
+      
+      alert('please do login...')
      }else{
       try{
        let res = await axios.post("http://localhost:4000/api/v1/auth/updateuser", {userId, item })
-      
+       //dispatch(addBook(item))
       
        }catch(error){}
      }
@@ -51,7 +53,10 @@ const isExternalImage = item.imageUrl.startsWith('http');
    dispatch(addToFavoraiteList(item))
   }
   return (
+    <>
+   
     <BookItemContainer>
+    
        <Link href={`/books/${item._id}`}>
        {isExternalImage ? (
         <Images src={item.imageUrl} width={220} height={329} alt="book" />
@@ -86,7 +91,9 @@ const isExternalImage = item.imageUrl.startsWith('http');
        <Favoraite onClick={(e)=>addToFavoraite(e)}>Wishlist</Favoraite>
        </Btn>
     </BookItemContainer>
+    </>
   )
+ 
 }
 
 export default BookItem

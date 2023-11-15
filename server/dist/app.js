@@ -45,8 +45,11 @@ const orderRouter = require('./routes/orders');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 const { authPageMiddelwear } = require('./middleware/authPage');
+const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
-app.get('/', (req, res) => {
+app.use(cookieParser());
+app.get('/api/v1', (req, res) => {
+    console.log(req.cookies);
     res.json('helo0000000000000000000o');
 });
 app.use(fileUpload({ useTempFiles: true }));

@@ -18,34 +18,7 @@ import axios from 'axios';
 
     const dispatch=useAppDispatch()
     const [show, setShow] = useState(false);
-    const [userData, setUserData] = useState<any>(null);
-    const userId =useAppSelector((state)=>state.user.userId)
-    /*local strorage*/
-    let books=useAppSelector(state=>state.books.books)
- 
-    const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
-
- /*get one user....*/
- const fetchUserData = async () => {
-try{
-let res =await fetch(`http://localhost:4000/api/v1/auth/${userId}`)
-if (res.ok) {
-  const userData = await res.json(); // Await the Promise
-      setUserData(userData.user)
-}else{
-  console.log('user');
-}
-}catch(err){
-  console.log(err)
-}
-};
-
-useEffect(() => {
-  fetchUserData()
-}, [userId])
-
-
-const handelCloseModald=()=>{
+ const handelCloseModald=()=>{
       setShow(false)
       dispatch(closeModald()) 
  }   
@@ -67,10 +40,10 @@ const handelCloseModald=()=>{
       <DropDownToggle variant="success" id="dropdown-basic">
       
       <ShopIcon>{wish ? <MdFavorite/> : <FaShoppingCart />}</ShopIcon>
-      <ShopItems wish={wish}>{(wish ? wishBooks.length  : books.length)}</ShopItems>
+      <ShopItems wish={wish}>00</ShopItems>
       </DropDownToggle>
 
-      <DropDownMenu show={show} res={res}>
+      {/* <DropDownMenu show={show} res={res}>
          {wish 
          ? 
         (wishBooks.map((item)=>{
@@ -96,7 +69,7 @@ const handelCloseModald=()=>{
           
       <Card onClick={handelCloseModald}><Link href={wish ? '/wish' :'/card'}>{wish ? 'Show wish list' : 'Show Card'}</Link></Card>
         </Bottom>
-      </DropDownMenu>
+      </DropDownMenu> */}
     </Dropdown>
   </BasketContainer>
   
@@ -106,3 +79,41 @@ const handelCloseModald=()=>{
 }
 
 export default Basket
+
+
+
+
+
+   //const [userData, setUserData] = useState<any>(null);
+  
+    //const userId =useAppSelector((state)=>state.user.userId)
+    
+    /*local strorage*/
+    //let books=useAppSelector(state=>state.books.books)
+ 
+    //const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
+
+ /*get one user....*/
+//  const fetchUserData = async () => {
+// try{
+// let res =await fetch(`http://localhost:4000/api/v1/auth/${userId}`)
+// if (res.ok) {
+//   const userData = await res.json(); // Await the Promise
+//       setUserData(userData.user)
+// }else{
+//   console.log('user');
+// }
+// }catch(err){
+//   console.log(err)
+// }
+// };
+
+// useEffect(() => {
+//   fetchUserData();
+//   const intervalId = setInterval(fetchUserData, 5000); // Poll every 5 seconds
+//   return () => clearInterval(intervalId); // Cleanup when component unmounts
+// }, []);
+
+// useEffect(() => {
+//   fetchUserData()
+// }, [userId])

@@ -38,21 +38,21 @@ function Signin() {
  const userbookList =useAppSelector((state)=>state.books.books)
  //console.log(userbookList)
   const handleSignin= async (values:Values)=>{
-const fullValues={...values, userbookList}
+
   try{
     let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
     console.log('Response from server:', res);
  const signinUser=res.data.user.name
   const token=res.data.token
   const userRole=res.data.user.role
- const userId=res.data.user.id
+ const userId=res.data.user.userId
+
+
 localStorage.setItem('token', token)
- localStorage.setItem('name', signinUser)
- localStorage.setItem('role', userRole)
- localStorage.setItem('id', userId)
 
 
-  dispatch(userLogin({signinUser, token, userRole, userId, userbookList}))
+ 
+  dispatch(userLogin({signinUser, userRole, userId}))
 
   if(token){
     toast('Login Succced',{
@@ -105,7 +105,7 @@ localStorage.setItem('token', token)
              {errors.email && touched.email ? (
              <Message>{errors.email}</Message>
            ) : null}
-        <FieldF id="password" name="password" placeholder="Password" type='password' />
+        <FieldF id="password" name="password" placeholder="Password" type='text' />
         {errors.password && touched.password ? (
              <Message>{errors.password}</Message>
            ) : null}

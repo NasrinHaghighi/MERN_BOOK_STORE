@@ -36,10 +36,14 @@ const orderRouter =require('./routes/orders')
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 const {authPageMiddelwear} =require('./middleware/authPage')
+const cookieParser =require('cookie-parser')
 app.use(bodyParser.json())
- app.get('/',  (req:Request, res:Response)=>{
+app.use(cookieParser())
+ app.get('/api/v1',  (req:Request, res:Response)=>{
+  console.log(req.cookies)
  res.json('helo0000000000000000000o')
  })
+ 
  app.use(fileUpload({useTempFiles:true}))
 app.use('/api/v1/books', booksRouter)
 app.use('/api/v1/auth', authRouter)

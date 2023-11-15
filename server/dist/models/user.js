@@ -35,55 +35,9 @@ const UserSchema = new mongoose_2.default.Schema({
     },
     role: {
         type: String,
+        enum: ['admin', 'user'],
         default: 'user'
     },
-    booksList: [
-        {
-            _id: {
-                required: true,
-                type: mongoose_2.default.Schema.Types.ObjectId,
-                // ref: 'Book', // Reference to the Book model if you have one
-                // required: true, 
-            },
-            amount: {
-                type: Number,
-                required: true,
-                default: 1, // You can adjust the default as needed
-            },
-            name: {
-                type: String,
-                required: [true, 'product name must be provided']
-            },
-            price: {
-                type: Number,
-                required: [true, 'product price name must be provided']
-            },
-            imageUrl: {
-                type: String,
-                required: [true, 'photo must be provided']
-            },
-            createdAt: {
-                type: Date,
-                default: Date.now()
-            },
-            ebook: {
-                type: Boolean,
-                required: [true, 'ebook must be provided']
-            },
-            rating: {
-                type: String,
-                required: [true, 'rating must be provided']
-            },
-            author: {
-                type: String,
-                required: [true, 'author must be provided']
-            },
-            description: {
-                type: String,
-                required: [true, 'author must be provided']
-            }
-        },
-    ],
 });
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -92,13 +46,60 @@ UserSchema.pre('save', function (next) {
         next();
     });
 });
-UserSchema.methods.createJWT = function () {
-    return jwt.sign({ userId: this._id, name: this.name, role: this.role }, 'sssss', { expiresIn: '30d' });
-};
 UserSchema.methods.comparePassword = function (candidatePassword) {
     return __awaiter(this, void 0, void 0, function* () {
         const isMatch = yield bcrypt.compare(candidatePassword, this.password);
         return isMatch;
     });
 };
+UserSchema.methods.createJWT = function () {
+    return jwt.sign({ userId: this._id, name: this.name, role: this.role }, 'sssss', { expiresIn: '30d' });
+};
 module.exports = mongoose_2.default.model('User', UserSchema);
+// booksList: [
+//     {
+//       _id: {
+//         required: true,
+//        type: mongoose.Schema.Types.ObjectId,
+//         // ref: 'Book', // Reference to the Book model if you have one
+//         // required: true, 
+//       },
+//       amount: {
+//         type: Number,
+//         required: true,
+//         default: 1, // You can adjust the default as needed
+//       },
+//       name:{
+//         type:String,
+//         required:[true, 'product name must be provided']
+//     },
+//     price:{
+//         type:Number,
+//         required:[true, 'product price name must be provided']
+//     },
+//     imageUrl:{
+//         type:String,
+//         required:[true, 'photo must be provided']
+//     },
+//     createdAt:{
+//         type:Date,
+//         default:Date.now()
+//     },
+//     ebook:{
+//         type:Boolean,
+//         required:[true, 'ebook must be provided']
+//     } , 
+//      rating:{
+//         type:String,
+//         required:[true, 'rating must be provided'] 
+//     },
+//     author: {
+//         type:String,
+//         required:[true, 'author must be provided'] 
+//     },
+//     description:{
+//         type:String,
+//         required:[true, 'author must be provided'] 
+//     }
+//     },
+//   ],
