@@ -15,8 +15,10 @@ function LoginDropdown({modal}:any) {
   const dispatch=useAppDispatch()
   const [show, setShow] = useState(false);
   const user=useAppSelector(((state: { user: any; })=> state.user))
-  const token=user.token
-  const decodedToken = jwt.decode(token);
+   const token =localStorage.getItem('token')
+
+  const decodedToken = jwt.decode(token as string);
+ console.log(decodedToken)
 
   const logoutedUser=()=>{
     dispatch(userLogout())
@@ -41,7 +43,7 @@ function LoginDropdown({modal}:any) {
     <FaUser />
       </DropDownToggle> 
 
-{!user.token ? 
+ {!token ? 
       <DropDownMenu show={show} modal={modal}>
         <DropDownItem href="/login" onClick={() => setShow(false)}>Login</DropDownItem>
       </DropDownMenu>
@@ -49,13 +51,13 @@ function LoginDropdown({modal}:any) {
 <DropDownMenu show={show} modal='modal'>
 <DropDownItem >Hi, <span>{user.signinUser}</span></DropDownItem>
 
-{/* dashboard link is just user by admin role */}
-{typeof decodedToken === 'object' && decodedToken?.role === 'admin' && 
-<DropDownItem href='/dashboard' color='color'>Dashboard</DropDownItem>}
+
+ {typeof decodedToken === 'object' && decodedToken?.role === 'admin' && 
+<DropDownItem href='/dashboard' color='color'>Dashboard</DropDownItem>} 
 
 
 <DropDownItem onClick={logoutedUser}>Logout</DropDownItem>
-</DropDownMenu> }
+</DropDownMenu> } 
 
    </Dropdown>
 

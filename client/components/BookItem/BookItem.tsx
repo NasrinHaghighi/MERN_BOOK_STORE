@@ -31,21 +31,15 @@ const isExternalImage = item.imageUrl.startsWith('http');
  const dispatch=useAppDispatch()
 
  const addToCardHandel=async(e:any)=>{
+     e.stopPropagation()
+    dispatch(addBook(item))
     
-    e.stopPropagation()
-    //dispatch(addBook(item))
-    if(!userId){
-      
-      alert('please do login...')
-     }else{
-      try{
-       let res = await axios.post("http://localhost:4000/api/v1/auth/updateuser", {userId, item })
-       //dispatch(addBook(item))
-      
-       }catch(error){}
-     }
-    
-    
+    try{
+        let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
+          
+        console.log(res)
+      }catch(error){}
+        
   }
 
   const addToFavoraite=(e:any)=>{
@@ -97,3 +91,16 @@ const isExternalImage = item.imageUrl.startsWith('http');
 }
 
 export default BookItem
+
+
+
+// if(!userId){
+      
+//   alert('please do login...')
+//  }else{
+//   try{
+//    let res = await axios.post("http://localhost:4000/api/v1/auth/updateuser", {userId, item })
+//    //dispatch(addBook(item))
+  
+//    }catch(error){}
+//  }

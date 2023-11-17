@@ -6,11 +6,11 @@ import Link from 'next/link'
 import {Images} from '../../helpers/Image'
 import Star from '../Book/Star/Star'
 import { addBook} from '../../features/bookSlice'
-import { useAppDispatch } from '../../redux/hooks'
+
 import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 import PriceBydiscont from '../BookItem/PriceBydiscont/PriceBydiscont'
-
-
+import axios from 'axios'
+import { useAppDispatch ,useAppSelector} from '../../redux/hooks'
 
 
 
@@ -18,20 +18,27 @@ import PriceBydiscont from '../BookItem/PriceBydiscont/PriceBydiscont'
 interface ItemProps{
     item:bookType
 }
-function BookItem2({item}:ItemProps) {
-  console.log(item)
-    const [showMore, setShowMore] = useState(false);
 
+
+
+function BookItem2({item}:ItemProps) {
+ 
+    const [showMore, setShowMore] = useState(false);
+    const userId=useAppSelector((state)=>state.user.userId)
     const dispatch=useAppDispatch()
     const handelShowMore=(e:any)=>{
         e.preventDefault();
         setShowMore(!showMore)
-     
+    
     }
-    const addToCardHandel=(e:any)=>{
+    const addToCardHandel=async(e:any)=>{
        e.stopPropagation()
       dispatch(addBook(item))
-  
+      try{
+        let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
+          
+        console.log(res)
+      }catch(error){}
     }
     const addToFavoraite=(e:any)=>{
       e.stopPropagation()

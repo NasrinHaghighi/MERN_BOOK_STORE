@@ -10,12 +10,14 @@ import {MdFavorite} from 'react-icons/md'
 import { FaShoppingCart } from "react-icons/fa";
 import Link from 'next/link';
 import {closeModald} from '../../features/homeModalSlice'
-import axios from 'axios';
+
 
 
   function Basket({wish,res}:any) {
-
-
+    let userBooks=useAppSelector(state=>state.books.books)
+    let userWishBooks=useAppSelector(state=>state.favoriteList
+      .favoraitelist
+      )
     const dispatch=useAppDispatch()
     const [show, setShow] = useState(false);
  const handelCloseModald=()=>{
@@ -40,13 +42,13 @@ import axios from 'axios';
       <DropDownToggle variant="success" id="dropdown-basic">
       
       <ShopIcon>{wish ? <MdFavorite/> : <FaShoppingCart />}</ShopIcon>
-      <ShopItems wish={wish}>00</ShopItems>
+      <ShopItems wish={wish}>{userBooks.length}</ShopItems>
       </DropDownToggle>
 
-      {/* <DropDownMenu show={show} res={res}>
+      <DropDownMenu show={show} res={res}>
          {wish 
          ? 
-        (wishBooks.map((item)=>{
+        (userWishBooks.map((item)=>{
          return <ItemContainer>
         <Right>
         <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
@@ -54,7 +56,7 @@ import axios from 'axios';
           <Title> {item.name.length>30 ? item.name.substring(0, 30): item.name}</Title>
          </ItemContainer>
          
-      })): (books.map((item)=>{
+      })): (userBooks.map((item)=>{
         return <ItemContainer>
        <Right>
        <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
@@ -69,7 +71,7 @@ import axios from 'axios';
           
       <Card onClick={handelCloseModald}><Link href={wish ? '/wish' :'/card'}>{wish ? 'Show wish list' : 'Show Card'}</Link></Card>
         </Bottom>
-      </DropDownMenu> */}
+      </DropDownMenu> 
     </Dropdown>
   </BasketContainer>
   

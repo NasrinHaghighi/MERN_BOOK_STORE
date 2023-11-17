@@ -39,6 +39,7 @@ const authenticateUser = require('./middleware/authentication');
 const connectDB = require('./db/connect');
 const booksRouter = require('./routes/books');
 const authRouter = require('./routes/auth');
+const cartRouter = require('./routes/cart');
 const usersRouter = require('./routes/users');
 const dashboardRouter = require('./routes/dashboard');
 const orderRouter = require('./routes/orders');
@@ -57,6 +58,7 @@ app.use('/api/v1/books', booksRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/cart', cartRouter);
 //app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);

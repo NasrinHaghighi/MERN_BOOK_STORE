@@ -6,6 +6,10 @@ import { Images } from '../../../helpers/Image';
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {addNewAmount, deletItem} from '../../../features/bookSlice'
 import { bookType } from '../../../types/bookType';
+import axios from 'axios';
+import { string } from 'yup';
+
+
 
 interface Item{
   item:bookType,
@@ -15,7 +19,7 @@ interface Item{
 
 function CardItem({item, index}:Item) {
 const [newAmount, setNewAmount] =useState<number>(item.amount)
-
+const userId=useAppSelector((state)=>state.user.userId)
 const dispatch=useAppDispatch()
 
 
@@ -26,8 +30,14 @@ const dispatch=useAppDispatch()
  dispatch(addNewAmount({...item, amount:e.target.value}))
  
  }
- const handledelet=()=>{
+ const handledelet=async()=>{
+  const productId = item._id;
    dispatch(deletItem(item))
+   try{
+    let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`,  {data: { productId: productId }})
+      
+    console.log(res)
+  }catch(error){}
  }
 
   return (

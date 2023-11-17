@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require('express');
+const router = express.Router();
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
+const cart_1 = require("../controllers/cart");
+router.route('/:userId').post(jsonParser, cart_1.addTocart);
+router.route('/:userId').delete(jsonParser, cart_1.removeItem);
+module.exports = router;
