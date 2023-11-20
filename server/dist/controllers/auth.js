@@ -32,7 +32,6 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.register = register;
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.body);
     const { email, password } = req.body;
     if (!email || !password) {
         res.json('eamil and pass provided');
@@ -41,11 +40,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     if (!user) {
         res.json('no user register before...');
     }
-    console.log('Entered Password:', password, typeof (password));
-    console.log('Stored Password:', user.password, typeof (user.password));
+    //console.log('Entered Password:', password, typeof(password));
+    //console.log('Stored Password:', user.password, typeof(user.password));
     //check password//
     const isPasswordCorrect = yield user.comparePassword(password);
-    console.log('isPasswordCorrect:', isPasswordCorrect);
+    //console.log('isPasswordCorrect:', isPasswordCorrect);
     if (!isPasswordCorrect) {
         return res.status(401).json({ error: 'Invalid credentials......' });
     }

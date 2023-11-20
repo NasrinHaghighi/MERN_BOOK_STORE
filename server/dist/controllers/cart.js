@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.removeItem = exports.addTocart = void 0;
+exports.updateAmount = exports.getCart = exports.removeItem = exports.addTocart = void 0;
 const Cart = require('../models/cart');
 const User = require('../models/user');
 const { isValidObjectId } = require("mongoose");
@@ -51,7 +51,7 @@ const removeItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         return res.status(400).send({ status: false, message: "Invalid user ID" });
     console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`);
     let cart = yield Cart.findOne({ userId: userId });
-    console.log(cart);
+    //console.log(cart)
     console.log('remove');
     if (!cart)
         return res
@@ -68,3 +68,44 @@ const removeItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         .send({ status: false, message: "Item does not exist in cart" });
 });
 exports.removeItem = removeItem;
+const getCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let userId = req.params.userId;
+    let user = yield User.exists({ _id: userId });
+    if (!userId || !isValidObjectId(userId) || !user)
+        return res.status(400).send({ status: false, message: "Invalid user ID" });
+    let cart = yield Cart.findOne({ userId: userId });
+    if (!cart)
+        return res
+            .status(404)
+            .send({ status: false, message: "Cart not found for this user" });
+    res.status(200).send({ status: true, cart: cart });
+});
+exports.getCart = getCart;
+const updateAmount = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    //console.log(req.body)
+    let userId = req.params.userId;
+    let user = yield User.exists({ _id: userId });
+    let productId = req.body.data.productId;
+    let updatedamount = req.body.data.amount;
+    if (!userId || !isValidObjectId(userId) || !user)
+        return res.status(400).send({ status: false, message: "Invalid user ID" });
+    console.log(productId, updatedamount);
+    let cart = yield Cart.findOne({ userId: userId });
+    if (!cart)
+        return res
+            .status(404)
+            .send({ status: false, message: "Cart not found for this user" });
+    let updatedProductIndex = cart.products.findIndex((item) => item.productId == productId);
+    if (updatedProductIndex !== -1) {
+        if (updatedamount > 0) {
+            cart.products[updatedProductIndex].quantity = updatedamount;
+        }
+        else {
+            cart.products[updatedProductIndex].quantity = 1; // Set minimum amount to 1
+        }
+    }
+    cart = yield cart.save();
+    console.log(cart);
+    return res.status(200).send({ status: true, updatedCart: cart });
+});
+exports.updateAmount = updateAmount;

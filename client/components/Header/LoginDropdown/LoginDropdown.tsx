@@ -1,11 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import { FaUser } from "react-icons/fa";
 import {LoginBox, DropDownToggle, DropDownItem, DropDownMenu} from './styles'
 import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { userLogout } from '../../../features/userSlice';
-
+import {removeAllitem} from '../../../features/bookSlice'
 import jwt from 'jsonwebtoken';
 
 
@@ -15,22 +15,25 @@ function LoginDropdown({modal}:any) {
   const dispatch=useAppDispatch()
   const [show, setShow] = useState(false);
   const user=useAppSelector(((state: { user: any; })=> state.user))
-   const token =localStorage.getItem('token')
+  let token =user.token
 
-  const decodedToken = jwt.decode(token as string);
- console.log(decodedToken)
+  console.log(token)
+
+   
+
+  const decodedToken = jwt.decode(token as unknown as string);
+ //console.log(decodedToken)/*name , role, userId are included*/
 
   const logoutedUser=()=>{
     dispatch(userLogout())
-    localStorage.removeItem('name')
-    localStorage.removeItem('token')
-    localStorage.removeItem('books')
-    localStorage.removeItem('id')
-    localStorage.removeItem('role')
+    dispatch(removeAllitem())
+    localStorage.removeItem('user')
+     /*need to remove books also from localstorage*/ 
+  
    }
 
 
-
+   //console.log(token);
 
   return (
   <LoginBox>

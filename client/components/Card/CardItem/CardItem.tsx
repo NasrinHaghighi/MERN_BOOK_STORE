@@ -24,10 +24,15 @@ const dispatch=useAppDispatch()
 
 
 //cahnge the maonut in redux by on chang event//
- const newAmountHandel=(e:any)=>{
-  
-   setNewAmount(e.target.value)
+ const newAmountHandel=async(e:any)=>{
+  const productId = item._id;
+  setNewAmount(e.target.value)
  dispatch(addNewAmount({...item, amount:e.target.value}))
+ try{
+  let res = await axios.patch(`http://localhost:4000/api/v1/cart/${userId}`, {data: { productId: productId , amount:e.target.value}})
+    
+  console.log(res)
+}catch(error){}
  
  }
  const handledelet=async()=>{

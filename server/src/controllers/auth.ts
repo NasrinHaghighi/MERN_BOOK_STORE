@@ -28,7 +28,7 @@ const tokenUser= {name:user.name, userId:user._id, role:user.role }
 
 export const login =async (req: any,res: any)=>{
   
-console.log(req.body)
+
  const {email, password} =req.body
 
  if(!email || !password ){
@@ -41,11 +41,11 @@ let user = await User.findOne({ email: email });
  if(!user){
     res.json('no user register before...')
  }
- console.log('Entered Password:', password, typeof(password));
- console.log('Stored Password:', user.password, typeof(user.password));
+ //console.log('Entered Password:', password, typeof(password));
+ //console.log('Stored Password:', user.password, typeof(user.password));
  //check password//
  const isPasswordCorrect =await user.comparePassword(password)
- console.log('isPasswordCorrect:', isPasswordCorrect);
+ //console.log('isPasswordCorrect:', isPasswordCorrect);
  if(!isPasswordCorrect){
    return res.status(401).json({ error: 'Invalid credentials......' });
  }

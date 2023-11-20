@@ -47,12 +47,12 @@ function Signin() {
   const userRole=res.data.user.role
  const userId=res.data.user.userId
 
+//console.log(token)
 
-localStorage.setItem('token', token)
 
 
  
-  dispatch(userLogin({signinUser, userRole, userId}))
+  dispatch(userLogin({signinUser, userRole, userId, token}))
 
   if(token){
     toast('Login Succced',{

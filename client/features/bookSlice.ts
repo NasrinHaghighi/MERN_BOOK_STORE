@@ -2,6 +2,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import Book from "../components/Book/Book";
 import { Books } from "../constants/MOCK_DATA";
+import { startCase } from "lodash";
 
 
 interface Book{
@@ -61,11 +62,11 @@ export const BookSlice= createSlice({
             state.books.push({...action.payload, amount:1})
         }
         //console.log(action.payload.amount)
-localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))
+
         },
          addNewAmount:(state, action:PayloadAction<any>)=>{
             state.books.forEach(function(item, i) { if (item._id == action.payload._id) state.books[i] =action.payload; });
-            localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))
+          
          
  },
               deletItem:(state, action:PayloadAction<any>)=>{
@@ -75,19 +76,32 @@ localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))
                state.books=tempCard
                localStorage.setItem('CardBooks', JSON.stringify(state.books.map((item)=>item)))         
                    },
-                
-
-                   backtofalseAlert:(state)=>{
-                   state.alert=false
+                backtofalseAlert:(state)=>{
+                state.alert=false
           
-                        },
+         },
+        removeAllitem:(state)=>{
+            state.books=[]
+        },
+        updateUserBook:(state,action:PayloadAction<any>) =>{
+            //console.log(action.payload)
+           
+         const temp= action.payload.map((item:any)=>{
+            state.books = action.payload.map((item: any) => ({
+                ...item.book,
+                amount: item.amount
+              }));
+          })
+       
+        }
+           
 
     },
 
    
 })
 
-export const {addBook, addNewAmount, deletItem, backtofalseAlert} =BookSlice.actions
+export const {addBook, addNewAmount, deletItem, backtofalseAlert, removeAllitem, updateUserBook} =BookSlice.actions
 export default BookSlice.reducer
 
 

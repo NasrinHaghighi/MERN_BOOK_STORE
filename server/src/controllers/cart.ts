@@ -45,7 +45,7 @@ export const removeItem = async (req:any, res:any) => {
     return res.status(400).send({ status: false, message: "Invalid user ID" });
 console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
   let cart = await Cart.findOne({ userId: userId });
-  console.log(cart)
+  //console.log(cart)
   console.log('remove')
   if (!cart)
     return res
@@ -62,3 +62,58 @@ console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
     .status(400)
     .send({ status: false, message: "Item does not exist in cart" });
 };
+
+
+export const getCart=async (req:any, res:any) =>{
+  let userId = req.params.userId;
+  let user = await User.exists({ _id: userId });
+
+  if (!userId || !isValidObjectId(userId) || !user)
+  return res.status(400).send({ status: false, message: "Invalid user ID" });
+
+let cart = await Cart.findOne({ userId: userId });
+if (!cart)
+  return res
+    .status(404)
+    .send({ status: false, message: "Cart not found for this user" });
+
+res.status(200).send({ status: true, cart: cart });
+}
+
+
+export const updateAmount=async (req:any, res:any) =>{
+  //console.log(req.body)
+  let userId = req.params.userId;
+  let user = await User.exists({ _id: userId });
+  let productId = req.body.data.productId;
+  let updatedamount=req.body.data.amount
+  if (!userId || !isValidObjectId(userId) || !user)
+  return res.status(400).send({ status: false, message: "Invalid user ID" });
+console.log(productId, updatedamount)
+let cart = await Cart.findOne({ userId: userId });
+
+if (!cart)
+return res
+  .status(404)
+  .send({ status: false, message: "Cart not found for this user" });
+
+
+
+  let updatedProductIndex = cart.products.findIndex(
+    (item: any) => item.productId == productId
+  );
+
+  if (updatedProductIndex !== -1) {
+
+    if (updatedamount > 0) {
+      cart.products[updatedProductIndex].quantity = updatedamount;
+    } else {
+      cart.products[updatedProductIndex].quantity = 1; // Set minimum amount to 1
+    }
+  }
+ 
+  cart = await cart.save();
+  console.log(cart)
+  return res.status(200).send({ status: true, updatedCart: cart });
+}
+

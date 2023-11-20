@@ -7,4 +7,6 @@ var jsonParser = bodyParser.json();
 const cart_1 = require("../controllers/cart");
 router.route('/:userId').post(jsonParser, cart_1.addTocart);
 router.route('/:userId').delete(jsonParser, cart_1.removeItem);
+router.route('/:userId').patch(jsonParser, cart_1.updateAmount);
+router.route('/:userId').get(cart_1.getCart);
 module.exports = router;

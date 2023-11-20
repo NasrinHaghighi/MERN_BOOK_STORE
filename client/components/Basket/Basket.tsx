@@ -10,16 +10,51 @@ import {MdFavorite} from 'react-icons/md'
 import { FaShoppingCart } from "react-icons/fa";
 import Link from 'next/link';
 import {closeModald} from '../../features/homeModalSlice'
-
-
+import axios from 'axios';
+import {updateUserBook} from '../../features/bookSlice'
 
   function Basket({wish,res}:any) {
+    const dispatch=useAppDispatch()
+    const [show, setShow] = useState(false);
+    
+    const user=useAppSelector(((state: { user: any; })=> state.user))
+    const userId=user.userId
+  /**need to get cart book of user by userId */
+const fetchUserdata=async()=>{
+ try{
+const res=await axios.get(`http://localhost:4000/api/v1/cart/${userId}`)
+const productsWithQuantity = res.data.cart.products;
+const bookDetailsPromises = productsWithQuantity.map(async (product: any) => {
+  try {
+    const bookRes = await axios.get(`http://localhost:4000/api/v1/books/${product.productId}`);
+    const bookDetailsWithQuantity = {
+      ...bookRes.data, // Book details
+      amount: product.quantity, // Add quantity to book details
+    };
+    return bookDetailsWithQuantity;
+  } catch (error) {
+    console.log(`Error fetching book details for ID: ${product.productId}`, error);
+    return null;
+  }
+});
+
+const booksWithQuantity = await Promise.all(bookDetailsPromises);
+dispatch(updateUserBook(booksWithQuantity))
+ }catch(err){
+  console.log(err)
+ }
+}
+
+useEffect(() => {
+  fetchUserdata()
+}, [userId])
+
+    
     let userBooks=useAppSelector(state=>state.books.books)
     let userWishBooks=useAppSelector(state=>state.favoriteList
       .favoraitelist
       )
-    const dispatch=useAppDispatch()
-    const [show, setShow] = useState(false);
+console.log(userBooks)
  const handelCloseModald=()=>{
       setShow(false)
       dispatch(closeModald()) 
@@ -31,7 +66,7 @@ import {closeModald} from '../../features/homeModalSlice'
      
   return (
     <>
-    <BasketbBox>
+     <BasketbBox>
 
     <BasketContainer>
     
@@ -61,7 +96,7 @@ import {closeModald} from '../../features/homeModalSlice'
        <Right>
        <Images src={item.imageUrl} width={70} height={80}   alt="book"/>
         </Right>
-         <Title> {item.name.length>30 ? item.name.substring(0, 30): item.name} {wish ? '': <span>({item.amount})</span>}</Title>
+         <Title> {item?.name.length>30 ? item.name.substring(0, 30): item.name} {wish ? '': <span>({item.amount})</span>}</Title>
         </ItemContainer>
         
      }))}  
@@ -84,38 +119,3 @@ export default Basket
 
 
 
-
-
-   //const [userData, setUserData] = useState<any>(null);
-  
-    //const userId =useAppSelector((state)=>state.user.userId)
-    
-    /*local strorage*/
-    //let books=useAppSelector(state=>state.books.books)
- 
-    //const wishBooks=useAppSelector(state=>state.favoriteList.favoraitelist)
-
- /*get one user....*/
-//  const fetchUserData = async () => {
-// try{
-// let res =await fetch(`http://localhost:4000/api/v1/auth/${userId}`)
-// if (res.ok) {
-//   const userData = await res.json(); // Await the Promise
-//       setUserData(userData.user)
-// }else{
-//   console.log('user');
-// }
-// }catch(err){
-//   console.log(err)
-// }
-// };
-
-// useEffect(() => {
-//   fetchUserData();
-//   const intervalId = setInterval(fetchUserData, 5000); // Poll every 5 seconds
-//   return () => clearInterval(intervalId); // Cleanup when component unmounts
-// }, []);
-
-// useEffect(() => {
-//   fetchUserData()
-// }, [userId])

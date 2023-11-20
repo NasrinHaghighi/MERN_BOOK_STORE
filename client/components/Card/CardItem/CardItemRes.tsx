@@ -5,7 +5,7 @@ import { Images } from '../../../helpers/Image';
 import { FaTrashAlt } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {addNewAmount, deletItem} from '../../../features/bookSlice'
-
+import axios from 'axios';
 
 
 interface Item{
@@ -17,7 +17,7 @@ interface Item{
 function CardItemRes({item}:Item ,{index}:any) {
     const [newAmount, setNewAmount] =useState<number>(item.amount)
     const dispatch=useAppDispatch()
-
+    const userId=useAppSelector((state)=>state.user.userId)
 
 //cahnge the maonut in redux by on chang event//
  const newAmountHandel=(e:any)=>{
@@ -26,8 +26,14 @@ function CardItemRes({item}:Item ,{index}:any) {
  
  }
     
- const handledelet=()=>{
+ const handledelet=async()=>{
+  const productId = item._id;
         dispatch(deletItem(item))
+        try{
+          let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`,  {data: { productId: productId }})
+            
+          console.log(res)
+        }catch(error){}
       }
 
 
