@@ -85,7 +85,7 @@ const createOrder= async()=>{
             <BackToShop ><Link href='/books'>Back to shop</Link></BackToShop>
             <Checkout>
               {user?.token ? 
-              <div onClick ={createOrder}> <Link href='' >Checkout</Link></div>
+              <div onClick ={createOrder}> <Link href='/checkout' >Checkout</Link></div>
              :
               <Link href='/login'>login</Link>
               }

@@ -152,6 +152,53 @@ input[type='radio']:after {
 .css-bpeome-MuiSvgIcon-root-MuiSelect-icon {
   color: #ffa500 !important;
 }
+/*checkout page */
+
+._2Jtxm._2ZUAI ._2JvrO {
+    background-color: #ffa500;
+    color: white;
+    animation: _3SDnc 400ms ease-in-out forwards;
+}
+._2Jtxm._35Ago ._2kL0S {
+    background-color: green;
+    color: white;
+    animation: _JAh3L 400ms ease forwards;
+}
+._2Jtxm::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 3px;
+    width: 100%;
+    right: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    background: linear-gradient(to left, #e7eaf3 50%, #ffa500 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: background-position 200ms ease-in-out;
+}
+._hsN1w {
+    background-color: #ffa500 !important;
+    border: 1px solid #ffa500 !important;
+    color: white;
+}
+._hsN1w:hover {
+  color: white;
+    background-color: #ffa500 !important;
+    border: 1px solid #ffa500 !important;
+    box-shadow: 0px 3px 6px 0 rgba(57, 124, 246, 0.3);
+}
+
+
+._2Jtxm ._1hzhf {
+   font-size: 18px;
+}
+._2Jtxm ._1ixJ3 {
+    display: block;
+    color: #ffa500;
+    font-size: 22px !important;
+}
 `
 
 
