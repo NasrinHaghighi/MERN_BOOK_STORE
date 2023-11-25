@@ -7,9 +7,9 @@ import Progressbar from '../../components/Checkout/Progressbar/Progressbar'
 
 function CheckoutIndex() {
   return (
-    <IndexConatiner>
+
     <Progressbar />
-    </IndexConatiner>
+
   )
 }
 
