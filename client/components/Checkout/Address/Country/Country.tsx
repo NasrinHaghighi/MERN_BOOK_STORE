@@ -59,6 +59,7 @@ useEffect(() => {
         onChange={(item) => {
           setSelectedCountry(item) ;
         } }
+        
         styles={{
           control: (provided) => ({
             ...provided,
@@ -67,6 +68,10 @@ useEffect(() => {
          height:50,
          marginBottom:20,
          
+          }),
+          input: (provided) => ({
+            ...provided,
+            autoComplete: 'off', 
           }),
           menu: (provided) => ({
             ...provided,

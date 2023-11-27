@@ -8,12 +8,24 @@ import Box from '@mui/material/Box';
 import CountryCo from './Country/Country';
 import IsPresentContentCo from './IsPresentContentCo/IsPresentContentCo';
 import InputLabel from '@mui/material/InputLabel';
-
+import { useAppDispatch ,useAppSelector} from '../../../redux/hooks'
 
 function Adress({handelInputs, userInfo}:any) {
-
+  const userAddress = useAppSelector((state: any) => state.userAddress.address);
+  //console.log(userAddress)
  
- const [adress, setAdress]=useState({gender:'', fullName:'', country:'',state:'', city:'', postalcode:'',phone:'',address:'',isPresent:false , sender:'' , senderMessage:''})
+ const [adress, setAdress]=useState({
+  gender: userAddress.gender || '',
+  fullName: userAddress.fullName || '',
+  country: userAddress.country || '',
+    state: userAddress.state || '',
+    city: userAddress.city || '',
+    postalcode: userAddress.postalcode || '',
+    phone: userAddress.phone || '',
+    address: userAddress.address || '',
+    isPresent: userAddress.isPresent || false,
+    sender: userAddress.sender || '',
+    senderMessage: userAddress.senderMessage || '',})
 
 
  const checkboxhandeler=(e:any)=>{

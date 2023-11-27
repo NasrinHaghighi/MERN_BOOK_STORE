@@ -15,7 +15,7 @@ import FavoraiteListSlice from '../features/favoraiteListSlice'
 import UserSlice from '../features/userSlice'
 import storage from 'redux-persist/lib/storage'
 import dashboardSideSlice from '../features/dashboardSideSlice';
-import homeModalStateSlice  from '../features/homeModalSlice'
+import homeModalStateSlice  from '../features/homeModalSlice';
 import {
   persistReducer,
   FLUSH,
@@ -25,6 +25,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import UserAddressInfoSlice from '../features/UserAddressSlice'
+
+
+
+
 
 const persistConfig = {
   key: 'root',
@@ -47,7 +52,8 @@ const reducer =combineReducers({
   favoriteList:FavoraiteListSlice,
   user:UserSlice, 
   dashboardSideStatus:dashboardSideSlice,
-  homeModalState: homeModalStateSlice
+  homeModalState: homeModalStateSlice, 
+  userAddress:UserAddressInfoSlice
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer);

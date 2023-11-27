@@ -1,9 +1,14 @@
 import React,{useState} from 'react'
-import {Container, Title,  First, Label} from '../Address/styles'
+import {Container, Title,  First, Label, DivDelivery, WrapperDelivery, Icon, Text} from '../Address/styles'
+import { TbTruckDelivery } from "react-icons/tb";
+import { BsMailbox2 } from "react-icons/bs";
+import { useAppDispatch ,useAppSelector} from '../../../redux/hooks'
+
+
 
 function ShippingMethod({handelInputs, userInfo}:any) {
-
-  const [method, setMethod]=useState({shipMethod:''})
+  const userAddress = useAppSelector((state: any) => state.userAddress.address);
+  const [method, setMethod]=useState({shipMethod:userAddress.shipMethod || ''})
   const checkboxhandeler=(e:any)=>{
     if( e.target.type === "radio"){
       const value=e.target.value
@@ -19,33 +24,54 @@ function ShippingMethod({handelInputs, userInfo}:any) {
   return (
     <Container>
       <Title>
-      <h5>Delivery address </h5>  
-      <p> Please provide a delivery address</p> 
+      <h5>Delivery method </h5>  
+      <p> Choose your preferred shipping method for your order</p> 
       <hr/>
     </Title>
 <form>
-<First>
+<WrapperDelivery>
+  <DivDelivery>
+  <Icon><BsMailbox2 /></Icon>
+   
 <Label>
-       normal
+     
         <input
           type="radio"
           name="shipMethod"
           value='normal'
           checked={method.shipMethod == 'normal'}
           onChange={checkboxhandeler}
+          style={{ marginRight: '10px' }}
         />
+          Normal delivery
          </Label>
+         <Text>Arrives in 5-7 business days</Text>
+         </DivDelivery>
+
+
+
+
+
+
+         <DivDelivery>
+          <Icon><TbTruckDelivery /></Icon>
+        
          <Label>
-       fast
+      
         <input
           type="radio"
           name="shipMethod"
           value='fast'
           checked={method.shipMethod == 'fast'}
           onChange={checkboxhandeler}
+          style={{ marginRight: '10px' }}
         />
+          Fast delivery
          </Label>
-</First>
+         
+         <Text>Arrives in 2-3 business days</Text>
+         </DivDelivery>
+</WrapperDelivery>
 </form>
     </Container>
   )

@@ -1,17 +1,20 @@
-import React ,{useState}from 'react'
+import React ,{useState, useEffect}from 'react'
 import StepProgressBar from 'react-step-progress';
 // import the stylesheet
 import 'react-step-progress/dist/index.css';
 import Adress from '../Address/Adress';
 import ShippingMethod from '../ShippingMethod/ShippingMethod';
-import Payment from '../Payment/Payment';
+import Confermation from '../Confermation/Confermation';
 import { FaLocationArrow } from "react-icons/fa";
 import { MdOutlineCloudDone } from "react-icons/md";
 import { FaCcAmazonPay } from "react-icons/fa";
 import {Wrapper} from './styles'
+import {updateUserAddress} from '../../../features/UserAddressSlice'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
 
 function Progressbar() {
+  const dispatch=useAppDispatch()
   const [userInfo, setUserInfo] =useState({})
   const handelInputs =(info:any)=>{
     setUserInfo((prevUserInfo) => ({
@@ -21,10 +24,12 @@ function Progressbar() {
  
   }
 
-console.log(userInfo)
+  useEffect(() => {
+    dispatch(updateUserAddress(userInfo))
+    }, [userInfo]);
 const step1Content = <Adress handelInputs={handelInputs} userInfo={userInfo}/>;
 const step2Content = <ShippingMethod handelInputs={handelInputs} userInfo={userInfo}/>;
-const step3Content = <Payment />;
+const step3Content = <Confermation userInfo={userInfo}/>;
 
 const subtitle1 = <FaLocationArrow />;
 const subtitle2 = <MdOutlineCloudDone />;
