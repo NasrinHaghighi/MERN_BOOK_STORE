@@ -15,5 +15,6 @@ format:string,
 rating:number
 amount:number, 
 stock?:string,
-discont?:number
+discont:number,
+finalprice:number
 }

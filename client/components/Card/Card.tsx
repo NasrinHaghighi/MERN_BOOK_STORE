@@ -15,41 +15,11 @@ function Card() {
  const signinUser=user.signinUser
  //console.log(userId)
   const books=useAppSelector(state=>state.books.books)
-  //console.log(books)
+  console.log(books)
   const totalPrice=books.reduce((ac, cu)=>{
-    return ac+ (cu.price * cu.amount)
+    return ac+ (cu.finalprice * cu.amount)
   },0)
   //console.log(totalPrice)
-
-  /***Function To send UserId And Books To Backend */
-const createOrder= async()=>{
-  books.map(async (item)=>{
-    try {
-      const response = await axios.post('http://localhost:4000/api/v1/orders', {
-        signinUser:signinUser,
-        userId: userId,
-        orderedBook:item
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }}
-      );
-  
-      if (response.status === 200) {
-       // console.log(response)
-      } else {
-        // Handle an error response from the server
-      }
-    } catch (error) {
-      // Handle network or other errors
-    }
-  })
-
-}
-
-
-
 
 
   return (
@@ -85,7 +55,7 @@ const createOrder= async()=>{
             <BackToShop ><Link href='/books'>Back to shop</Link></BackToShop>
             <Checkout>
               {user?.token ? 
-              <div onClick ={createOrder}> <Link href='/checkout' >Checkout</Link></div>
+              <div> <Link href='/checkout' >Checkout</Link></div>
              :
               <Link href='/login'>login</Link>
               }
@@ -98,3 +68,31 @@ const createOrder= async()=>{
 }
 
 export default Card
+
+
+
+// const createOrder= async()=>{
+//   books.map(async (item)=>{
+//     try {
+//       const response = await axios.post('http://localhost:4000/api/v1/orders', {
+//         signinUser:signinUser,
+//         userId: userId,
+//         orderedBook:item
+//       },
+//       {
+//         headers: {
+//           'Content-Type': 'application/json'
+//         }}
+//       );
+  
+//       if (response.status === 200) {
+//        // console.log(response)
+//       } else {
+//         // Handle an error response from the server
+//       }
+//     } catch (error) {
+//       // Handle network or other errors
+//     }
+//   })
+
+// }

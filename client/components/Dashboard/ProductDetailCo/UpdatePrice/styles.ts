@@ -10,7 +10,7 @@ border-radius: 10px;
 
 `
 export const Title =styled.div`
-font-size: 20px;
+font-size: 16px;
 font-weight: 700;
 
 `
@@ -44,7 +44,7 @@ display: flex;
 
 `
 export const Span =styled.span`
-font-size: 20px;
+font-size: 16px;
 font-weight: 700;
 
 `

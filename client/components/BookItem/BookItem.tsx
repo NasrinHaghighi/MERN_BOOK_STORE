@@ -22,6 +22,7 @@ interface ItemProps{
 
 
 function BookItem({item}:ItemProps) {
+  console.log(item)
 const userId=useAppSelector((state)=>state.user.userId)
 
 const isExternalImage = item.imageUrl.startsWith('http');
@@ -32,6 +33,7 @@ const isExternalImage = item.imageUrl.startsWith('http');
 
  const addToCardHandel=async(e:any)=>{
      e.stopPropagation()
+     
     dispatch(addBook(item))
     
     try{

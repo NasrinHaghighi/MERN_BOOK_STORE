@@ -6,15 +6,15 @@ import { Grid } from '@mui/material';
 
 import axios from 'axios';
 
-function UpdatePrice({discont, price, id}:any) {
-   const[ checked, setChecked ]=useState(discont)
+function UpdatePrice({discount, price, id}:any) {
+   const[ checked, setChecked ]=useState(discount)
 
 const final=price-(price*checked)/100
 /******************change check box handeler */
    const handleCheckboxChange = async(lable: number, id:number) => {
    // console.log(lable, id)
    setChecked(lable)
-   { toast(`Discont of product changed `,{
+   { toast(`discount of product changed `,{
     draggable:true,
     position:toast.POSITION.TOP_RIGHT
   })
@@ -43,7 +43,7 @@ catch(error){
     <Box>
           <ToastContainer draggable={false} autoClose={3000}/> 
         
-        <Title>Discont :</Title>
+        <Title>discount :</Title>
         <br/>
         <Main>
             {arr.map((item, index) =>{
@@ -65,10 +65,10 @@ catch(error){
         <hr/>
         <Grid container spacing={2}>
             <Grid item lg={6} md={12} sm={12}>
-            <Price className='init'><Title>Initial price :</Title> <Span> {price} $</Span></Price>
+            <Price className='init'><Title>Initial price :</Title> <Span> {price} €</Span></Price>
             </Grid>
             <Grid item lg={6} md={12}>
-        <Price className='final'><Title>Final price :</Title> <Span> {final} $</Span></Price>
+        <Price className='final'><Title>Final price :</Title> <Span> {final} €</Span></Price>
         </Grid>
         </Grid>
      

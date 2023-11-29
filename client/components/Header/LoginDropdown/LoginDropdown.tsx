@@ -7,7 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { userLogout } from '../../../features/userSlice';
 import {removeAllitem} from '../../../features/bookSlice'
 import jwt from 'jsonwebtoken';
-
+import {removeUserAddress} from '../../../features/UserAddressSlice'
 
 function LoginDropdown({modal}:any) {
 
@@ -17,7 +17,7 @@ function LoginDropdown({modal}:any) {
   const user=useAppSelector(((state: { user: any; })=> state.user))
   let token =user.token
 
-  console.log(token)
+  //console.log(token)
 
    
 
@@ -26,6 +26,7 @@ function LoginDropdown({modal}:any) {
 
   const logoutedUser=()=>{
     dispatch(userLogout())
+    dispatch(removeUserAddress())
     dispatch(removeAllitem())
     localStorage.removeItem('user')
      /*need to remove books also from localstorage*/ 

@@ -14,8 +14,9 @@ interface Book{
     description:string,
     format:string,
     rating:number,
-    amount:number
-
+    amount:number,
+    finalprice:number,
+    discont:number 
 }
 interface Books{
     books:Book[] ,
@@ -58,8 +59,17 @@ export const BookSlice= createSlice({
             state.alert=true
            
             state.message=`${action.payload.name.length>20 ?action.payload.name.substring(0,20) : action.payload.name} + added to your card`
+            if(action.payload.discont>0){
+                const discountedPrice =
+                action.payload.price - (action.payload.price * action.payload.discont) / 100;
+                state.books.push({...action.payload, amount:1, finalprice:discountedPrice})
+            }else{
+                state.books.push({...action.payload, amount:1, finalprice:action.payload.price})
+            }
+                     
            
-            state.books.push({...action.payload, amount:1})
+            
+           
         }
         //console.log(action.payload.amount)
 

@@ -23,10 +23,23 @@ export const UserAddressInfoSlice= createSlice({
            state.address=action.payload
         },
        
-    
+        removeUserAddress:(state)=>{
+            state.address={  // Set state.address to an empty object
+                gender: '',
+                fullName: '',
+                address: '',
+                city: '',
+                country: '',
+                phone: '',
+                postalcode: '',
+                shipMethod: '',
+                state: ''
+              };
+         },
+        
  
     }
 })
 
-export const {updateUserAddress} =UserAddressInfoSlice.actions
+export const {updateUserAddress,removeUserAddress} =UserAddressInfoSlice.actions
 export default UserAddressInfoSlice.reducer
