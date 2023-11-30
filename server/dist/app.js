@@ -41,6 +41,7 @@ const booksRouter = require('./routes/books');
 const authRouter = require('./routes/auth');
 const cartRouter = require('./routes/cart');
 const usersRouter = require('./routes/users');
+const userOrderRouter = require('./routes/userOrder');
 const dashboardRouter = require('./routes/dashboard');
 const orderRouter = require('./routes/orders');
 const notFoundMiddleware = require('./middleware/not-found');
@@ -58,6 +59,7 @@ app.use('/api/v1/books', booksRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/orders', orderRouter);
+app.use('/api/v1/userOrder', userOrderRouter);
 app.use('/api/v1/cart', cartRouter);
 //app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
 app.use(notFoundMiddleware);

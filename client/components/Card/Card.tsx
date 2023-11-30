@@ -17,7 +17,8 @@ function Card() {
   const books=useAppSelector(state=>state.books.books)
   console.log(books)
   const totalPrice=books.reduce((ac, cu)=>{
-    return ac+ (cu.finalprice * cu.amount)
+    const final=cu.price-(cu.price-cu.discont)/100
+    return ac+ (final  * cu.amount)
   },0)
   //console.log(totalPrice)
 
@@ -50,7 +51,10 @@ function Card() {
     <Total>
     <Top>
         <Tit>Total price :</Tit>
-        <Value>{totalPrice}€</Value></Top>
+        <Value>{totalPrice}€</Value>
+        <br/>
+        </Top>
+  
         <Bottom>
             <BackToShop ><Link href='/books'>Back to shop</Link></BackToShop>
             <Checkout>

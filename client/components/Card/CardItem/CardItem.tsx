@@ -19,6 +19,8 @@ interface Item{
 
 function CardItem({item, index}:Item) {
   console.log(item)
+  const finalprice=item.price-(item.price-item.discont)/100
+  console.log(finalprice)
 const [newAmount, setNewAmount] =useState<number>(item.amount)
 const userId=useAppSelector((state)=>state.user.userId)
 const dispatch=useAppDispatch()
@@ -59,11 +61,11 @@ const dispatch=useAppDispatch()
        />
         </BookPhoto>
         <Name>{item.name}</Name>
-        <Price>{item.finalprice},00 €</Price>
+        <Price>{finalprice} €</Price>
         
         <Amount type="number" min="1" max='10'  value={newAmount} onChange={(e)=>newAmountHandel(e)}/>
         
-         <TotalPrice>{item.amount*item.price},00 e</TotalPrice> 
+         <TotalPrice>{item.amount*finalprice} </TotalPrice> 
     </CardItemContainer>
   
    

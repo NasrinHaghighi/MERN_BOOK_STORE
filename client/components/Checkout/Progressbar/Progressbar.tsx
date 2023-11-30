@@ -12,9 +12,20 @@ import {Wrapper} from './styles'
 import {updateUserAddress} from '../../../features/UserAddressSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { boolean } from 'yup';
+import useFetchUserData from '../../../hooks/useFetchUserData'
+import axios from 'axios';
+
 
 
 function Progressbar() {
+const userId =useAppSelector((stata)=>stata.user.userId)
+  const {  booksWithQuantity, fetchUserdata } = useFetchUserData();
+    
+   useEffect(() => {
+       fetchUserdata();
+      }, []);
+
+
   const dispatch=useAppDispatch()
   const [userInfo, setUserInfo] =useState({})
   const handelInputs =(info:any)=>{
@@ -31,8 +42,8 @@ function Progressbar() {
     /*get userIfo frm redux to make validation*/  
 const userInforedux=useAppSelector((state)=>state.userAddress.address)
 
-
-
+/*i need an obj to send bt post req*/
+const datatoSend={ userInfo: userInfo,  booksWithQuantity: booksWithQuantity, userId:userId }
 
 const step1Content = <Adress handelInputs={handelInputs} userInfo={userInfo}/>;
 const step2Content = <ShippingMethod handelInputs={handelInputs} userInfo={userInfo}/>;
@@ -63,8 +74,14 @@ function step2Validator() {
    return true
 }
    
-  function onFormSubmit() {
-alert(JSON.stringify(userInfo))
+ const  onFormSubmit= async () =>{
+  console.log(datatoSend)
+    try {
+      const response = await axios.post("http://localhost:4000/api/v1/userOrder", datatoSend)
+    } catch (error) {
+      console.error('Error creating order:', error);
+      // Handle errors if the request fails
+    }
   }
   return (
     <>

@@ -2,7 +2,7 @@ import React ,{useState,useEffect} from 'react'
 import DashboardLayout from '../../../components/Dashboard/DashboardLayout'
 import EmptyLayout from '../../../Layout/EmptyLayout'
 import {Title, OrderBox,Tabel, DataGridS, DataGridRes, TabelRes, TabelSmall}  from '../../../components/Dashboard/OverView/styles'
-
+import axios from 'axios'
 import { DataGrid, GridColDef, GridRowId, GridValueGetterParams } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 
@@ -13,21 +13,26 @@ import Link from 'next/link';
 
 
 
-function OrderIndex({orders }:any) {
-console.log(orders.orders)
+function OrderIndex({users }:any) {
+const {users:userList}=users
+//console.log(userList)
+/*now i have list of users that registed in app */
+
+
+
   /*get id*/
 
-  const formattedData = orders.orders.map((order:any) => ({
-    id: order._id, // Unique identifier for each row
-    userId: order.userId,
-    status: order.status,
-    signinUser: order.signinUser,
-    imageUrl:order.orderedBook.imageUrl,
-    price:order.orderedBook.price,
-   bookName:order.orderedBook.name,
-   createdAt:order.orderedBook.createdAt,
+  // const formattedData = userCarts.map((item:any) => ({
+  //   id: item._id, // Unique identifier for each row
+  //   userId: order.userId,
+  //   status: order.status,
+  //   signinUser: order.signinUser,
+  //   imageUrl:order.orderedBook.imageUrl,
+  //   price:order.orderedBook.price,
+  //  bookName:order.orderedBook.name,
+  //  createdAt:order.orderedBook.createdAt,
     
-  }));
+  // }));
 
 
   return (
@@ -35,7 +40,7 @@ console.log(orders.orders)
        <OrderBox>
 <Title>Orders</Title>
 {/* first table */}
-     <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
+    {/* <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
      <DataGridS
     rows={formattedData}
     columns={columns}
@@ -51,9 +56,9 @@ console.log(orders.orders)
     checkboxSelection
   /> 
     
-    </Tabel> 
+    </Tabel>  */}
 {/* second table */}
-    <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
+    {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsRes}
@@ -70,9 +75,9 @@ console.log(orders.orders)
   />
 
 
-    </TabelRes> 
+    </TabelRes>  */}
 {/* third table */}
-     <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+     {/* <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsSmall}
@@ -87,7 +92,7 @@ console.log(orders.orders)
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall> 
+    </TabelSmall>  */}
     </OrderBox>  
     </DashboardLayout>
   )
@@ -97,15 +102,15 @@ export default OrderIndex
 
 
 export async function getStaticProps(context: any) {
-  const res = await fetch('http://localhost:4000/api/v1/orders');
+  const res = await fetch('http://localhost:4000/api/v1/users');
   if (!res.ok) {
     throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
   }
-  const orders = await res.json();
+  const users = await res.json();
 
   return {
     props: {
-     orders
+     users
     },
   };
 }

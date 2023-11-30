@@ -30,6 +30,7 @@ export const Total=styled.div`
 max-width: 450px;
 margin:30px auto ;
 text-align:center ;
+border-radius: 10px;
 padding:50px ;
 background-color:#fff ;
 box-shadow: ${props=>props.theme.alertBoxshdow};
@@ -42,16 +43,16 @@ display:flex ;
 justify-content:center ;
 align-items:center ;
 border-bottom:1px solid ${props=>props.theme.grayBorder} ;
-margin-bottom:30px ;
+
 `
-export const  Tit=styled.h1`
+export const  Tit=styled.h3`
 color:${props=>props.theme.textStrong} ;
 margin-right:20px;
 @media (max-width: 600px) {
    font-size: 18px;
   }
 `
-export const  Value=styled.h1`
+export const  Value=styled.h3`
 color:${props=>props.theme.priceColor} ;
 @media (max-width: 600px) {
    font-size: 18px;

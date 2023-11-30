@@ -25,6 +25,5 @@ const getAllusers = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 });
 exports.getAllusers = getAllusers;
 const createUserCard = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log('create card for user...');
 });
 exports.createUserCard = createUserCard;
