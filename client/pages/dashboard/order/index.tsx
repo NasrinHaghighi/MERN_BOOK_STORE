@@ -7,32 +7,32 @@ import { DataGrid, GridColDef, GridRowId, GridValueGetterParams } from '@mui/x-d
 import Box from '@mui/material/Box';
 
 import Link from 'next/link';
+import { useStepperContext } from '@mui/material'
 
 
 
 
 
 
-function OrderIndex({users }:any) {
-const {users:userList}=users
-//console.log(userList)
+function OrderIndex({order }:any) {
+
+const {order:orderlist}=order
+console.log(orderlist)
 /*now i have list of users that registed in app */
-
 
 
   /*get id*/
 
-  // const formattedData = userCarts.map((item:any) => ({
-  //   id: item._id, // Unique identifier for each row
-  //   userId: order.userId,
-  //   status: order.status,
-  //   signinUser: order.signinUser,
-  //   imageUrl:order.orderedBook.imageUrl,
-  //   price:order.orderedBook.price,
-  //  bookName:order.orderedBook.name,
-  //  createdAt:order.orderedBook.createdAt,
-    
-  // }));
+  const formattedData = orderlist.map((item:any) => ({
+    id: item._id, // Unique identifier for each row
+    userId: item.userId,
+    status: item.status,
+     country:item.userInfo[0].country,
+     city:item.userInfo[0].city,
+     
+  }));
+  console.log(formattedData)
+/*now i need to make arr from userId, then fetch data depend of that userid*/
 
 
   return (
@@ -40,7 +40,7 @@ const {users:userList}=users
        <OrderBox>
 <Title>Orders</Title>
 {/* first table */}
-    {/* <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
+     <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
      <DataGridS
     rows={formattedData}
     columns={columns}
@@ -56,7 +56,7 @@ const {users:userList}=users
     checkboxSelection
   /> 
     
-    </Tabel>  */}
+    </Tabel>  
 {/* second table */}
     {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
@@ -102,40 +102,30 @@ export default OrderIndex
 
 
 export async function getStaticProps(context: any) {
-  const res = await fetch('http://localhost:4000/api/v1/users');
+  const res = await fetch('http://localhost:4000/api/v1/userorder');
   if (!res.ok) {
     throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
   }
-  const users = await res.json();
+  const order = await res.json();
 
   return {
     props: {
-     users
+     order
     },
   };
 }
 
 
 
+
 /* reduce clumn depend of screen size*/
 /*this for biger 900 */
 const columns: GridColDef[] = [
-  { field: 'id', headerName: 'ID', width: 70, },
-  { field: 'signinUser', headerName: 'User', width: 90, },
-   { field: 'imageUrl', headerName: 'Image', width: 170 ,  sortable: false,   renderCell: (params) => (
-    <img
-      src={params.value} // Assuming `imageUrl` contains the image URL
-    alt="Product Image"
-       style={{ width: '100px', height: '90px', borderRadius:'10px' }}
-    />
-  ),},
-  { field: 'bookName', headerName: 'Name', width: 170 ,renderCell: (params) => (
-    <strong>{params.value.substring(0,15)}</strong> 
- ),},
-    { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
-     <strong >{params.value }</strong> 
-   ), },
-{
+  { field: 'id', headerName: 'Order ID', width:150, },
+  { field: 'userId', headerName: 'User ID', width: 150, },
+  { field: 'country', headerName: 'Country', width: 150, },
+  { field: 'city', headerName: 'City', width: 150, },
+  {
     field: 'status',
     headerName: 'Status',
     type: 'string',
@@ -145,9 +135,9 @@ const columns: GridColDef[] = [
         fontWeight: 'bold',
         color: 'black', // Default color
       };
-  
+   
       switch (params.value) {
-        case 'procssing':
+        case 'processing':
           cellStyle.color = 'orange';
           break;
         case 'shipped':
@@ -166,14 +156,7 @@ const columns: GridColDef[] = [
       return <strong style={cellStyle}>{params.value}</strong>;
     },
   },
-  {
-    field: 'createdAt',
-    headerName: 'Order date',
-    sortable: true,
-    width: 160,
-    renderCell: (params) => (
-      <div>{params.value.slice(0, params.value.indexOf('T'))}</div> 
-    ),},
+
 
   
   {
@@ -311,6 +294,19 @@ const columnsSmall: GridColDef[] = [
 ];
 
 
+// { field: 'imageUrl', headerName: 'Image', width: 170 ,  sortable: false,   renderCell: (params) => (
+//   <img
+//     src={params.value} // Assuming `imageUrl` contains the image URL
+//   alt="Product Image"
+//      style={{ width: '100px', height: '90px', borderRadius:'10px' }}
+//   />
+// ),},
+// { field: 'bookName', headerName: 'Name', width: 170 ,renderCell: (params) => (
+//   <strong>{params.value.substring(0,15)}</strong> 
+// ),},
+//   { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
+//    <strong >{params.value }</strong> 
+//  ), },
 
 
 

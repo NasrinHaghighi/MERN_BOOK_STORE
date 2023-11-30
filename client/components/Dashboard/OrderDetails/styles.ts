@@ -67,7 +67,7 @@ opacity:0.4;
 &.active{
     opacity:1;
 }
-&.procssing{
+&.processing{
     background-color:${props=>props.theme.orange} ;
  
 }

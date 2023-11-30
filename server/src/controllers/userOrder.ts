@@ -29,3 +29,37 @@ export const allOrder=async (req: any, res: any) => {
         res.status(500).json({msg : error})
     }
 }
+
+
+export const getOneorder =async (req: any, res: any) => {
+    console.log(req.params)
+
+    try{
+        const {orderId}=req.params
+        const order =await userOrder.findOne({_id:orderId})
+      
+        if(!order){
+            return res.status(404).json({msg:`no book by id:${orderId}`})
+        }
+        res.status(200).json({order})
+    }catch(error){
+        res.status(500).json({msg : error})
+    }
+}
+
+export const updateOrder =async (req: any, res: any) => {
+    try {
+    const {  orderId } = req.params;
+    const status = req.body;
+    console.log(status)
+    const order = await userOrder.findOneAndUpdate({ _id: orderId },  status, { new: true });
+    console.log(order)
+    if (!order) {
+        return res.status(404).json({ msg: `No order found with ID: ${orderId}` });
+      }
+  
+      res.status(200).json({ order });
+} catch (error) {
+    res.status(500).json({ msg: error });
+  }
+}

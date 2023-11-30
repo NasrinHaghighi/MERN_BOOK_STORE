@@ -10,12 +10,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function OrderDetails({order}:any) {
+  const {_id:id}=order.order
+  //console.log(id)
+  const {userInfo} =order.order
+  //console.log(userInfo)
+
 
  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
 useEffect(() => {
 setActiveBtn(order.order.status)
 }, [])
-console.log(activeBtn)
+
+
+
 const updateOrder = async(id:number, value:string)=>{
   setActiveBtn(value)
   { toast(`Status of order changed `,{
@@ -25,7 +32,7 @@ const updateOrder = async(id:number, value:string)=>{
    }
   try{
    // const updateData = { status: value }
-    const res =await axios.patch(`http://localhost:4000/api/v1/orders/${id}`, {
+    const res =await axios.patch(`http://localhost:4000/api/v1/userorder/${id}`, {
        status: value 
     },
     {
@@ -37,19 +44,14 @@ const updateOrder = async(id:number, value:string)=>{
   
 }
 catch(error){
-  if(error){
-   toast('This email is aleady exists',{
-     draggable:true,
-     position:toast.POSITION.TOP_RIGHT
-   })
-  }
+  
 }
 }
 
   
   return (
    <>
-    <Box>
+     <Box>
         <ToastContainer draggable={false} autoClose={3000}/> 
         <br/>
     <Title>Order No :  <Num>#{order.order._id}</Num></Title>
@@ -58,7 +60,6 @@ catch(error){
     <br/>
     <Status>Status:  </Status>
 
-    {/* Status funct */}
     <Grid container spacing={2}>
       {btnArr.map((item)=>{
           return   <Grid item lg={3} md={6} xs={12}>  
@@ -77,11 +78,11 @@ catch(error){
     <Grid container spacing={2}>
   <Grid item lg={3} md={6} xs={12}>
      <Tit>Order Created at</Tit>
-      <SubTit>{order.order.orderedBook.createdAt.split('T')[0]}</SubTit>
+      <SubTit>24_Nov_2023</SubTit>
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Name</Tit>
-      <SubTit>{order.order.signinUser}</SubTit>
+      <SubTit>{userInfo[0].fullName}</SubTit>
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Email</Tit>
@@ -89,7 +90,7 @@ catch(error){
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Contact</Tit>
-      <SubTit>916 112 7371</SubTit>
+      <SubTit>userInfo[0].phone</SubTit>
   </Grid>
 </Grid>
 <br/>
@@ -99,8 +100,9 @@ catch(error){
 <Grid item  md={6} xs={12} >
   <Container>
      <Tit>Delivery Address</Tit>
-     <First>Porto, Portugal</First>
-     <Second>Av. Boavista</Second>
+     <First>{userInfo[0].city}, {userInfo[0].state}, {userInfo[0].country},  </First>
+     <Second>{userInfo[0].postalcode}</Second>
+     <Second>{userInfo[0].address}</Second>
      </Container>
   </Grid>
   <Grid item  md={6} xs={12} >
@@ -114,7 +116,7 @@ catch(error){
   </Grid>
 </Grid>
   
-    </Box>
+    </Box> 
     </>
   )
 }
@@ -123,7 +125,7 @@ export default OrderDetails
 
 
 const btnArr=[
-  {id:1, value:'procssing' , text:'Processing'},
+  {id:1, value:'processing' , text:'Processing'},
   {id:2, value:'shipped' , text:'Shipped'},
   {id:3, value:'completed' , text:'Completed'},
   {id:4, value:'cancelled' , text:'Cancelled'},

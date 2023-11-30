@@ -43,7 +43,7 @@ function Book() {
 <BookFormat>{bookItem.format}</BookFormat>
 <BookAuthor>{bookItem.author}</BookAuthor>
 <Share />
-<Description>{bookItem.descriptin}</Description>
+<Description>{bookItem.description}</Description>
 
       </BookDetail>
      <Price bookItem={bookItem}/>

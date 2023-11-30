@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.allOrder = exports.createOrder = void 0;
+exports.updateOrder = exports.getOneorder = exports.allOrder = exports.createOrder = void 0;
 const userOrder = require('../models/userOrder');
 const Book = require('../models/books');
 const User = require('../models/user');
@@ -35,3 +35,35 @@ const allOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.allOrder = allOrder;
+const getOneorder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.params);
+    try {
+        const { orderId } = req.params;
+        const order = yield userOrder.findOne({ _id: orderId });
+        if (!order) {
+            return res.status(404).json({ msg: `no book by id:${orderId}` });
+        }
+        res.status(200).json({ order });
+    }
+    catch (error) {
+        res.status(500).json({ msg: error });
+    }
+});
+exports.getOneorder = getOneorder;
+const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { orderId } = req.params;
+        const status = req.body;
+        console.log(status);
+        const order = yield userOrder.findOneAndUpdate({ _id: orderId }, status, { new: true });
+        console.log(order);
+        if (!order) {
+            return res.status(404).json({ msg: `No order found with ID: ${orderId}` });
+        }
+        res.status(200).json({ order });
+    }
+    catch (error) {
+        res.status(500).json({ msg: error });
+    }
+});
+exports.updateOrder = updateOrder;
