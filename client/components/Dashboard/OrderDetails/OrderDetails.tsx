@@ -1,20 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 
-import {Title, Box,Num,  Tit, SubTit, Container, First, Second, Button, Status} from './styles'
+import {Title, Box,Num,  Tit, SubTit, Container, First, Second, Button, Status, Delivery, Payment, Label} from './styles'
 import { BsBorder } from 'react-icons/bs';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import useFetchorderuser from '../../../hooks/useFetchorderuser'
 
 
 function OrderDetails({order}:any) {
   const {_id:id}=order.order
-  //console.log(id)
+  const userId =order.order.userId
   const {userInfo} =order.order
-  //console.log(userInfo)
 
+
+
+  const {userOrders, fetchUserOrder } = useFetchorderuser(userId);
+
+
+  useEffect(() => {
+    fetchUserOrder()
+    
+  }, []);
+
+console.log(userOrders)
 
  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
 useEffect(() => {
@@ -99,21 +109,33 @@ catch(error){
 <Grid container spacing={2} >
 <Grid item  md={6} xs={12} >
   <Container>
-     <Tit>Delivery Address</Tit>
-     <First>{userInfo[0].city}, {userInfo[0].state}, {userInfo[0].country},  </First>
-     <Second>{userInfo[0].postalcode}</Second>
-     <Second>{userInfo[0].address}</Second>
+     <Delivery>Delivery Address</Delivery>
+     <First>{userInfo[0].country}, {userInfo[0].state}, {userInfo[0].city}, </First>
+     <Second><Label>Postal Code : </Label>{userInfo[0].postalcode}</Second>
+     <Second><Label>Address : </Label> {userInfo[0].address}</Second>
      </Container>
   </Grid>
   <Grid item  md={6} xs={12} >
   <Container>
-  <Tit>Payment Status</Tit>
+  <Delivery>Payment Status</Delivery>
      <First>Activo Bank</First>
-     <Second>No: PT508045869325148</Second>
+     <Second><Label>No : </Label> PT508045869325148</Second>
+     <Second><Label>Payment Status : </Label> <Payment>Paid</Payment></Second>
      </Container>
      
      
   </Grid>
+</Grid>
+<br/>
+    <hr/>
+    <br/>
+<Grid container spacing={2} >
+  
+<Grid item  md={12} xs={12} >
+  <Container>
+
+  </Container>
+</Grid>
 </Grid>
   
     </Box> 
