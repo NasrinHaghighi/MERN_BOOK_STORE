@@ -22,7 +22,7 @@ interface ItemProps{
 
 
 function BookItem({item}:ItemProps) {
-  console.log(item)
+ // console.log(item)
 const userId=useAppSelector((state)=>state.user.userId)
 
 const isExternalImage = item.imageUrl.startsWith('http');

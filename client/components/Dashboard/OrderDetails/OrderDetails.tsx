@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 
-import {Title, Box,Num,  Tit, SubTit, Container, First, Second, Button, Status, Delivery, Payment, Label} from './styles'
+import {Title, Box,Num,  Tit, SubTit, Container, First, Second, Button, Status, Delivery, Payment, Label, Titles} from './styles'
 import { BsBorder } from 'react-icons/bs';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useFetchorderuser from '../../../hooks/useFetchorderuser'
-
+import useGetBookInfoUser from '../../../hooks/useGetBookInfoUser';
+import OrderItem from './OrderItem';
 
 function OrderDetails({order}:any) {
   const {_id:id}=order.order
@@ -17,14 +18,13 @@ function OrderDetails({order}:any) {
 
 
   const {userOrders, fetchUserOrder } = useFetchorderuser(userId);
-
+  const bookInfo = useGetBookInfoUser({ userOrders });
 
   useEffect(() => {
     fetchUserOrder()
-    
-  }, []);
-
-console.log(userOrders)
+   }, []);
+ 
+//console.log(bookInfo)
 
  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
 useEffect(() => {
@@ -100,7 +100,7 @@ catch(error){
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Contact</Tit>
-      <SubTit>userInfo[0].phone</SubTit>
+      <SubTit>{userInfo[0].phone}</SubTit>
   </Grid>
 </Grid>
 <br/>
@@ -133,7 +133,12 @@ catch(error){
   
 <Grid item  md={12} xs={12} >
   <Container>
-
+  <Delivery>Order Items</Delivery>
+ 
+ <hr/>
+{bookInfo.map((item:any)=>{
+  return <OrderItem item={item} key={item.bookId}/>
+})}
   </Container>
 </Grid>
 </Grid>

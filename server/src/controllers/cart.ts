@@ -43,10 +43,10 @@ export const removeItem = async (req:any, res:any) => {
 
   if (!userId || !isValidObjectId(userId) || !user)
     return res.status(400).send({ status: false, message: "Invalid user ID" });
-console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
+//console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
   let cart = await Cart.findOne({ userId: userId });
   //console.log(cart)
-  console.log('remove')
+ // console.log('remove')
   if (!cart)
     return res
       .status(404)
@@ -57,6 +57,11 @@ console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
     cart.products.splice(itemIndex, 1);
     cart = await cart.save();
     return res.status(200).send({ status: true, updatedCart: cart });
+  }
+  if(!productId){
+    /*can i say if req.body is not availeble, it meanse remove all the cart,*/
+    await Cart.deleteOne({ userId: userId });
+    return res.status(200).send({ status: true, message: "Cart deleted successfully" });
   }
   res
     .status(400)
@@ -115,5 +120,15 @@ return res
   cart = await cart.save();
   console.log(cart)
   return res.status(200).send({ status: true, updatedCart: cart });
+}
+
+export const deleteCart=async (req:any, res:any) =>{
+  try {
+    const userId = req.params.userId;
+    console.log(userId)
+  
+  }catch(er){
+    console.log(er)
+  }
 }
 

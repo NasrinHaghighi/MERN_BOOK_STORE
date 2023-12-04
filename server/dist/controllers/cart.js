@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateAmount = exports.getCart = exports.removeItem = exports.addTocart = void 0;
+exports.deleteCart = exports.updateAmount = exports.getCart = exports.removeItem = exports.addTocart = void 0;
 const Cart = require('../models/cart');
 const User = require('../models/user');
 const { isValidObjectId } = require("mongoose");
@@ -49,10 +49,10 @@ const removeItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     let productId = req.body.productId;
     if (!userId || !isValidObjectId(userId) || !user)
         return res.status(400).send({ status: false, message: "Invalid user ID" });
-    console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`);
+    //console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
     let cart = yield Cart.findOne({ userId: userId });
     //console.log(cart)
-    console.log('remove');
+    // console.log('remove')
     if (!cart)
         return res
             .status(404)
@@ -62,6 +62,11 @@ const removeItem = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         cart.products.splice(itemIndex, 1);
         cart = yield cart.save();
         return res.status(200).send({ status: true, updatedCart: cart });
+    }
+    if (!productId) {
+        /*can i say if req.body is not availeble, it meanse remove all the cart,*/
+        yield Cart.deleteOne({ userId: userId });
+        return res.status(200).send({ status: true, message: "Cart deleted successfully" });
     }
     res
         .status(400)
@@ -109,3 +114,13 @@ const updateAmount = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     return res.status(200).send({ status: true, updatedCart: cart });
 });
 exports.updateAmount = updateAmount;
+const deleteCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = req.params.userId;
+        console.log(userId);
+    }
+    catch (er) {
+        console.log(er);
+    }
+});
+exports.deleteCart = deleteCart;

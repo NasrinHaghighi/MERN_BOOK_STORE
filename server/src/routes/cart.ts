@@ -4,7 +4,7 @@ const router = express.Router();
 var bodyParser =require('body-parser')
 var jsonParser=bodyParser.json()
 
-import {addTocart, removeItem, getCart, updateAmount } from '../controllers/cart'
+import {addTocart, removeItem, getCart, updateAmount ,deleteCart} from '../controllers/cart'
 
 
 

@@ -6,7 +6,7 @@ import axios from 'axios';
 
 function useFetchUserData() {
     const [booksWithQuantity, setBooksWithQuantity] = useState<any[]>([]);
-
+const [cartId, setCartId] = useState<string>('');
     //const dispatch=useAppDispatch()
     const user=useAppSelector(((state: { user: any; })=> state.user))
     const userId=user.userId
@@ -14,6 +14,8 @@ function useFetchUserData() {
     const fetchUserdata=async()=>{
         try{
        const res=await axios.get(`http://localhost:4000/api/v1/cart/${userId}`)
+       const cartId=res.data.cart._id
+       
        const productsWithQuantity = res.data.cart.products;
        const bookDetailsPromises = productsWithQuantity.map(async (product: any) => {
          try {
@@ -28,7 +30,7 @@ function useFetchUserData() {
            return null;
          }
        });
-       
+       setCartId(cartId);
        const booksWithQuantity = await Promise.all(bookDetailsPromises);
        setBooksWithQuantity(booksWithQuantity);
         }catch(err){
@@ -46,6 +48,7 @@ function useFetchUserData() {
        return {
         booksWithQuantity,
         fetchUserdata,
+       cartId,
       };
 
 

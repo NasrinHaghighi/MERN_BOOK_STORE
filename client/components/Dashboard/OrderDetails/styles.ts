@@ -74,19 +74,19 @@ box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 &.processing{
     background-color:${props=>props.theme.orange} ;
- 
+
 }
 &.shipped{
     background-color:${props=>props.theme.blue2} ;
- 
+
 }
 &.completed{
     background-color:${props=>props.theme.green} ;
-    
+
 }
 &.cancelled{
     background-color:${props=>props.theme.red} ;
-    
+
 }
 `
 export const Status =styled.span`
@@ -108,3 +108,49 @@ export const Label=styled.span`
 color: ${props=>props.theme.orange};
 font-weight: 700;
 `
+/*orderItem style*/
+export const Titles = styled.div`
+display: grid;
+grid-template-columns: 1fr 3fr repeat(3, 1fr);
+font-weight: 500;
+margin-top: 25px;
+
+
+`
+
+export const OrderItemBox = styled.div`
+ display: grid;
+ grid-template-columns: 1fr 4fr;
+margin-bottom: 20px;
+align-items: center;
+@media (max-width: 1000px) {
+  grid-template-columns: 1fr;
+grid-template-rows: repeat(2, 1fr);
+  }
+`
+export const BookPhoto = styled.div`
+@media (max-width: 1100px) {
+ text-align: center;
+  }
+
+`
+export const NameItem = styled.span`
+margin-bottom: 25px;
+font-weight: 600;
+
+`
+export const Name = styled.span`
+margin: 0 15px;
+font-weight: 700;
+`
+export const ItemInfoBox = styled.span`
+
+@media (max-width: 1000px) {
+ text-align: center;
+  }
+`
+export const Span = styled.span`
+color: ${props=>props.theme.orange};
+
+`
+

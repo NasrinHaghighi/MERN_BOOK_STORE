@@ -14,13 +14,15 @@ import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import { boolean } from 'yup';
 import useFetchUserData from '../../../hooks/useFetchUserData'
 import axios from 'axios';
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/navigation'
+import {removeAllitem} from '../../../features/bookSlice'
 function Progressbar() {
+  const router = useRouter()
 const userId =useAppSelector((stata)=>stata.user.userId)
-  const {  booksWithQuantity, fetchUserdata } = useFetchUserData();
-    
+  const {  booksWithQuantity, fetchUserdata ,cartId} = useFetchUserData();
+   
    useEffect(() => {
        fetchUserdata();
       }, []);
@@ -73,11 +75,24 @@ function step1Validator() {
 function step2Validator() {
    return true
 }
-   
+   console.log(cartId)
  const  onFormSubmit= async () =>{
-  console.log(datatoSend)
+  /*we need to remove all item from redux by submit, meanse cart now is a order nad cart is */
+dispatch(removeAllitem())
+
     try {
       const response = await axios.post("http://localhost:4000/api/v1/userOrder", datatoSend)
+        // If order placed successfully, proceed to delete the cart
+        let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`)
+      if(response.status === 201){
+        toast('We recived you order Successfully!',{
+          draggable:true,
+          position:toast.POSITION.TOP_RIGHT
+        })
+        setTimeout(() => {
+          router.push('/books')
+        }, 5000);
+      }
     } catch (error) {
       console.error('Error creating order:', error);
       // Handle errors if the request fails
@@ -85,6 +100,7 @@ function step2Validator() {
   }
   return (
     <>
+      <ToastContainer draggable={false} autoClose={5000}/> 
     <Wrapper>
     <StepProgressBar
   startingStep={0}

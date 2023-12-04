@@ -23,8 +23,7 @@ function useFetchorderuser(userId:any) {
     useEffect(() => {
       fetchUserOrder();
     }, []);
-  
-    return { userOrders, fetchUserOrder };
+   return { userOrders, fetchUserOrder };
   }
 
   export default useFetchorderuser;
