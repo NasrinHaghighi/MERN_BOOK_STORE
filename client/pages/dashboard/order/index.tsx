@@ -14,7 +14,7 @@ import { useStepperContext } from '@mui/material'
 
 
 
-function OrderIndex({order }:any) {
+function OrderIndex() {
 
 //const {order:orderlist}=order
 //console.log(orderlist)

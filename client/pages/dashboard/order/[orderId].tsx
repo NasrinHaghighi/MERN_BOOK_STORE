@@ -6,7 +6,7 @@ import {OrderBox} from '../../../components/Dashboard/OverView/styles'
 import { useRouter } from 'next/router';
 
 
-function OrederDetail({order}:any) {
+function OrederDetail() {
   //console.log(order)
 
   return (
