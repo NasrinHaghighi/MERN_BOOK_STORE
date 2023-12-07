@@ -1,5 +1,5 @@
 import React ,{useState, useEffect}from 'react'
-import StepProgressBar from 'react-step-progress';
+//import StepProgressBar from 'react-step-progress';
 // import the stylesheet
 import 'react-step-progress/dist/index.css';
 import Adress from '../Address/Adress';
@@ -18,6 +18,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
 import {removeAllitem} from '../../../features/bookSlice'
+
+
+
 function Progressbar() {
   const router = useRouter()
 const userId =useAppSelector((stata)=>stata.user.userId)
@@ -102,7 +105,7 @@ dispatch(removeAllitem())
     <>
       <ToastContainer draggable={false} autoClose={5000}/> 
     <Wrapper>
-    <StepProgressBar
+    {/* <StepProgressBar
   startingStep={0}
   onSubmit={onFormSubmit}
   steps={[
@@ -128,7 +131,7 @@ dispatch(removeAllitem())
      
     }
   ]}
-/>
+/> */}
 </Wrapper>
 </>
 )
