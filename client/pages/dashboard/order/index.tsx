@@ -38,7 +38,8 @@ console.log(orderlist)
   return (
     <DashboardLayout>
        <OrderBox>
-<Title>Orders</Title>
+       <Title>Dashboard \ <span>Orders</span></Title>
+     
 {/* first table */}
      <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
      <DataGridS
@@ -58,7 +59,7 @@ console.log(orderlist)
     
     </Tabel>  
 {/* second table */}
-    {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
+   <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsRes}
@@ -75,9 +76,9 @@ console.log(orderlist)
   />
 
 
-    </TabelRes>  */}
+    </TabelRes> 
 {/* third table */}
-     {/* <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+      <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsSmall}
@@ -92,7 +93,7 @@ console.log(orderlist)
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall>  */}
+    </TabelSmall>  
     </OrderBox>  
     </DashboardLayout>
   )
@@ -175,26 +176,18 @@ const columns: GridColDef[] = [
 ];
 /*this for 900-600 */
 const columnsRes: GridColDef[] = [
-  { field: '_id', headerName: 'ID', width: 70 },
-  { field: 'signinUser', headerName: 'User', width: 90, },
-  { field: 'imageUrl', headerName: 'Image', width: 120 ,  sortable: false,   renderCell: (params) => (
-    <img
-      src={params.value} // Assuming `imageUrl` contains the image URL
-      alt="Product Image"
-      style={{ width: '50px', height: '90px', borderRadius:'10px' }}
-    />
-  ),},
-  { field: 'bookName', headerName: 'Name', width: 170 ,renderCell: (params) => (
-    <strong>{params.value.substring(0,15)}</strong> 
- ),},
-  // { field: 'price', headerName: 'Price', width: 80,   renderCell: (params) => (
-  //   <strong >{params.value }</strong> 
-  //  ), },
+  { field: 'id', headerName: 'Order ID', width:100, },
+  { field: 'userId', headerName: 'User ID', width: 100, },
+  { field: 'country', headerName: 'Country', width: 100, },
+  { field: 'city', headerName: 'City', width: 100, },
+  
+
+
   {
     field: 'status',
     headerName: 'Status',
     type: 'string',
-    width:150,
+    width:100,
     renderCell: (params) => {
       let cellStyle = {
         fontWeight: 'bold',
@@ -202,7 +195,7 @@ const columnsRes: GridColDef[] = [
       };
   
       switch (params.value) {
-        case 'procssing':
+        case 'processing':
           cellStyle.color = 'orange';
           break;
         case 'shipped':
@@ -228,7 +221,7 @@ const columnsRes: GridColDef[] = [
     field: ' ',
     headerName: 'Action',
     sortable: true,
-    width: 150,
+    width: 100,
     renderCell: (params) => (
       <Link 
       style={{cursor:'pointer'}}
@@ -242,13 +235,15 @@ const columnsRes: GridColDef[] = [
 /*this for less than600 */
 const columnsSmall: GridColDef[] = [
   
-  { field: 'id', headerName: 'ID', width: 100, },
-  { field: 'signinUser', headerName: 'User', width: 120, },
+  { field: 'id', headerName: 'Order ID', width:100, },
+
+  { field: 'country', headerName: 'Country', width: 90, },
+ 
   {
     field: 'status',
     headerName: 'Status',
     type: 'string',
-    width:120,
+    width:90,
     renderCell: (params) => {
       let cellStyle = {
         fontWeight: 'bold',
@@ -256,7 +251,7 @@ const columnsSmall: GridColDef[] = [
       };
   
       switch (params.value) {
-        case 'procssing':
+        case 'processing':
           cellStyle.color = 'orange';
           break;
         case 'shipped':
@@ -282,7 +277,7 @@ const columnsSmall: GridColDef[] = [
     field: ' ',
     headerName: 'Action',
     sortable: true,
-    width: 30,
+    width: 50,
     renderCell: (params) => (
       <Link 
       style={{cursor:'pointer'}}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 
 export const Box =styled.div`
-background-color: ${props=>props.theme.white};
+background-color: ${props=>props.theme.mainBG};
 padding:10px 30px  ;
 border-radius: 10px;
 color: black;

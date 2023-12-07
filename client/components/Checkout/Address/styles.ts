@@ -9,6 +9,9 @@ margin:100px 0;
 padding: 30px;
 background-color: ${props=>props.theme.white};
 border-radius: 10px;
+@media (max-width: 600px) {
+    padding:30px 5px ;
+  }
 `
 
 export const Title=styled.div`

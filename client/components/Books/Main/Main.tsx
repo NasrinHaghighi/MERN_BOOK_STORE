@@ -19,7 +19,8 @@ import PaginationCo from '../Pagination/PaginationCo';
 import ResetFilters from '../ResetFilters/ResetFilters';
 import AddCardAlert from '../Alerts/AddCardAlert';
 import {useRouter} from 'next/router';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function Main() {
@@ -32,10 +33,10 @@ function Main() {
   const searchTerm = useAppSelector((state=>state.search.searchTerm))
   const sortby = useAppSelector((state=>state.sort.sort))
   const limitNumber = useAppSelector((state=>state.limitNumber.limitNumber))
+  const bookAlert = useAppSelector((state=>state.books.alert))
   const pageNum = useAppSelector((state=>state.page.page))
   let min=priceSelected[0]
   let max=priceSelected[1]
-
 
 //console.log(location)
 
@@ -101,11 +102,11 @@ useEffect(() => {
 const m=checkSort(sortby)
 
    axios
-       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}&category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}, price<${max} &category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
-}, [categorySelected,rateSelected,min,sortby,limitNumber, pageNum])
+}, [categorySelected,rateSelected,min,max,sortby,limitNumber, pageNum])
 //use debounce lodash to set delay to fech data
 
 // const handleDebounceFn =  (s:any) => {
@@ -118,7 +119,7 @@ const m=checkSort(sortby)
 
 
 
-
+console.log(bookAlert)
 useEffect(() => {
   axios.get(`http://localhost:4000/api/v1/books`)
   .then(response => {
@@ -138,11 +139,17 @@ useEffect(() => {
     
 }, [searchTerm])
 
+
+
+
+
  
   return (
     <>
+   
     <Container>
     <AddCardAlert/>
+    <ToastContainer draggable={false} autoClose={5000}/> 
     <Top> 
       <SortBox /> 
       <ResDiv>
@@ -164,7 +171,7 @@ useEffect(() => {
     <BooksConatiner>
       {!loading && data && data.length>0
       ? data.map((item)=>{
-        return <BookItem key={item._id}item={item}/>
+        return <BookItem  key={item._id} item={item} />
       })   
       :''}
 

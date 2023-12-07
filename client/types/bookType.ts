@@ -16,5 +16,6 @@ rating:number
 amount:number, 
 stock?:string,
 discont:number,
-finalprice:number
+finalprice:number,
+category?:string
 }

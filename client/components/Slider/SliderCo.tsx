@@ -44,6 +44,9 @@ export default SliderCo
 
 
 const sliderArr=[
-  {id:1 , title:'Featured Books of the ' , subtit:'February', img:'/images/bg (1).png'},
-  {id:1 , title:'Educational Book ' , subtit:'For Kids', img:'/images/bg (2).png'}
+  {id:0 , title:'Featured Books of the ' , subtit:'February', img:'/images/bg (1).png'},
+  {id:1 , title:'Educational Book ' , subtit:'For Kids', img:'/books/book2.png'}, 
+  {id:2 , title:'Featured Books of the ' , subtit:'February', img:'/books/book.png'},
+ 
+ 
 ]

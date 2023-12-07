@@ -18,6 +18,7 @@ export const BooksContainer=styled.span`
 display: grid;
 grid-template-columns: repeat(3, 1fr);
 column-gap: 20px;
+row-gap: 20px;
 margin-bottom: 80px;
 @media (max-width: 1000px) {
     grid-template-columns: 1fr;

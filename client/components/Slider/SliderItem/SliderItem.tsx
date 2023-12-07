@@ -21,7 +21,7 @@ function SliderItem({item, index,active}:any) {
 
         </Left>
         <Right className={active===index ? 'active' :''}>
-        <Images src={item.img} width={700} height={400}   alt="book"/>
+        <Images src={item.img} width={600} height={400}   alt="book"/>
         </Right> 
     </SliderItemontainer>
   )

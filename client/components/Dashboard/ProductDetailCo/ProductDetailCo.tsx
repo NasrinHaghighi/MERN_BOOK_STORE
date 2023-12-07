@@ -67,15 +67,16 @@ function ProductDetailCo({product}:any) {
 <hr/>
 <br/>
 <Grid container spacing={2}>
+
+
 <Grid item lg={6} md={12}  sm={12}>
+  <UpdateStock stock={product.book.stock} id={product.book._id}/>
+  </Grid>
+  <Grid item lg={6} md={12}  sm={12}>
   <UpdatePrice 
   discont={product.book.discont} 
   price={product.book.price} 
   id={product.book._id}/>
-  </Grid>
-
-<Grid item lg={6} md={12} sm={12}>
-  <UpdateStock stock={product.book.stock} id={product.book._id}/>
   </Grid>
 </Grid>
     </Box>

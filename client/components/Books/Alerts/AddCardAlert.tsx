@@ -18,6 +18,8 @@ function AddCardAlert() {
     //const messageState =useAppSelector((state=>state.books.message))
 const modifyMes= messageState.split("+");
 const modifFavoraiteMessageState=favoraiteMessageState.split('+')
+
+console.log(alertState)
 useEffect(()=>{
   if(alertState){
     setOpen(true)
@@ -26,7 +28,7 @@ useEffect(()=>{
         dispatch(backtofalseAlert())
        
     }, 4000);
-    if(!alertState){
+    if(!alertState){ 
         setOpen(false)
       }
  

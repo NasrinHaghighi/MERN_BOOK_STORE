@@ -68,7 +68,7 @@ catch(error){
             <Price className='init'><Title>Initial price :</Title> <Span> {price} €</Span></Price>
             </Grid>
             <Grid item lg={6} md={12}>
-        <Price className='final'><Title>Final price :</Title> <Span> {final} €</Span></Price>
+        <Price className='final'><Title>Final price :</Title> <Span> {final ? final :price} €</Span></Price>
         </Grid>
         </Grid>
      

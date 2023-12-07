@@ -21,7 +21,7 @@ function ProductsIndex({books}:any) {
   return (
     <DashboardLayout>
        <OrderBox>
-  <Title>Products</Title>
+       <Title>Dashboard \ <span>Products</span></Title>
   <Tabel >
  <DataGrid
         rows={books.books}
@@ -287,7 +287,7 @@ const columnsSmall: GridColDef[] = [
   { field: 'name', headerName: 'Name', width: 100 ,
   
  renderCell: (params) => (
-    <strong>{params.value.substring(0,15)}</strong> 
+    <div>{params.value.substring(0,15)}</div> 
    ),
 
 },
@@ -317,14 +317,12 @@ const columnsSmall: GridColDef[] = [
       return <strong style={cellStyle}>{params.value}</strong>;
     },
   },
-  { field: 'price', headerName: 'Initial Price', width:50,   renderCell: (params) => (
-    <strong >{params.value }</strong> 
-   ), },
+ 
   {
     field: 'discont',
     headerName: 'Discont',
     sortable: true,
-    width: 50,
+    width: 30,
      renderCell: (params) => (
      <strong style={{color:'orange'}}>{params.value } %</strong> 
     ),
@@ -333,7 +331,7 @@ const columnsSmall: GridColDef[] = [
   {
     field: 'finalPrice',
     headerName: 'Final Price',
-    width: 50,
+    width: 30,
     renderCell: (params) => {
      
       const initialPrice = parseFloat(params.row.price || 0);

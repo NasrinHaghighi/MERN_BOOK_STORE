@@ -6,6 +6,10 @@ import { bookType } from '../../../types/bookType';
 import {addBook} from '../../../features/bookSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios'
+
 interface Book{
     bookItem:bookType
 }
@@ -13,9 +17,24 @@ interface Book{
 
 function Price({bookItem}:Book) {
 const dispatch=useAppDispatch()
+const userId=useAppSelector((state)=>state.user.userId)
 
-    const addTocardhandel=(item:any)=>{
-        dispatch(addBook(item))
+
+    const addToCardHandel=async(e:any)=>{
+        e.stopPropagation()
+        if(!userId){
+        toast.error('Please login to add item to cart')
+        }else{
+         dispatch(addBook(bookItem))
+         
+         try{
+             let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: bookItem._id })
+               
+             console.log(res)
+           }catch(error){}
+        }
+        
+             
     }
   return (
     <PriceConatiner>
@@ -28,7 +47,9 @@ const dispatch=useAppDispatch()
             <Text> <AiOutlineCheckCircle /> Available. Expected delivery in 11-16 business days.</Text>
         </Middel>
         <Bottom>
-            <AddToCard onClick={()=>addTocardhandel(bookItem)}><Link href='/card'><span>Add to card</span></Link></AddToCard>
+            <AddToCard onClick={(e)=>addToCardHandel(e)}>
+                <span>Add to card</span>
+               </AddToCard>
             <AddFavoraite>Add to wishlist</AddFavoraite>
 
         </Bottom>

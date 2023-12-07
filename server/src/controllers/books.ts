@@ -40,13 +40,28 @@ export const getAllBooks =async (req: any, res: any) =>{
           };
           const regEx = /\b(<|>|>=|=|<|<=)\b/g;
           let filters = numericFilters.replace(regEx, (match: string | number) => `-${operatorMap[match]}-` );
+          /**/
           const options = ['price', 'rating'];
+         
           filters = filters.split(',').forEach((item: { split: (arg0: string) => [any, any, any] }) => {
             const [field, operator, value] = item.split('-');
+            console.log(field, operator, value)
             if (options.includes(field)) {
-              queryObject[field] = { [operator]: Number(value) };
+                if (operator === '$eq') {
+                    
+                    queryObject[field] = { [operator]: Number(value) };
+                } else if (operator === '$gt' || operator === '$gte' || operator === '$lt' || operator === '$lte') {
+                    if (!queryObject[field]) {
+                        queryObject[field] = {};
+                    }
+                    queryObject[field][operator] = Number(value);
+                   
+                }
             }
-          });
+         
+          }); 
+          
+        
     }
     let result= Books.find(queryObject)
     if(sort){

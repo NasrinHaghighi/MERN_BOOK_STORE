@@ -1,6 +1,6 @@
 import React ,{useState, useEffect}from 'react'
 import User from '../../../public/images/man_avatar3.jpg'
-import {SidbarBox, RoleBoxx, Photo, Info,Name, Role, Navbar,NavItem,IconItem, SidebarModal, Main, ModalBox, CloseIcon, LogOut} from './styles'
+import {SidbarBox, RoleBoxx, Photo, Info,Name, Role, Navbar,NavItem,IconItem, SidebarModal, Main, ModalBox, CloseIcon, LogOut, LogoDiv} from './styles'
 import { Images } from "../../../helpers/Image";
 
 import {BsBarChartFill} from 'react-icons/bs'
@@ -16,7 +16,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import {DropDownToggle, DropDownItem} from '../../Header/LoginDropdown/styles'
 import {DropDownMenu} from './styles'
 import RoleBox from './RoleBox/RoleBox';
-
+import LogoPic from '../../../public/images/logo.jpg'
 
 
 
@@ -52,8 +52,11 @@ const handelClose=()=>{
   return (
 <>
     <Main>
+      
     <SidbarBox>
+
           <RoleBox />
+          
         <Navbar>
           {navItem.map((item, index)=>{
               
@@ -79,6 +82,11 @@ const handelClose=()=>{
         className={dashboardStatus ? 'show' : 'notShow'}
         >
     <ModalBox >
+      <LogoDiv>
+        <Link href='/'>
+      <Images src={LogoPic} width={150} height={100}   alt="logo"/>
+      </Link>
+      </LogoDiv>
       <br/>
       <CloseIcon onClick={handelClose} style={{zIndex:10}}><AiOutlineCloseCircle /></CloseIcon>
       <br/>

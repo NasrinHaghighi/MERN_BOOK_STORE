@@ -14,6 +14,10 @@ flex-direction: column;
     width:80%;
 margin: 0 auto;
   }
+  @media (max-width:700px) {
+padding: 0;
+width: 100%;
+  }
 `
 export const Title =styled.span`
 font-size: 24px;

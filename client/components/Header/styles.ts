@@ -109,6 +109,9 @@ position:relative ;
     background-color: #DB1037;
     background-image: linear-gradient(90deg, #DB1037, #CD40E6);;
     transition: .3s ease;
+    @media (max-width:1200px) {
+  display: none;
+  }
   }
 &:hover {
     &::before {

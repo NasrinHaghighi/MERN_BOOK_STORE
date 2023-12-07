@@ -51,7 +51,7 @@ function Card() {
     <Total>
     <Top>
         <Tit>Total price :</Tit>
-        <Value>{totalPrice}€</Value>
+        <Value>{totalPrice.toFixed(2)}€</Value>
         <br/>
         </Top>
   

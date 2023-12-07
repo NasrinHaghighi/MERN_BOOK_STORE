@@ -1,5 +1,5 @@
 import React ,{useEffect, useState} from 'react'
-import {BoxConatiner,Container, ImageDiv,  AlertBox, SeeCardBtn, Page, BookDetail, BookTitle,BookFormat, BookAuthor,Description, } from './styles'
+import {BoxConatiner,Container, ImageDiv,  AlertBox, SeeCardBtn, Page, BookDetail, BookTitle,BookFormat, BookAuthor,Description,RelatedBookBox } from './styles'
 import { useRouter } from 'next/router'
 import { fetchitem } from '../../utiles';
 import { Images } from '../../helpers/Image'
@@ -11,22 +11,32 @@ import { bookType } from '../../types/bookType';
 import Star from './Star/Star'
 import Share from './Share/Share';
 import Price from './Price/Price'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AddCardAlert from '../Books/Alerts/AddCardAlert';
+import RelatedBook from './RelatedBook/RelatedBook';
 
 function Book() {
     const router = useRouter()
    const bookid=router.query.bookid
   const [bookItem, setBookItem] =useState<bookType>()
 
+
+ const bookcategory = (bookItem?.category)
+
    useEffect(()=>{
     axios
     .get(`http://localhost:4000/api/v1/books/${bookid}`)
     .then(response =>setBookItem(response.data.book));
-   },[])
+   },[bookid])
    //console.log(bookItem)
 
 
   return (
+    <>
+    <ToastContainer draggable={false} autoClose={5000}/> 
     <BoxConatiner>
+<AddCardAlert />
   {bookItem &&
     <Container>
   <ImageDiv>
@@ -49,18 +59,16 @@ function Book() {
      <Price bookItem={bookItem}/>
     
     </Container>}
-    <BookAllInfo />   
+    
+    {/* <BookAllInfo /> TAB TO SHOW INFO   */}
+    <RelatedBookBox>
+    <hr/>
+     <RelatedBook bookcategory={bookcategory} item={bookItem}/> 
+     </RelatedBookBox>
     </BoxConatiner>
+    </>
   )
 }
 
 export default Book
 
-
-{/* <Images
-width={450}
-height={580}
-src={bookItem.imageUrl}
-
-alt="products"
-/>  */}

@@ -37,6 +37,7 @@ width:350px;
 height: auto;
 padding:30px;
 transition: all 0.2 ease-in-out;
+
 @media (max-width:1400px) {
   display: none;
   /* border-right: 1px solid red;
@@ -185,5 +186,11 @@ export const DropDownMenu=styled(Dropdown.Menu)`
 transform: translate(-50px, 30px) !important; 
 display:${props=>props.show ? 'block' : 'none'};
 font-size: 12px;
+
+`
+export const LogoDiv=styled.div`
+margin: 0 auto;
+
+text-align: center;
 
 `

@@ -25,6 +25,7 @@ useEffect(() => {
 }, [reduxPrice])
 
   const handleChange = (event: Event, newValue: number | number[]) => {
+   // console.log(newValue)
     setValue(newValue as number[]);
    dispatch(selectedPrice(value))
     
@@ -40,10 +41,10 @@ useEffect(() => {
         onChange={handleChange}
         getAriaValueText={valuetext}
         min={5}
-      max={50}
+        max={50}
        
       />
-<Text>Price: ${value[0]} __ ${value[1]}</Text>
+<Text>Price: {value[0]} €__ {value[1]} €</Text>
 
 
       </PriceSlider>

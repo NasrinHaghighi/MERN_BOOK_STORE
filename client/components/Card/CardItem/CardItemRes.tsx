@@ -15,6 +15,8 @@ interface Item{
 
 
 function CardItemRes({item}:Item ,{index}:any) {
+  const finalprice=item.price-(item.price-item.discont)/100
+  //console.log(finalprice)
     const [newAmount, setNewAmount] =useState<number>(item.amount)
     const dispatch=useAppDispatch()
     const userId=useAppSelector((state)=>state.user.userId)
@@ -51,11 +53,11 @@ function CardItemRes({item}:Item ,{index}:any) {
         </BookPhotoRes>
        <Info>
        <NameRes><div>{item.name.length>30 ?item.name.substring(0,30): item.name}</div><Trash onClick={()=>handledelet()}><FaTrashAlt /></Trash></NameRes>
-       <PriceRes><PriceSapn>Price</PriceSapn><span>{item.price},00 €</span></PriceRes>
+       <PriceRes><PriceSapn>Price</PriceSapn><span>{finalprice} €</span></PriceRes>
        <AmountDiv><PriceSapn>Amount</PriceSapn>
        <Amount type="number" min="1" max='10'  value={newAmount} onChange={(e)=>newAmountHandel(e)}/></AmountDiv>
         
-        <TotalPriceRes><PriceSapn>Total Price</PriceSapn><span>{item.amount*item.price},00 e</span></TotalPriceRes>
+        <TotalPriceRes><PriceSapn>Total Price</PriceSapn><span>{(item.amount*finalprice).toFixed(2)}</span></TotalPriceRes>
         
        </Info>
     </ConteinerRes>

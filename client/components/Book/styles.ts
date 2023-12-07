@@ -1,4 +1,7 @@
 import styled ,{ keyframes } from "styled-components";
+import { FaHeart } from 'react-icons/fa';
+
+
 
 const fadein = keyframes`
 from { opacity: 0;top:-50px }
@@ -33,7 +36,7 @@ grid-row-gap: 0px;
 `
 
 //***middel column********** */
-export const BookDetail=styled.div`
+export const  BookDetail=styled.div`
 
 margin: 10px 35px;
 `
@@ -53,7 +56,7 @@ margin:10px 0 ;
 `
 
 export const Description=styled.div`
-
+margin-bottom: 30px;
 `
 
 //////animated book*///////////////////////
@@ -93,8 +96,22 @@ transform: rotateY(40deg) translateZ(-3px);
 display: block;
 width: 300px;
 height:400px;
+transform: rotateY(0deg) translateZ(0px);
+&:after {
+    content: 'Hover On Me';
+    position: absolute;
+    font-weight:700;
+    color:${props=>props.theme.orange};
+    top: 50%;
+    right:35%;
+    transform: translateY(-50%);
+    border:2px solid ${props=>props.theme.orange};
+    padding:2px 5px;
+    border-radius:5px;
 
-transform: rotateY(0deg) translateZ(0px);}
+  }
+
+}
 `
 export const ImageDiv=styled.div`
 display: block;
@@ -227,7 +244,11 @@ z-index:10;
  transform:scale(1.1)!important;
 }
 `
+/*related book box*/
+export const RelatedBookBox=styled.div`
 
+
+`
 
 /************Alert************* */
 

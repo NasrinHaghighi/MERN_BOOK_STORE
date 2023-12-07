@@ -11,7 +11,8 @@ import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 import PriceBydiscont from '../BookItem/PriceBydiscont/PriceBydiscont'
 import axios from 'axios'
 import { useAppDispatch ,useAppSelector} from '../../redux/hooks'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -32,13 +33,19 @@ function BookItem2({item}:ItemProps) {
     
     }
     const addToCardHandel=async(e:any)=>{
-       e.stopPropagation()
-      dispatch(addBook(item))
-      try{
-        let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
-          
-        console.log(res)
-      }catch(error){}
+      e.stopPropagation()
+      if(!userId){
+      toast.error('Please login to add item to cart')
+      }else{
+       dispatch(addBook(item))
+       
+       try{
+           let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
+             
+           console.log(res)
+         }catch(error){}
+      }
+      
     }
     const addToFavoraite=(e:any)=>{
       e.stopPropagation()

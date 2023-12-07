@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, {useEffect, useState}from 'react'
 import {BookItemContainer,Tit,Bottom, MovingContent, Auth, Price, Add, Btn, Favoraite} from './styles'
 import { bookType } from '../../types/bookType'
 import {Images} from '../../helpers/Image'
@@ -8,10 +8,11 @@ import { addBook} from '../../features/bookSlice'
 import { useAppDispatch ,useAppSelector} from '../../redux/hooks'
 import {addToFavoraiteList} from '../../features/favoraiteListSlice'
 import PriceBydiscont from './PriceBydiscont/PriceBydiscont'
-
-import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios'
+import AddCardAlert from '../Books/Alerts/AddCardAlert'
+
 
 interface ItemProps{
     item:bookType
@@ -22,25 +23,26 @@ interface ItemProps{
 
 
 function BookItem({item}:ItemProps) {
- // console.log(item)
+  console.log(item)
 const userId=useAppSelector((state)=>state.user.userId)
 
-const isExternalImage = item.imageUrl.startsWith('http');
-
-
-
- const dispatch=useAppDispatch()
+const dispatch=useAppDispatch()
 
  const addToCardHandel=async(e:any)=>{
      e.stopPropagation()
-     
+   if(!userId){
+   toast.error('Please login to add item to cart')
+   }else{
+   
     dispatch(addBook(item))
-    
+   
     try{
         let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
           
         console.log(res)
       }catch(error){}
+   }
+   
         
   }
 
@@ -48,20 +50,22 @@ const isExternalImage = item.imageUrl.startsWith('http');
     e.stopPropagation()
    dispatch(addToFavoraiteList(item))
   }
+useEffect(() => {
+ 
+}, [item])
+
+
   return (
     <>
    
     <BookItemContainer>
     
-       <Link href={`/books/${item._id}`}>
-       {isExternalImage ? (
+       <Link href={`/books/${item._id}`} passHref>
+       
         <Images src={item.imageUrl} width={220} height={329} alt="book" />
-      ) : (
-        <Images src={`${item.imageUrl}`} width={220} height={329} alt="book" />
-      )}
+      
 
-    {/* {item.imageUrl ? 
-           <Images src={`dist/public/${item.imageUrl}`} width={220} height={329}   alt="book"/> : <Images src={Default} width={220} height={329}   alt="book"/>}  */}
+   
            <Bottom>
            <MovingContent>
           <Tit>{item.name.length<22 ? item.name : item.name.substring(0,22)}</Tit>
@@ -72,7 +76,7 @@ const isExternalImage = item.imageUrl.startsWith('http');
         {item.discont ?
          <PriceBydiscont price={item.price} discont={item.discont}/> 
          : 
-         `${item.price} $`}
+         `${item.price} €`}
          <Star star={item.rating}/>
          </Price>
      
@@ -96,13 +100,3 @@ export default BookItem
 
 
 
-// if(!userId){
-      
-//   alert('please do login...')
-//  }else{
-//   try{
-//    let res = await axios.post("http://localhost:4000/api/v1/auth/updateuser", {userId, item })
-//    //dispatch(addBook(item))
-  
-//    }catch(error){}
-//  }

@@ -14,7 +14,10 @@ interface Item{
 
 
 function OrderdBookItem({item}:Item) {
+ // console.log(item)
+
     const {book, amount} =item
+    const finalprice=book.price-(book.price-book.discont)/100
   return (
     <BoxBook>
         <ImageDiv>
@@ -23,7 +26,7 @@ function OrderdBookItem({item}:Item) {
         <Info>
             <Name>{book.name.length<22 ? book.name : `${book.name.substring(0, 22)} ...`}</Name>
             <Amount>{amount} Item</Amount>
-            <Price>{book.price} €</Price>
+            <Price>{finalprice} €</Price>
         </Info>
 
     </BoxBook>

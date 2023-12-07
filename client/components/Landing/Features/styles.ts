@@ -16,12 +16,14 @@ display: none;
 export const Flex=styled.div`
   max-width: 1920px;
   margin:100px auto ;
-    padding:0 80px ;
+    padding:0 30px ;
 
 &>h2{
+   font-size: 2rem;
     font-weight:700 ;
     position:relative ;
     margin-bottom:30px ;
+
  &:after{
     content: " ";
     width: 30px;
@@ -30,7 +32,15 @@ export const Flex=styled.div`
     position: absolute;
     left: 0;
     bottom:-10px ;
+    @media (max-width: 1000px) {
+   left: 37%;
+}
  }   
+ 
+}
+@media (max-width: 1000px) {
+   padding:0 0px ;
+   text-align: center;
 }
 `
 export const ListConatiner=styled.div`

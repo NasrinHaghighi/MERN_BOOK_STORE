@@ -7,6 +7,7 @@ z-index:2 ;
 transition: all 0.2s linear;
 
 
+
 `
 export const Btn=styled.div`
  color: ${props=>props.theme.textStrong};
@@ -16,7 +17,7 @@ opacity:0 ;
  width:80% ;
  z-index:-1 ;
  font-weight:600 ;
- bottom:5px ;
+ bottom:8px ;
  transition: all 0.2s linear;
  display:flex ;
  justify-content:space-between ;
@@ -66,9 +67,10 @@ padding-bottom:10px ;
 export const BookItemContainer=styled.div`
 
 height:500px;
-padding:30px ;
+padding:40px;
 transition: all 0.2s linear;
 text-align:center ;
+
 
 &>span{
    
@@ -94,6 +96,7 @@ text-align:center ;
 `
 export const Bottom=styled.div`
 position: relative;
+
 `
 export const Tit=styled.h4`
  font-size:20px;

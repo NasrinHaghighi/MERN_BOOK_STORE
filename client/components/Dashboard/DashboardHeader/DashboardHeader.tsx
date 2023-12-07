@@ -2,7 +2,8 @@ import React,{useState} from 'react'
 import { Wapper, HeaderWrapper, Logo, Title, Icons, IconItem, Num , Menu, HeaderWrapperRes} from './styles'
 import { BsMailbox2 } from 'react-icons/bs'
 import { FaShoppingCart } from "react-icons/fa";
-
+import LogoPic from '../../../public/images/logo.jpg'
+import { Images } from "../../../helpers/Image";
 import {dashboardSideStatus} from '../../../features/dashboardSideSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {HiOutlineMenuAlt1} from 'react-icons/hi'
@@ -18,7 +19,7 @@ const handelSidebar=()=>{
     <Wapper>
       <HeaderWrapper>
        
-        <Logo>logo</Logo>
+        <Logo> <Images src={LogoPic} width={150} height={100}   alt="book"/> </Logo>
         <Title></Title>
               <Icons>
           <IconItem> <BsMailbox2 /><Num order=''>2</Num></IconItem>
@@ -28,7 +29,7 @@ const handelSidebar=()=>{
       </HeaderWrapper>
       <HeaderWrapperRes>
        <Menu onClick={handelSidebar} style={{zIndex:10}}><HiOutlineMenuAlt1/></Menu>
-       <Logo>logo</Logo>
+       <Logo><Images src={LogoPic} width={150} height={100}   alt="book"/> </Logo>
       
              <Icons>
          <IconItem> <BsMailbox2 /><Num order=''>2</Num></IconItem>

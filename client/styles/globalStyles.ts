@@ -217,6 +217,17 @@ input[type='radio']:after {
 .css-t3ipsp-control:hover{
   border-color: orange !important;
 }
+.Toastify__progress-bar--error {
+  background-color: #DB1037;
+    background-image: linear-gradient(90deg, #DB1037, #CD40E6);;
+}
+.slick-prev:before,.slick-next:before {
+ 
+    color:  #ffa500 !important;
+}
+.slick-prev {
+    left: -52px;
+}
 `
 
 

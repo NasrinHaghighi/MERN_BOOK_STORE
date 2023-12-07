@@ -13,6 +13,7 @@ function RoleBox({modal}:any) {
     const dispatch=useAppDispatch()
     const dashboardStatus =useAppSelector(state=>state.dashboardSideStatus.dashboardSideStatus)
     const [show, setShow] = useState(false);
+    const user=useAppSelector(state=>state.user.signinUser)
     const router = useRouter();
 
     
@@ -31,7 +32,7 @@ function RoleBox({modal}:any) {
             <Photo className={dashboardStatus ? 'show' : 'notShow'}>
            </Photo>
             <Info>
-              <Name> Admin</Name>
+              <Name> {user.toUpperCase()}</Name>
               <Role>Admin</Role>
             </Info>
             <LogOut >

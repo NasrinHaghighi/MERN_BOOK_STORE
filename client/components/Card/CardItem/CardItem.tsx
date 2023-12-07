@@ -20,7 +20,7 @@ interface Item{
 function CardItem({item, index}:Item) {
   console.log(item)
   const finalprice=item.price-(item.price-item.discont)/100
-  console.log(finalprice)
+  //console.log(finalprice)
 const [newAmount, setNewAmount] =useState<number>(item.amount)
 const userId=useAppSelector((state)=>state.user.userId)
 const dispatch=useAppDispatch()
@@ -65,7 +65,7 @@ const dispatch=useAppDispatch()
         
         <Amount type="number" min="1" max='10'  value={newAmount} onChange={(e)=>newAmountHandel(e)}/>
         
-         <TotalPrice>{item.amount*finalprice} </TotalPrice> 
+         <TotalPrice>{(item.amount*finalprice).toFixed(2)} </TotalPrice> 
     </CardItemContainer>
   
    
