@@ -14,7 +14,7 @@ function ProductDetail({product}:Product) {
   return (
     <DashboardLayout>
           <OrderBox>
-           <ProductDetailCo product={product}/>
+           {/* <ProductDetailCo product={product}/> */}
            </OrderBox>
     </DashboardLayout>
   )
@@ -23,30 +23,30 @@ function ProductDetail({product}:Product) {
 ProductDetail.layout = EmptyLayout;
 export default ProductDetail
 
-export const getStaticPaths = (async () => {
-    const response = await fetch(`http://localhost:4000/api/v1/books`);
-    const data = await response.json();
-    const paths=data.books.map((book:any)=>{
-      return{
-        params:{productId: `${book._id}`}
-      }
-    })
-    return {
-      paths,
-      fallback: true, // false or "blocking"
-    }
-  })
+// export const getStaticPaths = (async () => {
+//     const response = await fetch(`http://localhost:4000/api/v1/books`);
+//     const data = await response.json();
+//     const paths=data.books.map((book:any)=>{
+//       return{
+//         params:{productId: `${book._id}`}
+//       }
+//     })
+//     return {
+//       paths,
+//       fallback: true, // false or "blocking"
+//     }
+//   })
   
   
-  export async function getStaticProps(context:any) {
-    const { params } = context;
-    const res = await fetch(`http://localhost:4000/api/v1/books/${params.productId}`);
-    //console.log(res.status)
-    const product = await res.json();
+//   export async function getStaticProps(context:any) {
+//     const { params } = context;
+//     const res = await fetch(`http://localhost:4000/api/v1/books/${params.productId}`);
+//     //console.log(res.status)
+//     const product = await res.json();
   
-    return {
-      props: {
-        product
-      },
-    };
-  }
+//     return {
+//       props: {
+//         product
+//       },
+//     };
+//   }
