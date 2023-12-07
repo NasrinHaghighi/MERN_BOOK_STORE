@@ -12,7 +12,7 @@ function OrederDetail({order}:any) {
   return (
     <DashboardLayout>
       <OrderBox>
-         <OrderDetails order={order}/>
+         {/* <OrderDetails order={order}/> */}
        </OrderBox>
     </DashboardLayout>
   )
@@ -24,35 +24,35 @@ export default OrederDetail
 
 
 
-export const getStaticPaths = (async () => {
-  const response = await fetch(`http://localhost:4000/api/v1/userorder`);
+// export const getStaticPaths = (async () => {
+//   const response = await fetch(`http://localhost:4000/api/v1/userorder`);
  
-  const data = await response.json();
+//   const data = await response.json();
 
-  const paths=data.order.map((order:any)=>{
-    return{
-      params:{orderId: `${order._id}`}
-    }
-  })
-  return {
-    paths,
-    fallback: true, // false or "blocking"
-  }
-})
+//   const paths=data.order.map((order:any)=>{
+//     return{
+//       params:{orderId: `${order._id}`}
+//     }
+//   })
+//   return {
+//     paths,
+//     fallback: true, // false or "blocking"
+//   }
+// })
 
 
-export async function getStaticProps(context:any) {
-  const { params } = context;
-  const res = await fetch(`http://localhost:4000/api/v1/userorder/${params.orderId}`);
-  console.log(res)
-  const order = await res.json();
+// export async function getStaticProps(context:any) {
+//   const { params } = context;
+//   const res = await fetch(`http://localhost:4000/api/v1/userorder/${params.orderId}`);
+//   console.log(res)
+//   const order = await res.json();
 
-  return {
-    props: {
-     order
-    },
-  };
-}
+//   return {
+//     props: {
+//      order
+//     },
+//   };
+// }
 
 
 
