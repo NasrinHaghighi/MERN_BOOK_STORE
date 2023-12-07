@@ -9,7 +9,7 @@ function SaleChart() {
     <Box>
     <Title>Sales Chart</Title>
     <ChartHeight>
-       <Line options={mainChartOptions} data={getChartData()}/>
+       {/* <Line options={mainChartOptions} data={getChartData()}/> */}
     </ChartHeight>
     </Box>
   )
