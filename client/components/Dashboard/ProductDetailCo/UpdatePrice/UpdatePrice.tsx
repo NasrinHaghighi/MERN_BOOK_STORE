@@ -49,7 +49,7 @@ catch(error){
             {arr.map((item, index) =>{
                 return  (
                     <CheckBoxDiv key={index}> 
-                        <label htmlFor={`myCheckbox-${index}`} style={{marginRight:10}}>{item.label} %</label>
+                        <label htmlFor={`myCheckbox-${index}`} style={{marginRight:11}}>{item.label} %</label>
                         <input
               type="radio"
               id={`myCheckbox-${index}`}
