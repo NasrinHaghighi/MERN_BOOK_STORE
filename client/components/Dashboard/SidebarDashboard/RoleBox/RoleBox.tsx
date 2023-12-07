@@ -41,7 +41,7 @@ function RoleBox({modal}:any) {
     onMouseLeave={() => setShow(false)}
    >
         <DropDownToggle variant="success" id="dropdown-basic">
-    ...
+    ....
       </DropDownToggle> 
       <DropDownMenu show={show}>
       <DropDownItem onClick={logoutedUser}>Logout</DropDownItem>
