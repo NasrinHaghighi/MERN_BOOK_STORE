@@ -16,22 +16,22 @@ import { useStepperContext } from '@mui/material'
 
 function OrderIndex({order }:any) {
 
-const {order:orderlist}=order
-console.log(orderlist)
+//const {order:orderlist}=order
+//console.log(orderlist)
 /*now i have list of users that registed in app */
 
 
   /*get id*/
 
-  const formattedData = orderlist.map((item:any) => ({
-    id: item._id, // Unique identifier for each row
-    userId: item.userId,
-    status: item.status,
-     country:item.userInfo[0].country,
-     city:item.userInfo[0].city,
+  // const formattedData = orderlist.map((item:any) => ({
+  //   id: item._id, // Unique identifier for each row
+  //   userId: item.userId,
+  //   status: item.status,
+  //    country:item.userInfo[0].country,
+  //    city:item.userInfo[0].city,
      
-  }));
-  console.log(formattedData)
+  // }));
+  // console.log(formattedData)
 /*now i need to make arr from userId, then fetch data depend of that userid*/
 
 
