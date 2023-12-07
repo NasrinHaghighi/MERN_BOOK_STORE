@@ -1,7 +1,7 @@
 import React from 'react'
 import { Title, Box, PieBox} from '../SaleChart/styles'
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
+//import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+//import { Pie } from 'react-chartjs-2';
 
 
 
@@ -9,9 +9,9 @@ function PieChart() {
   return (
     <Box>
     <Title>Trending Categories</Title>
-    <PieBox>
+    {/* <PieBox>
      <Pie data={data} />
-    </PieBox>
+    </PieBox> */}
     
     </Box>
   )

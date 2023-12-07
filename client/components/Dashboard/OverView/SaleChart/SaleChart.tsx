@@ -1,7 +1,7 @@
 import React from 'react'
 import { Title, ChartHeight, Box} from './styles'
-import { Line } from "react-chartjs-2";
-import {getChartData, mainChartOptions, } from '../ChartConfig'
+//import { Line } from "react-chartjs-2";
+//import {getChartData, mainChartOptions, } from '../ChartConfig'
 
 
 function SaleChart() {
