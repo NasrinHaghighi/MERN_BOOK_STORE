@@ -1,7 +1,7 @@
 import React ,{useState, useEffect}from 'react'
 //import StepProgressBar from 'react-step-progress';
 // import the stylesheet
-import 'react-step-progress/dist/index.css';
+//import 'react-step-progress/dist/index.css';
 import Adress from '../Address/Adress';
 import ShippingMethod from '../ShippingMethod/ShippingMethod';
 import Confermation from '../Confermation/Confermation';
