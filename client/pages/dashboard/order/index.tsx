@@ -41,7 +41,7 @@ console.log(orderlist)
        <Title>Dashboard \ <span>Orders</span></Title>
      
 {/* first table */}
-     <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
+     {/* <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
      <DataGridS
     rows={formattedData}
     columns={columns}
@@ -55,11 +55,11 @@ console.log(orderlist)
     }}
     pageSizeOptions={[5, 10]}
     checkboxSelection
-  /> 
+  />  
     
-    </Tabel>  
+    </Tabel>  */}
 {/* second table */}
-   <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
+   {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsRes}
@@ -76,9 +76,9 @@ console.log(orderlist)
   />
 
 
-    </TabelRes> 
+    </TabelRes>  */}
 {/* third table */}
-      <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+      {/* <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsSmall}
@@ -93,7 +93,7 @@ console.log(orderlist)
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall>  
+    </TabelSmall>   */}
     </OrderBox>  
     </DashboardLayout>
   )
@@ -102,19 +102,19 @@ OrderIndex.layout = EmptyLayout;
 export default OrderIndex
 
 
-export async function getStaticProps(context: any) {
-  const res = await fetch('http://localhost:4000/api/v1/userorder');
-  if (!res.ok) {
-    throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
-  }
-  const order = await res.json();
+// export async function getStaticProps(context: any) {
+//   const res = await fetch('http://localhost:4000/api/v1/userorder');
+//   if (!res.ok) {
+//     throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
+//   }
+//   const order = await res.json();
 
-  return {
-    props: {
-     order
-    },
-  };
-}
+//   return {
+//     props: {
+//      order
+//     },
+//   };
+// }
 
 
 

@@ -22,7 +22,7 @@ function ProductsIndex({books}:any) {
     <DashboardLayout>
        <OrderBox>
        <Title>Dashboard \ <span>Products</span></Title>
-  <Tabel >
+  {/* <Tabel >
  <DataGrid
         rows={books.books}
         columns={columns}
@@ -37,9 +37,9 @@ function ProductsIndex({books}:any) {
         pageSizeOptions={[5, 10]}
         checkboxSelection
       /> 
-  </Tabel>
+  </Tabel> */}
   {/* second table */}
-  <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
+  {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={books.books}
     columns={columnsRes}
@@ -57,9 +57,9 @@ function ProductsIndex({books}:any) {
   />
 
 
-    </TabelRes>
+    </TabelRes> */}
     {/* third table */}
-    <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+    {/* <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={books.books}
     getRowId={getRowId}
@@ -75,7 +75,7 @@ function ProductsIndex({books}:any) {
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall>
+    </TabelSmall> */}
  </OrderBox>  
     </DashboardLayout>
   )
@@ -86,19 +86,19 @@ ProductsIndex.layout = EmptyLayout;
 export default ProductsIndex
 
 
-export async function getStaticProps(context: any) {
-    const res = await fetch('http://localhost:4000/api/v1/books');
-    if (!res.ok) {
-      throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
-    }
-    const books = await res.json();
+// export async function getStaticProps(context: any) {
+//     const res = await fetch('http://localhost:4000/api/v1/books');
+//     if (!res.ok) {
+//       throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
+//     }
+//     const books = await res.json();
   
-    return {
-      props: {
-       books
-      },
-    };
-  }
+//     return {
+//       props: {
+//        books
+//       },
+//     };
+//   }
 
 
 /* reduce clumn depend of screen size*/
