@@ -35,9 +35,9 @@ function CheckOutIndex() {
       dispatch(removeAllitem())
       
           try {
-            const response = await axios.post("http://localhost:4000/api/v1/userOrder", datatoSend)
+            const response = await axios.post("https://mern-book-store-api.vercel.app/api/v1/userOrder", datatoSend)
               // If order placed successfully, proceed to delete the cart
-              let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`)
+              let res = await axios.delete(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`)
             if(response.status === 201){
               toast('We recived you order Successfully!',{
                 draggable:true,
