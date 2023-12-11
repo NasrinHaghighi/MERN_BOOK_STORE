@@ -5,6 +5,7 @@ const User =require('../models/user')
 export const createOrder = async (req: any, res: any) => {
 const {userId, booksWithQuantity, userInfo} =req.body
 //console.log(userId)
+//console.log(userId)
 const newOrder = new UserOrder({
     userId: userId,
    
