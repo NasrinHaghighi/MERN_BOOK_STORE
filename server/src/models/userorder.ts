@@ -42,17 +42,8 @@ const UserInfoSchema=new mongoose.Schema({
       }
 })
 
-// const userItemSchema = new mongoose.Schema({
-//     productId: {
-//       type: mongoose.Schema.Types.ObjectId,
-//       ref: "Books",
-//     },
-//     quantity: {
-//       type: Number,
-//       default: 1,
-//     },
-//   });
-  const userOrderSchema = new mongoose.Schema({
+
+  const UserOrderSchema = new mongoose.Schema({
   
     userInfo:[UserInfoSchema],
     userId: {
@@ -66,4 +57,4 @@ const UserInfoSchema=new mongoose.Schema({
     },
   });
   
-  module.exports = mongoose.model('UserOrder', userOrderSchema);
+  module.exports = mongoose.model('UserOrder', UserOrderSchema);
