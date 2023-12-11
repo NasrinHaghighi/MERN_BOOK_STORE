@@ -86,7 +86,8 @@ margin-bottom:200px;
     margin-bottom:700px;
   }
   @media (max-width:500px) {
-    margin-bottom:200px;
+    margin-top: 200px;
+    margin-bottom:0px;
   }
 `
 export const InnerContainer = styled.div`
@@ -246,5 +247,12 @@ h2{
 h3{
    font-size:34px; 
    margin-bottom:20px ;
+}
+@media (max-width:500px) {
+    transform: scale(1);
+    &.enter,
+    &.exit {
+      animation: none;
+    }
 }
 `

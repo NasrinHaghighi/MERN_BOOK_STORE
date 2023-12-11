@@ -245,10 +245,7 @@ z-index:10;
 }
 `
 /*related book box*/
-export const RelatedBookBox=styled.div`
 
-
-`
 
 /************Alert************* */
 

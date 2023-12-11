@@ -2,7 +2,7 @@ import React from 'react'
 import useReleatedBook from '../../../hooks/useReleatedBook';
 import { useRouter } from 'next/router';
 import BookItem from '../../BookItem/BookItem';
-import {Box} from './styles'
+import {Box, BookBox} from './styles'
 import Link from 'next/link'
 import { bookType } from '../../../types/bookType';
 import Slider from 'react-slick';
@@ -61,18 +61,20 @@ function RelatedBook({bookcategory, item}:Props) {
 
 <Box>
 <h1>Related Books</h1>
-<Slider {...settings}>
-{relatedItems?.map((item:any, i:number) => {
+{/* <Slider {...settings}> */}
+<BookBox>
+{relatedItems?.slice(0,3)?.map((item:any, i:number) => {
 
     return (
   
             <BookItem key={i} item={item} />
             
-   
+           
    
     )
 })}
- </Slider>
+ </BookBox>
+ {/* </Slider> */}
 
 
  </Box>

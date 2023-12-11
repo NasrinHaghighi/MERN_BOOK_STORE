@@ -1,5 +1,5 @@
 import React ,{useEffect, useState} from 'react'
-import {BoxConatiner,Container, ImageDiv,  AlertBox, SeeCardBtn, Page, BookDetail, BookTitle,BookFormat, BookAuthor,Description,RelatedBookBox } from './styles'
+import {BoxConatiner,Container, ImageDiv,  AlertBox, SeeCardBtn, Page, BookDetail, BookTitle,BookFormat, BookAuthor,Description } from './styles'
 import { useRouter } from 'next/router'
 import { fetchitem } from '../../utiles';
 import { Images } from '../../helpers/Image'
@@ -61,10 +61,10 @@ function Book() {
     </Container>}
     
     {/* <BookAllInfo /> TAB TO SHOW INFO   */}
-    <RelatedBookBox>
+  
     <hr/>
      <RelatedBook bookcategory={bookcategory} item={bookItem}/> 
-     </RelatedBookBox>
+     
     </BoxConatiner>
     </>
   )

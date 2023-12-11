@@ -23,6 +23,9 @@ border:none ;
 position:relative ;
 font-size:18px ;
 font-weight:700 ;
+@media (max-width: 500px) {
+      width:200px ;
+  }
 &::before {
     content: "";
     position: absolute;
@@ -38,6 +41,7 @@ font-weight:700 ;
     &::before {
         width: 95%; 
     }
+ 
 
 }
 `

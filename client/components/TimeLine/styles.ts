@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
+
+
+
 export const Container=styled.div`
 
 max-width: 100%;

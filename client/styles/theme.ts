@@ -22,6 +22,7 @@ export const themes = {
    priceColor:"#ff0072",
    green:"#05b171",
    hoverOrange:'#ff6e4026',
-   white:'#ffff'
+   white:'#ffff',
+   success:'#198754'
   
   };

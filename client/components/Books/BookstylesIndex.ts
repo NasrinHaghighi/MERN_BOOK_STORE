@@ -3,9 +3,12 @@ import styled from "styled-components";
 export const BooksConatiner=styled.div`
 max-width: 100%;
  margin:0 auto ;
- padding:0 50px ;
-padding:30px 0 ;
 
+padding:30px 50px ;
+@media (max-width: 500px) {
+  padding:0px 0 ;
+ 
+  }
 `
 
 
@@ -22,5 +25,7 @@ grid-row-gap: 0px;
     grid-template-columns: 1fr ;
   }
  
-
+  @media (max-width: 500px) {
+    padding:0  ;
+  }
 `

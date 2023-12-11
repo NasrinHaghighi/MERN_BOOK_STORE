@@ -60,7 +60,11 @@ transform: ${props => (props.res ? 'translate(-160px, 30px)' : 'translate(-0px, 
   box-shadow: ${props=>props.theme.alertBoxshdow};
  display:${props=>props.show ? 'block' : 'none'};
  padding:30px;
-
+ @media (max-width: 400px) {
+  width:300px ;
+ 
+  transform: ${props => (props.res ? 'translate(-120px, 30px)' : 'translate(-0px, 30px)')} !important;
+  }
 `;
 
 export const DropDownItem = styled(Dropdown.Item)`

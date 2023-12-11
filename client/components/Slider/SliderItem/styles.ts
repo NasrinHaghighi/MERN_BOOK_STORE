@@ -18,7 +18,7 @@ from { opacity: 0; right:-40%}
 
 export const SliderItemontainer=styled.div`
 width:100% ;
-height:700px ;
+height:600px ;
 
 display:grid ;
 grid-template-columns:repeat(2, 1fr) ;

@@ -11,7 +11,7 @@ import { FaCcAmazonPay } from "react-icons/fa";
 import {Wrapper} from './styles'
 import {updateUserAddress} from '../../../features/UserAddressSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { boolean } from 'yup';
+
 import useFetchUserData from '../../../hooks/useFetchUserData'
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
