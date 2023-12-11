@@ -90,8 +90,8 @@ const [loading, setLoading]=useState<boolean>(false)
 useEffect(() => {
   setLoading(true)
    axios
-   //.get("https://mern-book-store-api.vercel.app/api/v1/books")
-      .get("http://localhost:4000/api/v1/books")
+   .get("https:mern-book-store-api.vercel.app/api/v1/books")
+      //.get("http://localhost:4000/api/v1/books")
       .then(response => setData(response.data.books));
       setLoading(false)
 }, [])
@@ -102,7 +102,7 @@ useEffect(() => {
 const m=checkSort(sortby)
 
    axios
-       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}, price<${max} &category=${categorySelected}`)
+       .get(`https://mern-book-store-api.vercel.app/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}, price<${max} &category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
@@ -119,9 +119,9 @@ const m=checkSort(sortby)
 
 
 
-console.log(bookAlert)
+//console.log(bookAlert)
 useEffect(() => {
-  axios.get(`http://localhost:4000/api/v1/books`)
+  axios.get(`https://mern-book-store-api.vercel.app/api/v1/books`)
   .then(response => {
     const searchTermRegex = new RegExp(searchTerm, 'i');
     // Filter the books based on the searchTerm when the data is available

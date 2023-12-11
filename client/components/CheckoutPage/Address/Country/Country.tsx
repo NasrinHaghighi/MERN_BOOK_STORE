@@ -2,6 +2,8 @@ import React ,  { useEffect, useState }from 'react'
 import { Country, State, City } from "country-state-city";
 import Select from "react-select";
 import {ContryCoBox,SelectS} from '../styles'
+
+
 interface Props{
        handelContry:any, handelCity:any, handelState:any
 }

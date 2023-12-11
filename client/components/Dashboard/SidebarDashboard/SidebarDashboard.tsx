@@ -21,99 +21,97 @@ import LogoPic from '../../../public/images/logo.jpg'
 
 
 function SidebarDashboard() {
-const dispatch=useAppDispatch()
-const dashboardStatus =useAppSelector(state=>state.dashboardSideStatus.dashboardSideStatus)
+  const dispatch: any = useAppDispatch();
+  const dashboardStatus = useAppSelector(state => state.dashboardSideStatus.dashboardSideStatus);
 
+  const router = useRouter();
+  const path = router.pathname;
+  const [activepatch, setActivePath] = useState(path);
 
-const router = useRouter()
-const path=router.pathname
-const [activepatch, setActivePath] =useState(path)
-
-
-useEffect(() => {
-  if (path.startsWith('/dashboard/order/')){
-    setActivePath(  '/dashboard/order')
-    } else if(path.startsWith('/dashboard/products/')){
-    setActivePath('/dashboard/products')
+  useEffect(() => {
+    if (path.startsWith('/dashboard/order/')) {
+      setActivePath('/dashboard/order');
+    } else if (path.startsWith('/dashboard/products/')) {
+      setActivePath('/dashboard/products');
+    } else {
+      setActivePath(path);
     }
-    else{
-      setActivePath(path)
-    }
-}, [path])
+  }, [path]);
 
 
-//const userName =localStorage.getItem('name')
+  //const userName =localStorage.getItem('name')
 
 
-const handelClose=()=>{
-  dispatch(closeDashboardSide())
-  //setOpen(false)
-}
+  const handelClose = () => {
+    dispatch(closeDashboardSide());
+    //setOpen(false)
+  };
   return (
-<>
-    <Main>
-      
-    <SidbarBox>
+    <>
+      <Main>
+
+        <SidbarBox>
 
           <RoleBox />
-          
-        <Navbar>
-          {navItem.map((item, index)=>{
-              
-            return <NavItem 
-            key={item.id} 
-           className={activepatch === item.link ?'active' :''}
-          
-           >
-              <Link href={item.link}>
-                <IconItem>{item.icon}</IconItem>
-                {item.title}
-                </Link>
-                </NavItem>
-          })}
-           
-        </Navbar>  
 
-    </SidbarBox>
-    <SidebarModal open={dashboardStatus}
-        onClose={handelClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        className={dashboardStatus ? 'show' : 'notShow'}
-        >
-    <ModalBox >
-      <LogoDiv>
-        <Link href='/'>
-      <Images src={LogoPic} width={150} height={100}   alt="logo"/>
-      </Link>
-      </LogoDiv>
-      <br/>
-      <CloseIcon onClick={handelClose} style={{zIndex:10}}><AiOutlineCloseCircle /></CloseIcon>
-      <br/>
-      <RoleBox modal='modal'/>
-   
-        <Navbar>
-          {navItem.map((item, index)=>{
-              
-            return <NavItem 
-            key={item.id} 
-           className={activepatch === item.link ?'active' :''}
-          
-           >
-              <Link href={item.link}>
-                <IconItem>{item.icon}</IconItem>
-                {item.title}
+          <Navbar>
+            {navItem.map((item, index) => {
+
+              return <NavItem
+                key={item.id}
+                className={activepatch === item.link ? 'active' : ''}
+
+              >
+                <Link href={item.link}>
+                  <IconItem>{item.icon}</IconItem>
+                  {item.title}
                 </Link>
+              </NavItem>
+            })}
+
+          </Navbar>
+
+        </SidbarBox>
+        <SidebarModal open={dashboardStatus}
+          onClose={handelClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          className={dashboardStatus ? 'show' : 'notShow'}
+        >
+          <ModalBox >
+            <LogoDiv>
+              <Link href='/'>
+                <Images src={LogoPic} width={150} height={100} alt="logo" />
+              </Link>
+            </LogoDiv>
+            <br />
+            <CloseIcon onClick={handelClose} style={{ zIndex: 10 }}><AiOutlineCloseCircle /></CloseIcon>
+            <br />
+            <RoleBox modal='modal' />
+
+            <Navbar>
+              {navItem.map((item, index) => {
+
+                return <NavItem
+                  key={item.id}
+                  className={activepatch === item.link ? 'active' : ''}
+
+                >
+                  <Link href={item.link}>
+                    <IconItem>{item.icon}</IconItem>
+                    {item.title}
+                  </Link>
                 </NavItem>
-          })}
-           
-        </Navbar>  
-    </ModalBox>
-    </SidebarModal>
-    </Main>
+              })}
+
+            </Navbar>
+          </ModalBox>
+        </SidebarModal>
+      </Main>
     </>
-  )
+  );
 }
+
 
 export default SidebarDashboard
 

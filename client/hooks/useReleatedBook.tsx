@@ -7,7 +7,7 @@ function useReleatedBook({bookcategory}:any) {
 const [data, setData] = useState<any>([])
 
 useEffect(() => {
-  axios.get(`http://localhost:4000/api/v1/books?category=${bookcategory}`).then((res) =>setData(res.data))
+  axios.get(`https://mern-book-store-api.vercel.app/api/v1/books/?category=${bookcategory}`).then((res) =>setData(res.data))
   
   .catch((err) => console.log(err))
 }, [bookcategory])

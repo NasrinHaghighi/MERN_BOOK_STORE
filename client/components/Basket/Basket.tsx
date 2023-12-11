@@ -22,11 +22,11 @@ import {updateUserBook} from '../../features/bookSlice'
   /**need to get cart book of user by userId */
 const fetchUserdata=async()=>{
  try{
-const res=await axios.get(`http://localhost:4000/api/v1/cart/${userId}`)
+const res=await axios.get(`https://mern-book-store-api.vercel.app/api/v1/cart${userId}`)
 const productsWithQuantity = res.data.cart.products;
 const bookDetailsPromises = productsWithQuantity.map(async (product: any) => {
   try {
-    const bookRes = await axios.get(`http://localhost:4000/api/v1/books/${product.productId}`);
+    const bookRes = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/books/${product.productId}`);
     const bookDetailsWithQuantity = {
       ...bookRes.data, // Book details
       amount: product.quantity, // Add quantity to book details
@@ -54,7 +54,7 @@ useEffect(() => {
     let userWishBooks=useAppSelector(state=>state.favoriteList
       .favoraitelist
       )
-console.log(userBooks)
+//console.log(userBooks)
  const handelCloseModald=()=>{
       setShow(false)
       dispatch(closeModald()) 
