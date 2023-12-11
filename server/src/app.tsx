@@ -41,7 +41,7 @@ const {authPageMiddelwear} =require('./middleware/authPage')
 const cookieParser =require('cookie-parser')
 app.use(bodyParser.json())
 app.use(cookieParser())
- app.get('/api/v1',  (req:Request, res:Response)=>{
+ app.get('/',  (req:Request, res:Response)=>{
   console.log(req.cookies)
  res.json('helo0000000000000000000o')
  })
