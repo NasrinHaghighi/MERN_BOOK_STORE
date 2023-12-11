@@ -90,7 +90,7 @@ const [loading, setLoading]=useState<boolean>(false)
 useEffect(() => {
   setLoading(true)
    axios
-   .get("https:mern-book-store-api.vercel.app/api/v1/books")
+   .get("https://mern-book-store-api.vercel.app/api/v1/books")
       //.get("http://localhost:4000/api/v1/books")
       .then(response => setData(response.data.books));
       setLoading(false)
