@@ -28,11 +28,13 @@ require('express-async-errors');
 const path = require('path');
 const app = (0, express_1.default)();
 var cors = require('cors');
-app.use(cors({
-    origin: ["https://mern-book-store-client-five.vercel.app"],
-    methods: ["POST", "GET"],
-    credential: true
-}));
+app.use(cors(
+//   {
+//   origin:["https://book-store-app-henna.vercel.app"], 
+//   methods:["POST", "GET"],
+//   credential:true
+// }
+));
 const authenticateUser = require('./middleware/authentication');
 const connectDB = require('./db/connect');
 const booksRouter = require('./routes/books');
@@ -48,7 +50,7 @@ const { authPageMiddelwear } = require('./middleware/authPage');
 const cookieParser = require('cookie-parser');
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
     console.log(req.cookies);
     res.json('helo0000000000000000000o');
 });

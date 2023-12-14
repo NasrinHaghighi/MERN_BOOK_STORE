@@ -15,16 +15,20 @@ const Book = require('../models/books');
 const User = require('../models/user');
 const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId, booksWithQuantity, userInfo } = req.body;
-    //console.log(userId)
+    console.log(userInfo);
     const newOrder = new UserOrder({
         userId: userId,
-        userInfo: userInfo
+        userInfo: userInfo,
+        timestamp: Date.now(),
+        booksWithQuantity: booksWithQuantity,
     });
+    console.log('newOrder', newOrder);
     const savedOrder = yield newOrder.save();
     // Respond with the created order details
     res.status(201).json({ order: savedOrder });
 });
 exports.createOrder = createOrder;
+/**************************************** */
 const allOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const order = yield UserOrder.find();
@@ -36,7 +40,7 @@ const allOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.allOrder = allOrder;
 const getOneorder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.params);
+    //console.log(req.params)
     try {
         const { orderId } = req.params;
         const order = yield UserOrder.findOne({ _id: orderId });
@@ -54,7 +58,7 @@ const updateOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const { orderId } = req.params;
         const status = req.body;
-        console.log(status);
+        //  console.log(status)
         const order = yield UserOrder.findOneAndUpdate({ _id: orderId }, status, { new: true });
         console.log(order);
         if (!order) {

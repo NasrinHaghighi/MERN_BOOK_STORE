@@ -113,6 +113,14 @@ input[type='radio']:after {
 .vertical-timeline-element-content-arrow{
   border-right: 7px solid #f4e1be;
 }
+.vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
+    visibility: visible;
+    @media (max-width: 800px) {
+  animation: none !important;
+  }
+}
+
+/*background color for timeline card*/
 .swiper-button-prev{
   color:#ffa500 !important;
   font-weight:900 ;

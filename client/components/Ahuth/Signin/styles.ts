@@ -19,8 +19,11 @@ export const FormF=styled(Form)`
 display:flex ;
 flex-direction:column;
 padding:50px ;
-
-
+@media (max-width: 700px) {
+     padding: 20px;
+     margin: 0 10px;
+     
+  }
 
 `
 export const FieldF=styled(Field)`

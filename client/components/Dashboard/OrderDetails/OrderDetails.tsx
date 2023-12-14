@@ -10,30 +10,30 @@ import useFetchorderuser from '../../../hooks/useFetchorderuser'
 import useGetBookInfoUser from '../../../hooks/useGetBookInfoUser';
 import OrderItem from './OrderItem';
 
-function OrderDetails({order}:any) {
-  const {_id:id}=order.order
-  const userId =order.order.userId
-  const {userInfo} =order.order
+function OrderDetails({orderId}:any) {
+  const [orderItem, setOrderItem] =useState<any>([])
+ //console.log(orderId)
 
+ useEffect(()=>{
+  axios
+  .get(`http://localhost:4000/api/v1/userorder/${orderId}`)
+  .then(response =>setOrderItem(response.data.order));
+ },[orderId])
+console.log(orderItem)
+const {userInfo, status, userId, _id,booksWithQuantity} =orderItem
 
-
-  const {userOrders, fetchUserOrder } = useFetchorderuser(userId);
-  const bookInfo = useGetBookInfoUser({ userOrders });
-
-  useEffect(() => {
-    fetchUserOrder()
-   }, []);
- 
-//console.log(bookInfo)
-
- const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
+/*STUPID way to get DATA*/
+//console.log(userInfo) 
+//console.log(userInfo[0]?.fullName)
+/*status of order*/
+const [activeBtn, setActiveBtn] =useState<undefined | string>( )
 useEffect(() => {
-setActiveBtn(order.order.status)
-}, [])
-
-
-
-const updateOrder = async(id:number, value:string)=>{
+  if (status) {
+    setActiveBtn(status);
+  }
+}, [status]);
+ //console.log(activeBtn)
+ const updateOrder = async(id:number, value:string)=>{
   setActiveBtn(value)
   { toast(`Status of order changed `,{
       draggable:true,
@@ -57,14 +57,16 @@ catch(error){
   
 }
 }
+/*status of order*/ 
 
-  
+
+/*fetch item that user orderd*/
   return (
    <>
-     <Box>
+    <Box>
         <ToastContainer draggable={false} autoClose={3000}/> 
         <br/>
-    <Title>Order No :  <Num>#{order.order._id}</Num></Title>
+    <Title>Order No :  <Num>#{_id}</Num></Title>
    
     <hr/>
     <br/>
@@ -74,7 +76,7 @@ catch(error){
       {btnArr.map((item)=>{
           return   <Grid item lg={3} md={6} xs={12}>  
            <Button
-           onClick={()=>updateOrder(order.order._id, item.value)} 
+           onClick={()=>updateOrder(_id, item.value)} 
            className={`${item.value} ${activeBtn === item.value ? 'active' : ''}`}>
             {item.text}
             
@@ -92,7 +94,7 @@ catch(error){
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Name</Tit>
-      <SubTit>{userInfo[0].fullName}</SubTit>
+       <SubTit>{userInfo?.fullName}</SubTit>  
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Email</Tit>
@@ -100,7 +102,7 @@ catch(error){
   </Grid>
   <Grid item  lg={3} md={6} xs={12}>
      <Tit>Contact</Tit>
-      <SubTit>{userInfo[0].phone}</SubTit>
+         <SubTit>{userInfo?.phone}</SubTit>  
   </Grid>
 </Grid>
 <br/>
@@ -108,12 +110,12 @@ catch(error){
     <br/>
 <Grid container spacing={2} >
 <Grid item  md={6} xs={12} >
-  <Container>
+    <Container>
      <Delivery>Delivery Address</Delivery>
-     <First>{userInfo[0].country}, {userInfo[0].state}, {userInfo[0].city}, </First>
-     <Second><Label>Postal Code : </Label>{userInfo[0].postalcode}</Second>
-     <Second><Label>Address : </Label> {userInfo[0].address}</Second>
-     </Container>
+     <First>{userInfo?.country}, {userInfo?.state}, {userInfo?.city}, </First>
+     <Second><Label>Postal Code : </Label>{userInfo?.postalcode}</Second>
+      <Second><Label>Address : </Label> {userInfo?.address}</Second>
+     </Container> 
   </Grid>
   <Grid item  md={6} xs={12} >
   <Container>
@@ -136,14 +138,14 @@ catch(error){
   <Delivery>Order Items</Delivery>
  
  <hr/>
-{bookInfo.map((item:any)=>{
-  return <OrderItem item={item} key={item.bookId}/>
+ {booksWithQuantity?.map((item:any, index:number)=>{
+  return <OrderItem item={item} key={index}/>
 })}
   </Container>
 </Grid>
 </Grid>
   
-    </Box> 
+    </Box>  
     </>
   )
 }
@@ -157,3 +159,46 @@ const btnArr=[
   {id:3, value:'completed' , text:'Completed'},
   {id:4, value:'cancelled' , text:'Cancelled'},
 ]
+
+
+
+//   const {userOrders, fetchUserOrder } = useFetchorderuser(userId);
+//   const bookInfo = useGetBookInfoUser({ userOrders });
+
+//   useEffect(() => {
+//     fetchUserOrder()
+//    }, []);
+ 
+// //console.log(bookInfo)
+
+//  const [activeBtn, setActiveBtn] =useState<undefined | string>(order.order.status )
+// useEffect(() => {
+// setActiveBtn(order.order.status)
+// }, [])
+
+
+
+// const updateOrder = async(id:number, value:string)=>{
+//   setActiveBtn(value)
+//   { toast(`Status of order changed `,{
+//       draggable:true,
+//       position:toast.POSITION.TOP_RIGHT
+//     })
+//    }
+//   try{
+//    // const updateData = { status: value }
+//     const res =await axios.patch(`http://localhost:4000/api/v1/userorder/${id}`, {
+//        status: value 
+//     },
+//     {
+//       headers: {
+//         "Content-Type": "application/json"
+//       }}
+//     )
+//     console.log(res) 
+  
+// }
+// catch(error){
+  
+// }
+// }

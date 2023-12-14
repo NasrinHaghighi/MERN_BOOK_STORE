@@ -78,28 +78,31 @@ from { opacity:1;transform:scale(1)}
 export const Container = styled.div`
 height:150vh ;
 padding:50px 0 ;
+
 margin-bottom:200px;
 @media (max-width: 1300px) {
-    margin-bottom:500px;
+    margin-bottom:300px;
   }
 @media (max-width: 700px) {
-    margin-bottom:700px;
+    //margin-bottom:700px;
   }
   @media (max-width:500px) {
-    margin-top: 200px;
-    margin-bottom:0px;
+  margin: 0;
+  padding: 50px 0 0 0;
+  height:100vh ;
   }
 `
 export const InnerContainer = styled.div`
 max-width:1720px ;
 margin:0 auto ;
+
 display:flex ;
 justify-content:space-between ;
 
 align-items:center ;
 @media (max-width: 1300px) {
     flex-direction: column;
-    
+
   }
 `
 
@@ -225,6 +228,7 @@ top:-128px ;
 /*TEXT PART*/
 export const Text = styled.div`
 text-align:center ;
+
 width:100% ;
 padding-top:200px ;
 
@@ -238,21 +242,36 @@ animation: ${TextFadOut} 1s forwards;
 h1{
     font-size:54px;
     margin-bottom:40px ;
+    @media (max-width:500px) {
+    
+ font-size:34px;
+}   
 }
 h2{
     font-size:64px;
     margin-bottom:40px ;
-    color:${props=>props.theme.orange}
+    color:${props=>props.theme.orange};
+    @media (max-width:500px) {
+    
+    font-size:24px;
+   } 
 }
 h3{
    font-size:34px; 
    margin-bottom:20px ;
+   @media (max-width:500px) {
+    
+    font-size:20px;
+   } 
 }
-@media (max-width:500px) {
+@media (max-width:1300px) {
+    padding-top:00px ;
     transform: scale(1);
     &.enter,
     &.exit {
       animation: none;
+
     }
+    
 }
 `

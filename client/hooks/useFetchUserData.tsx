@@ -13,13 +13,13 @@ const [cartId, setCartId] = useState<string>('');
 
     const fetchUserdata=async()=>{
         try{
-       const res=await axios.get(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`)
+       const res=await axios.get(`http://localhost:4000/api/v1/cart/${userId}`)
        const cartId=res.data.cart._id
        
        const productsWithQuantity = res.data.cart.products;
        const bookDetailsPromises = productsWithQuantity.map(async (product: any) => {
          try {
-           const bookRes = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/books/${product.productId}`);
+           const bookRes = await axios.get(`http://localhost:4000/api/v1/books/${product.productId}`);
            const bookDetailsWithQuantity = {
              ...bookRes.data, // Book details
              amount: product.quantity, // Add quantity to book details

@@ -1,34 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {OrderItemBox, BookPhoto, Name, ItemInfoBox, NameItem, Span} from './styles'
 import { Images } from '../../../helpers/Image';
+import axios from 'axios';
 
 
 function OrderItem({ item }: any) {
-  const final=item.bookInfo.book.price *(item.quantity)
-    return (
-        <>
-        <OrderItemBox>
-         <BookPhoto>
-        <Images
-        width={100}
-        height={130}
-        src={item.bookInfo.book.imageUrl}
-        alt="book"
-       />
+  
+ //console.log(item)
+ const [bookinfo, setBookInfo] = React.useState<any>(null);
+  const getBookDetails = async () => {
+   const res = await axios.get(`http://localhost:4000/api/v1/books/${item.book}`);
+   setBookInfo(res.data.book)
+  }
 
-        </BookPhoto> 
-       
-        <ItemInfoBox>
-        <NameItem>{item.bookInfo.book.name}</NameItem>
-        <div>
-        <Name><Span>Amount :</Span> {item.quantity}</Name>
-        <Name><Span>price :</Span> {item.bookInfo.book.price}</Name>
-        <Name><Span>Total :</Span> {final}</Name>
-        </div>
-        </ItemInfoBox>
-        </OrderItemBox>
-        </>
-    )
+  useEffect(() => {
+    getBookDetails();
+  }, [item])
+//console.log(bookinfo)
+const finalPrice = bookinfo?.price * item.amount;
+  return (
+    <>
+        <OrderItemBox>
+     <BookPhoto>
+    <Images
+    width={100}
+    height={130}
+    src={bookinfo?.imageUrl}
+    alt="book"
+   />
+
+    </BookPhoto>
+   
+    <ItemInfoBox>
+    <NameItem>{bookinfo?.name}</NameItem>
+    <div>
+    <Name><Span>Amount :</Span> {item?.amount}</Name>
+    <Name><Span>price :</Span> {bookinfo?.price}</Name>
+    <Name><Span>Total :</Span> {finalPrice}</Name>
+    </div>
+    </ItemInfoBox>
+    </OrderItemBox>  
+    </>
+  )
 }
+
 
 export default OrderItem

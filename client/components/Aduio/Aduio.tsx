@@ -20,7 +20,7 @@ const  Aduio =({id}:any) => {
   );
 
 const [enter, setenter] =useState(false)
-
+console.log(enterCount)
 
 useEffect(() => {
  setenter(true)

@@ -22,22 +22,28 @@ function CheckOutIndex() {
  
     const [step, setStep] = useState(1);
     const router = useRouter()
-    const [userInfo, setUserInfo] =useState({})
     const dispatch=useAppDispatch()
     const userId =useAppSelector((stata)=>stata.user.userId)
+
+
+    const [userInfo, setUserInfo] =useState({})
+   
       const {  booksWithQuantity, fetchUserdata ,cartId} = useFetchUserData();
       /*make data to send*/
       const datatoSend={ userInfo: userInfo,  booksWithQuantity: booksWithQuantity, userId:userId }
-      console.log(datatoSend)
+  
       /*make data to send*/
       const  onFormSubmit= async () =>{
         /*we need to remove all item from redux by submit, meanse cart now is a order nad cart is */
+       console.log(datatoSend)
       dispatch(removeAllitem())
       
           try {
-            const response = await axios.post("https://mern-book-store-api.vercel.app/api/v1/userOrder", datatoSend)
+            const response = await axios.post("http://localhost:4000/api/v1/userOrder", datatoSend)
+            console.log(response)
               // If order placed successfully, proceed to delete the cart
-              let res = await axios.delete(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`)
+              let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`)
+              console.log(res)
             if(response.status === 201){
               toast('We recived you order Successfully!',{
                 draggable:true,
@@ -46,6 +52,11 @@ function CheckOutIndex() {
               setTimeout(() => {
                 router.push('/books')
               }, 5000);
+            }else{
+              toast('Some things went wrong!',{
+                draggable:true,
+                position:toast.POSITION.TOP_RIGHT
+              }) 
             }
           } catch (error) {
             console.error('Error creating order:', error);
@@ -68,7 +79,7 @@ function CheckOutIndex() {
         }));
      
       }
-console.log(userInfo)
+//console.log(userInfo)
       const nextStep = () => {
     setStep(step + 1);
   };
@@ -80,7 +91,7 @@ console.log(userInfo)
   
   return (
     <>
-     <ToastContainer draggable={false} autoClose={5000}/> 
+     <ToastContainer draggable={false} autoClose={5000} /> 
     <Wrapper>
         <br/>
         <ProgressBarBox>

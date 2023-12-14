@@ -18,11 +18,11 @@ const app:Application =express()
 
 var cors = require('cors');
  app.use(cors(
-  {
-  origin:["https://book-store-app-henna.vercel.app"], 
-  methods:["POST", "GET"],
-  credential:true
-}
+//   {
+//   origin:["https://book-store-app-henna.vercel.app"], 
+//   methods:["POST", "GET"],
+//   credential:true
+// }
 ));
 
 
@@ -41,7 +41,7 @@ const {authPageMiddelwear} =require('./middleware/authPage')
 const cookieParser =require('cookie-parser')
 app.use(bodyParser.json())
 app.use(cookieParser())
- app.get('/',  (req:Request, res:Response)=>{
+ app.get('/api/v1',  (req:Request, res:Response)=>{
   console.log(req.cookies)
  res.json('helo0000000000000000000o')
  })

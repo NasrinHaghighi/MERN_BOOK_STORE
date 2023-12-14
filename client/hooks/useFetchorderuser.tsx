@@ -3,27 +3,32 @@ import axios from 'axios';
 
 
 
-function useFetchorderuser(userId:any) {
-    const [userOrders, setUserOrders] = useState([]);
-   
-  
-    const fetchUserOrder = async () => {
-      
-      try {
-        const response = await axios.get(`http://localhost:4000/api/v1/cart/${userId}`);
-        setUserOrders(response.data.cart.products)
-    
-      } catch (err) {
-        //setError(err);
-      } finally {
-       
-      }
-    };
-  
-    useEffect(() => {
-      fetchUserOrder();
-    }, []);
-   return { userOrders, fetchUserOrder };
-  }
+function useFetchorderuser(booksWithQuantity: any[]) {
+//console.log(booksWithQuantity)
+  const [orderedBooksInfo, setOrderedBooksInfo] = useState<any[]>([]);
+
+  const fetchUserOrderedBooks = async () => {
+    try {
+      const bookInfoPromises = booksWithQuantity.map(async (item: any) => {
+        const response = await axios.get(`http://localhost:4000/api/v1/books/${item.book}`);
+        return response.data;
+      });
+
+      const booksInfo = await Promise.all(bookInfoPromises);
+      setOrderedBooksInfo(booksInfo);
+    } catch (err) {
+      // Handle errors here
+    }
+  };
+
+  useEffect(() => {
+    if (booksWithQuantity?.length > 0) {
+      fetchUserOrderedBooks();
+    }
+  }, [booksWithQuantity]);
+
+  return { orderedBooksInfo };
+}
+
 
   export default useFetchorderuser;

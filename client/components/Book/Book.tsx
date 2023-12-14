@@ -26,7 +26,7 @@ function Book() {
 
    useEffect(()=>{
     axios
-    .get(`https://mern-book-store-api.vercel.app/api/v1/books/${bookid}`)
+    .get(`http://localhost:4000/api/v1/books/${bookid}`)
     .then(response =>setBookItem(response.data.book));
    },[bookid])
    //console.log(bookItem)

@@ -7,12 +7,13 @@ import { useRouter } from 'next/router';
 
 
 function OrederDetail() {
-  //console.log(order)
-
+  const router = useRouter()
+  const orderId=router.query.orderId
+console.log(orderId)
   return (
     <DashboardLayout>
       <OrderBox>
-         {/* <OrderDetails order={order}/> */}
+         <OrderDetails orderId={orderId}/> 
        </OrderBox>
     </DashboardLayout>
   )
@@ -24,35 +25,7 @@ export default OrederDetail
 
 
 
-// export const getStaticPaths = (async () => {
-//   const response = await fetch(`http://localhost:4000/api/v1/userorder`);
- 
-//   const data = await response.json();
 
-//   const paths=data.order.map((order:any)=>{
-//     return{
-//       params:{orderId: `${order._id}`}
-//     }
-//   })
-//   return {
-//     paths,
-//     fallback: true, // false or "blocking"
-//   }
-// })
-
-
-// export async function getStaticProps(context:any) {
-//   const { params } = context;
-//   const res = await fetch(`http://localhost:4000/api/v1/userorder/${params.orderId}`);
-//   console.log(res)
-//   const order = await res.json();
-
-//   return {
-//     props: {
-//      order
-//     },
-//   };
-// }
 
 
 

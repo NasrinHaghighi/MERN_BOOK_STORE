@@ -34,7 +34,7 @@ function Signup() {
   const handleRegister= async (values:Values)=>{
 //console.log(values)
    try{
-     await axios.post("https://mern-book-store-api.vercel.app/api/v1/auth/register", values)
+     await axios.post("http://localhost:4000/api/v1/auth/register", values)
      router.push('/login')
  }
  catch(error){

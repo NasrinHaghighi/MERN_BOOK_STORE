@@ -4,20 +4,23 @@ const User =require('../models/user')
 
 export const createOrder = async (req: any, res: any) => {
 const {userId, booksWithQuantity, userInfo} =req.body
-//console.log(userId)
-//console.log(userId)
-const newOrder = new UserOrder({
-    userId: userId,
-   
-    userInfo: userInfo
 
-  });
-  const savedOrder = await newOrder.save();
+  console.log(userInfo)
+      const newOrder = new UserOrder({
+        userId: userId,
+        userInfo: userInfo,
+        timestamp: Date.now(),
+        booksWithQuantity: booksWithQuantity,
+      });
+      console.log('newOrder', newOrder)
+      const savedOrder = await newOrder.save();
 
-  // Respond with the created order details
-  res.status(201).json({ order: savedOrder });
-}
+      // Respond with the created order details
+      res.status(201).json({ order: savedOrder });
+    }
+  
 
+/**************************************** */
 export const allOrder=async (req: any, res: any) => {
 
     try{
@@ -33,7 +36,7 @@ export const allOrder=async (req: any, res: any) => {
 
 
 export const getOneorder =async (req: any, res: any) => {
-    console.log(req.params)
+    //console.log(req.params)
 
     try{
         const {orderId}=req.params
@@ -52,7 +55,7 @@ export const updateOrder =async (req: any, res: any) => {
     try {
     const {  orderId } = req.params;
     const status = req.body;
-    console.log(status)
+  //  console.log(status)
     const order = await UserOrder.findOneAndUpdate({ _id: orderId },  status, { new: true });
     console.log(order)
     if (!order) {

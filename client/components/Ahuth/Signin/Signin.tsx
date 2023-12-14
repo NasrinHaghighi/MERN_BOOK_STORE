@@ -40,7 +40,7 @@ function Signin() {
   const handleSignin= async (values:Values)=>{
 
   try{
-    let res = await axios.post("https://mern-book-store-api.vercel.app/api/v1/auth/login", values)
+    let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
     console.log('Response from server:', res);
  const signinUser=res.data.user.name
   const token=res.data.token
@@ -55,7 +55,7 @@ function Signin() {
   dispatch(userLogin({signinUser, userRole, userId, token}))
 
   if(token){
-    toast('Login Succced',{
+    toast('Login Succed',{
       draggable:true,
       position:toast.POSITION.TOP_RIGHT
     })
@@ -78,7 +78,7 @@ function Signin() {
 
   return (
     <>
-   <ToastContainer draggable={false} autoClose={5000}/> 
+   <ToastContainer draggable={false} autoClose={5000} /> 
     <Box>
    <Label>
      <Title>Login </Title>

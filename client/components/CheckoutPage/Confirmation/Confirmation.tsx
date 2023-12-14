@@ -30,7 +30,7 @@ function Confermation({userInfo}:any) {
   return (
     <Container>
     <Title>
-    <h5>Final Confermation </h5>  
+    <h5>Final Confermation.... </h5>  
     <p> Please carefully review your order and provide any necessary additional details.</p> 
     <hr/>
   </Title>
@@ -39,7 +39,7 @@ function Confermation({userInfo}:any) {
 <SubTit> <h6>Your shopping cart</h6> <Number>-{booksWithQuantity.length} product</Number></SubTit>
 
  <BooksContainer>
-{booksWithQuantity.map((item)=>{
+{booksWithQuantity?.map((item)=>{
 return <OrderdBookItem key={item.book._id} item={item}/>
 })}
 </BooksContainer> 

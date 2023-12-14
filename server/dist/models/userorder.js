@@ -44,8 +44,16 @@ const UserInfoSchema = new mongoose_2.default.Schema({
         type: String
     }
 });
+const BookWithQuantitySchema = new mongoose_2.default.Schema({
+    timestamp: {
+        type: Date,
+        default: Date.now,
+    },
+    book: { type: mongoose_2.default.Schema.Types.ObjectId, ref: 'Book' },
+    amount: Number,
+});
 const UserOrderSchema = new mongoose_2.default.Schema({
-    userInfo: [UserInfoSchema],
+    userInfo: UserInfoSchema,
     userId: {
         type: mongoose_2.default.Schema.Types.ObjectId,
         ref: "User",
@@ -55,5 +63,6 @@ const UserOrderSchema = new mongoose_2.default.Schema({
         enum: ['processing', 'shipped', 'canceled', 'completed'],
         default: 'processing', // Set the default status to 'processing'
     },
+    booksWithQuantity: [BookWithQuantitySchema],
 });
 module.exports = mongoose_2.default.model('UserOrder', UserOrderSchema);

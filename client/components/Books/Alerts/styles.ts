@@ -21,8 +21,8 @@ padding:30px 10px ;
 top:14% ;
 z-index:10 ;
 border-radius:8px ;
-width:360px ;
-height:150px ;
+width:310px ;
+height:130px ;
 
 background-color:${props=>props.theme. grayBG} ;
 box-shadow:${props=>props.theme.alertBoxshdow} ;
@@ -34,13 +34,13 @@ opacity:0 ;
     }
 }
 &>h3{
-
+    font-size:20px ;
     margin-bottom:30px ;
    &.add{color:green} 
     &.favo{color:red }
 }
 &>h6{
-    font-size:22px ;
+    font-size:16px ;
    
 }
 &::before{

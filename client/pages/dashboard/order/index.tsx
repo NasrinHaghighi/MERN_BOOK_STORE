@@ -7,7 +7,7 @@ import { DataGrid, GridColDef, GridRowId, GridValueGetterParams } from '@mui/x-d
 import Box from '@mui/material/Box';
 
 import Link from 'next/link';
-import { useStepperContext } from '@mui/material'
+import useFetchOrder from '../../../hooks/useFetchOrder'
 
 
 
@@ -15,22 +15,24 @@ import { useStepperContext } from '@mui/material'
 
 
 function OrderIndex() {
+const {allOrders,fetchAllOrder}=useFetchOrder()
 
-//const {order:orderlist}=order
-//console.log(orderlist)
-/*now i have list of users that registed in app */
+useEffect(()=>{ fetchAllOrder() },[])
 
 
+
+console.log(allOrders)
   /*get id*/
 
-  // const formattedData = orderlist.map((item:any) => ({
-  //   id: item._id, // Unique identifier for each row
-  //   userId: item.userId,
-  //   status: item.status,
-  //    country:item.userInfo[0].country,
-  //    city:item.userInfo[0].city,
+  const formattedData = allOrders.map((item:any) => ({
+    
+    id: item._id, // Unique identifier for each row
+    userId: item.userId,
+    status: item.status,
+     country:item.userInfo?.country,
+     city:item.userInfo?.city,
      
-  // }));
+  }));
   // console.log(formattedData)
 /*now i need to make arr from userId, then fetch data depend of that userid*/
 
@@ -41,7 +43,7 @@ function OrderIndex() {
        <Title>Dashboard \ <span>Orders</span></Title>
      
 {/* first table */}
-     {/* <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
+     <Tabel  style={{ maxWidth: '100%', overflowX: 'auto' }}>
      <DataGridS
     rows={formattedData}
     columns={columns}
@@ -57,9 +59,9 @@ function OrderIndex() {
     checkboxSelection
   />  
     
-    </Tabel>  */}
+    </Tabel>  
 {/* second table */}
-   {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
+   <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsRes}
@@ -76,9 +78,9 @@ function OrderIndex() {
   />
 
 
-    </TabelRes>  */}
+    </TabelRes>  
 {/* third table */}
-      {/* <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+       <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
     rows={formattedData}
     columns={columnsSmall}
@@ -93,28 +95,13 @@ function OrderIndex() {
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall>   */}
+    </TabelSmall>   
     </OrderBox>  
     </DashboardLayout>
   )
 }
 OrderIndex.layout = EmptyLayout;
 export default OrderIndex
-
-
-// export async function getStaticProps(context: any) {
-//   const res = await fetch('http://localhost:4000/api/v1/userorder');
-//   if (!res.ok) {
-//     throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
-//   }
-//   const order = await res.json();
-
-//   return {
-//     props: {
-//      order
-//     },
-//   };
-// }
 
 
 
@@ -235,7 +222,7 @@ const columnsRes: GridColDef[] = [
 /*this for less than600 */
 const columnsSmall: GridColDef[] = [
   
-  { field: 'id', headerName: 'Order ID', width:100, },
+  { field: 'id', headerName: 'Order ID', width:90, },
 
   { field: 'country', headerName: 'Country', width: 90, },
  
@@ -243,7 +230,7 @@ const columnsSmall: GridColDef[] = [
     field: 'status',
     headerName: 'Status',
     type: 'string',
-    width:90,
+    width:70,
     renderCell: (params) => {
       let cellStyle = {
         fontWeight: 'bold',
@@ -277,7 +264,7 @@ const columnsSmall: GridColDef[] = [
     field: ' ',
     headerName: 'Action',
     sortable: true,
-    width: 50,
+    width: 30,
     renderCell: (params) => (
       <Link 
       style={{cursor:'pointer'}}

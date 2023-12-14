@@ -28,7 +28,7 @@ const userId=useAppSelector((state)=>state.user.userId)
          dispatch(addBook(bookItem))
          
          try{
-             let res = await axios.post(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`, { productId: bookItem._id })
+             let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: bookItem._id })
                
              console.log(res)
            }catch(error){}
