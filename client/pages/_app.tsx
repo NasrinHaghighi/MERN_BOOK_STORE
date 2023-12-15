@@ -33,7 +33,7 @@ let persistor =persistStore(store)
         <MyGlobalStyle />
         <Head>
           <title>|*BOOKSTORE*|</title>
-          <meta name="description" content="Porta Persa" />
+          <meta name="description" content="Read book" />
           {/* <link rel="icon" href="/images/common/small-logo.svg" /> */}
         </Head>
       
