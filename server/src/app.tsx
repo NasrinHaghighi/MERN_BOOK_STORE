@@ -20,7 +20,7 @@ var cors = require('cors');
  app.use(cors(
   {
   origin:["https://book-store-app-henna.vercel.app"], 
-  methods:["POST", "GET"],
+  methods:["POST", "GET",  "DELETE", "PATCH"],
   credential:true
 }
 ));
