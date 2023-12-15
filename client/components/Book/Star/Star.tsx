@@ -29,18 +29,3 @@ function Star ({star}:any) {
 export default Star
 
 
-// const tempStars=Array.from({length:5},(_,index)=>{
-//     const number= index+0.5
-
-//     return (
-//         <span key={index}>
-// {star >= index +1 ?(
-// <BsStarFill />
-// ): star >=number ?(
-// <BsStarHalf />
-// ):(
-// <BsStar/>)      
-// }
-// </span>
-// )
-//     })

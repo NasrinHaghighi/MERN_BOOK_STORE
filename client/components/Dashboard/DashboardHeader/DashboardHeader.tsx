@@ -7,7 +7,7 @@ import { Images } from "../../../helpers/Image";
 import {dashboardSideStatus} from '../../../features/dashboardSideSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 import {HiOutlineMenuAlt1} from 'react-icons/hi'
-
+import Link from 'next/link';
 function DashboardHeader() {
   const dispatch =useAppDispatch()
 
@@ -19,7 +19,7 @@ const handelSidebar=()=>{
     <Wapper>
       <HeaderWrapper>
        
-        <Logo> <Images src={LogoPic} width={150} height={100}   alt="book"/> </Logo>
+       <Link href='/'> <Logo> <Images src={LogoPic} width={150} height={100}   alt="book"/> </Logo></Link>
         <Title></Title>
               <Icons>
           <IconItem> <BsMailbox2 /><Num order=''>2</Num></IconItem>

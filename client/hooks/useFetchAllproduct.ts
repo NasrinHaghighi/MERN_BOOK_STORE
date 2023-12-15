@@ -8,7 +8,7 @@ function useFetchAllProduct() {
     const fetchAllProduct = async () => {
       
         try {
-          const response = await axios.get(`http://localhost:4000/api/v1/books`)
+          const response = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/books`)
           setAllProduct(response.data.books)
         } catch (err) {
           //setError(err);

@@ -39,7 +39,7 @@ const handelSubmite= async()=>{
  }
   try{
     // const updateData = { status: value }
-     const res =await axios.post(`http://localhost:4000/api/v1/books`, {
+     const res =await axios.post(`https://mern-book-store-api.vercel.app/api/v1/books`, {
         newbook: bookState 
      },
      {
@@ -69,7 +69,7 @@ const formData =new FormData()
 formData.append('imageUrl', imageFile)
 
 try{
-const {data} =await axios.post(`http://localhost:4000/api/v1/books/uploads`, formData, {
+const {data} =await axios.post(`https://mern-book-store-api.vercel.app/api/v1/books/uploads`, formData, {
   headers:{
     'Content-Type':'multipart/form-data'
   }

@@ -83,23 +83,20 @@ function step2Validator() {
   /*we need to remove all item from redux by submit, meanse cart now is a order nad cart is */
 dispatch(removeAllitem())
 
-    try {
-      const response = await axios.post("http://localhost:4000/api/v1/userOrder", datatoSend)
-        // If order placed successfully, proceed to delete the cart
-        let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`)
-      if(response.status === 201){
-        toast('We recived you order Successfully!',{
-          draggable:true,
-          position:toast.POSITION.TOP_RIGHT
-        })
-        setTimeout(() => {
-          router.push('/books')
-        }, 5000);
-      }
-    } catch (error) {
-      console.error('Error creating order:', error);
-      // Handle errors if the request fails
-    }
+    // try {
+    //   const response = await axios.post("http://localhost:4000/api/v1/userOrder", datatoSend)
+    //     // If order placed successfully, proceed to delete the cart
+    //     let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`)
+    //   if(response.status === 201){
+    //     toast('We recived you order Successfully!',{
+    //       draggable:true,
+    //       position:toast.POSITION.TOP_RIGHT
+    //     })
+    //     setTimeout(() => {
+    //       router.push('/books')
+    //     }, 5000);
+      
+   
   }
   return (
     <>

@@ -32,7 +32,7 @@ const dispatch=useAppDispatch()
   setNewAmount(e.target.value)
  dispatch(addNewAmount({...item, amount:e.target.value}))
  try{
-  let res = await axios.patch(`http://localhost:4000/api/v1/cart/${userId}`, {data: { productId: productId , amount:e.target.value}})
+  let res = await axios.patch(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`, {data: { productId: productId , amount:e.target.value}})
     
   console.log(res)
 }catch(error){}
@@ -42,7 +42,7 @@ const dispatch=useAppDispatch()
   const productId = item._id;
    dispatch(deletItem(item))
    try{
-    let res = await axios.delete(`http://localhost:4000/api/v1/cart/${userId}`,  {data: { productId: productId }})
+    let res = await axios.delete(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`,  {data: { productId: productId }})
       
     console.log(res)
   }catch(error){}

@@ -75,28 +75,4 @@ export default Card
 
 
 
-// const createOrder= async()=>{
-//   books.map(async (item)=>{
-//     try {
-//       const response = await axios.post('http://localhost:4000/api/v1/orders', {
-//         signinUser:signinUser,
-//         userId: userId,
-//         orderedBook:item
-//       },
-//       {
-//         headers: {
-//           'Content-Type': 'application/json'
-//         }}
-//       );
-  
-//       if (response.status === 200) {
-//        // console.log(response)
-//       } else {
-//         // Handle an error response from the server
-//       }
-//     } catch (error) {
-//       // Handle network or other errors
-//     }
-//   })
 
-// }
