@@ -58,7 +58,7 @@ function ProductDetailCo({productId}:any) {
     <Name>{productItem.name}</Name>
     <hr/>
 
-    <Category>Category : <Span>{productItem.category}</Span></Category>
+    <Category>Category :: <Span>{productItem.category}</Span></Category>
     <Category>Publisher :<Span>{productItem.publisher}</Span></Category>
     <Category>Author :<Span>{productItem.author}</Span></Category>
     <Category>Rate :<Span>{productItem.rating
