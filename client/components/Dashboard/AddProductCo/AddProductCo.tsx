@@ -20,7 +20,7 @@ function AddProductCo() {
   const [bookState, setBookState] = React.useState({
     name: "",  author: "", price:"", discont:"", publisher:"", language:"",description:"", category:"", format:"", imageUrl: imageValue
   })
-
+console.log(bookState)
   /*On change*/
 const handelInput=(e: SelectChangeEvent<string> | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >)=>{
    const inputName = e.target.name;
@@ -167,9 +167,9 @@ setPreview(null)
                       onChange={(e)=>handelInput(e)}
                     >
                       <MenuItem value='art'>Art</MenuItem>
-                      <MenuItem value='biography'>Biography</MenuItem>
-                      <MenuItem value='child'>Children Books</MenuItem>
-                      <MenuItem value='child'>Children Books</MenuItem>
+                      <MenuItem value='biography '>Biography</MenuItem>
+                      <MenuItem value='children'>Children Books</MenuItem>
+                     
                       <MenuItem value='craft'>Craft & Hobbies</MenuItem>
                       <MenuItem value='romance'>Romance</MenuItem>
                     </Select>
@@ -252,7 +252,7 @@ setPreview(null)
         </Grid>
   
       </Grid>
-      <BtnDiv><div></div> <Submite onClick={handelSubmite}>Submite</Submite></BtnDiv>
+      <BtnDiv> <Submite onClick={handelSubmite}>Submite</Submite></BtnDiv>
      
     
     </Boxs>

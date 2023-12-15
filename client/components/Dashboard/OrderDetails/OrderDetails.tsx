@@ -6,11 +6,15 @@ import { BsBorder } from 'react-icons/bs';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useFetchorderuser from '../../../hooks/useFetchorderuser'
-import useGetBookInfoUser from '../../../hooks/useGetBookInfoUser';
+
 import OrderItem from './OrderItem';
 
+
+
+
+
 function OrderDetails({orderId}:any) {
+
   const [orderItem, setOrderItem] =useState<any>([])
  //console.log(orderId)
 
@@ -74,10 +78,12 @@ catch(error){
 
     <Grid container spacing={2}>
       {btnArr.map((item)=>{
-          return   <Grid item lg={3} md={6} xs={12}>  
+          return   <Grid item lg={3} md={3} xs={6}>  
            <Button
            onClick={()=>updateOrder(_id, item.value)} 
-           className={`${item.value} ${activeBtn === item.value ? 'active' : ''}`}>
+           className={`${item.value} ${activeBtn === item.value ? 'active' : ''}`}
+         
+           >
             {item.text}
             
             </Button>  </Grid>
@@ -88,19 +94,19 @@ catch(error){
     <hr/>
     <br/>
     <Grid container spacing={2}>
-  <Grid item lg={3} md={6} xs={12}>
+  <Grid item  lg={3} md={3} xs={6}>
      <Tit>Order Created at</Tit>
       <SubTit>24_Nov_2023</SubTit>
   </Grid>
-  <Grid item  lg={3} md={6} xs={12}>
+  <Grid item  lg={3} md={3} xs={6}>
      <Tit>Name</Tit>
        <SubTit>{userInfo?.fullName}</SubTit>  
   </Grid>
-  <Grid item  lg={3} md={6} xs={12}>
+  <Grid item  lg={3} md={3} xs={6}>
      <Tit>Email</Tit>
       <SubTit>abc@gmail.com</SubTit>
   </Grid>
-  <Grid item  lg={3} md={6} xs={12}>
+  <Grid item  lg={3} md={3} xs={6}>
      <Tit>Contact</Tit>
          <SubTit>{userInfo?.phone}</SubTit>  
   </Grid>

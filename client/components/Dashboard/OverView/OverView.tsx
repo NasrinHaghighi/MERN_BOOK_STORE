@@ -8,6 +8,7 @@ import SaleChart from './SaleChart/SaleChart';
 import PieChart from './PieChart/PieChart';
 import OrderSale from './OrderSale/OrderSale';
 import RecentReview from './RecentReview/RecentReview';
+import PieChartComponent from './PieChart/PieChart';
 
 
 function OverView() {
@@ -21,7 +22,7 @@ function OverView() {
    <SaleChart />
   </Grid>
   <Grid item xs={12} lg={4}>
-    <PieChart />
+    <PieChartComponent />
   </Grid>
   </Grid>
   <Grid container spacing={2}>

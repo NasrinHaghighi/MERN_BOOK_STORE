@@ -43,13 +43,13 @@ catch(error){
     <Box>
           <ToastContainer draggable={false} autoClose={3000}/> 
         
-        <Title>discount :</Title>
+        <Title>Discount :</Title>
         <br/>
         <Main>
             {arr.map((item, index) =>{
                 return  (
                     <CheckBoxDiv key={index}> 
-                        <label htmlFor={`myCheckbox-${index}`} style={{marginRight:11}}>{item.label} %</label>
+                        <label htmlFor={`myCheckbox-${index}`} style={{marginRight:5}}>{item.label} %</label>
                         <input
               type="radio"
               id={`myCheckbox-${index}`}
@@ -65,10 +65,10 @@ catch(error){
         <hr/>
         <Grid container spacing={2}>
             <Grid item lg={6} md={12} sm={12}>
-            <Price className='init'><Title>Initial price :</Title> <Span> {price} €</Span></Price>
+            <Price className='init'>Initial price : <Span> {price} €</Span></Price>
             </Grid>
             <Grid item lg={6} md={12}>
-        <Price className='final'><Title>Final price :</Title> <Span> {final ? final :price} €</Span></Price>
+        <Price className='final'>Final price : <Span> {final ? final :price} €</Span></Price>
         </Grid>
         </Grid>
      

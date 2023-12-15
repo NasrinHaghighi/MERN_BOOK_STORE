@@ -14,6 +14,7 @@ padding:0 80px ;
 /*less padding for responsive*/
 @media (max-width:600px) {
 padding: 0 00px;
+
 }
 
 

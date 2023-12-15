@@ -7,11 +7,12 @@ export const Box =styled.section`
 border: 1px solid ${props=>props.theme.textgray};
 padding: 20px 15px;
 border-radius: 10px;
+text-align: center;
 background-color: ${props=>props.theme.mainBG};
 
 `
 export const Title =styled.div`
-font-size: 16px;
+font-size: 20px;
 font-weight: 700;
 
 `
@@ -35,6 +36,8 @@ font-size: 20px;
 
 `
 export const Price =styled.div`
+font-size: 16px;
+font-weight: 700;
 display: flex;
 &.init {
     color: ${props=>props.theme.red};

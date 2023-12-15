@@ -61,7 +61,7 @@ const BooksSchema = new mongoose_2.default.Schema({
     },
     stock: {
         type: String,
-        default: 'In In Stock'
+        default: 'In Stock'
     },
     discont: {
         type: Number,

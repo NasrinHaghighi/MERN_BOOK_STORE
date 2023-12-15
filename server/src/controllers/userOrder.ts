@@ -7,8 +7,8 @@ const {userId, booksWithQuantity, userInfo} =req.body
 
   console.log(userInfo)
       const newOrder = new UserOrder({
-        userId: userId,
-        userInfo: userInfo,
+        userId,
+        userInfo,
         timestamp: Date.now(),
         booksWithQuantity: booksWithQuantity,
       });

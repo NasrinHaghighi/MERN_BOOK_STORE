@@ -46,13 +46,14 @@ padding: 10px;
 `
 export const BtnDiv=styled.div`
 display: flex;
-justify-content: space-between;
+justify-content: center;
+align-items: center;
 margin-top:40px;
 
 `
 
 export const Submite=styled.button`
-width: 20%;
+
 border: none;
 background-color: ${props=>props.theme.orange};
 padding: 15px 20px;

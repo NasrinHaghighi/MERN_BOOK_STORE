@@ -18,6 +18,7 @@ margin: 30px 15px;
 border-radius: 10px;
 background-color: ${props=>props.theme.white}; 
 @media (max-width:1400px) {
+  
     width:95%;
     margin: 30px auto;
 

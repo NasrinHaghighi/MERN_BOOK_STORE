@@ -40,18 +40,7 @@ transition: all 0.2 ease-in-out;
 
 @media (max-width:1400px) {
   display: none;
-  /* border-right: 1px solid red;
-width: 0;
-opacity: 0;
- &.show{
-  position: absolute;
- z-index: 99;
-  animation: ${comeIn} 0.5s forwards;
- } 
- &.notShow{
 
-  animation: ${comeOut} 0.5s forwards;
- }  */
 }
 `
 export const RoleBoxx=styled.div<{
@@ -151,7 +140,7 @@ export const SidebarModal=styled(Modal)`
 position: absolute;
 
 z-index: 99;
-width:350px;
+width:320px;
 display: none;
 transition: all 0.2 ease-in-out;
 @media (max-width:1400px) {

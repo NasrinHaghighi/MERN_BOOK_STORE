@@ -6,13 +6,14 @@ import styled from "styled-components";
 export const Box =styled.section`
 background-color: ${props=>props.theme.white};
 width: 80%;
-padding:10px 30px  ;
+padding:10px 00px  ;
 border-radius: 10px;
 display: flex;
 flex-direction: column;
 @media (max-width:1400px) {
     width:80%;
 margin: 0 auto;
+
   }
 
 `

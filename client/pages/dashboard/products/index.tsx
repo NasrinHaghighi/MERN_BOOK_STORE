@@ -1,10 +1,12 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import DashboardLayout from '../../../components/Dashboard/DashboardLayout'
 import EmptyLayout from '../../../Layout/EmptyLayout'
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Link from 'next/link';
 import {bookType} from '../../../types/bookType'
 import {Title, OrderBox,Tabel, DataGridS, DataGridRes, TabelRes, TabelSmall}  from '../../../components/Dashboard/OverView/styles'
+import useFetchAllProduct from '../../../hooks/useFetchAllproduct'
+
 
 interface Books{
     books:bookType[]
@@ -15,16 +17,22 @@ interface Books{
   const getRowId = (row: any) => row._id;
 
 
-function ProductsIndex({books}:any) {
-  
 
+function ProductsIndex({books}:Books) {
+
+  const {allProduct,fetchAllProduct}=useFetchAllProduct()
+
+  useEffect(()=>{ fetchAllProduct() },[])
+
+
+  console.log(allProduct)
   return (
     <DashboardLayout>
        <OrderBox>
        <Title>Dashboard \ <span>Products</span></Title>
-  {/* <Tabel >
+  <Tabel >
  <DataGrid
-        rows={books.books}
+        rows={allProduct}
         columns={columns}
         rowHeight={100}
         margin-bottom={100}
@@ -37,11 +45,11 @@ function ProductsIndex({books}:any) {
         pageSizeOptions={[5, 10]}
         checkboxSelection
       /> 
-  </Tabel> */}
+  </Tabel> 
   {/* second table */}
-  {/* <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
+   <TabelRes style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
-    rows={books.books}
+    rows={allProduct}
     columns={columnsRes}
     getRowId={getRowId}
     rowHeight={130}
@@ -57,11 +65,11 @@ function ProductsIndex({books}:any) {
   />
 
 
-    </TabelRes> */}
+    </TabelRes> 
     {/* third table */}
-    {/* <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
+   <TabelSmall style={{ maxWidth: '100%', overflowX: 'auto' }}>
     <DataGridRes
-    rows={books.books}
+    rows={allProduct}
     getRowId={getRowId}
     columns={columnsSmall}
     rowHeight={130}
@@ -75,7 +83,7 @@ function ProductsIndex({books}:any) {
     pageSizeOptions={[5, 10]}
    
   />
-    </TabelSmall> */}
+    </TabelSmall> 
  </OrderBox>  
     </DashboardLayout>
   )
@@ -86,37 +94,24 @@ ProductsIndex.layout = EmptyLayout;
 export default ProductsIndex
 
 
-// export async function getStaticProps(context: any) {
-//     const res = await fetch('http://localhost:4000/api/v1/books');
-//     if (!res.ok) {
-//       throw new Error(`Failed to fetch data from the API. Status: ${res.status}`);
-//     }
-//     const books = await res.json();
-  
-//     return {
-//       props: {
-//        books
-//       },
-//     };
-//   }
 
 
 /* reduce clumn depend of screen size*/
 /*this for biger 900 */
   const columns: GridColDef[] = [
-    { field: '_id', headerName: 'ID', width: 70,
+    { field: '_id', headerName: 'ID', width: 50,
    renderCell: (params) => (
      <span>{params.value.substring(0,5)}</span> 
   ),
  },
-    { field: 'imageUrl', headerName: 'Image', width: 170 ,  sortable: false,   renderCell: (params) => (
+    { field: 'imageUrl', headerName: 'Image', width: 130 ,  sortable: false,   renderCell: (params) => (
       <img
         src={params.value} 
         alt="Product Image"
         style={{ width: '100px',  height: '90px', borderRadius:'10px'  }}
       />
     ),},
-    { field: 'name', headerName: 'Name', width: 170 ,
+    { field: 'name', headerName: 'Name', width: 150 ,
     
    renderCell: (params) => (
       <strong>{params.value.substring(0,15)}</strong> 
@@ -128,7 +123,7 @@ export default ProductsIndex
       field: 'stock',
       headerName: 'Stock',
       type: 'string',
-      width: 100,
+      width: 70,
       renderCell: (params) => {
         let cellStyle = {
           fontWeight: 'bold',
@@ -149,14 +144,14 @@ export default ProductsIndex
         return <strong style={cellStyle}>{params.value}</strong>;
       },
     },
-    { field: 'price', headerName: 'Initial Price', width: 100,   renderCell: (params) => (
+    { field: 'price', headerName: 'Initial Price', width: 70,   renderCell: (params) => (
       <strong >{params.value }</strong> 
      ), },
     {
       field: 'discont',
       headerName: 'Discont',
       sortable: true,
-      width: 100,
+      width: 70,
        renderCell: (params) => (
        <strong style={{color:'orange'}}>{params.value } %</strong> 
       ),
@@ -279,15 +274,15 @@ export default ProductsIndex
 
 /*this for less than600 */
 const columnsSmall: GridColDef[] = [
-  { field: '_id', headerName: 'ID', width: 50,
- renderCell: (params) => (
-   <span>{params.value.substring(0,5)}</span> 
-),
-},
-  { field: 'name', headerName: 'Name', width: 100 ,
+//   { field: '_id', headerName: 'ID', width: 50,
+//  renderCell: (params) => (
+//    <span>{params.value.substring(0,5)}</span> 
+// ),
+// },
+  { field: 'name', headerName: 'Name', width: 80 ,
   
  renderCell: (params) => (
-    <div>{params.value.substring(0,15)}</div> 
+    <div>{params.value.substring(0,10)}</div> 
    ),
 
 },
@@ -296,10 +291,11 @@ const columnsSmall: GridColDef[] = [
     field: 'stock',
     headerName: 'Stock',
     type: 'string',
-    width: 50,
+    width: 40,
     renderCell: (params) => {
       let cellStyle = {
-        fontWeight: 'bold',
+        fontWeight: 'normal',
+        fontSize: '12px',
         color: 'black', // Default color
       };
   
@@ -322,16 +318,16 @@ const columnsSmall: GridColDef[] = [
     field: 'discont',
     headerName: 'Discont',
     sortable: true,
-    width: 30,
+    width:7,
      renderCell: (params) => (
-     <strong style={{color:'orange'}}>{params.value } %</strong> 
+     <strong style={{color:'orange' , fontSize:'12px'}}>{params.value } %</strong> 
     ),
   
   },
   {
     field: 'finalPrice',
     headerName: 'Final Price',
-    width: 30,
+    width: 20,
     renderCell: (params) => {
      
       const initialPrice = parseFloat(params.row.price || 0);
@@ -339,13 +335,13 @@ const columnsSmall: GridColDef[] = [
 
       const finalPrice = initialPrice - (initialPrice * (discount / 100));
 
-      return <strong style={{color:'blue'}}>{finalPrice.toFixed(2)}</strong>;       },
+      return <strong style={{color:'blue', fontSize:'12px'}}>{finalPrice.toFixed(2)}</strong>;       },
   },
    {
     field: ' ',
     headerName: 'Action',
     
-    width: 50,
+    width:20,
     renderCell: (params) => (
       <Link 
       style={{cursor:'pointer'}}

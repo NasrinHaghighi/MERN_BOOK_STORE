@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { bookType } from '../../../types/bookType'
 import {Box, Title,Num , PhotoDiv,ImageDiv, Name, Category, Span, Remove, TitleBox}  from './styles'
 import {Images} from '../../../helpers/Image'
@@ -12,9 +12,16 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 
 
-function ProductDetailCo({product}:any) {
+function ProductDetailCo({productId}:any) {
   const router = useRouter()
+  const [productItem, setProductItem] =useState<any>([])
 
+  useEffect(()=>{
+    axios
+    .get(`http://localhost:4000/api/v1/books/${productId}`)
+    .then(response =>setProductItem(response.data.book));
+   },[productId])
+  console.log(productItem)
 /****Logic to remove a book */
   const removeProduct = async (id:number)=>{
     { toast(`Product removed `,{
@@ -36,26 +43,26 @@ function ProductDetailCo({product}:any) {
   return (
     <Box>
       <br/>
-<TitleBox> <Title>Product No :  <Num>#{product.book._id.substring(0,5)}</Num></Title> <Remove onClick={()=>removeProduct(product.book._id)}>Remove Product</Remove></TitleBox>
+ <TitleBox> <Title>Product No :  <Num>#{productItem?._id}</Num></Title> <Remove onClick={()=>removeProduct(productItem?._id)}>Remove Product</Remove></TitleBox>
  <hr/>
 <br/>
 <Grid container spacing={2}>
 
   <Grid item lg={4} md={4} sm={12} sx={{margin:'auto'}}>
-<PhotoDiv bg={product.book.imageUrl}>
+<PhotoDiv bg={productItem.imageUrl}>
    
 </PhotoDiv>
   </Grid>
 
   <Grid item lg={8} md={8}  sm={12} sx={{margin:'auto'}}>
 <ImageDiv>
-    <Name>{product.book.name.substring(0, 15)}</Name>
+    <Name>{productItem.name}</Name>
     <hr/>
 
-    <Category>Category : <Span>{product.book.category}</Span></Category>
-    <Category>Publisher :<Span>{product.book.publisher}</Span></Category>
-    <Category>Author :<Span>{product.book.author}</Span></Category>
-    <Category>Rate :<Span>{product.book.rating
+    <Category>Category : <Span>{productItem.category}</Span></Category>
+    <Category>Publisher :<Span>{productItem.publisher}</Span></Category>
+    <Category>Author :<Span>{productItem.author}</Span></Category>
+    <Category>Rate :<Span>{productItem.rating
 }</Span></Category>
 </ImageDiv>
 <br/>
@@ -69,16 +76,20 @@ function ProductDetailCo({product}:any) {
 <Grid container spacing={2}>
 
 
-<Grid item lg={6} md={12}  sm={12}>
-  <UpdateStock stock={product.book.stock} id={product.book._id}/>
+<Grid item lg={6} md={6}  sm={12}>
+
+<UpdatePrice 
+  discont={productItem.discont} 
+  price={productItem.price} 
+  id={productItem._id} />
+   
   </Grid>
-  <Grid item lg={6} md={12}  sm={12}>
-  <UpdatePrice 
-  discont={product.book.discont} 
-  price={product.book.price} 
-  id={product.book._id}/>
+  <Grid item lg={6} md={6}  sm={12} >
+ 
+  <UpdateStock stock={productItem.stock} id={productItem._id} />
+  
   </Grid>
-</Grid>
+</Grid> 
     </Box>
   )
 }
