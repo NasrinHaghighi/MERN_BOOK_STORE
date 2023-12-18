@@ -2,6 +2,9 @@ const Books =require('../models/books')
 const path =require('path')
 const fs = require('fs');
 const cloudinary =require('cloudinary').v2
+
+
+
 export const uploadbookImageLocal =async (req:any , res:any) =>{
    const bookImage =req.files.imageUrl
    console.log(bookImage);
