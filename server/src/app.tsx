@@ -15,11 +15,11 @@ require('./db/connect')
 require('express-async-errors')
 const path =require('path')
 const app:Application =express()
-// ["https://book-store-app-henna.vercel.app", "https://res.cloudinary.com"]
+
 var cors = require('cors');
  app.use(cors(
   {
-  origin:"*", 
+  origin:["https://book-store-app-henna.vercel.app", "https://res.cloudinary.com"], 
   methods:["POST", "GET",  "DELETE", "PATCH"],
   credential:true
 }
