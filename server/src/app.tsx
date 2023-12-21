@@ -18,11 +18,11 @@ const app:Application =express()
 
 var cors = require('cors');
  app.use(cors(
-  {
-  origin:["https://book-store-app-henna.vercel.app", "https://res.cloudinary.com"], 
-  methods:["POST", "GET",  "DELETE", "PATCH"],
-  credential:true
-}
+//   {
+//   origin:["https://book-store-app-henna.vercel.app", "https://res.cloudinary.com"], 
+//   methods:["POST", "GET",  "DELETE", "PATCH"],
+//   credential:true
+// }
 ));
 
 

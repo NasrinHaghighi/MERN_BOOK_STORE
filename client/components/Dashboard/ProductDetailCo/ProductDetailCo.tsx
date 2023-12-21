@@ -18,7 +18,7 @@ function ProductDetailCo({productId}:any) {
 
   useEffect(()=>{
     axios
-    .get(`https://mern-book-store-api.vercel.app/api/v1/books/${productId}`)
+    .get(`http://localhost:4000/api/v1/books/${productId}`)
     .then(response =>setProductItem(response.data.book));
    },[productId])
   //console.log(productItem)
@@ -30,7 +30,7 @@ function ProductDetailCo({productId}:any) {
     })
    }
    try{
-    const res =await axios.delete(`https://mern-book-store-api.vercel.app/api/v1/books/${id}`)
+    const res =await axios.delete(`http://localhost:4000/api/v1/books/${id}`)
     router.push('/dashboard/products');
   
  }

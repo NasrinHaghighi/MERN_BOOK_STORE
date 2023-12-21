@@ -10,7 +10,7 @@ function useGetBookInfoUser({ userOrders }: any) {
       const bookDetails = await Promise.all(
         orders?.map(async (item: any) => {
           try {
-            const response = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/books/${item.productId}`);
+            const response = await axios.get(`http://localhost:4000/api/v1/books/${item.productId}`);
             return { bookInfo: response.data, quantity: item.quantity };
           } catch (error) {
             console.error(`Error fetching book details for product ID ${item.productId}:`, error);

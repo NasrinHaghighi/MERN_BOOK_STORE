@@ -20,7 +20,7 @@ function OrderDetails({orderId}:any) {
 
  useEffect(()=>{
   axios
-  .get(`https://mern-book-store-api.vercel.app/api/v1/userorder/${orderId}`)
+  .get(`http://localhost:4000/api/v1/userorder/${orderId}`)
   .then(response =>setOrderItem(response.data.order));
  },[orderId])
 console.log(orderItem)
@@ -46,7 +46,7 @@ useEffect(() => {
    }
   try{
    // const updateData = { status: value }
-    const res =await axios.patch(`https://mern-book-store-api.vercel.app/api/v1/userorder/${id}`, {
+    const res =await axios.patch(`http://localhost:4000/api/v1/userorder/${id}`, {
        status: value 
     },
     {

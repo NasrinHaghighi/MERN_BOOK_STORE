@@ -32,6 +32,7 @@ useEffect(() => {
 const handelSelectcategory=(value:string)=>{
         setTitle(value)
         dispatch(selectedcategory(value))
+        setShow(false)
  }
      
 const dispatch=useAppDispatch()

@@ -30,8 +30,8 @@ const app = (0, express_1.default)();
 var cors = require('cors');
 app.use(cors(
 //   {
-//   origin:["https://book-store-app-henna.vercel.app"], 
-//   methods:["POST", "GET"],
+//   origin:["https://book-store-app-henna.vercel.app", "https://res.cloudinary.com"], 
+//   methods:["POST", "GET",  "DELETE", "PATCH"],
 //   credential:true
 // }
 ));

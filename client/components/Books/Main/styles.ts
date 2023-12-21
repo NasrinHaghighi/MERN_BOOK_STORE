@@ -112,3 +112,33 @@ export const ResDiv=styled.div`
    display: none;
   }
 `
+/*******SHOW FILters....componete */
+
+ export const ShowFiltersBox=styled.div`
+padding: 20px 30px ;
+ display: flex;
+ justify-content: flex-start;
+ @media (max-width: 700px) {
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+  }
+ `
+  export const InnerBox=styled.div`
+background-color: ${props=>props.theme.white};
+padding:10px 20px ;
+border-radius: 10px;
+box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+margin-right: 20px;
+font-size: 20px;
+  font-weight: 600;
+  @media (max-width: 700px) {
+margin-bottom: 15px;
+
+  }
+  `
+  export const Label=styled.span`
+  font-size: 20px;
+  font-weight: 600;
+color: ${props=>props.theme.orange};
+  `

@@ -37,7 +37,7 @@ const dispatch=useAppDispatch()
     dispatch(addBook(item))
    
     try{
-        let res = await axios.post(`https://mern-book-store-api.vercel.app/api/v1/cart/${userId}`, { productId: item._id })
+        let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
           
         console.log(res)
       }catch(error){}
@@ -68,7 +68,7 @@ useEffect(() => {
    
            <Bottom>
            <MovingContent>
-          <Tit>{item.name.length<22 ? item.name : item.name.substring(0,22)}</Tit>
+          <Tit>{item.name.length<19 ? item.name : item.name.substring(0,19)}</Tit>
          <Auth>{item.author}</Auth> 
 
 

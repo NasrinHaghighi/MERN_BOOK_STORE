@@ -21,6 +21,7 @@ import AddCardAlert from '../Alerts/AddCardAlert';
 import {useRouter} from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ShowFilters from './ShowFilters';
 
 
 function Main() {
@@ -90,8 +91,8 @@ const [loading, setLoading]=useState<boolean>(false)
 useEffect(() => {
   setLoading(true)
    axios
-   .get("https://mern-book-store-api.vercel.app/api/v1/books")
-      //.get("http://localhost:4000/api/v1/books")
+   //.get("https://mern-book-store-api.vercel.app/api/v1/books")
+      .get("http://localhost:4000/api/v1/books")
       .then(response => setData(response.data.books));
       setLoading(false)
 }, [])
@@ -102,7 +103,7 @@ useEffect(() => {
 const m=checkSort(sortby)
 
    axios
-       .get(`https://mern-book-store-api.vercel.app/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}, price<${max} &category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}, price<${max} &category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)
@@ -121,7 +122,7 @@ const m=checkSort(sortby)
 
 //console.log(bookAlert)
 useEffect(() => {
-  axios.get(`https://mern-book-store-api.vercel.app/api/v1/books`)
+  axios.get(`http://localhost:4000/api/v1/books`)
   .then(response => {
     const searchTermRegex = new RegExp(searchTerm, 'i');
     // Filter the books based on the searchTerm when the data is available
@@ -164,11 +165,13 @@ useEffect(() => {
      </Grid>
      </Layout> 
     </Top>
+  <ShowFilters />
    <div>
     {!loading && data && data.length<1 && <ResetFilters /> }  
     {loading && !data  && <p>loading </p> }  
      { grid ? 
     <BooksConatiner>
+        
       {!loading && data && data.length>0
       ? data.map((item)=>{
         return <BookItem  key={item._id} item={item} />

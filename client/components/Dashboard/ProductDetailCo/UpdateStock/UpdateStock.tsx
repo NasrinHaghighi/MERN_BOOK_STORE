@@ -23,7 +23,7 @@ function UpdateStock({stock, id}:any, ) {
       }
       try{
 
-        const res =await axios.patch(`https://mern-book-store-api.vercel.app/api/v1/books/${id}`, {
+        const res =await axios.patch(`http://localhost:4000/api/v1/books/${id}`, {
           stock: lable 
           },
         {

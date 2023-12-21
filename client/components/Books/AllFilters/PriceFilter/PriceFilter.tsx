@@ -28,7 +28,7 @@ useEffect(() => {
    // console.log(newValue)
     setValue(newValue as number[]);
    dispatch(selectedPrice(value))
-    
+   
   };
  
   return (

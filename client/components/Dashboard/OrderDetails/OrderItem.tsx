@@ -9,7 +9,7 @@ function OrderItem({ item }: any) {
  //console.log(item)
  const [bookinfo, setBookInfo] = React.useState<any>(null);
   const getBookDetails = async () => {
-   const res = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/books/${item.book}`);
+   const res = await axios.get(`http://localhost:4000/api/v1/books/${item.book}`);
    setBookInfo(res.data.book)
   }
 

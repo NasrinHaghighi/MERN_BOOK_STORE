@@ -10,7 +10,7 @@ function useFetchorderuser(booksWithQuantity: any[]) {
   const fetchUserOrderedBooks = async () => {
     try {
       const bookInfoPromises = booksWithQuantity.map(async (item: any) => {
-        const response = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/books/${item.book}`);
+        const response = await axios.get(`http://localhost:4000/api/v1/books/${item.book}`);
         return response.data;
       });
 

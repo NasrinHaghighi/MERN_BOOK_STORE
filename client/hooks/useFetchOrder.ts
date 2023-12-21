@@ -8,7 +8,7 @@ function useFetchOrder() {
     const fetchAllOrder = async () => {
       
         try {
-          const response = await axios.get(`https://mern-book-store-api.vercel.app/api/v1/userOrder`)
+          const response = await axios.get(`http://localhost:4000/api/v1/userOrder`)
         setAllOrders(response.data.order)
         } catch (err) {
           //setError(err);

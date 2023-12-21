@@ -40,7 +40,7 @@ function Signin() {
   const handleSignin= async (values:Values)=>{
 
   try{
-    let res = await axios.post("https://mern-book-store-api.vercel.app/api/v1/auth/login", values)
+    let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
     console.log('Response from server:', res);
  const signinUser=res.data.user.name
   const token=res.data.token
