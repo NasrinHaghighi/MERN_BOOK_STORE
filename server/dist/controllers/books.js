@@ -46,10 +46,10 @@ const getAllBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const regEx = /\b(<|>|>=|=|<|<=)\b/g;
         let filters = numericFilters.replace(regEx, (match) => `-${operatorMap[match]}-`);
         /**/
-        const options = ['price', 'rating'];
+        const options = ['finalPrice', 'rating'];
         filters = filters.split(',').forEach((item) => {
             const [field, operator, value] = item.split('-');
-            console.log(field, operator, value);
+            //console.log(field, operator, value, options)
             if (options.includes(field)) {
                 if (operator === '$eq') {
                     queryObject[field] = { [operator]: Number(value) };
@@ -103,16 +103,24 @@ const editBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { id: productId } = req.params;
         const stock = req.body;
         const discont = req.body;
-        //console.log(stock, discont)
+        const bookone = yield Books.findById(productId);
+        let finalPrice = bookone.finalPrice;
+        const bookPrice = parseFloat(bookone.price);
+        const discontBook = parseFloat(discont.discont);
+        const newPrice = bookPrice - (bookPrice * discontBook) / 100;
+        console.log('New Price:', newPrice, discontBook, bookPrice);
         let updateData;
         if (stock) {
             updateData = stock;
         }
         if (discont) {
             updateData = discont;
+            finalPrice = newPrice;
         }
+        updateData = Object.assign(Object.assign({}, req.body), { finalPrice: finalPrice });
+        console.log(updateData);
         const book = yield Books.findOneAndUpdate({ _id: productId }, updateData, { new: true });
-        // console.log(book)
+        console.log(book);
         if (!book) {
             return res.status(404).json({ msg: `No order found with ID: ${productId}` });
         }
@@ -139,7 +147,7 @@ const deleteBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.deleteBook = deleteBook;
 const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    //console.log(req.body)
+    console.log(req.body);
     const newBook = yield Books.create(req.body.newbook);
     res.status(201).json({ book: newBook });
 });

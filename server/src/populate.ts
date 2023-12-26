@@ -20,9 +20,9 @@ const start =async () =>{
 
          await Orders.deleteMany()
         await Orders.create(jsonOrders)
-       
-        process.exit(0)
         console.log('suuucse....')
+        process.exit(0)
+       
     }catch (error){
 console.log(error)
 process.exit(1)

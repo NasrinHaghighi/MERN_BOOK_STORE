@@ -66,6 +66,10 @@ const BooksSchema = new mongoose_2.default.Schema({
     discont: {
         type: Number,
         default: 0
-    }
+    },
+    finalPrice: {
+        type: Number,
+        default: 0
+    },
 });
 module.exports = mongoose_2.default.model('Books', BooksSchema);

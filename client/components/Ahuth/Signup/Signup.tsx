@@ -1,12 +1,13 @@
 import React,{useState} from 'react'
-import { Box, Already, Title, Label, LinkS, FormF, FieldF, Button, Message, } from '../Signin/styles';
+import { Box, Already, Title, Label, LinkS, FormF, FieldF, Button, Message, Logo} from '../Signin/styles';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-
-
+import Link from "next/link";
+import logo from '../../../public/images/logo.jpg'
+import { Images } from "../../../helpers/Image";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -57,6 +58,10 @@ function Signup() {
     <Box>
     
    <Label>
+   <Logo>
+      <Link href='/'>
+     <Images src={logo} width={150} height={80}   alt="book"/>  </Link>
+     </Logo>
      <Title>Register </Title>
      <Already>Aleady have account?<LinkS href={'/login'}>SignIn</LinkS> </Already>
      </Label>

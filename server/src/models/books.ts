@@ -68,7 +68,11 @@ const BooksSchema =new mongoose.Schema({
     discont:{
         type:Number,
         default:0
-    }
+    },
+    finalPrice:{
+        type:Number,
+        default:0
+    },
   
 })
 

@@ -10,13 +10,14 @@ function OrderItem({ item }: any) {
  const [bookinfo, setBookInfo] = React.useState<any>(null);
   const getBookDetails = async () => {
    const res = await axios.get(`http://localhost:4000/api/v1/books/${item.book}`);
+   
    setBookInfo(res.data.book)
   }
 
   useEffect(() => {
     getBookDetails();
   }, [item])
-//console.log(bookinfo)
+console.log(bookinfo)
 const finalPrice = bookinfo?.price * item.amount;
   return (
     <>

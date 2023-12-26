@@ -64,8 +64,8 @@ var start = function () { return __awaiter(_this, void 0, void 0, function () {
                 return [4 /*yield*/, Orders.create(jsonOrders)];
             case 5:
                 _a.sent();
-                process.exit(0);
                 console.log('suuucse....');
+                process.exit(0);
                 return [3 /*break*/, 7];
             case 6:
                 error_1 = _a.sent();

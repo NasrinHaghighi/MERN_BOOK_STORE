@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react'
-import {Box, FormF, Label,Title,Already,LinkS, Message, FieldF ,Button} from './styles'
-
+import {Box, FormF, Label,Title,Already,LinkS, Message, FieldF ,Button,Logo} from './styles'
+import { Images } from "../../../helpers/Image";
 import axios from "axios";
 import { Formik } from 'formik';
 import { useRouter } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-
+import Link from "next/link";
 import * as Yup from 'yup';
+import logo from '../../../public/images/logo.jpg'
 import { userLogin } from '../../../features/userSlice';
 
 
@@ -81,6 +82,10 @@ function Signin() {
    <ToastContainer draggable={false} autoClose={5000} /> 
     <Box>
    <Label>
+   <Logo>
+      <Link href='/'>
+     <Images src={logo} width={150} height={80}   alt="book"/>  </Link>
+     </Logo>
      <Title>Login </Title>
     
      <Already>Do not have acount?<LinkS href={'/register'}>Register</LinkS> </Already>

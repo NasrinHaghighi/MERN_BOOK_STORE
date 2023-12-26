@@ -12,12 +12,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Basket from '../Basket/Basket';
 import ShopDropdown from './ShopDropdown/ShopDropdown';
 import {searchTerm} from '../../features/searchSlice'
-import { Fade as Hamburger } from 'hamburger-react'
+//import { Fade as Hamburger } from 'hamburger-react'
 //import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 import logo  from '../../public/images/logo.jpg'
-
-
-import Modal from 'react-bootstrap/Modal';
+import {HiOutlineViewList } from 'react-icons/hi'
 import NavbarModal from './NavbarModal/NavbarModal';
 import SearchInput from './SearchInput/SearchInput';
 
@@ -78,10 +76,11 @@ console.log(`isOpen +${isOpen} +homeModalStatus +${homeModalStatus}`)
     </HeaderWrapper>
     <HeaderRes>
     <Logo>
-     <Images src={logo} width={150} height={100}   alt="book"/>  
+      <Link href='/'>
+     <Images src={logo} width={150} height={100}   alt="book"/>  </Link>
     </Logo>
      <MenuIcon  onClick={handelModal}>
-      <Hamburger color="#ffa500" toggled={isOpen} />
+     <HiOutlineViewList />
       </MenuIcon>  
  
         <NavbarModal/>

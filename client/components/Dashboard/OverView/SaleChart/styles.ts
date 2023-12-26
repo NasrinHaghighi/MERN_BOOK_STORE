@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Box =styled.div`
 
 background-color: ${props=>props.theme.mainBG};
-padding:20px ;
+padding:20px 5px ;
 border-radius: 10px;
 
 `

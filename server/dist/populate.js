@@ -23,8 +23,8 @@ const start = () => __awaiter(void 0, void 0, void 0, function* () {
         yield Books.create(jsonBooks);
         yield Orders.deleteMany();
         yield Orders.create(jsonOrders);
-        process.exit(0);
         console.log('suuucse....');
+        process.exit(0);
     }
     catch (error) {
         console.log(error);

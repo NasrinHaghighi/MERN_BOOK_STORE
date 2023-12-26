@@ -15,7 +15,7 @@ interface Book{
     format:string,
     rating:number,
     amount:number,
-    finalprice:number,
+    finalPrice:number,
     discont:number 
 }
 interface Books{
@@ -62,9 +62,9 @@ export const BookSlice= createSlice({
             if(action.payload.discont>0){
                 const discountedPrice =
                 action.payload.price - (action.payload.price * action.payload.discont) / 100;
-                state.books.push({...action.payload, amount:1, finalprice:discountedPrice})
+                state.books.push({...action.payload, amount:1, finalPrice:discountedPrice})
             }else{
-                state.books.push({...action.payload, amount:1, finalprice:action.payload.price})
+                state.books.push({...action.payload, amount:1, finalPrice:action.payload.price})
             }
                      
            

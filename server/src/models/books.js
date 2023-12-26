@@ -1,7 +1,7 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = require("mongoose");
-var BooksSchema = new mongoose_1["default"].Schema({
+var BooksSchema = new mongoose_1.default.Schema({
     name: {
         type: String,
         required: [true, 'product name must be provided']
@@ -12,11 +12,11 @@ var BooksSchema = new mongoose_1["default"].Schema({
     },
     ebook: {
         type: Boolean,
-        "default": false
+        default: false
     },
     rating: {
         type: Number,
-        "default": 4.5
+        default: 4.5
     },
     author: {
         type: String,
@@ -28,7 +28,7 @@ var BooksSchema = new mongoose_1["default"].Schema({
     },
     format: {
         type: String,
-        "default": false
+        default: false
         // enum: {
         //     values:['paperback', 'hardback'],
         //     message: '{VALUE} is not supported',
@@ -40,7 +40,7 @@ var BooksSchema = new mongoose_1["default"].Schema({
     },
     imageUrl: {
         type: String,
-        "default": ''
+        default: ''
         //required:[true, 'imageUrl must be provided']
     },
     language: {
@@ -49,20 +49,24 @@ var BooksSchema = new mongoose_1["default"].Schema({
     },
     publisher: {
         type: String,
-        "default": false
+        default: false
         //enum:['Seven Seas Entertainment, LLC', ' Dark Horse Comics,U.S.', 'Viz Media, Subs. of Shogakukan Inc']
     },
     createdAt: {
         type: Date,
-        "default": Date.now()
+        default: Date.now()
     },
     stock: {
         type: String,
-        "default": 'In In Stock'
+        default: 'In Stock'
     },
     discont: {
         type: Number,
-        "default": 0
-    }
+        default: 0
+    },
+    finalPrice: {
+        type: Number,
+        default: 0
+    },
 });
-module.exports = mongoose_1["default"].model('Books', BooksSchema);
+module.exports = mongoose_1.default.model('Books', BooksSchema);

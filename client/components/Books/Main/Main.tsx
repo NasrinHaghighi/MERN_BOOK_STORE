@@ -103,7 +103,7 @@ useEffect(() => {
 const m=checkSort(sortby)
 
    axios
-       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},price>${min}, price<${max} &category=${categorySelected}`)
+       .get(`http://localhost:4000/api/v1/books?limit=${limitNumber}&page=${pageNum}&sort=${m}&numericFilters=rating>=${rateSelected},finalPrice>${min}, finalPrice<${max} &category=${categorySelected}`)
        .then(response => setData(response.data.books));
       
        setLoading(false)

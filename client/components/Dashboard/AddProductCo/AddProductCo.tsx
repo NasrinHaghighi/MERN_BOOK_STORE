@@ -17,10 +17,27 @@ function AddProductCo() {
   const [image, setImage] =useState<File | null>()
   const [preview, setPreview] =useState<string | any>()
   const [imageValue, setImageValue] =React.useState('')
+
   const [bookState, setBookState] = React.useState({
-    name: "",  author: "", price:"", discont:"", publisher:"", language:"",description:"", category:"", format:"", imageUrl: imageValue
+    name: "",  author: "", price:"", discont:"", publisher:"", language:"",description:"", category:"", format:"", imageUrl: imageValue, finalPrice:""
   })
-console.log(bookState)
+/*get final price to send to */
+React.useEffect(() => {
+   const calculateFinalPrice = () => {
+    const parsedPrice = parseFloat(bookState.price);
+    const parsedDiscount = parseFloat(bookState.discont);
+    if (!isNaN(parsedPrice) && !isNaN(parsedDiscount)) {
+     const finalPrice = parsedPrice - (parsedPrice * parsedDiscount) / 100;
+      setBookState(prevState => ({
+        ...prevState,
+        finalPrice: finalPrice.toFixed(2) 
+      }));
+    }
+  };
+
+  calculateFinalPrice(); 
+}, [bookState.price, bookState.discont]); 
+
   /*On change*/
 const handelInput=(e: SelectChangeEvent<string> | React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >)=>{
    const inputName = e.target.name;
@@ -31,6 +48,7 @@ const handelInput=(e: SelectChangeEvent<string> | React.ChangeEvent<HTMLInputEle
     });
  
 }
+console.log(bookState)
 const handelSubmite= async()=>{
   { toast(`A new book added `,{
     draggable:true,

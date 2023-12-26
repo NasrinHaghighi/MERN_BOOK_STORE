@@ -54,7 +54,8 @@ display: none;
   }
 `
 export const MenuIcon=styled.div`
-
+font-size:28px ;
+color: ${props=>props.theme.orange};
 `
 
 export const Wrapper = styled.nav`
@@ -79,6 +80,7 @@ font-weight:800 ;
   border-radius:8px ;
   padding-left: 0px;
     padding-right: 10px;
+
 
 `
 export const Nav = styled.div`

@@ -8,7 +8,7 @@ margin: 30px 15px;
 border-radius: 10px;
 
 @media (max-width:1400px) {
-    width: 70%;
+    width: 95%;
 margin: 0 auto;
   }
 `
@@ -35,6 +35,10 @@ margin-bottom: 35px;
 &>span{
   color: ${props=>props.theme.orange};
 }
+@media (max-width:700px) {
+font-size: 14px;
+
+  }
 `
 export const Tabel =styled.div`
 

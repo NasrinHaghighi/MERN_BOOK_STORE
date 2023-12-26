@@ -129,7 +129,7 @@ function Adress({handelInputs, userInfo}:any) {
     inputProps={{
       style: {
         height: "50px",
-        width:'230px',
+        width:'220px',
         backgroundColor:'#f5f5f5'
       },
     }}
@@ -153,7 +153,7 @@ function Adress({handelInputs, userInfo}:any) {
     inputProps={{
       style: {
         height: "50px",
-        width:'230px',
+        width:'220px',
         backgroundColor:'#f5f5f5'
       },
     }}
@@ -169,7 +169,7 @@ function Adress({handelInputs, userInfo}:any) {
     inputProps={{
       style: {
         height: "50px",
-        width:'230px',
+        width:'220px',
         backgroundColor:'#f5f5f5'
       },
     }}
@@ -189,7 +189,7 @@ function Adress({handelInputs, userInfo}:any) {
     inputProps={{
       style: {
         height: "150px",
-        width:'230px',
+        width:'220px',
       },
     }}
   />

@@ -14,6 +14,7 @@ border-radius: 10px;
 @media (max-width: 600px) {
   width: 100%;
  margin: 130px auto;
+ padding:30px 5px;
 
   }
 `

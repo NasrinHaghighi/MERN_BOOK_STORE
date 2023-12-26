@@ -41,11 +41,11 @@ export const getAllBooks =async (req: any, res: any) =>{
           const regEx = /\b(<|>|>=|=|<|<=)\b/g;
           let filters = numericFilters.replace(regEx, (match: string | number) => `-${operatorMap[match]}-` );
           /**/
-          const options = ['price', 'rating'];
+          const options = ['finalPrice', 'rating'];
          
           filters = filters.split(',').forEach((item: { split: (arg0: string) => [any, any, any] }) => {
             const [field, operator, value] = item.split('-');
-            console.log(field, operator, value)
+            //console.log(field, operator, value, options)
             if (options.includes(field)) {
                 if (operator === '$eq') {
                     
@@ -102,7 +102,12 @@ export const editBook = async (req: any, res: any) => {
       const { id: productId } = req.params;
       const stock = req.body;
       const discont=req.body
-//console.log(stock, discont)
+      const bookone = await Books.findById(productId);
+      let finalPrice = bookone.finalPrice;
+      const bookPrice = parseFloat(bookone.price);
+const discontBook =parseFloat(discont.discont);
+const newPrice = bookPrice - (bookPrice * discontBook) / 100;
+console.log('New Price:', newPrice, discontBook, bookPrice);
       let updateData;
  
 if(stock ){
@@ -110,12 +115,17 @@ if(stock ){
 }
 if(discont){
     updateData = discont;
+    finalPrice = newPrice
+   
     }
-
-    
+     updateData = {
+        ...req.body,
+        finalPrice: finalPrice
+      };
+      console.log(updateData)
      
       const book = await Books.findOneAndUpdate({ _id: productId }, updateData ,{ new: true });
-    // console.log(book)
+      console.log(book)
       if (!book) {
         return res.status(404).json({ msg: `No order found with ID: ${productId}` });
       }
@@ -143,7 +153,7 @@ if(discont){
 };
 
 export const createBook =async (req:any , res:any) =>{
-    //console.log(req.body)
+    console.log(req.body)
     const newBook = await Books.create(req.body.newbook);
     res.status(201).json({ book: newBook });
 }

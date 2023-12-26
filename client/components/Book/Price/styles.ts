@@ -18,10 +18,14 @@ margin-bottom:30px ;
 `
 export const  Tit=styled.h1`
 color:${props=>props.theme.textStrong} ;
-margin-right:20px;
+
 `
 export const  Value=styled.h1`
 color:${props=>props.theme.priceColor} ;
+display: flex;
+justify-content: flex-start;
+align-items: baseline;
+
 `
 export const  Middel=styled.div`
 color:${props=>props.theme.textStrong} ;
@@ -57,4 +61,17 @@ background-color:${props=>props.theme.orange} ;
     
 }
 
+`
+
+/*diconst box*/
+export const DiscontBox=styled.span`
+background-color: ${props=>props.theme.green};
+padding: 3px;
+border-radius: 8px;
+color:#fff;
+font-size: 12px;
+display: flex;
+justify-content: center;
+align-items: center;
+margin:0 10px;
 `
