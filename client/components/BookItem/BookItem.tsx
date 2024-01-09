@@ -23,7 +23,7 @@ interface ItemProps{
 
 
 function BookItem({item}:ItemProps) {
-  console.log(item)
+  //console.log(item)
 const userId=useAppSelector((state)=>state.user.userId)
 
 const dispatch=useAppDispatch()
@@ -46,9 +46,18 @@ const dispatch=useAppDispatch()
         
   }
 
-  const addToFavoraite=(e:any)=>{
+  const addToFavoraite=async(e:any)=>{
     e.stopPropagation()
-   dispatch(addToFavoraiteList(item))
+    if(!userId){
+    toast.error('Please login to add item to wishlist')
+    }else{
+    dispatch(addToFavoraiteList(item))
+    //  try{
+    //      let res = await axios.post(`http://localhost:4000/api/v1/whishlist/${userId}`, { productId: item._id })
+           
+    //     // console.log(res)
+    //    }catch(error){}
+    }
   }
 useEffect(() => {
  

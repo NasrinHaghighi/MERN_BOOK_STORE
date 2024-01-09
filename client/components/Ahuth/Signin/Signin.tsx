@@ -42,7 +42,7 @@ function Signin() {
 
   try{
     let res = await axios.post("http://localhost:4000/api/v1/auth/login", values)
-    console.log('Response from server:', res);
+   // console.log('Response from server:', res);
  const signinUser=res.data.user.name
   const token=res.data.token
   const userRole=res.data.user.role
