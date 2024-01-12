@@ -59,16 +59,31 @@ export const FavoraiteListSlice= createSlice({
         backtofalseFavoraiteAlert:(state)=>{
             state.favoraiteAlert=false
    
-                 },
+   },
+   deletitemWish:(state, action:PayloadAction<Book>)=>{
+    console.log(action.payload)
+    const updateWish=state.favoraitelist.filter((item)=>{
+        return item._id !== action.payload._id
+    })
+    const updatedWishPlain = updateWish.map((item) => JSON.parse(JSON.stringify(item)));
+    state.favoraitelist=updatedWishPlain
+    localStorage.setItem('favoriteList', JSON.stringify(updatedWishPlain) )
+   }
   
     },
   
+
 })
 
-export const {addToFavoraiteList, backtofalseFavoraiteAlert} =FavoraiteListSlice.actions
+export const {addToFavoraiteList, backtofalseFavoraiteAlert,deletitemWish} =FavoraiteListSlice.actions
 export default FavoraiteListSlice.reducer
 
-
+// const tempCard= state.favoraitelist.filter((item)=>{
+//     return item._id !== action.payload._id
+//    })
+//    console.log(tempCard)
+//    state.favoraitelist=tempCard
+//    localStorage.setItem('favoriteList', JSON.stringify(tempCard)  )     
 
 // if(tempo){
 //     let tempcard=state.favoraitelist.map((b)=>{

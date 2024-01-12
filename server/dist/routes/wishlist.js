@@ -7,4 +7,5 @@ var jsonParser = bodyParser.json();
 const wishlist_1 = require("../controllers/wishlist");
 router.route('/:userId').post(jsonParser, wishlist_1.addToWishList);
 router.route('/:userId').get(jsonParser, wishlist_1.getWishlistOfuser);
+router.route('/:userId').delete(jsonParser, wishlist_1.removeFromWishlist);
 module.exports = router;

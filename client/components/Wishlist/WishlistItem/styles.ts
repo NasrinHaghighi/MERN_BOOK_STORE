@@ -52,8 +52,9 @@ border-radius: 10px;
 background-color: ${props=>props.theme.green};
 `
 
-export const Remove=styled.span`
+export const Remove=styled.div`
 font-weight: 700;
 color: ${props=>props.theme.orange};
 font-size: 22px;
+cursor: pointer;
 `

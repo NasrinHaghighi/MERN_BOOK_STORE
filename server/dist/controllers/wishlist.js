@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWishlistOfuser = exports.addToWishList = void 0;
+exports.removeFromWishlist = exports.getWishlistOfuser = exports.addToWishList = void 0;
 const User = require('../models/user');
 const Wishlist = require('../models/wishlist');
 const { isValidObjectId } = require("mongoose");
@@ -55,7 +55,7 @@ const getWishlistOfuser = (req, res) => __awaiter(void 0, void 0, void 0, functi
         if (!wishlist) {
             return res.status(404).send({ status: false, message: "Wishlist not found for the user" });
         }
-        console.log(wishlist.products);
+        //console.log(wishlist.products)
         return res.status(200).send({ status: true, wishlist: wishlist.products });
     }
     catch (error) {
@@ -63,3 +63,54 @@ const getWishlistOfuser = (req, res) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.getWishlistOfuser = getWishlistOfuser;
+/*remove wish list*/
+const removeFromWishlist = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let userId = req.params.userId;
+    let user = yield User.exists({ _id: userId });
+    let productId = req.body.productId;
+    console.log(userId, productId);
+    if (!userId || !isValidObjectId(userId) || !user)
+        return res.status(400).send({ status: false, message: "Invalid user ID" });
+    let wishlist = yield Wishlist.findOne({ userId: userId });
+    if (!wishlist)
+        return res
+            .status(404)
+            .send({ status: false, message: "Cart not found for this user" });
+    let itemIndex = wishlist.products.findIndex((p) => p.productId == productId);
+    if (itemIndex > -1) {
+        wishlist.products.splice(itemIndex, 1);
+        wishlist = yield wishlist.save();
+        return res.status(200).send({ status: true, updatedwishlist: wishlist });
+    }
+    if (!productId) {
+        /*can i say if req.body is not availeble, it meanse remove all the cart,*/
+        yield Wishlist.deleteOne({ userId: userId });
+        return res.status(200).send({ status: true, message: "Cart deleted successfully" });
+    }
+    res
+        .status(400)
+        .send({ status: false, message: "Item does not exist in cart" });
+});
+exports.removeFromWishlist = removeFromWishlist;
+// //console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
+//   let wishlist = await Wishlist.findOne({ userId: userId });
+//   console.log(wishlist)
+//  console.log('remove')
+//   if (!wishlist)
+//     return res
+//       .status(404)
+//       .send({ status: false, message: "Cart not found for this user" });
+//   let itemIndex = wishlist.products.findIndex((p:any) => p.productId == productId);
+//   if (itemIndex > -1) {
+//     wishlist.products.splice(itemIndex, 1);
+//     wishlist = await wishlist.save();
+//     return res.status(200).send({ status: true, updatedCart: wishlist });
+//   }
+//   if(!productId){
+//     /*can i say if req.body is not availeble, it meanse remove all the cart,*/
+//     await Wishlist.deleteOne({ userId: userId });
+//     return res.status(200).send({ status: true, message: "Cart deleted successfully" });
+//   }
+//   res
+//     .status(400)
+//     .send({ status: false, message: "Item does not exist in cart" });
