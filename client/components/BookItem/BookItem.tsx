@@ -11,8 +11,8 @@ import PriceBydiscont from './PriceBydiscont/PriceBydiscont'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
-import AddCardAlert from '../Books/Alerts/AddCardAlert'
-
+//import AddCardAlert from '../Books/Alerts/AddCardAlert'
+import useFetchAddToCard from '../../hooks/useFetchAddToCard'
 
 interface ItemProps{
     item:bookType
@@ -28,23 +28,7 @@ const userId=useAppSelector((state)=>state.user.userId)
 
 const dispatch=useAppDispatch()
 
- const addToCardHandel=async(e:any)=>{
-     e.stopPropagation()
-   if(!userId){
-   toast.error('Please login to add item to cart')
-   }else{
-   
-    dispatch(addBook(item))
-   
-    try{
-        let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
-          
-        console.log(res)
-      }catch(error){}
-   }
-   
-        
-  }
+const {addToCardHandel} =useFetchAddToCard({item})
 
   const addToFavoraite=async(e:any)=>{
     e.stopPropagation()
@@ -52,11 +36,11 @@ const dispatch=useAppDispatch()
     toast.error('Please login to add item to wishlist')
     }else{
     dispatch(addToFavoraiteList(item))
-    //  try{
-    //      let res = await axios.post(`http://localhost:4000/api/v1/whishlist/${userId}`, { productId: item._id })
+     try{
+         let res = await axios.post(`http://localhost:4000/api/v1/wishlist/${userId}`, { productId: item._id })
            
-    //     // console.log(res)
-    //    }catch(error){}
+        // console.log(res)
+       }catch(error){}
     }
   }
 useEffect(() => {
@@ -96,7 +80,7 @@ useEffect(() => {
       
        </Link>
        <Btn>
-       <Add onClick={(e)=>addToCardHandel(e)}>Add to card</Add>
+       <Add onClick={() => addToCardHandel(item)}>Add to card</Add>
        <Favoraite onClick={(e)=>addToFavoraite(e)}>Wishlist</Favoraite>
        </Btn>
     </BookItemContainer>
@@ -106,6 +90,25 @@ useEffect(() => {
 }
 
 export default BookItem
+
+
+//  const addToCardHandel=async(e:any)=>{
+//      e.stopPropagation()
+//    if(!userId){
+//    toast.error('Please login to add item to cart')
+//    }else{
+   
+//     dispatch(addBook(item))
+   
+//     try{
+//         let res = await axios.post(`http://localhost:4000/api/v1/cart/${userId}`, { productId: item._id })
+          
+//         console.log(res)
+//       }catch(error){}
+//    }
+   
+        
+//   }
 
 
 

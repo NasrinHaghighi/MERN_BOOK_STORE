@@ -44,7 +44,7 @@ const usersRouter = require('./routes/users');
 const userOrderRouter = require('./routes/userOrder');
 const dashboardRouter = require('./routes/dashboard');
 const orderRouter = require('./routes/orders');
-const whishRouter = require('./routes/whishlist');
+const wishRouter = require('./routes/wishlist');
 const notFoundMiddleware = require('./middleware/not-found');
 const errorMiddleware = require('./middleware/error-handler');
 const { authPageMiddelwear } = require('./middleware/authPage');
@@ -62,7 +62,7 @@ app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/orders', orderRouter);
 app.use('/api/v1/userOrder', userOrderRouter);
 app.use('/api/v1/cart', cartRouter);
-app.use('/api/v1/whishlist', whishRouter);
+app.use('/api/v1/wishlist', wishRouter);
 //app.use('/api/v1/dashboard', authPageMiddelwear('admin'),dashboardRouter)
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);

@@ -9,11 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addToWhishList = void 0;
+exports.getWishlistOfuser = exports.addToWishList = void 0;
 const User = require('../models/user');
-const Wishlist = require('../models/whishlist');
+const Wishlist = require('../models/wishlist');
 const { isValidObjectId } = require("mongoose");
-const addToWhishList = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const addToWishList = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let userId = req.params.userId;
     let user = yield User.exists({ _id: userId });
     if (!userId || !isValidObjectId(userId) || !user)
@@ -22,11 +22,19 @@ const addToWhishList = (req, res) => __awaiter(void 0, void 0, void 0, function*
     if (!productId)
         return res.status(400).send({ status: false, message: "Invalid product" });
     let wishlist = yield Wishlist.findOne({ userId: userId });
-    console.log(wishlist);
+    //console.log(wishlist)
     if (wishlist) {
-        wishlist.products.push({ productId: productId });
-        yield wishlist.save();
-        return res.status(200).send({ status: true, updatedCart: wishlist });
+        const itemIndex = wishlist.products.findIndex((item) => item.productId.toString() === productId);
+        //console.log(itemIndex)
+        if (itemIndex > -1) {
+            yield wishlist.save();
+            return res.status(201).send({ status: true, newWhishlist: wishlist });
+        }
+        else {
+            wishlist.products.push({ productId: productId });
+            yield wishlist.save();
+            return res.status(200).send({ status: true, updatedCart: wishlist });
+        }
     }
     else {
         const newWhishlist = yield Wishlist.create({
@@ -36,4 +44,22 @@ const addToWhishList = (req, res) => __awaiter(void 0, void 0, void 0, function*
         return res.status(201).send({ status: true, newWhishlist: newWhishlist });
     }
 });
-exports.addToWhishList = addToWhishList;
+exports.addToWishList = addToWishList;
+const getWishlistOfuser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let userId = req.params.userId;
+    let user = yield User.exists({ _id: userId });
+    if (!userId || !isValidObjectId(userId) || !user)
+        return res.status(400).send({ status: false, message: "Invalid user ID" });
+    try {
+        const wishlist = yield Wishlist.findOne({ userId: userId });
+        if (!wishlist) {
+            return res.status(404).send({ status: false, message: "Wishlist not found for the user" });
+        }
+        console.log(wishlist.products);
+        return res.status(200).send({ status: true, wishlist: wishlist.products });
+    }
+    catch (error) {
+        return res.status(500).send({ status: false, message: "Internal server error" });
+    }
+});
+exports.getWishlistOfuser = getWishlistOfuser;

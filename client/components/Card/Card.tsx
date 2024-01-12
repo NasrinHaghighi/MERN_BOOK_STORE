@@ -15,7 +15,7 @@ function Card() {
  const signinUser=user.signinUser
  //console.log(userId)
   const books=useAppSelector(state=>state.books.books)
-  console.log(books)
+  //console.log(books)
   const totalPrice=books.reduce((ac, cu)=>{
     const final=cu.price-(cu.price-cu.discont)/100
     return ac+ (final  * cu.amount)

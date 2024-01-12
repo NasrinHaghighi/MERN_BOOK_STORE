@@ -18,7 +18,7 @@ interface Item{
 
 
 function CardItem({item, index}:Item) {
-  console.log(item)
+ // console.log(item)
   const finalprice=item.price-(item.price-item.discont)/100
   //console.log(finalprice)
 const [newAmount, setNewAmount] =useState<number>(item.amount)

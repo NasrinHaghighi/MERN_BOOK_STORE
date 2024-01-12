@@ -9,7 +9,7 @@ const wishitemSchema =new mongoose.Schema({
       },
 
 })
-const whishSchema =new mongoose.Schema({
+const wishSchema =new mongoose.Schema({
     products: [wishitemSchema],
     userId: {
       type: mongoose.Schema.Types.ObjectId,
@@ -18,4 +18,4 @@ const whishSchema =new mongoose.Schema({
     __v: { type: Number, select: false },
 })
 
-module.exports =mongoose.model('Whishlist', whishSchema)
+module.exports =mongoose.model('Wishlist', wishSchema)

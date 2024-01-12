@@ -77,7 +77,7 @@ useEffect(() => {
       <DropDownToggle variant="success" id="dropdown-basic">
       
       <ShopIcon>{wish ? <MdFavorite/> : <FaShoppingCart />}</ShopIcon>
-      <ShopItems wish={wish}>{userBooks.length}</ShopItems>
+      <ShopItems wish={wish}>{wish ? userWishBooks.length :userBooks.length}</ShopItems>
       </DropDownToggle>
 
       <DropDownMenu show={show} res={res}>

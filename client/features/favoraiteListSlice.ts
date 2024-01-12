@@ -32,8 +32,8 @@ export const FavoraiteListSlice= createSlice({
     initialState,
     reducers:{
         addToFavoraiteList:(state, action:PayloadAction<Book>)=>{
-            console.log('action' , action.payload)
-            console.log('state.favoraitelist' , state.favoraitelist.length)
+            //console.log('action' , action.payload)
+           // console.log('state.favoraitelist' , state.favoraitelist.length)
         if(state.favoraitelist.length>=1){
             const existingItemIndex = state.favoraitelist.findIndex(
                 (item) => item._id === action.payload._id);

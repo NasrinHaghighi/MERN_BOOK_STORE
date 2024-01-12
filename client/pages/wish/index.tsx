@@ -1,8 +1,12 @@
 import React from 'react'
+import {IndexConatiner} from '../../components/Card/CardIndexstyles'
+import Wishlist from '../../components/Wishlist/Wishlist'
 
 function WishList() {
   return (
-    <div>WishList</div>
+    <IndexConatiner>
+    <Wishlist />
+    </IndexConatiner>
   )
 }
 
