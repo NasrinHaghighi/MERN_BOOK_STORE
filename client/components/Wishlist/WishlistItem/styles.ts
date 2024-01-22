@@ -7,6 +7,7 @@ display: grid;
 grid-template-columns:1fr 2fr 1fr 1fr 1fr ;
 column-gap: 10px;
 align-items: baseline;
+//text-align: center;
 margin-bottom: 20px;
 padding: 10px;
 border-radius:10px;
@@ -16,8 +17,8 @@ border-radius:10px;
 &.odd{
     background-color:${props=>props.theme.white} ; 
 }
-@media (max-width: 1100px) {
-  display: none;
+@media (max-width: 900px) {
+    display: none;
   }
 `
 
@@ -50,6 +51,7 @@ padding: 5px 10px;
 border: none;
 border-radius: 10px;
 background-color: ${props=>props.theme.green};
+
 `
 
 export const Remove=styled.div`
@@ -57,4 +59,44 @@ font-weight: 700;
 color: ${props=>props.theme.orange};
 font-size: 22px;
 cursor: pointer;
+text-align: center;
+`
+export const Conatiner2=styled.div`
+ display: none;
+
+@media (max-width: 900px) {
+    display: block;
+  }
+`
+export const Box=styled.div`
+display: flex;
+justify-content: space-between;
+align-items: center;
+@media (max-width: 500px) {
+    flex-direction: column;
+  }
+`
+
+
+
+export const Top=styled.div`
+margin-bottom: 20px;
+display: grid;
+grid-template-columns:1fr 3fr;
+align-items: baseline;
+column-gap: 10px;
+@media (max-width: 500px) {
+  grid-template-columns:1fr;
+  text-align: center;
+  }
+`
+
+export const Price2=styled.div`
+margin-bottom: 15px;
+font-weight: 700;
+&>span{
+  font-size: 18px;
+  font-weight: 700;
+  color: ${props=>props.theme.orange};
+}
 `

@@ -34,5 +34,7 @@ align-items:center ;
   font-weight: 700;
 
 }
-
+@media (max-width: 900px) {
+    display: none;
+  }
 `

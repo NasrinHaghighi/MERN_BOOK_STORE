@@ -68,7 +68,6 @@ const removeFromWishlist = (req, res) => __awaiter(void 0, void 0, void 0, funct
     let userId = req.params.userId;
     let user = yield User.exists({ _id: userId });
     let productId = req.body.productId;
-    console.log(userId, productId);
     if (!userId || !isValidObjectId(userId) || !user)
         return res.status(400).send({ status: false, message: "Invalid user ID" });
     let wishlist = yield Wishlist.findOne({ userId: userId });
@@ -92,25 +91,3 @@ const removeFromWishlist = (req, res) => __awaiter(void 0, void 0, void 0, funct
         .send({ status: false, message: "Item does not exist in cart" });
 });
 exports.removeFromWishlist = removeFromWishlist;
-// //console.log(`userId:${userId}  productId:${JSON.stringify(req.body.productId)}`)
-//   let wishlist = await Wishlist.findOne({ userId: userId });
-//   console.log(wishlist)
-//  console.log('remove')
-//   if (!wishlist)
-//     return res
-//       .status(404)
-//       .send({ status: false, message: "Cart not found for this user" });
-//   let itemIndex = wishlist.products.findIndex((p:any) => p.productId == productId);
-//   if (itemIndex > -1) {
-//     wishlist.products.splice(itemIndex, 1);
-//     wishlist = await wishlist.save();
-//     return res.status(200).send({ status: true, updatedCart: wishlist });
-//   }
-//   if(!productId){
-//     /*can i say if req.body is not availeble, it meanse remove all the cart,*/
-//     await Wishlist.deleteOne({ userId: userId });
-//     return res.status(200).send({ status: true, message: "Cart deleted successfully" });
-//   }
-//   res
-//     .status(400)
-//     .send({ status: false, message: "Item does not exist in cart" });
