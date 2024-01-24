@@ -35,7 +35,7 @@ function CheckOutIndex() {
       /*make data to send*/
       const  onFormSubmit= async () =>{
         /*we need to remove all item from redux by submit, meanse cart now is a order nad cart is */
-       console.log(datatoSend)
+       //console.log(datatoSend)
       dispatch(removeAllitem())
       
           try {
@@ -50,7 +50,7 @@ function CheckOutIndex() {
                 position:toast.POSITION.TOP_RIGHT
               })
               setTimeout(() => {
-                router.push('/books')
+                router.push('/payment')
               }, 5000);
             }else{
               toast('Some things went wrong!',{
